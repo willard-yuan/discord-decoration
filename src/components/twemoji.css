@@ -1,0 +1,8 @@
+.emoji {
+  display: inline-block;
+  width: auto;
+  height: 1.375rem;
+  vertical-align: top;
+  pointer-events: none;
+  user-select: none;
+}
