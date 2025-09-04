@@ -51,22 +51,22 @@ const Hero = () => {
           <div className="mb-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-text-primary ginto mb-4">
               <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Discord
+                Discord Decoration
+              </span>
+              <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mt-2">
+                Free Avatar Decorations
               </span>
             </h1>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary ginto mb-6">
-              Avatar Decorations
-            </h2>
           </div>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-text-secondary max-w-4xl mx-auto mb-12 leading-relaxed">
-            Create stunning profile pictures with custom avatar decorations.
+          <h2 className="text-lg sm:text-xl lg:text-2xl text-text-secondary max-w-4xl mx-auto mb-12 leading-relaxed font-normal">
+            Create stunning profile pictures with custom Discord avatar decorations.
             <br className="hidden sm:block" />
             <span className="text-text-muted">
-              Use them in Discord for free without spending money.
+              Use Discord decorations for free without spending money.
             </span>
-          </p>
+          </h2>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -100,15 +100,15 @@ const Hero = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-primary ginto mb-2">100+</div>
-              <div className="text-text-muted">Avatar Presets</div>
+              <h3 className="text-text-muted">Avatar Presets</h3>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-purple-400 ginto mb-2">50+</div>
-              <div className="text-text-muted">Decorations</div>
+              <h3 className="text-text-muted">Decorations</h3>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-pink-400 ginto mb-2">Free</div>
-              <div className="text-text-muted">Forever</div>
+              <h3 className="text-text-muted">Forever</h3>
             </div>
           </div>
         </div>

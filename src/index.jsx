@@ -14,11 +14,13 @@ import { NotFound } from "@/pages/_404.jsx";
 import "@/global.css";
 import { FontPreloader } from "@/components/fontpreload.jsx";
 import { Utils } from "@/components/utils.jsx";
+import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export function App() {
   return (
     <LocationProvider>
       <div className="bg-base-lower w-screen overflow-x-hidden">
+        <Breadcrumb />
         <Router>
           <Route path="/" component={Home} />
           <Route path="/discuss" component={Discussion} />

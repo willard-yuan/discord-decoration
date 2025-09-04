@@ -211,9 +211,9 @@ const App = ({ ensureLoaded }) => {
             className="block w-full md:w-auto select-none grow"
           >
             {/* UPLOAD AVATAR */}
-            <p className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
-              AVATAR
-            </p>
+            <h3 className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
+              DISCORD AVATAR UPLOAD
+            </h3>
             <div className="flex sm:flex-row flex-col sm:items-center gap-3">
               <button
                 className="px-4 py-1.5 button-primary"
@@ -285,9 +285,9 @@ const App = ({ ensureLoaded }) => {
             <hr className="border-b border-border-faint/10" />
 
             {/* SELECT DECORATION */}
-            <p className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
-              AVATAR DECORATION
-            </p>
+            <h3 className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
+              DISCORD AVATAR DECORATION
+            </h3>
             <SearchBar
               placeholder={"Search decorations..."}
               onValueChanged={setDecoSearch}

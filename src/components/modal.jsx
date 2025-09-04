@@ -27,9 +27,9 @@ export default function Modal(props) {
             <div className="flex flex-col gap-2">
               {props.title && (
                 <div className="flex justify-center">
-                  <p className="font-semibold text-white/80 text-2xl text-center [letter-spacing:.02em]">
+                  <h2 className="font-semibold text-white/80 text-2xl text-center [letter-spacing:.02em]">
                     {props.title}
-                  </p>
+                  </h2>
                 </div>
               )}
               {props.subtitle && (

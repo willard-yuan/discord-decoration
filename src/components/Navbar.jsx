@@ -10,6 +10,7 @@ const Navbar = () => {
   });
 
   const [isDark, setIsDark] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateTheme = () => {
@@ -86,10 +87,11 @@ const Navbar = () => {
               <span className="text-lg">{getThemeIcon()}</span>
             </button>
             
-
-
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors">
+            <button 
+              className="md:hidden p-2 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
               <svg className="w-5 h-5 text-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -97,6 +99,20 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              Home
+            </a>
+            <a href="#profile-preview" onClick={(e) => { e.preventDefault(); document.getElementById('profile-preview')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              About
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
