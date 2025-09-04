@@ -33,6 +33,8 @@ import { useLocation } from "preact-iso";
 import { NeutralButton } from "@/components/button";
 import { Fragment } from "preact/jsx-runtime";
 import { createContext } from "preact";
+import Navbar from "@/components/Navbar.jsx";
+import Hero from "@/components/Hero.jsx";
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -199,26 +201,10 @@ const App = ({ ensureLoaded }) => {
         name,
       }}
     >
-      <main className="flex flex-col items-center w-screen h-screen overflow-auto text-white discord-scrollbar">
-        <div className="relative bg-primary sm:mt-8 sm:rounded-3xl w-full sm:w-[calc(100%-6rem)] min-h-72 overflow-hidden select-none">
-          <div
-            className="top-0 right-0 bottom-0 left-0 z-0 absolute w-full h-full object-bottom pointer-events-none"
-            style={{
-              background: getBannerImage(),
-            }}
-          />
-          <div className="top-0 right-0 bottom-0 left-0 z-10 absolute flex flex-col justify-center items-center p-8 md:p-12 lg:p-16 text-center">
-            <h1 className="font-bold text-3xl md:text-5xl ginto">Discord</h1>
-            <h1 className="mb-4 text-2xl md:text-4xl capitalize ginto">
-              Fake Avatar Decorations
-            </h1>
-            <h2 className="text-sm sm:text-base">
-              Create profile pictures with avatar decorations so you can use
-              them in Discord for free without spending money
-            </h2>
-          </div>
-        </div>
-        <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px]">
+      <Navbar />
+      <Hero />
+      <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
+        <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
           {/* SETTINGS */}
           <div
             id="settings"
@@ -591,44 +577,7 @@ const App = ({ ensureLoaded }) => {
           </div>
         </div>
         <p className="mb-4 text-text-muted text-sm text-center">
-          Website made by{" "}
-          <a
-            href={"https://github.com/ItsPi3141"}
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ItsPi3141
-          </a>
-          <br />
-          This project is open-source! View{" "}
-          <a
-            href={
-              "https://github.com/ItsPi3141/discord-fake-avatar-decorations"
-            }
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            source code
-          </a>{" "}
-          on GitHub.
-          <br />
-          This site is NOT affiliated with Discord Inc. in any way. All images
-          and assets belong to Discord Inc.
-          <br />
-          Discord Character avatars were created by Bred and Jace. View the
-          collection on{" "}
-          <a
-            href={
-              "https://www.figma.com/community/file/1316822758717784787/ultimate-discord-library"
-            }
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Figma
-          </a>
+          © Copyright 2025 discord-decoration.art All Rights Reserved.
         </p>
       </main>
       <Modal
@@ -1029,7 +978,7 @@ const DecorationsCategoryBanner = ({ category }) => {
 
 const Decoration = ({ name, fileName, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(null);
 
   return (
     <Image
@@ -1043,14 +992,13 @@ const Decoration = ({ name, fileName, onClick }) => {
       draggable={false}
       onClick={onClick}
       onMouseOver={() => {
-        setTimer(
-          setInterval(() => {
-            setIsHovered(true);
-            try {
-              clearTimeout(timer);
-            } catch (e) {}
-          }, 100)
-        );
+        const intervalId = setInterval(() => {
+          setIsHovered(true);
+          try {
+            clearTimeout(timer);
+          } catch (e) {}
+        }, 100);
+        setTimer(intervalId);
       }}
       onMouseOut={() => {
         setIsHovered(false);

@@ -6,11 +6,13 @@
   --breakpoint-sm: 540px;
   --breakpoint-md: 900px;
 
+  /* Primary Colors */
   --color-primary: hsl(234.935, 85.556%, 64.706%);
   --color-success: #44a25b;
   --color-warning: #b98037;
   --color-critical: #d83a42;
 
+  /* Dark Mode Colors (Default) */
   --color-base-low: hsl(240, 5.769%, 20.392%);
   --color-base-lower: hsl(240, 5.263%, 18.627%);
   --color-base-lowest: hsl(240, 5.882%, 16.667%);
@@ -53,14 +55,51 @@
   --color-button-secondary-border: hsla(240, 4%, 60.784%, 0.0392156862745098);
 }
 
+/* Light Mode Theme */
+:root:not(.dark) {
+  --color-base-low: hsl(0, 0%, 96%);
+  --color-base-lower: hsl(0, 0%, 98%);
+  --color-base-lowest: hsl(0, 0%, 100%);
+
+  --color-surface-overlay: hsl(0, 0%, 100%);
+  --color-surface-high: hsl(0, 0%, 95%);
+  --color-surface-higher: hsl(0, 0%, 92%);
+  --color-surface-highest: hsl(0, 0%, 88%);
+
+  --color-border-normal: hsla(240, 4%, 20%, 0.15);
+  --color-border-light: hsla(240, 4%, 20%, 0.08);
+  --color-border-faint: hsla(240, 4%, 20%, 0.04);
+  --color-border-strong: hsla(240, 4%, 20%, 0.25);
+
+  --color-icon: hsl(240, 5%, 15%);
+  --color-icon-tertiary: hsl(240, 4%, 45%);
+
+  --color-text: hsl(240, 5%, 15%);
+  --color-text-muted: hsl(240, 4%, 45%);
+  --color-text-link: hsl(213.659, 83.673%, 45%);
+  --color-text-primary: hsl(240, 5%, 10%);
+  --color-text-secondary: hsl(240, 4%, 25%);
+  --color-text-positive: hsl(130.769, 37.143%, 35%);
+  --color-text-warning: hsl(33.143, 54.404%, 40%);
+  --color-text-critical: hsl(0, 70%, 45%);
+
+  --color-button-secondary-background: hsla(240, 4%, 20%, 0.08);
+  --color-button-secondary-hover: hsla(240, 4%, 20%, 0.12);
+  --color-button-secondary-active: hsla(240, 4%, 20%, 0.16);
+  --color-button-secondary-border: hsla(240, 4%, 20%, 0.12);
+}
+
 @layer base {
   html {
-    overflow: hidden;
     height: 100vh;
     height: 100dvh;
   }
   body {
     padding: 0;
+    background-color: var(--color-surface-overlay);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
   button {
     @apply cursor-pointer;
@@ -68,26 +107,64 @@
   #app {
     visibility: visible !important;
   }
+  
+  /* Smooth transitions for theme changes */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
 }
 
 @layer components {
   /* BUTTONS */
   .button-primary {
-    @apply bg-button-primary-background hover:bg-button-primary-hover active:bg-button-primary-active border-button-primary-border rounded-lg transition;
+    background-color: var(--color-button-primary-background);
+    border: 1px solid var(--color-button-primary-border);
+    @apply rounded-lg transition-all duration-200;
+  }
+  .button-primary:hover {
+    background-color: var(--color-button-primary-hover);
+  }
+  .button-primary:active {
+    background-color: var(--color-button-primary-active);
   }
   .button-secondary {
-    @apply bg-button-secondary-background hover:bg-button-secondary-hover active:bg-button-secondary-active border border-button-secondary-border rounded-lg transition;
+    background-color: var(--color-button-secondary-background);
+    border: 1px solid var(--color-button-secondary-border);
+    @apply rounded-lg transition-all duration-200;
+  }
+  .button-secondary:hover {
+    background-color: var(--color-button-secondary-hover);
+  }
+  .button-secondary:active {
+    background-color: var(--color-button-secondary-active);
   }
   .button-tile {
-    @apply bg-base-lowest p-2 border-2 border-transparent rounded-[5px] outline-none w-full aspect-square cursor-pointer;
+    @apply bg-base-lowest p-2 border-2 border-transparent rounded-[5px] outline-none w-full aspect-square cursor-pointer hover:border-primary/50 transition-all duration-200;
   }
   .button-outline {
-    @apply border border-button-secondary-background rounded-lg transition;
+    border: 1px solid var(--color-button-secondary-background);
+    @apply rounded-lg transition-all duration-200;
+  }
+  .button-outline:hover {
+    border-color: var(--color-border-strong);
   }
 
   /* INPUTS */
   .text-input {
-    @apply bg-base-lowest px-2.5 py-2 border border-border-light rounded-lg outline-none;
+    @apply bg-base-lowest px-2.5 py-2 border border-border-light rounded-lg outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+  }
+  
+  /* RESPONSIVE UTILITIES */
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4;
+  }
+  
+  .text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
   }
 }
 

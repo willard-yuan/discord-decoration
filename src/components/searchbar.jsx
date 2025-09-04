@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { Icons } from "./icons";
+import { Icons } from "./icons.jsx";
 
 export default function SearchBar({ onValueChanged, placeholder }) {
   const [query, setQuery] = useState("");
