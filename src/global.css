@@ -231,23 +231,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-body:has([nice]) {
-  pointer-events: none;
-  white-space: pre;
 
-  & > * {
-    display: none !important;
-  }
-
-  &::before {
-    @apply top-0 right-0 bottom-0 left-0 z-50 fixed flex justify-center items-center bg-base-lower mb-14 text-white text-6xl ginto;
-    content: "418";
-  }
-  &::after {
-    @apply top-0 right-0 bottom-0 left-0 z-50 fixed flex justify-center items-center mt-14 text-white text-center;
-    content: "An unexpected error has occurred.\APlease consult your teapot administrator or open a GitHub issue.";
-  }
-}
 
 /* LOADING SPINNER */
 .loading-cube-container {

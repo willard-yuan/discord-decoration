@@ -68,10 +68,10 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-text-secondary hover:text-text-primary transition-colors">
               Home
             </a>
-            <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
+            <a href="#profile-preview" onClick={(e) => { e.preventDefault(); document.getElementById('profile-preview')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-text-secondary hover:text-text-primary transition-colors">
               About
             </a>
           </div>
