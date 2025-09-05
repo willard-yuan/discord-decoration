@@ -57,9 +57,9 @@ const Navbar = () => {
                 <span className="text-white font-bold text-sm">D</span>
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-text-primary ginto">
+                <h2 className="text-xl font-bold text-text-primary ginto">
                   Discord Avatar Decorations
-                </h1>
+                </h2>
                 <p className="text-xs text-text-muted">
                   Create custom avatar decorations for free
                 </p>
