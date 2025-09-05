@@ -35,6 +35,7 @@ import { Fragment } from "preact/jsx-runtime";
 import { createContext } from "preact";
 import Navbar from "@/components/Navbar.jsx";
 import Hero from "@/components/Hero.jsx";
+import Footer from "@/components/Footer.jsx";
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -481,60 +482,58 @@ const App = ({ ensureLoaded }) => {
               })}
             </div>
 
-            {/* pls support */}
+            {/* share with friends */}
             <div className="flex flex-col justify-start items-stretch p-4 rounded-lg w-full text-center select-none highlight">
-              <p>
-                Help support the project <Twemoji emoji="1f64f" />
-              </p>
+              <div className="flex items-center justify-center gap-3 mb-1">
+                <span className="text-primary opacity-80">
+                  <Icons.megaphone size="1.1em" />
+                </span>
+                <p className="text-lg font-medium">
+                  Share with your friends
+                </p>
+                <span className="text-primary opacity-80">
+                  <Icons.megaphone size="1.1em" />
+                </span>
+              </div>
               <NeutralButton
                 onClick={() => {
-                  window.open(
-                    "https://github.com/ItsPi3141/discord-fake-avatar-decorations"
-                  );
+                  const url = encodeURIComponent(window.location.href);
+                  const text = encodeURIComponent("Check out this awesome Discord Avatar Decorations tool!");
+                  window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`);
                 }}
               >
-                <Icons.star />
-                Star on GitHub
+                <Icons.x />
+                Share on X
               </NeutralButton>
               <NeutralButton
                 onClick={() => {
-                  navigator.clipboard.writeText(window.location.href);
-                  setShared(true);
-                  setTimeout(() => {
-                    setShared(false);
-                  }, 1500);
+                  const url = encodeURIComponent(window.location.href);
+                  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
                 }}
               >
-                <Icons.link />
-                {shared ? "Copied!" : "Share the website"}
+                <Icons.facebook />
+                Share on Facebook
               </NeutralButton>
               <NeutralButton
                 onClick={() => {
-                  window.open(
-                    "https://github.com/ItsPi3141/discord-fake-avatar-decorations/issues/new?template=bug_report.yml"
-                  );
+                  const url = encodeURIComponent(window.location.href);
+                  const title = encodeURIComponent("Discord Avatar Decorations Tool");
+                  window.open(`https://www.reddit.com/submit?url=${url}&title=${title}`);
                 }}
               >
-                <Icons.bug />
-                Report a bug
+                <Icons.reddit />
+                Share on Reddit
               </NeutralButton>
               <NeutralButton
                 onClick={() => {
-                  window.open(
-                    "https://github.com/ItsPi3141/discord-fake-avatar-decorations/issues/new?template=feature_request.yml"
-                  );
+                  const url = encodeURIComponent(window.location.href);
+                  const title = encodeURIComponent("Discord Avatar Decorations Tool");
+                  const summary = encodeURIComponent("Check out this awesome tool for Discord avatar decorations!");
+                  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`);
                 }}
               >
-                <Icons.inbox />
-                Suggest a feature
-              </NeutralButton>
-              <NeutralButton
-                onClick={() => {
-                  window.open("/discuss");
-                }}
-              >
-                <Icons.forum />
-                Discussions
+                <Icons.linkedin />
+                Share on LinkedIn
               </NeutralButton>
             </div>
 
@@ -543,14 +542,14 @@ const App = ({ ensureLoaded }) => {
               <p className="font-bold">Links</p>
               <a
                 className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-                href={"/gif-extractor"}
+                href="https://emojitoimage.com/"
                 target="_blank"
                 rel="noreferrer"
               >
                 <span className="place-items-center w-6">
-                  <Icons.gif size="18px" />
+                  <Icons.emojitoimage size="18px" />
                 </span>
-                Extract still image from GIF
+                Emoji to Image Converter
                 <span className="grow" />
                 <span className="rotate-45">
                   <Icons.up size="16px" />
@@ -558,16 +557,14 @@ const App = ({ ensureLoaded }) => {
               </a>
               <a
                 className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-                href={
-                  "https://github.com/ItsPi3141/discord-fake-avatar-decorations"
-                }
+                href="https://emojiface.us/"
                 target="_blank"
                 rel="noreferrer"
               >
                 <span className="place-items-center w-6">
-                  <Icons.github size="24px" />
+                  <Icons.emojiface size="18px" />
                 </span>
-                Source code
+                Mask Face with Emoji
                 <span className="grow" />
                 <span className="rotate-45">
                   <Icons.up size="16px" />
@@ -576,10 +573,20 @@ const App = ({ ensureLoaded }) => {
             </div>
           </div>
         </div>
-        <p className="mb-4 text-text-muted text-sm text-center">
-          © Copyright 2025 discord-decoration.art All Rights Reserved.
-        </p>
       </main>
+      {/* 自然模糊渐变过渡区域 */}
+      <div className="relative w-full h-32 overflow-hidden">
+        {/* 从main区域的背景色渐变到footer区域 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-surface-overlay via-surface-overlay/50 to-transparent"></div>
+        {/* 模糊效果层 */}
+        <div className="absolute inset-0 backdrop-blur-sm bg-gradient-to-b from-transparent via-primary/5 to-purple-500/10"></div>
+        {/* 动态光效 */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-8 right-1/3 w-24 h-24 bg-purple-400/15 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+          <div className="absolute bottom-4 left-1/2 w-28 h-28 bg-pink-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+      </div>
       <Modal
         title={"Save Decorated Avatar"}
         subtitle={
@@ -666,6 +673,7 @@ const App = ({ ensureLoaded }) => {
           };
         }}
       />
+      <Footer />
     </CurrentData.Provider>
   );
 };
