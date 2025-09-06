@@ -36,6 +36,7 @@ import { createContext } from "preact";
 import Navbar from "@/components/Navbar.jsx";
 import Hero from "@/components/Hero.jsx";
 import Footer from "@/components/Footer.jsx";
+import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -331,6 +332,7 @@ const App = ({ ensureLoaded }) => {
       }}
     >
       <Navbar />
+      <Breadcrumb />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">

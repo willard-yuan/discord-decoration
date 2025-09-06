@@ -1,11 +1,64 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { avatarsData } from '../../data/avatars';
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
+import Breadcrumb from '../../components/Breadcrumb.jsx';
 import SearchBar from '../../components/searchbar.jsx';
 
 const DiscordAvatar = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  
+  useEffect(() => {
+    document.title = "Discord Avatar Gallery - Free Avatar Collection";
+    
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Browse our extensive collection of free Discord avatars. Find the perfect profile picture from gaming, anime, fantasy, and more categories.');
+    }
+    
+    // Add structured data for SEO
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Discord Avatar Gallery",
+      "description": "Free collection of Discord avatars and profile pictures",
+      "url": "https://discord-decoration.art/discord_avatar",
+      "numberOfItems": avatarsData.length,
+      "author": {
+        "@type": "Organization",
+        "name": "Discord Decoration"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Discord Decoration",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://discord-decoration.art/banner.svg"
+        }
+      }
+    };
+    
+    // Remove existing structured data script if any
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
+    // Add new structured data
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+    
+    return () => {
+      // Cleanup structured data on unmount
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
 
   // Categorize avatars based on their names and themes
   const categorizeAvatars = () => {
@@ -100,6 +153,7 @@ const DiscordAvatar = () => {
   return (
       <div className="min-h-screen bg-surface-primary">
         <Navbar />
+        <Breadcrumb />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">

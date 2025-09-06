@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main page with popular decoration images -->
+  <url>
+    <loc>https://discord-decoration.art/</loc>
+    <lastmod>2025-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <!-- Popular decoration images -->
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/cat_ears.png</image:loc>
+      <image:caption>Discord Cat Ears Avatar Decoration</image:caption>
+      <image:title>Cat Ears Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/sakura.png</image:loc>
+      <image:caption>Discord Sakura Avatar Decoration</image:caption>
+      <image:title>Sakura Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/angel.png</image:loc>
+      <image:caption>Discord Angel Avatar Decoration</image:caption>
+      <image:title>Angel Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/fire.png</image:loc>
+      <image:caption>Discord Fire Avatar Decoration</image:caption>
+      <image:title>Fire Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/unicorn.png</image:loc>
+      <image:caption>Discord Unicorn Avatar Decoration</image:caption>
+      <image:title>Unicorn Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/kitsune.png</image:loc>
+      <image:caption>Discord Kitsune Avatar Decoration</image:caption>
+      <image:title>Kitsune Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/phoenix.png</image:loc>
+      <image:caption>Discord Phoenix Avatar Decoration</image:caption>
+      <image:title>Phoenix Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/cybernetic.png</image:loc>
+      <image:caption>Discord Cybernetic Avatar Decoration</image:caption>
+      <image:title>Cybernetic Decoration</image:title>
+    </image:image>
+  </url>
+  
+  <!-- GIF Extractor page -->
+  <url>
+    <loc>https://discord-decoration.art/gif-extractor</loc>
+    <lastmod>2025-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <!-- Animated avatar examples -->
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/retro.gif</image:loc>
+      <image:caption>Discord Retro Animated Avatar</image:caption>
+      <image:title>Retro Animated Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/clyde_ai_1.gif</image:loc>
+      <image:caption>Discord Clyde AI Animated Avatar</image:caption>
+      <image:title>Clyde AI Animated Avatar</image:title>
+    </image:image>
+  </url>
+  
+  <!-- How to Use page -->
+  <url>
+    <loc>https://discord-decoration.art/how-to-use</loc>
+    <lastmod>2025-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <!-- Tutorial example images -->
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/gaming.png</image:loc>
+      <image:caption>Discord Gaming Avatar Example</image:caption>
+      <image:title>Gaming Avatar Tutorial</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/cat_ears.png</image:loc>
+      <image:caption>Discord Cat Ears Decoration Tutorial</image:caption>
+      <image:title>Cat Ears Tutorial</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Discord Profile Tips page -->
+  <url>
+    <loc>https://discord-decoration.art/discord-profile-tips</loc>
+    <lastmod>2025-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <!-- Profile enhancement examples -->
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/sakura.png</image:loc>
+      <image:caption>Discord Sakura Avatar Profile Enhancement</image:caption>
+      <image:title>Sakura Avatar Enhancement</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/magical_girl.png</image:loc>
+      <image:caption>Discord Magical Girl Decoration Profile Tip</image:caption>
+      <image:title>Magical Girl Profile Tip</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Discord Avatar page -->
+  <url>
+    <loc>https://discord-decoration.art/discord_avatar</loc>
+    <lastmod>2025-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <!-- Popular avatar images -->
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/wumpus_1.png</image:loc>
+      <image:caption>Discord Wumpus Avatar</image:caption>
+      <image:title>Wumpus Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/clyde_1.png</image:loc>
+      <image:caption>Discord Clyde Avatar</image:caption>
+      <image:title>Clyde Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/froge_1.png</image:loc>
+      <image:caption>Discord Froge Avatar</image:caption>
+      <image:title>Froge Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/cat_1.png</image:loc>
+      <image:caption>Discord Cat Avatar</image:caption>
+      <image:title>Cat Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/gaming.png</image:loc>
+      <image:caption>Discord Gaming Avatar</image:caption>
+      <image:title>Gaming Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/blurple.png</image:loc>
+      <image:caption>Discord Blurple Avatar</image:caption>
+      <image:title>Blurple Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/galaxy.png</image:loc>
+      <image:caption>Discord Galaxy Avatar</image:caption>
+      <image:title>Galaxy Avatar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/avatars/lofi.png</image:loc>
+      <image:caption>Discord Lofi Avatar</image:caption>
+      <image:title>Lofi Avatar</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Discord Avatar Decoration page -->
+  <url>
+    <loc>https://discord-decoration.art/discord_avatar_decoration</loc>
+    <lastmod>2025-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <!-- Popular decoration images -->
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/dragon_balls.png</image:loc>
+      <image:caption>Discord Dragon Balls Avatar Decoration</image:caption>
+      <image:title>Dragon Balls Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/phoenix.png</image:loc>
+      <image:caption>Discord Phoenix Avatar Decoration</image:caption>
+      <image:title>Phoenix Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/cybernetic.png</image:loc>
+      <image:caption>Discord Cybernetic Avatar Decoration</image:caption>
+      <image:title>Cybernetic Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/magical_girl.png</image:loc>
+      <image:caption>Discord Magical Girl Avatar Decoration</image:caption>
+      <image:title>Magical Girl Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/kitsune.png</image:loc>
+      <image:caption>Discord Kitsune Avatar Decoration</image:caption>
+      <image:title>Kitsune Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/witch_hat_midnight.png</image:loc>
+      <image:caption>Discord Witch Hat Midnight Avatar Decoration</image:caption>
+      <image:title>Witch Hat Midnight Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/neon_cat_hoodie.png</image:loc>
+      <image:caption>Discord Neon Cat Hoodie Avatar Decoration</image:caption>
+      <image:title>Neon Cat Hoodie Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/lunar_lanterns.png</image:loc>
+      <image:caption>Discord Lunar Lanterns Avatar Decoration</image:caption>
+      <image:title>Lunar Lanterns Decoration</image:title>
+    </image:image>
+  </url>
+  
+</urlset>

@@ -7,10 +7,24 @@ const Breadcrumb = () => {
   const getBreadcrumbItems = () => {
     const items = [{ name: 'Home', path: '/', keywords: 'discord decoration home' }];
     
-    if (pathname.includes('/gif-extractor')) {
+    if (pathname.includes('/discord_avatar_decoration')) {
+      items.push({ name: 'Avatar Decorations', path: '/discord_avatar_decoration/', keywords: 'discord avatar decorations gallery' });
+    } else if (pathname.includes('/discord_avatar')) {
+      items.push({ name: 'Avatar Gallery', path: '/discord_avatar/', keywords: 'discord avatar gallery' });
+    } else if (pathname.includes('/gif-extractor')) {
       items.push({ name: 'GIF Extractor', path: '/gif-extractor/', keywords: 'discord gif extractor' });
     } else if (pathname.includes('/discuss')) {
       items.push({ name: 'Discussion', path: '/discuss/', keywords: 'discord decoration discussion' });
+    } else if (pathname.includes('/faq')) {
+      items.push({ name: 'FAQ', path: '/faq/', keywords: 'discord decoration faq' });
+    } else if (pathname.includes('/how-to-use')) {
+      items.push({ name: 'How to Use', path: '/how-to-use/', keywords: 'discord decoration how to use guide' });
+    } else if (pathname.includes('/discord-profile-tips')) {
+      items.push({ name: 'Discord Profile Tips', path: '/discord-profile-tips/', keywords: 'discord profile tips enhance avatar' });
+    } else if (pathname.includes('/terms-of-service')) {
+      items.push({ name: 'Terms of Service', path: '/terms-of-service/', keywords: 'terms of service legal conditions' });
+    } else if (pathname.includes('/privacy-policy')) {
+      items.push({ name: 'Privacy Policy', path: '/privacy-policy/', keywords: 'privacy policy data protection' });
     }
     
     return items;

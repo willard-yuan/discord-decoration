@@ -1,8 +1,25 @@
 User-agent: *
 Allow: /
+
+# Disallow development and build files
 Disallow: /site.webmanifest
 Disallow: /build/
 Disallow: /src/
 Disallow: /node_modules/
 
+# Allow access to static assets
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Sitemap locations
 Sitemap: https://discord-decoration.art/sitemap.xml
+Sitemap: https://discord-decoration.art/sitemap-images.xml

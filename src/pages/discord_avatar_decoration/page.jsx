@@ -1,11 +1,63 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { decorationsData } from '../../data/decorations';
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
+import Breadcrumb from '../../components/Breadcrumb.jsx';
 import SearchBar from '../../components/searchbar.jsx';
 
 const DiscordAvatarDecoration = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  
+  useEffect(() => {
+    document.title = "Discord Avatar Decorations - Free Decoration Collection";
+    
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Explore our vast collection of free Discord avatar decorations. Add stunning frames and effects to your Discord profile picture.');
+    }
+    
+    // Add structured data for SEO
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Discord Avatar Decorations Gallery",
+      "description": "Free collection of Discord avatar decorations and frames",
+      "url": "https://discord-decoration.art/discord_avatar_decoration",
+      "author": {
+        "@type": "Organization",
+        "name": "Discord Decoration"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Discord Decoration",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://discord-decoration.art/banner.svg"
+        }
+      }
+    };
+    
+    // Remove existing structured data script if any
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
+    // Add new structured data
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+    
+    return () => {
+      // Cleanup structured data on unmount
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
 
   // Get all decorations from the nested structure
   const getAllDecorations = () => {
@@ -126,6 +178,7 @@ const DiscordAvatarDecoration = () => {
   return (
     <div className="min-h-screen bg-surface-primary">
       <Navbar />
+      <Breadcrumb />
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">

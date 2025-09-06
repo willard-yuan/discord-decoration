@@ -83,17 +83,12 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity" />
             </button>
             
-            <button 
-              onClick={() => {
-                const avatarElement = document.getElementById('avatar');
-                if (avatarElement) {
-                  avatarElement.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-8 py-4 button-secondary font-semibold rounded-xl transition-all duration-300"
+            <a 
+              href="/discord_avatar"
+              className="inline-block px-8 py-4 button-secondary font-semibold rounded-xl transition-all duration-300 text-center"
             >
-              Learn more →
-            </button>
+              Learn More →
+            </a>
           </div>
 
           {/* Stats or features */}
