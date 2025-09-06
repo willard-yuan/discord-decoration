@@ -116,6 +116,134 @@ const UnsupportedModal = ({ unsupportedMsg }) =>
 
 const CurrentData = createContext(null);
 
+const ExtraLinks = () => (
+  <>
+    {/* share with friends */}
+    <div className="flex flex-col justify-start items-stretch p-4 rounded-lg w-full text-center select-none highlight">
+      <div className="flex items-center justify-center gap-3 mb-1">
+        <span className="text-primary opacity-80">
+          <Icons.megaphone size="1.1em" />
+        </span>
+        <p className="text-lg font-medium">Share with your friends</p>
+        <span className="text-primary opacity-80">
+          <Icons.megaphone size="1.1em" />
+        </span>
+      </div>
+      <NeutralButton
+        onClick={() => {
+          const url = encodeURIComponent(window.location.href);
+          const text = encodeURIComponent(
+            "Check out this awesome Discord Avatar Decorations tool!"
+          );
+          window.open(
+            `https://twitter.com/intent/tweet?url=${url}&text=${text}`
+          );
+        }}
+      >
+        <Icons.x />
+        Share on X
+      </NeutralButton>
+      <NeutralButton
+        onClick={() => {
+          const url = encodeURIComponent(window.location.href);
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+        }}
+      >
+        <Icons.facebook />
+        Share on Facebook
+      </NeutralButton>
+      <NeutralButton
+        onClick={() => {
+          const url = encodeURIComponent(window.location.href);
+          const title = encodeURIComponent("Discord Avatar Decorations Tool");
+          window.open(
+            `https://www.reddit.com/submit?url=${url}&title=${title}`
+          );
+        }}
+      >
+        <Icons.reddit />
+        Share on Reddit
+      </NeutralButton>
+      <NeutralButton
+        onClick={() => {
+          const url = encodeURIComponent(window.location.href);
+          const title = encodeURIComponent("Discord Avatar Decorations Tool");
+          const summary = encodeURIComponent(
+            "Check out this awesome tool for Discord avatar decorations!"
+          );
+          window.open(
+            `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`
+          );
+        }}
+      >
+        <Icons.linkedin />
+        Share on LinkedIn
+      </NeutralButton>
+    </div>
+
+    {/* Links */}
+    <div className="flex flex-col justify-start items-stretch rounded-lg w-full font-medium select-none">
+      <p className="font-bold">Links</p>
+      <a
+        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
+        href="/discord_avatar"
+      >
+        <span className="place-items-center w-6">
+          <Icons.image size="18px" />
+        </span>
+        Discord Avatar Gallery
+        <span className="grow" />
+        <span className="rotate-45">
+          <Icons.up size="16px" />
+        </span>
+      </a>
+      <a
+        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
+        href="/discord_avatar_decoration"
+      >
+        <span className="place-items-center w-6">
+          <Icons.star size="18px" />
+        </span>
+        Discord Avatar Decorations Gallery
+        <span className="grow" />
+        <span className="rotate-45">
+          <Icons.up size="16px" />
+        </span>
+      </a>
+      <a
+        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
+        href="https://emojitoimage.com/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span className="place-items-center w-6">
+          <Icons.emojitoimage size="18px" />
+        </span>
+        Emoji to Image Converter
+        <span className="grow" />
+        <span className="rotate-45">
+          <Icons.up size="16px" />
+        </span>
+      </a>
+      <a
+        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
+        href="https://emojiface.us/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span className="place-items-center w-6">
+          <Icons.emojiface size="18px" />
+        </span>
+        Mask Face with Emoji
+        <span className="grow" />
+        <span className="rotate-45">
+          <Icons.up size="16px" />
+        </span>
+      </a>
+    </div>
+  </>
+);
+
 const App = ({ ensureLoaded }) => {
   // @ts-ignore
   const previewAvatar = useCallback(async (url) => {
@@ -209,7 +337,7 @@ const App = ({ ensureLoaded }) => {
           {/* SETTINGS */}
           <div
             id="settings"
-            className="block w-full md:w-auto select-none grow"
+            className="block w-full md:w-auto select-none grow order-2 md:order-1"
           >
             {/* UPLOAD AVATAR */}
             <h3 className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
@@ -297,7 +425,7 @@ const App = ({ ensureLoaded }) => {
             <DecorationsTabs />
           </div>
 
-          <div className="flex flex-col items-center gap-8">
+          <div className="sticky top-0 z-20 flex flex-col items-center gap-8 order-1 md:order-2 md:top-12 bg-surface-overlay py-4">
             {/* PROFILE PREVIEW */}
             <div
               id="profile-preview"
@@ -482,96 +610,13 @@ const App = ({ ensureLoaded }) => {
               })}
             </div>
 
-            {/* share with friends */}
-            <div className="flex flex-col justify-start items-stretch p-4 rounded-lg w-full text-center select-none highlight">
-              <div className="flex items-center justify-center gap-3 mb-1">
-                <span className="text-primary opacity-80">
-                  <Icons.megaphone size="1.1em" />
-                </span>
-                <p className="text-lg font-medium">
-                  Share with your friends
-                </p>
-                <span className="text-primary opacity-80">
-                  <Icons.megaphone size="1.1em" />
-                </span>
-              </div>
-              <NeutralButton
-                onClick={() => {
-                  const url = encodeURIComponent(window.location.href);
-                  const text = encodeURIComponent("Check out this awesome Discord Avatar Decorations tool!");
-                  window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`);
-                }}
-              >
-                <Icons.x />
-                Share on X
-              </NeutralButton>
-              <NeutralButton
-                onClick={() => {
-                  const url = encodeURIComponent(window.location.href);
-                  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
-                }}
-              >
-                <Icons.facebook />
-                Share on Facebook
-              </NeutralButton>
-              <NeutralButton
-                onClick={() => {
-                  const url = encodeURIComponent(window.location.href);
-                  const title = encodeURIComponent("Discord Avatar Decorations Tool");
-                  window.open(`https://www.reddit.com/submit?url=${url}&title=${title}`);
-                }}
-              >
-                <Icons.reddit />
-                Share on Reddit
-              </NeutralButton>
-              <NeutralButton
-                onClick={() => {
-                  const url = encodeURIComponent(window.location.href);
-                  const title = encodeURIComponent("Discord Avatar Decorations Tool");
-                  const summary = encodeURIComponent("Check out this awesome tool for Discord avatar decorations!");
-                  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`);
-                }}
-              >
-                <Icons.linkedin />
-                Share on LinkedIn
-              </NeutralButton>
-            </div>
-
-            {/* Links */}
-            <div className="flex flex-col justify-start items-stretch rounded-lg w-full font-medium select-none">
-              <p className="font-bold">Links</p>
-              <a
-                className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-                href="https://emojitoimage.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="place-items-center w-6">
-                  <Icons.emojitoimage size="18px" />
-                </span>
-                Emoji to Image Converter
-                <span className="grow" />
-                <span className="rotate-45">
-                  <Icons.up size="16px" />
-                </span>
-              </a>
-              <a
-                className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-                href="https://emojiface.us/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="place-items-center w-6">
-                  <Icons.emojiface size="18px" />
-                </span>
-                Mask Face with Emoji
-                <span className="grow" />
-                <span className="rotate-45">
-                  <Icons.up size="16px" />
-                </span>
-              </a>
+            <div className="hidden md:flex flex-col gap-4">
+              <ExtraLinks />
             </div>
           </div>
+        </div>
+        <div className="md:hidden">
+          <ExtraLinks />
         </div>
       </main>
       {/* 自然模糊渐变过渡区域 */}

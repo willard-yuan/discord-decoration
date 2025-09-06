@@ -4,31 +4,30 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerSections = {
+    "Discord Tools": [
+      { name: "Avatar Gallery", href: "/discord_avatar", description: "Browse Discord avatar collection" },
+      { name: "Decoration Gallery", href: "/discord_avatar_decoration", description: "Explore avatar decorations" },
+      { name: "Avatar Generator", href: "/", description: "Create custom Discord avatars" },
+      { name: "Decoration Creator", href: "/", description: "Design avatar decorations" },
+    ],
     Resources: [
-      { name: "Documentation", href: "#", description: "Learn how to use Discord decorations" },
-      { name: "Tutorials", href: "#", description: "Step-by-step guides" },
-      { name: "Templates", href: "#", description: "Pre-made decoration templates" },
-      { name: "API Reference", href: "#", description: "Developer resources" },
+      { name: "FAQ", href: "/faq", description: "Frequently asked questions" },
+      { name: "How to Use", href: "#guide", description: "Step-by-step usage guide" },
+      { name: "Discord Profile Tips", href: "#tips", description: "Enhance your Discord profile" },
+      { name: "Community", href: "#community", description: "Join our Discord community" },
     ],
     Support: [
-      { name: "Help Center", href: "#", description: "Get help with common issues" },
-      { name: "Contact Us", href: "#", description: "Reach out to our team" },
-      { name: "Bug Reports", href: "#", description: "Report issues" },
-      { name: "Feature Requests", href: "#", description: "Suggest new features" },
-    ],
-    Legal: [
-      { name: "Privacy Policy", href: "#", description: "How we protect your data" },
-      { name: "Terms of Service", href: "#", description: "Usage terms and conditions" },
-      { name: "Cookie Policy", href: "#", description: "Cookie usage information" },
-      { name: "DMCA", href: "#", description: "Copyright information" },
+      { name: "GitHub Issues", href: "https://github.com/ItsPi3141/discord-fake-avatar-decorations/issues", description: "Report bugs and issues" },
+      { name: "Feature Requests", href: "https://github.com/ItsPi3141/discord-fake-avatar-decorations/discussions/4", description: "Suggest new features" },
+      { name: "Contributing", href: "https://github.com/ItsPi3141/discord-fake-avatar-decorations", description: "Contribute to the project" },
+      { name: "Documentation", href: "#docs", description: "Technical documentation" },
     ],
   };
 
   const socialLinks = [
-    { name: "Discord", href: "#", icon: "discord", color: "text-[#5865F2] hover:text-[#4752C4]" },
-    { name: "GitHub", href: "#", icon: "github", color: "text-text-secondary hover:text-text-primary" },
-    { name: "Twitter", href: "#", icon: "twitter", color: "text-[#1DA1F2] hover:text-[#0d8bd9]" },
-    { name: "YouTube", href: "#", icon: "youtube", color: "text-[#FF0000] hover:text-[#cc0000]" },
+    { name: "GitHub", href: "https://github.com/ItsPi3141/discord-fake-avatar-decorations", icon: "github", color: "text-text-secondary hover:text-text-primary" },
+    { name: "Discord Community", href: "#discord", icon: "discord", color: "text-[#5865F2] hover:text-[#4752C4]" },
+    { name: "Twitter", href: "#twitter", icon: "twitter", color: "text-[#1DA1F2] hover:text-[#0d8bd9]" },
   ];
 
   return (
@@ -48,17 +47,38 @@ const Footer = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+        {/* SEO-rich description */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl font-bold text-text-primary ginto mb-4">
+            <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Free Discord Avatar Decoration Generator
+            </span>
+          </h2>
+          <p className="text-text-secondary max-w-4xl mx-auto leading-relaxed">
+            Create stunning Discord avatar decorations and custom avatars for free. Browse our extensive gallery of 
+            Discord profile decorations, avatar frames, and design tools. Enhance your Discord profile with unique 
+            avatar decorations, custom borders, and personalized designs. Perfect for Discord users looking to 
+            stand out with creative profile customization.
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 mt-4 text-sm text-text-muted">
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">Discord Avatar Generator</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">Avatar Decorations</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">Profile Customization</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">Free Discord Tools</span>
+          </div>
+        </div>
+
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
-          {/* Resources */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
+          {/* Discord Tools */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
-                Resources
+                Discord Tools
               </span>
             </h3>
             <ul className="space-y-3">
-              {footerSections.Resources.map((item) => (
+              {footerSections["Discord Tools"].map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
@@ -75,15 +95,15 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Resources */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Support
+                Resources
               </span>
             </h3>
             <ul className="space-y-3">
-              {footerSections.Support.map((item) => (
+              {footerSections.Resources.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
@@ -100,20 +120,22 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Support & Community */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-pink-400 to-primary bg-clip-text text-transparent">
-                Legal
+                Support & Community
               </span>
             </h3>
-            <ul className="space-y-3">
-              {footerSections.Legal.map((item) => (
+            <ul className="space-y-3 mb-6">
+              {footerSections.Support.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
                     className="group flex flex-col space-y-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
                     title={item.description}
+                    target={item.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
                     <span className="font-medium group-hover:text-pink-400 transition-colors">{item.name}</span>
                     <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
@@ -123,20 +145,11 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Social Media */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
-              <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Social Media
-              </span>
-            </h3>
-            <div className="space-y-4">
-              <p className="text-sm text-text-muted mb-4">
-                Follow us for updates and community content
-              </p>
-              <div className="flex flex-col space-y-3">
+            
+            {/* Social Links */}
+            <div className="border-t border-border-faint/20 pt-4">
+              <h4 className="text-sm font-semibold text-text-primary mb-3">Connect With Us</h4>
+              <div className="flex flex-col space-y-2">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
@@ -145,7 +158,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div className="w-5 h-5 flex-shrink-0">
+                    <div className="w-4 h-4 flex-shrink-0">
                       {social.icon === 'discord' && (
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
@@ -187,17 +200,20 @@ const Footer = () => {
               </div>
               <div className="hidden md:block w-px h-6 bg-border-faint/30" />
               <p className="text-sm text-text-muted text-center md:text-left">
-                Create stunning Discord avatar decorations for free
+                Free Discord Avatar Decoration Generator & Profile Customization Tools
               </p>
             </div>
 
             {/* Copyright */}
             <div className="text-sm text-text-muted text-center md:text-right">
-              <p>© {currentYear} Discord Decoration. All rights reserved.</p>
+              <p>© {currentYear} Discord Avatar Decoration Generator. All rights reserved.</p>
               <p className="mt-1">
                 Made with{" "}
                 <span className="text-red-400 animate-pulse">♥</span>{" "}
-                for the Discord community
+                for Discord users worldwide
+              </p>
+              <p className="mt-1 text-xs">
+                Not affiliated with Discord Inc. • Open Source Project
               </p>
             </div>
           </div>

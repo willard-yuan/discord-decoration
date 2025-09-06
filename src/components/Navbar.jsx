@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-3">
+            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">D</span>
               </div>
@@ -64,16 +64,19 @@ const Navbar = () => {
                   Create custom avatar decorations for free
                 </p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-text-secondary hover:text-text-primary transition-colors">
-              Home
+            <a href="/discord_avatar" className="text-text-secondary hover:text-text-primary transition-colors">
+              Avatars
             </a>
-            <a href="#profile-preview" onClick={(e) => { e.preventDefault(); document.getElementById('profile-preview')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-text-secondary hover:text-text-primary transition-colors">
-              About
+            <a href="/discord_avatar_decoration" className="text-text-secondary hover:text-text-primary transition-colors">
+              Decorations
+            </a>
+            <a href="/faq" className="text-text-secondary hover:text-text-primary transition-colors">
+              FAQ
             </a>
           </div>
 
@@ -104,11 +107,14 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              Home
+            <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              Avatars
             </a>
-            <a href="#profile-preview" onClick={(e) => { e.preventDefault(); document.getElementById('profile-preview')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              About
+            <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              Decorations
+            </a>
+            <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              FAQ
             </a>
           </div>
         </div>
