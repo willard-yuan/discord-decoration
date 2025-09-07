@@ -3,7 +3,7 @@
   <!-- Main homepage -->
   <url>
     <loc>https://discord-decoration.art/</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,19 +11,19 @@
   <!-- Core Discord tools -->
   <url>
     <loc>https://discord-decoration.art/discord_avatar</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://discord-decoration.art/discord_avatar_decoration</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://discord-decoration.art/gif-extractor</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,19 +31,19 @@
   <!-- Information and help pages -->
   <url>
     <loc>https://discord-decoration.art/how-to-use</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://discord-decoration.art/discord-profile-tips</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://discord-decoration.art/faq</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -51,7 +51,7 @@
   <!-- Community and discussion -->
   <url>
     <loc>https://discord-decoration.art/discuss</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -59,13 +59,13 @@
   <!-- Legal pages -->
   <url>
     <loc>https://discord-decoration.art/terms-of-service</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://discord-decoration.art/privacy-policy</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
