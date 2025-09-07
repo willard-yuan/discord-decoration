@@ -11,6 +11,7 @@ import Discussion from "@/pages/discuss/page.jsx";
 import GifExtractor from "@/pages/gif-extractor/page.jsx";
 import FAQ from "@/pages/faq/page.jsx";
 import HowToUse from "@/pages/how-to-use/page.jsx";
+import BlogArticle from "@/pages/blog/page.jsx";
 import DiscordProfileTips from "@/pages/discord-profile-tips/page.jsx";
 import TermsOfService from "@/pages/terms-of-service/page.jsx";
 import PrivacyPolicy from "@/pages/privacy-policy/page.jsx";
@@ -32,6 +33,7 @@ export function App() {
           <Route path="/gif-extractor" component={GifExtractor} />
           <Route path="/faq" component={FAQ} />
           <Route path="/how-to-use" component={HowToUse} />
+          <Route path="/blog" component={BlogArticle} />
           <Route path="/discord-profile-tips" component={DiscordProfileTips} />
           <Route path="/terms-of-service" component={TermsOfService} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />

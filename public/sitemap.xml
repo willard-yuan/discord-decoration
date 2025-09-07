@@ -36,6 +36,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://discord-decoration.art/blog</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discord-decoration.art/discord-profile-tips</loc>
     <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
