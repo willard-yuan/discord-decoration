@@ -46,7 +46,7 @@ export default defineConfig({
       prerender: {
         enabled: true,
         renderTarget: "#app",
-        additionalPrerenderRoutes: ["/404", "/faq", "/discord_avatar", "/discord_avatar_decoration"],
+        additionalPrerenderRoutes: ["/404", "/faq", "/discord_avatar", "/discord_avatar_decoration", "/gif-extractor"],
         previewMiddlewareEnabled: true,
         previewMiddlewareFallback: "/404",
       },
