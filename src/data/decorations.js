@@ -4,6 +4,88 @@ export const decorationsData = [
     icon: "shop",
     data: [
       {
+        n: "Borderlands 4",
+        d: "",
+        b: {
+          i: "borderlands_4",
+          t: "borderlands_4",
+          h: 62,
+        },
+        i: [
+          {
+            n: "I’m Dancin’!",
+            d: "Give your avatar a new look.",
+            f: "im_dancin",
+          },
+          {
+            n: "Finger Gun",
+            d: "Give your avatar a new look.",
+            f: "finger_gun",
+          },
+          {
+            n: "Bandit Mask",
+            d: "Give your avatar a new look.",
+            f: "bandit_mask",
+          },
+          {
+            n: "Mad Moxxi",
+            d: "Give your avatar a new look.",
+            f: "mad_moxxi",
+          },
+          {
+            n: "Elpis",
+            d: "Give your avatar a new look.",
+            f: "elpis",
+          },
+          {
+            n: "Loot Lightshow",
+            d: "Give your avatar a new look.",
+            f: "loot_lightshow",
+          },
+        ],
+      },
+      {
+        n: "Lunar Eclipse",
+        d: "",
+        b: {
+          i: "lunar_eclipse",
+          t: "lunar_eclipse",
+          h: 72,
+        },
+        i: [
+          {
+            n: "Lunar Flowers",
+            d: "Give your avatar a new look.",
+            f: "lunar_flowers",
+          },
+          {
+            n: "Starlight Tiara",
+            d: "Give your avatar a new look.",
+            f: "starlight_tiara",
+          },
+          {
+            n: "Astral Aura",
+            d: "Give your avatar a new look.",
+            f: "astral_aura",
+          },
+          {
+            n: "Luna Moths",
+            d: "Give your avatar a new look.",
+            f: "luna_moths",
+          },
+          {
+            n: "Moonlit Charms",
+            d: "Give your avatar a new look.",
+            f: "moonlit_charms",
+          },
+          {
+            n: "Liquid Moon",
+            d: "Give your avatar a new look.",
+            f: "liquid_moon",
+          },
+        ],
+      },
+      {
         n: "Secret Garden",
         d: "",
         b: {
@@ -3256,6 +3338,57 @@ export const decorationsData = [
     icon: "lootbox",
     data: [
       {
+        n: "Halloween '25",
+        d: "Limited time decorations from Halloween 2025.",
+        b: {
+          i: [],
+          bg: "linear-gradient(90deg, #cd7e4e 0%, #eabd83 100%)",
+        },
+        badge: "OCTOBER 2025",
+        i: [
+          {
+            n: "Trick Pumpkin",
+            d: "A spooky pumpkin with a trick in hand.",
+            f: "trick_pumpkin",
+          },
+          {
+            n: "Treat Pumpkin",
+            d: "A spooky pumpkin with a treat in hand.",
+            f: "treat_pumpkin",
+          },
+          {
+            n: "Trick Spider",
+            d: "A spooky spider with a trick in hand.",
+            f: "trick_spider",
+          },
+          {
+            n: "Treat Spider",
+            d: "A spooky spider with a treat in hand.",
+            f: "treat_spider",
+          },
+          {
+            n: "Trick Skull",
+            d: "A spooky skull with a trick in hand.",
+            f: "trick_skull",
+          },
+          {
+            n: "Treat Skull",
+            d: "A spooky skull with a treat in hand.",
+            f: "treat_skull",
+          },
+          {
+            n: "Trick Ghost",
+            d: "A spooky ghost with a trick in hand.",
+            f: "trick_ghost",
+          },
+          {
+            n: "Treat Ghost",
+            d: "A spooky ghost with a treat in hand.",
+            f: "treat_ghost",
+          },
+        ],
+      },
+      {
         n: "Nitro",
         d: "Decorations only available through Nitro purchases.",
         b: {
@@ -3273,9 +3406,14 @@ export const decorationsData = [
               transform: "translateY(-5%)",
             },
           ],
-          bg: "linear-gradient(90deg, hsl(269.291 52.697% 52.745%) 0%, hsl(295.645 50% 51.373%) 50%, hsl(325.385 31.707% 51.765%) 100%)",
+          bg: "linear-gradient(90deg, #8547c6 0%, #b845c1 50%, #ab5d8a 100%)",
         },
         i: [
+          {
+            n: "Jet Ring",
+            d: "Surround your avatar with a pulse of Nitro energy.",
+            f: "jet_ring",
+          },
           {
             n: "Freshly Picked",
             d: "Now where's my blender? Given to Nitro gifters in June 2025.",
@@ -3344,12 +3482,22 @@ export const decorationsData = [
               opacity: "0.9",
             },
           ],
-          bg: "linear-gradient(90deg, rgba(52,65,217,1) 0%, rgba(154,68,247,1) 100%)",
+          bg: "linear-gradient(90deg, #3441d9 0%, #9a44f7 100%)",
         },
         i: [
           {
+            n: "Angela Avatar",
+            d: "Exclusive to Marvel Rivals S4.0 Quest for a limited time. Available to use until November 19, 2025.",
+            f: "angela_avatar",
+          },
+          {
+            n: "Echo 4",
+            d: "Exclusive to Borderlands 4 Launch Quest for a limited time. Available to use until November 18, 2025.",
+            f: "echo_4",
+          },
+          {
             n: "NBA 2K26",
-            d: "Exclusive to NBA 2K26 Quest Quest for a limited time. Available to use until November 4, 2025.",
+            d: "Exclusive to NBA 2K26 Quest for a limited time. Available to use until November 4, 2025.",
             f: "nba_2k26",
           },
           {
@@ -3763,7 +3911,7 @@ export const decorationsData = [
         d: "",
         b: {
           i: [],
-          bg: "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(16,6,37,1) 100%)",
+          bg: "linear-gradient(90deg, #000 0%, #100625 100%)",
         },
         badge: "JUNE 2023",
         i: [
@@ -3870,7 +4018,7 @@ export const decorationsData = [
         darkText: true,
         b: {
           i: [],
-          bg: "linear-gradient(90deg, rgba(209,221,147,1) 0%, rgba(240,237,170,1) 100%)",
+          bg: "linear-gradient(90deg, #d1dd93 0%, #f0edaa 100%)",
         },
         badge: "APRIL 2023",
         i: [
