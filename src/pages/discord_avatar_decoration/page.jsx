@@ -7,6 +7,7 @@ import SearchBar from '../../components/searchbar.jsx';
 
 const DiscordAvatarDecoration = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [copiedDecoration, setCopiedDecoration] = useState(null);
   
   useEffect(() => {
     document.title = "Discord Avatar Decorations - Free Decoration Collection";
@@ -58,6 +59,31 @@ const DiscordAvatarDecoration = () => {
       }
     };
   }, []);
+
+  // Handle decoration click to copy name to clipboard
+  const handleDecorationClick = async (decorationName) => {
+    try {
+      await navigator.clipboard.writeText(decorationName);
+      setCopiedDecoration(decorationName);
+      // Hide the copied message after 2 seconds
+      setTimeout(() => {
+        setCopiedDecoration(null);
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = decorationName;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopiedDecoration(decorationName);
+      setTimeout(() => {
+        setCopiedDecoration(null);
+      }, 2000);
+    }
+  };
 
   // Get all decorations from the nested structure
   const getAllDecorations = () => {
@@ -210,28 +236,45 @@ const DiscordAvatarDecoration = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                 {decorations.map((decoration, index) => (
-                  <div key={index} className="bg-surface-secondary rounded-lg p-4 hover:bg-surface-tertiary transition-colors duration-200 group">
-                    <div className="aspect-square bg-surface-tertiary rounded-lg mb-3 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={`/decorations/${decoration.f}.png`}
-                        alt={decoration.n}
-                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-200"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <h3 className="text-sm font-semibold text-text-primary mb-1 truncate" title={decoration.n}>
-                        {decoration.n}
-                      </h3>
-                      <p className="text-xs text-text-tertiary mb-1 truncate" title={decoration.subcategory}>
-                        {decoration.subcategory}
-                      </p>
-                      {decoration.d && decoration.d !== "Give your avatar a new look." && (
-                        <p className="text-xs text-text-secondary line-clamp-2" title={decoration.d}>
-                          {decoration.d}
+                  <div key={index} className="relative">
+                    <div 
+                      className="bg-surface-secondary rounded-lg p-4 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer"
+                      onClick={() => handleDecorationClick(decoration.n)}
+                    >
+                      <div className="aspect-square bg-surface-tertiary rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                        <img 
+                          src={`/decorations/${decoration.f}.png`}
+                          alt={decoration.n}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-200"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h3 className="text-sm font-semibold text-text-primary mb-1 truncate" title={decoration.n}>
+                          {decoration.n}
+                        </h3>
+                        <p className="text-xs text-text-tertiary mb-1 truncate" title={decoration.subcategory}>
+                          {decoration.subcategory}
                         </p>
-                      )}
+                        {decoration.d && decoration.d !== "Give your avatar a new look." && (
+                          <p className="text-xs text-text-secondary line-clamp-2" title={decoration.d}>
+                            {decoration.d}
+                          </p>
+                        )}
+                      </div>
                     </div>
+                    
+                    {/* Copy Success Toast */}
+                    {copiedDecoration === decoration.n && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                        <div className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 animate-pulse">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-sm font-medium whitespace-nowrap">Copied Decoration Name</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

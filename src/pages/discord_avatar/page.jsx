@@ -7,6 +7,7 @@ import SearchBar from '../../components/searchbar.jsx';
 
 const DiscordAvatar = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [copiedAvatar, setCopiedAvatar] = useState(null);
   
   useEffect(() => {
     document.title = "Discord Avatar Gallery - Free Avatar Collection";
@@ -59,6 +60,31 @@ const DiscordAvatar = () => {
       }
     };
   }, []);
+
+  // Handle avatar click to copy name to clipboard
+  const handleAvatarClick = async (avatarName) => {
+    try {
+      await navigator.clipboard.writeText(avatarName);
+      setCopiedAvatar(avatarName);
+      // Hide the copied message after 2 seconds
+      setTimeout(() => {
+        setCopiedAvatar(null);
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = avatarName;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopiedAvatar(avatarName);
+      setTimeout(() => {
+        setCopiedAvatar(null);
+      }, 2000);
+    }
+  };
 
   // Categorize avatars based on their names and themes
   const categorizeAvatars = () => {
@@ -185,19 +211,35 @@ const DiscordAvatar = () => {
                 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
                   {avatars.map((avatar, index) => (
-                    <div key={index} className="bg-surface-secondary rounded-lg p-3 hover:bg-surface-tertiary transition-colors duration-200 group">
-                      <div className="aspect-square bg-surface-tertiary rounded-lg mb-2 flex items-center justify-center overflow-hidden">
-                        <img 
-                          src={`/avatars/${avatar.f}`}
-                          alt={avatar.n}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-200"
-                          loading="lazy"
-                        />
-
+                    <div key={index} className="relative">
+                      <div 
+                        className="bg-surface-secondary rounded-lg p-3 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer"
+                        onClick={() => handleAvatarClick(avatar.n)}
+                      >
+                        <div className="aspect-square bg-surface-tertiary rounded-lg mb-2 flex items-center justify-center overflow-hidden">
+                          <img 
+                            src={`/avatars/${avatar.f}`}
+                            alt={avatar.n}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-200"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h3 className="text-sm font-medium text-text-primary text-center truncate" title={avatar.n}>
+                          {avatar.n}
+                        </h3>
                       </div>
-                      <h3 className="text-sm font-medium text-text-primary text-center truncate" title={avatar.n}>
-                        {avatar.n}
-                      </h3>
+                      
+                      {/* Copy Success Toast */}
+                      {copiedAvatar === avatar.n && (
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                          <div className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 animate-pulse">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-sm font-medium whitespace-nowrap">Copied Avatar Name</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
