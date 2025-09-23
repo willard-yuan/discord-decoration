@@ -246,6 +246,11 @@ const ExtraLinks = () => (
 );
 
 const App = ({ ensureLoaded }) => {
+  // Set page title for homepage
+  useEffect(() => {
+    document.title = "Discord Decoration - Free Avatar Decorations for Discord. No Sign Up Required";
+  }, []);
+
   // @ts-ignore
   const previewAvatar = useCallback(async (url) => {
     if (isServer) return;
