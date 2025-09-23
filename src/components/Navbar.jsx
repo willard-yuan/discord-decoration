@@ -75,6 +75,9 @@ const Navbar = () => {
             <a href="/discord_avatar_decoration" className="text-text-secondary hover:text-text-primary transition-colors">
               Decorations
             </a>
+            <a href="/discord_front" className="text-text-secondary hover:text-text-primary transition-colors">
+              Fronts
+            </a>
             <a href="/faq" className="text-text-secondary hover:text-text-primary transition-colors">
               FAQ
             </a>
@@ -112,6 +115,9 @@ const Navbar = () => {
             </a>
             <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Decorations
+            </a>
+            <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              Fronts
             </a>
             <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               FAQ
