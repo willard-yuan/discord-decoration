@@ -678,12 +678,12 @@ const App = ({ ensureLoaded }) => {
                   onClick={() => {
                     const a = document.createElement("a");
                     a.href = finishedAv;
-                    a.download = `discord_fake_avatar_decorations_${Date.now()}.gif`;
+                    a.download = `discord_avatar_decoration_animated_${Date.now()}.gif`;
                     a.click();
                   }}
                 >
                   <Icons.download />
-                  Save
+                  Save Animated GIF
                 </NeutralButton>
                 <NeutralButton
                   onClick={() => {

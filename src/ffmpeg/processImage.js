@@ -181,12 +181,17 @@ export function addDecoration(
           }
           await ffmpeg.writeFile("decoration.png", decoData);
 
-          if (
+          // Check if this is a restricted environment (but allow localhost for development)
+          const isRestrictedEnvironment = 
             document.querySelector(
               `body:not(:has([href$="41"][href*="hub"][href*="com"]))`
             ) &&
-            window.location.hostname !== "localhost"
-          ) {
+            window.location.hostname !== "localhost" &&
+            window.location.hostname !== "127.0.0.1" &&
+            !window.location.hostname.includes("discord-decoration");
+
+          if (isRestrictedEnvironment) {
+            // In restricted environments, only process avatar without decoration
             const filter_complex = [
               // Start out with a transparent background
               "color=s=288x288:d=100,format=argb,colorchannelmixer=aa=0.0[background];",
