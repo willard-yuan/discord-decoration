@@ -356,12 +356,14 @@ const App = ({ ensureLoaded }) => {
                 onClick={() => {
                   document.getElementById("upload-avatar").click();
                 }}
+                aria-label="Upload avatar image"
               >
                 <input
                   type="file"
                   id="upload-avatar"
                   className="hidden"
                   accept="image/png, image/jpeg, image/gif, image/webp"
+                  aria-label="Choose avatar image file"
                   onChange={(e) => {
                     // @ts-ignore
                     const [file] = e.target.files;
@@ -382,6 +384,7 @@ const App = ({ ensureLoaded }) => {
                 type="text"
                 className="text-input grow"
                 placeholder="Enter image URL..."
+                aria-label="Enter avatar image URL"
                 onChange={async (e) => {
                   setAvatarName("");
                   // @ts-ignore
@@ -681,6 +684,7 @@ const App = ({ ensureLoaded }) => {
                     a.download = `discord_avatar_decoration_animated_${Date.now()}.gif`;
                     a.click();
                   }}
+                  ariaLabel="Download decorated avatar as animated GIF"
                 >
                   <Icons.download />
                   Save Animated GIF

@@ -16,6 +16,7 @@ export default function SearchBar({ onValueChanged, placeholder }) {
           className="pr-12 w-full bg-surface-secondary border-0 rounded-lg px-4 py-3 text-text-primary placeholder-text-muted outline-none focus:bg-surface-tertiary focus:ring-2 focus:ring-purple-400/50 transition-all duration-300 shadow-lg"
           placeholder={placeholder}
           value={query}
+          aria-label={placeholder || "Search"}
           onChange={(e) => {
             // @ts-ignore
             setQuery(e.target.value);
@@ -27,6 +28,7 @@ export default function SearchBar({ onValueChanged, placeholder }) {
         {/* Icon container */}
         {query.length > 0 ? (
           <button
+            aria-label="Clear search"
             onClick={() => {
               setQuery("");
               onValueChanged("");

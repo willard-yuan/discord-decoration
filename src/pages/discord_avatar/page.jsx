@@ -227,9 +227,10 @@ const DiscordAvatar = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
                   {avatars.map((avatar, index) => (
                     <div key={index} className="relative">
-                      <div 
-                        className="bg-surface-secondary rounded-lg p-3 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer"
+                      <button 
+                        className="w-full bg-surface-secondary rounded-lg p-3 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-surface-primary"
                         onClick={() => handleAvatarClick(avatar.n)}
+                        aria-label={`Select ${avatar.n} avatar`}
                       >
                         <div className="aspect-square bg-surface-tertiary rounded-lg mb-2 flex items-center justify-center overflow-hidden">
                           <img 
@@ -242,7 +243,7 @@ const DiscordAvatar = () => {
                         <h3 className="text-sm font-medium text-text-primary text-center truncate" title={avatar.n}>
                           {avatar.n}
                         </h3>
-                      </div>
+                      </button>
                       
                       {/* Copy Success Toast */}
                       {copiedAvatar === avatar.n && (

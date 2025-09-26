@@ -252,9 +252,10 @@ const DiscordAvatarDecoration = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                 {decorations.map((decoration, index) => (
                   <div key={index} className="relative">
-                    <div 
-                      className="bg-surface-secondary rounded-lg p-4 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer"
+                    <button 
+                      className="w-full bg-surface-secondary rounded-lg p-4 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-surface-primary"
                       onClick={() => handleDecorationClick(decoration.n)}
+                      aria-label={`Select ${decoration.n} decoration`}
                     >
                       <div className="aspect-square bg-surface-tertiary rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                         <img 
@@ -277,7 +278,7 @@ const DiscordAvatarDecoration = () => {
                           </p>
                         )}
                       </div>
-                    </div>
+                    </button>
                     
                     {/* Copy Success Toast */}
                     {copiedDecoration === decoration.n && (
