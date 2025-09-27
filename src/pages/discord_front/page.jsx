@@ -37,9 +37,14 @@ const DiscordFonts = () => {
 
   // 获取过滤后的字体样式
   const getFilteredFonts = () => {
+    // 如果选择了'all'类目，显示所有字体
+    if (selectedCategory === 'all') {
+      return allFontStyles;
+    }
+    
     // 按类别过滤
-    if (selectedCategory !== 'all') {
-      return fontCategories[selectedCategory] || [];
+    if (selectedCategory && fontCategories[selectedCategory]) {
+      return fontCategories[selectedCategory];
     }
     
     return allFontStyles;
@@ -123,17 +128,17 @@ const DiscordFonts = () => {
           {/* Category Filter Controls */}
           <div className="max-w-6xl mx-auto mb-8">
             <div className="flex flex-col gap-6 mb-6">
-              {/* Category Filter - Flat Buttons */}
+              {/* Category Filter - Enhanced Buttons */}
               <div className="w-full">
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   <button
                     onClick={() => {
               setSelectedCategory('all');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'all'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     All Categories
@@ -142,10 +147,10 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('mathematical');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'mathematical'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Mathematical
@@ -154,10 +159,10 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('decorative');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'decorative'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Decorative
@@ -166,10 +171,10 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('special');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'special'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Special
@@ -178,10 +183,10 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('accented');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'accented'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Accented
@@ -190,10 +195,10 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('symbols');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'symbols'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Symbols
@@ -202,10 +207,10 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('asian');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'asian'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Asian
@@ -214,13 +219,73 @@ const DiscordFonts = () => {
                     onClick={() => {
               setSelectedCategory('retro');
             }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'retro'
-                        ? 'bg-primary text-white shadow-lg'
-                        : 'bg-surface-secondary text-text-primary hover:bg-surface-tertiary hover:shadow-md'
+                        ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
                     Retro
+                  </button>
+                  <button
+                    onClick={() => {
+              setSelectedCategory('alternative');
+            }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'alternative'
+                        ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Alternative Fonts
+                  </button>
+                  <button
+                    onClick={() => {
+              setSelectedCategory('italic');
+            }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'italic'
+                        ? 'bg-gradient-to-r from-violet-500 to-purple-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Italic
+                  </button>
+                  <button
+                    onClick={() => {
+              setSelectedCategory('bold');
+            }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'bold'
+                        ? 'bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Bold
+                  </button>
+                  <button
+                    onClick={() => {
+              setSelectedCategory('uppercase');
+            }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'uppercase'
+                        ? 'bg-gradient-to-r from-slate-600 to-gray-700 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    UPPERCASE
+                  </button>
+                  <button
+                    onClick={() => {
+              setSelectedCategory('fancy-letters');
+            }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'fancy-letters'
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Fancy letters
                   </button>
                 </div>
               </div>
@@ -238,17 +303,17 @@ const DiscordFonts = () => {
               </h2>
               
               {getFilteredFonts().length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                   {getFilteredFonts().map((style) => {
-                    const demoText = inputText || 'Discord Fonts';
+                    const demoText = inputText || 'I Love You';
                     const convertedText = style.convert(demoText);
                     return (
                       <div
                         key={style.id}
-                        className="bg-surface-primary border border-surface-secondary rounded-lg p-4 hover:border-primary transition-colors cursor-pointer"
+                        className="bg-surface-primary border border-surface-secondary rounded-xl p-6 shadow-sm hover:shadow-md hover:border-primary hover:scale-[1.02] transition-all duration-300 cursor-pointer"
                         onClick={() => handleCopyText(convertedText, style.id)}
                       >
-                        <div className="flex justify-between items-start mb-2">
+                        <div className="flex justify-between items-start mb-3">
                           <div>
                             <h3 className="text-sm font-medium text-text-secondary">
                               {style.name}
@@ -274,7 +339,7 @@ const DiscordFonts = () => {
                             </button>
                           </div>
                         </div>
-                        <div className="text-lg text-text-primary break-all">
+                        <div className="text-lg text-text-primary break-all mt-4">
                           {convertedText}
                         </div>
                       </div>
