@@ -72,7 +72,7 @@ export default defineConfig({
       name: "generate-meta",
       transformIndexHtml(html) {
         return generateMeta(html, {
-          title: "Discord Decoration - Free Avatar Decorations for Discord. No Sign Up Required",
+          title: "Discord Decoration - Free Avatar Decorations for Discord.",
           description: "Create stunning Discord avatar decorations for free. Add custom decorations to your profile picture without spending money on Discord Nitro.",
           image: `${
             process.env.VITE_BASE_IMAGE_URL || ""
