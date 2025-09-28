@@ -28,6 +28,15 @@ export default function GifExtractor() {
       metaDescription.setAttribute('content', 'Free online GIF frame extractor tool. Extract individual frames from animated GIFs for Discord avatars and profile pictures.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

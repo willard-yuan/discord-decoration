@@ -13,6 +13,15 @@ export default function HowToUse() {
       metaDescription.setAttribute('content', 'Complete step-by-step guide on how to create and apply fake Discord avatar decorations. Learn to customize your Discord profile for free.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

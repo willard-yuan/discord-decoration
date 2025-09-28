@@ -13,6 +13,15 @@ export default function DiscordProfileTips() {
       metaDescription.setAttribute('content', 'Discover expert tips and tricks to enhance your Discord profile with custom avatar decorations. Learn how to stand out and express your personality on Discord.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

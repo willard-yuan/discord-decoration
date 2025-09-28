@@ -18,6 +18,15 @@ const DiscordAvatar = () => {
       metaDescription.setAttribute('content', 'Browse our extensive collection of free Discord avatars. Find the perfect profile picture from gaming, anime, fantasy, and more categories.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

@@ -13,6 +13,15 @@ export default function BlogArticle() {
       metaDescription.setAttribute('content', 'Transform your Discord profile with stunning avatar decorations without spending a dime on Nitro. Learn how to get free Discord decorations with Discord Decoration Art.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

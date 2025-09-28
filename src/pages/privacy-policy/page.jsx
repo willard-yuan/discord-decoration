@@ -13,6 +13,15 @@ export default function PrivacyPolicy() {
       metaDescription.setAttribute('content', 'Privacy Policy for Discord Avatar Decoration Generator. Learn how we protect your privacy and handle your data when using our free Discord tools.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

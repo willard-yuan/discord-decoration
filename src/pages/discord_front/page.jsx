@@ -20,6 +20,15 @@ const DiscordFonts = () => {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Generate stylish Discord fonts and text styles from 500+ unique font styles. Convert your text to fancy fonts for Discord messages, usernames, and profiles.');
     }
+    
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
 
     // 添加滚动监听
     const handleScroll = () => {

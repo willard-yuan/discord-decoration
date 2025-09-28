@@ -13,6 +13,15 @@ export default function TermsOfService() {
       metaDescription.setAttribute('content', 'Terms of Service for Discord Avatar Decoration Generator. Read our terms and conditions for using our free Discord avatar decoration tools.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",

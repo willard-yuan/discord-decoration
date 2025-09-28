@@ -15,6 +15,15 @@ export default function FAQ() {
       metaDescription.setAttribute('content', 'Frequently asked questions about Discord avatar decorations. Learn how to create, customize, and use free Discord decorations.');
     }
     
+    // Set meta robots
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow');
+    
     // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",
