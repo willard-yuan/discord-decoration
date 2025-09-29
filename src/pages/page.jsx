@@ -248,7 +248,7 @@ const ExtraLinks = () => (
 const App = ({ ensureLoaded }) => {
   // Set page title for homepage
   useEffect(() => {
-    document.title = "Discord Decoration - Free Avatar Decorations for Discord. No Sign Up Required";
+    document.title = "Discord Decoration - Free Avatar Decorations for Discord.";
   }, []);
 
   // @ts-ignore
