@@ -5,8 +5,9 @@ const Footer = () => {
 
   const footerSections = {
     "Discord Tools": [
-      { name: "Avatar Gallery", href: "/discord_avatar", description: "Browse Discord avatar collection" },
-      { name: "Decoration Gallery", href: "/discord_avatar_decoration", description: "Explore avatar decorations" },
+      { name: "Discord Avatar Gallery", href: "/discord_avatar", description: "Browse Discord avatar collection" },
+      { name: "Discord Avatar Decorations Gallery", href: "/discord_avatar_decoration", description: "Explore avatar decorations" },
+      { name: "Discord Fonts Generator", href: "/discord_front", description: "Generate stylish Discord fonts and text" },
     ],
     Resources: [
       { name: "FAQ", href: "/faq", description: "Frequently asked questions" },
