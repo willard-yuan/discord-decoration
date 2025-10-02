@@ -347,7 +347,7 @@ const App = ({ ensureLoaded }) => {
             className="block w-full md:w-auto select-none grow order-2 md:order-1"
           >
             {/* UPLOAD AVATAR */}
-            <h3 className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
+            <h3 className="my-2 font-semibold text-gray-300 text-lg scale-y-90 [letter-spacing:.05em]">
               DISCORD AVATAR UPLOAD
             </h3>
             <div className="flex sm:flex-row flex-col sm:items-center gap-3">
@@ -424,9 +424,12 @@ const App = ({ ensureLoaded }) => {
             <hr className="border-b border-border-faint/10" />
 
             {/* SELECT DECORATION */}
-            <h3 className="my-2 font-semibold text-gray-300 text-sm scale-y-90 [letter-spacing:.05em]">
+            <h3 className="my-2 font-semibold text-gray-300 text-lg scale-y-90 [letter-spacing:.05em]">
               DISCORD AVATAR DECORATION
             </h3>
+            <p className="mb-3 text-white text-sm">
+              You can pick from one of these discord avatar decorations below
+            </p>
             <SearchBar
               placeholder={"Search decorations..."}
               onValueChanged={setDecoSearch}
@@ -747,12 +750,105 @@ const AvatarList = () => {
   const { avatarsData, avatarSearch, setAvatarName, setAvUrl } =
     useContext(CurrentData);
 
+  // Categorize avatars based on their names and themes
+  const categorizeAvatars = useCallback(() => {
+    const categories = {
+      'Colors & Themes': [],
+      'Gaming & Entertainment': [],
+      'Characters & Mascots': [],
+      'Seasonal & Events': [],
+      'Fantasy & Sci-Fi': [],
+      'Animals & Creatures': [],
+      'Other': []
+    };
+
+    avatarsData.forEach(avatar => {
+      const name = avatar.n.toLowerCase();
+      
+      // Colors & Themes
+      if (name.includes('blue') || name.includes('red') || name.includes('green') || 
+          name.includes('yellow') || name.includes('pink') || name.includes('gray') ||
+          name.includes('blurple') || name.includes('color') || name.includes('classic') ||
+          name.includes('pastel') || name.includes('holo') || name.includes('prismatic') ||
+          name.includes('rainbow') || name.includes('midnight') || name.includes('galactic')) {
+        categories['Colors & Themes'].push(avatar);
+      }
+      // Gaming & Entertainment
+      else if (name.includes('valorant') || name.includes('street fighter') || name.includes('palworld') || 
+          name.includes('arcade') || name.includes('gaming') || name.includes('dungeons') || 
+          name.includes('magic') || name.includes('star wars') || name.includes('civilization') ||
+          name.includes('dojo') || name.includes('ggez')) {
+        categories['Gaming & Entertainment'].push(avatar);
+      }
+      // Characters & Mascots (Wumpus, Clyde, etc.)
+      else if (name.includes('wumpus') || name.includes('clyde') || name.includes('mascot') ||
+               name.includes('character') || name.includes('bot') || name.includes('helper') ||
+               name.includes('assistant') || name.includes('guide') || name.includes('buddy') ||
+               name.includes('pal') || name.includes('friend') || name.includes('companion')) {
+        categories['Characters & Mascots'].push(avatar);
+      }
+      // Seasonal & Events
+      else if (name.includes('halloween') || name.includes('christmas') || name.includes('winter') ||
+               name.includes('spring') || name.includes('summer') || name.includes('fall') ||
+               name.includes('autumn') || name.includes('holiday') || name.includes('seasonal') ||
+               name.includes('valentine') || name.includes('easter') || name.includes('thanksgiving') ||
+               name.includes('new year') || name.includes('birthday') || name.includes('celebration') ||
+               name.includes('sakura') || name.includes('snow') || name.includes('beach')) {
+        categories['Seasonal & Events'].push(avatar);
+      }
+      // Fantasy & Sci-Fi
+      else if (name.includes('dragon') || name.includes('wizard') || name.includes('magic') ||
+               name.includes('fantasy') || name.includes('medieval') || name.includes('knight') ||
+               name.includes('castle') || name.includes('sword') || name.includes('shield') ||
+               name.includes('space') || name.includes('alien') || name.includes('robot') ||
+               name.includes('cyber') || name.includes('tech') || name.includes('future') ||
+               name.includes('galaxy') || name.includes('star') || name.includes('planet')) {
+        categories['Fantasy & Sci-Fi'].push(avatar);
+      }
+      // Animals & Creatures
+      else if (name.includes('cat') || name.includes('dog') || name.includes('bird') ||
+               name.includes('fish') || name.includes('bear') || name.includes('wolf') ||
+               name.includes('fox') || name.includes('rabbit') || name.includes('mouse') ||
+               name.includes('lion') || name.includes('tiger') || name.includes('elephant') ||
+               name.includes('monkey') || name.includes('panda') || name.includes('koala') ||
+               name.includes('penguin') || name.includes('owl') || name.includes('eagle') ||
+               name.includes('snake') || name.includes('turtle') || name.includes('frog') ||
+               name.includes('bee') || name.includes('butterfly') || name.includes('spider') ||
+               name.includes('creature') || name.includes('animal') || name.includes('pet')) {
+        categories['Animals & Creatures'].push(avatar);
+      }
+      // Everything else goes to Other
+      else {
+        categories['Other'].push(avatar);
+      }
+    });
+
+    return categories;
+  }, [avatarsData]);
+
   const getAvatars = useCallback(() => {
     if (isServer) return [];
-    return avatarsData.filter((avatar) =>
-      avatar.n.toLowerCase().includes(avatarSearch.toLowerCase())
-    );
-  }, [avatarsData, avatarSearch]);
+    
+    const categories = categorizeAvatars();
+    let filteredAvatars = [];
+    
+    // If there's a search query, filter across all categories
+    if (avatarSearch.trim()) {
+      Object.values(categories).forEach(categoryAvatars => {
+        const filtered = categoryAvatars.filter((avatar) =>
+          avatar.n.toLowerCase().includes(avatarSearch.toLowerCase())
+        );
+        filteredAvatars.push(...filtered);
+      });
+    } else {
+      // If no search, return avatars in category order
+      Object.values(categories).forEach(categoryAvatars => {
+        filteredAvatars.push(...categoryAvatars);
+      });
+    }
+    
+    return filteredAvatars;
+  }, [avatarsData, avatarSearch, categorizeAvatars]);
 
   const onSelectAvatar = useCallback((event, name, file) => {
     setAvatarName(name.toLowerCase());
@@ -798,50 +894,23 @@ const AvatarList = () => {
 const DecorationsTabs = () => {
   const { decorationsData } = useContext(CurrentData);
 
-  const [activeTab, setActiveTab] = useState(0);
+  // Since we only have one category now, we don't need tabs
   return (
-    <>
-      <div className="flex gap-3 my-2">
-        {decorationsData.map(({ name, icon }, index) => {
-          const Icon = Icons[icon];
-          return (
-            <button
-              key={name}
-              className={`${
-                activeTab === index ? "bg-surface-high" : "bg-transparent"
-              } px-4 py-1.5 font-semibold text-sm hover:bg-surface-higher active:bg-surface-high rounded-lg flex items-center gap-1 transition-colors`}
-              onClick={() => setActiveTab(index)}
-              aria-label={name}
-            >
-              <Icon width="16px" height="16px" />
-              {name}
-            </button>
-          );
-        })}
-      </div>
-      <div className="relative h-[532px] overflow-clip">
-        {decorationsData.map(({ name, data }, index) => (
-          <DecorationsList
-            key={name}
-            {...{
-              decorationsList: data,
-            }}
-            style={{
-              // display: activeTab === index ? "block" : "none",
-              transform:
-                activeTab < index
-                  ? "translateX(100%)"
-                  : activeTab > index
-                  ? "translateX(-100%)"
-                  : "translateX(0)",
-              zIndex: activeTab === index ? 1 : 0,
-              transitionTimingFunction: "cubic-bezier(.46,.94,.1,.99)",
-            }}
-            className="top-0 right-0 bottom-0 left-0 absolute transition-transform translate-z-1 duration-400"
-          />
-        ))}
-      </div>
-    </>
+    <div className="relative h-[532px] overflow-clip">
+      {decorationsData.map(({ name, data }, index) => (
+        <DecorationsList
+          key={name}
+          {...{
+            decorationsList: data,
+          }}
+          style={{
+            transform: "translateX(0)",
+            zIndex: 1,
+          }}
+          className="top-0 right-0 bottom-0 left-0 absolute"
+        />
+      ))}
+    </div>
   );
 };
 

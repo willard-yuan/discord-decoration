@@ -1687,6 +1687,459 @@ export const generateOptimizedFontStyles = () => {
     id++;
   });
 
+  // 添加Accents类目字体 (5种)
+  const accentsFonts = [
+    {
+      name: 'Lola',
+      convert: (text) => {
+        const map = {
+          'I': 'Ἷ', 'l': 'ł', 'o': 'ὄ', 'v': 'v', 'e': 'ἔ', 'y': 'ẏ', 'u': 'ὗ',
+          'i': 'ἷ', 'L': 'Ł', 'O': 'Ὄ', 'V': 'V', 'E': 'Ἔ', 'Y': 'Ẏ', 'U': 'Ὗ',
+          'a': 'ἀ', 'b': 'b', 'c': 'c', 'd': 'd', 'f': 'f', 'g': 'g', 'h': 'h', 'j': 'j',
+          'k': 'k', 'm': 'm', 'n': 'n', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't',
+          'w': 'w', 'x': 'x', 'z': 'z',
+          'A': 'Ἀ', 'B': 'B', 'C': 'C', 'D': 'D', 'F': 'F', 'G': 'G', 'H': 'H', 'J': 'J',
+          'K': 'K', 'M': 'M', 'N': 'N', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T',
+          'W': 'W', 'X': 'X', 'Z': 'Z'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+      }
+    },
+    {
+      name: 'Accents. Light version',
+      convert: (text) => {
+        const map = {
+          'I': 'I', 'l': 'l', 'o': 'ö', 'v': 'v', 'e': 'ë', 'y': 'ÿ', 'u': 'ü',
+          'i': 'i', 'L': 'L', 'O': 'Ö', 'V': 'V', 'E': 'Ë', 'Y': 'Ÿ', 'U': 'Ü',
+          'a': 'ä', 'b': 'b', 'c': 'c', 'd': 'd', 'f': 'f', 'g': 'g', 'h': 'h', 'j': 'j',
+          'k': 'k', 'm': 'm', 'n': 'n', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't',
+          'w': 'w', 'x': 'x', 'z': 'z',
+          'A': 'Ä', 'B': 'B', 'C': 'C', 'D': 'D', 'F': 'F', 'G': 'G', 'H': 'H', 'J': 'J',
+          'K': 'K', 'M': 'M', 'N': 'N', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T',
+          'W': 'W', 'X': 'X', 'Z': 'Z'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+      }
+    },
+    {
+      name: 'Accents. Medium version',
+      convert: (text) => {
+        const map = {
+          'í': 'í', 'l': 'ĺ', 'o': 'ő', 'v': 'v', 'e': 'é', 'y': 'ӳ', 'u': 'ú',
+          'i': 'í', 'L': 'Ĺ', 'O': 'Ő', 'V': 'V', 'E': 'É', 'Y': 'Ӳ', 'U': 'Ú',
+          'a': 'á', 'b': 'b', 'c': 'c', 'd': 'd', 'f': 'f', 'g': 'g', 'h': 'h', 'j': 'j',
+          'k': 'k', 'm': 'm', 'n': 'n', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't',
+          'w': 'w', 'x': 'x', 'z': 'z',
+          'A': 'Á', 'B': 'B', 'C': 'C', 'D': 'D', 'F': 'F', 'G': 'G', 'H': 'H', 'I': 'Í', 'J': 'J',
+          'K': 'K', 'M': 'M', 'N': 'N', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T',
+          'W': 'W', 'X': 'X', 'Z': 'Z'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+      }
+    },
+    {
+      name: 'Accents. Max version',
+      convert: (text) => {
+        const map = {
+          'I': 'I', 'l': 'l', 'o': 'ǿ', 'v': 'v', 'e': 'ê', 'y': 'ŷ', 'u': 'ʉ',
+          'i': 'i', 'L': 'L', 'O': 'Ǿ', 'V': 'V', 'E': 'Ê', 'Y': 'Ŷ', 'U': 'Ʉ',
+          'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd', 'f': 'f', 'g': 'g', 'h': 'h', 'j': 'j',
+          'k': 'k', 'm': 'm', 'n': 'n', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't',
+          'w': 'w', 'x': 'x', 'z': 'z',
+          'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D', 'F': 'F', 'G': 'G', 'H': 'H', 'J': 'J',
+          'K': 'K', 'M': 'M', 'N': 'N', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T',
+          'W': 'W', 'X': 'X', 'Z': 'Z'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+      }
+    },
+    {
+      name: 'Accents UPPERCASE',
+      convert: (text) => {
+        const map = {
+          'I': 'Ĩ', 'L': 'Ĺ', 'O': 'Ő', 'V': 'V', 'E': 'Ĕ', 'Y': 'Ŷ', 'U': 'Ú',
+          'i': 'Ĩ', 'l': 'Ĺ', 'o': 'Ő', 'v': 'V', 'e': 'Ĕ', 'y': 'Ŷ', 'u': 'Ú',
+          'A': 'Ă', 'B': 'B', 'C': 'C', 'D': 'D', 'F': 'F', 'G': 'G', 'H': 'H', 'J': 'J',
+          'K': 'K', 'M': 'M', 'N': 'N', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T',
+          'W': 'W', 'X': 'X', 'Z': 'Z',
+          'a': 'Ă', 'b': 'B', 'c': 'C', 'd': 'D', 'f': 'F', 'g': 'G', 'h': 'H', 'j': 'J',
+          'k': 'K', 'm': 'M', 'n': 'N', 'p': 'P', 'q': 'Q', 'r': 'R', 's': 'S', 't': 'T',
+          'w': 'W', 'x': 'X', 'z': 'Z'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+      }
+    }
+  ];
+
+  // 添加Accents字体
+  accentsFonts.forEach((font, index) => {
+    styles.push({
+      id: `accents_${index}`,
+      name: font.name,
+      category: 'accents',
+      convert: font.convert
+    });
+    id++;
+  });
+
+  // 添加Strike类目字体 (4种)
+  const strikeFonts = [
+    {
+      name: 'Callian',
+      convert: (text) => {
+        const map = {
+          'I': 'Ɨ', 'l': 'ł', 'o': 'ø', 'v': 'ɇ', 'e': 'ɇ', 'y': 'ɏ', 'u': 'ᵾ',
+          'i': 'ɨ', 'L': 'Ł', 'O': 'Ø', 'V': 'V', 'E': 'Ɇ', 'Y': 'Ɏ', 'U': 'Ʉ',
+          'a': 'ⱥ', 'b': 'ƀ', 'c': 'ȼ', 'd': 'đ', 'f': 'f', 'g': 'ǥ', 'h': 'ħ', 'j': 'ɉ',
+          'k': 'ꝁ', 'm': 'm', 'n': 'n', 'p': 'ᵽ', 'q': 'q', 'r': 'ɍ', 's': 's', 't': 'ŧ',
+          'w': 'w', 'x': 'x', 'z': 'ƶ',
+          'A': 'Ⱥ', 'B': 'Ƀ', 'C': 'Ȼ', 'D': 'Đ', 'F': 'F', 'G': 'Ǥ', 'H': 'Ħ', 'J': 'Ɉ',
+          'K': 'Ꝁ', 'M': 'M', 'N': 'N', 'P': 'Ᵽ', 'Q': 'Q', 'R': 'Ɍ', 'S': 'S', 'T': 'Ŧ',
+          'W': 'W', 'X': 'X', 'Z': 'Ƶ'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+      }
+    },
+    {
+      name: 'Strike letters',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0336'; // 添加删除线组合字符
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Strike letters - large version',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0338'; // 添加长删除线组合字符
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Strike',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0334'; // 添加双删除线组合字符
+          }
+          return char;
+        }).join('');
+      }
+    }
+  ];
+
+  // 添加Strike字体
+  strikeFonts.forEach((font, index) => {
+    styles.push({
+      id: `strike_${index}`,
+      name: font.name,
+      category: 'strike',
+      convert: font.convert
+    });
+    id++;
+  });
+
+  // 添加Underline类目字体 (22种)
+  const underlineFonts = [
+    {
+      name: 'Underline',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u035F'; // 添加下划线组合字符
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline Bold',
+      convert: (text) => {
+        const boldMap = {
+          'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷',
+          'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁',
+          'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
+          'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝',
+          'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧',
+          'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭'
+        };
+        return text.split('').map(char => {
+          const boldChar = boldMap[char] || char;
+          if (/[a-zA-Z]/.test(char)) {
+            return boldChar + '\u035F';
+          }
+          return boldChar;
+        }).join('');
+      }
+    },
+    {
+      name: 'Double underlined',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0332\u0332'; // 双下划线
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline fancy',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u033B'; // 方形下划线
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Dotted underline',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0320'; // 点状下划线
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Dotted underline 2',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u035F'; // 另一种点状下划线
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 3',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u032B'; // 下方倒钩
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 4',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0353'; // 双倒钩下方
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 5',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0321\u0322'; // 钩状下划线组合
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 6',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0323'; // 点状下方
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 7',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0316\u0317'; // 重力符号组合
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 8',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0316\u0317\u0316\u0317'; // 双重重力符号
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 9',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0354\u0355'; // 双点组合
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Underline 10',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u032A\u032A\u033A'; // 桥状下方组合
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Tiny smile',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0324\u032E'; // 微笑符号组合
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Tiny sad smiley',
+      convert: (text) => {
+        return text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0324\u032F'; // 悲伤符号组合
+          }
+          return char;
+        }).join('');
+      }
+    },
+    {
+      name: 'Boxed word classic',
+      convert: (text) => {
+        return text.split(/\s+/).map(word => {
+          if (word.trim()) {
+            const boxedWord = word.split('').map(char => char + '\u0332').join('');
+            return '[̅' + boxedWord + '̅]';
+          }
+          return word;
+        }).join(' ');
+      }
+    },
+    {
+      name: 'Boxed word with bold text',
+      convert: (text) => {
+        const boldMap = {
+          'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷',
+          'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁',
+          'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
+          'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝',
+          'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧',
+          'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭'
+        };
+        return text.split(/\s+/).map(word => {
+          if (word.trim()) {
+            const boldWord = word.split('').map(char => boldMap[char] || char).join('');
+            const boxedWord = boldWord.split('').map(char => char + '\u0332').join('');
+            return '[̅' + boxedWord + '̅]';
+          }
+          return word;
+        }).join('  ');
+      }
+    },
+    {
+      name: 'Boxed text',
+      convert: (text) => {
+        const boxedText = text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0332';
+          }
+          return char;
+        }).join('');
+        return '[̅' + boxedText + '̅]';
+      }
+    },
+    {
+      name: 'Cloud #2',
+      convert: (text) => {
+        return '( ' + text.split('').map(char => {
+          if (/[a-zA-Z]/.test(char)) {
+            return char + '\u0361\u035C';
+          }
+          return char;
+        }).join('') + ' )';
+      }
+    },
+    {
+      name: 'Line on bottom',
+      convert: (text) => {
+        return text.split(/\s+/).map(word => {
+          if (word.trim()) {
+            return '_' + word.split('').join('_') + '_';
+          }
+          return word;
+        }).join('  ');
+      }
+    },
+    {
+      name: 'With cute lines decoration',
+      convert: (text) => {
+        const boldMap = {
+          'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷',
+          'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁',
+          'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
+          'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝',
+          'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧',
+          'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭'
+        };
+        return text.split('').map((char, index) => {
+          const boldChar = boldMap[char] || char;
+          if (/[a-zA-Z]/.test(char)) {
+            // 交替添加不同的装饰
+            if (index % 3 === 0) {
+              return boldChar + '\u035F';
+            } else if (index % 3 === 1) {
+              return boldChar + '\u0305';
+            } else {
+              return boldChar + '\u035F';
+            }
+          }
+          return boldChar;
+        }).join('');
+      }
+    }
+  ];
+
+  // 添加Underline字体
+  underlineFonts.forEach((font, index) => {
+    styles.push({
+      id: `underline_${index}`,
+      name: font.name,
+      category: 'underline',
+      convert: font.convert
+    });
+    id++;
+  });
+
   return styles;
 };
 
@@ -1706,7 +2159,10 @@ export const fontCategories = {
   italic: allFontStyles.filter(s => s.category === 'italic'),
   bold: allFontStyles.filter(s => s.category === 'bold'),
   uppercase: allFontStyles.filter(s => s.category === 'uppercase'),
-  'fancy-letters': allFontStyles.filter(s => s.category === 'fancy-letters')
+  'fancy-letters': allFontStyles.filter(s => s.category === 'fancy-letters'),
+  accents: allFontStyles.filter(s => s.category === 'accents'),
+  strike: allFontStyles.filter(s => s.category === 'strike'),
+  underline: allFontStyles.filter(s => s.category === 'underline')
 };
 
 // 搜索功能

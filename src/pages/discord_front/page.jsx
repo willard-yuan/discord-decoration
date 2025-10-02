@@ -142,20 +142,8 @@ const DiscordFonts = () => {
                 <div className="flex flex-wrap gap-4">
                   <button
                     onClick={() => {
-              setSelectedCategory('all');
-            }}
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                      selectedCategory === 'all'
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl rotate-2 scale-105'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
-                    }`}
-                  >
-                    All Categories
-                  </button>
-                  <button
-                    onClick={() => {
-              setSelectedCategory('mathematical');
-            }}
+                      setSelectedCategory(selectedCategory === 'mathematical' ? 'all' : 'mathematical');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'mathematical'
                         ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl rotate-2 scale-105'
@@ -166,8 +154,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('decorative');
-            }}
+                      setSelectedCategory(selectedCategory === 'decorative' ? 'all' : 'decorative');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'decorative'
                         ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-xl rotate-2 scale-105'
@@ -178,8 +166,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('special');
-            }}
+                      setSelectedCategory(selectedCategory === 'special' ? 'all' : 'special');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'special'
                         ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-xl rotate-2 scale-105'
@@ -190,8 +178,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('accented');
-            }}
+                      setSelectedCategory(selectedCategory === 'accented' ? 'all' : 'accented');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'accented'
                         ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-xl rotate-2 scale-105'
@@ -202,8 +190,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('symbols');
-            }}
+                      setSelectedCategory(selectedCategory === 'symbols' ? 'all' : 'symbols');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'symbols'
                         ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-xl rotate-2 scale-105'
@@ -214,8 +202,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('asian');
-            }}
+                      setSelectedCategory(selectedCategory === 'asian' ? 'all' : 'asian');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'asian'
                         ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-xl rotate-2 scale-105'
@@ -226,8 +214,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('retro');
-            }}
+                      setSelectedCategory(selectedCategory === 'retro' ? 'all' : 'retro');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'retro'
                         ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-xl rotate-2 scale-105'
@@ -238,8 +226,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('alternative');
-            }}
+                      setSelectedCategory(selectedCategory === 'alternative' ? 'all' : 'alternative');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'alternative'
                         ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-xl rotate-2 scale-105'
@@ -250,8 +238,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('italic');
-            }}
+                      setSelectedCategory(selectedCategory === 'italic' ? 'all' : 'italic');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'italic'
                         ? 'bg-gradient-to-r from-violet-500 to-purple-500 text-white shadow-xl rotate-2 scale-105'
@@ -262,8 +250,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('bold');
-            }}
+                      setSelectedCategory(selectedCategory === 'bold' ? 'all' : 'bold');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'bold'
                         ? 'bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-xl rotate-2 scale-105'
@@ -274,8 +262,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('uppercase');
-            }}
+                      setSelectedCategory(selectedCategory === 'uppercase' ? 'all' : 'uppercase');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'uppercase'
                         ? 'bg-gradient-to-r from-slate-600 to-gray-700 text-white shadow-xl rotate-2 scale-105'
@@ -286,8 +274,8 @@ const DiscordFonts = () => {
                   </button>
                   <button
                     onClick={() => {
-              setSelectedCategory('fancy-letters');
-            }}
+                      setSelectedCategory(selectedCategory === 'fancy-letters' ? 'all' : 'fancy-letters');
+                    }}
                     className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       selectedCategory === 'fancy-letters'
                         ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-xl rotate-2 scale-105'
@@ -295,6 +283,42 @@ const DiscordFonts = () => {
                     }`}
                   >
                     Fancy letters
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(selectedCategory === 'accents' ? 'all' : 'accents');
+                    }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'accents'
+                        ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Accents
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(selectedCategory === 'strike' ? 'all' : 'strike');
+                    }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'strike'
+                        ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Strike
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(selectedCategory === 'underline' ? 'all' : 'underline');
+                    }}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      selectedCategory === 'underline'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-xl rotate-2 scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
+                    }`}
+                  >
+                    Underline
                   </button>
                 </div>
               </div>

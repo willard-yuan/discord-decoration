@@ -98,8 +98,8 @@ const DiscordAvatar = () => {
   // Categorize avatars based on their names and themes
   const categorizeAvatars = () => {
     const categories = {
-      'Gaming & Entertainment': [],
       'Colors & Themes': [],
+      'Gaming & Entertainment': [],
       'Characters & Mascots': [],
       'Seasonal & Events': [],
       'Fantasy & Sci-Fi': [],

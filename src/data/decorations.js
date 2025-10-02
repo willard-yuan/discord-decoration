@@ -1,9 +1,918 @@
 export const decorationsData = [
   {
-    name: "Shop",
-    icon: "shop",
+    name: "Decorations",
+    icon: "lootbox",
     data: [
+{
+        n: "Halloween '25",
+        d: "Limited time decorations from Halloween 2025.",
+        b: {
+          i: [],
+          bg: "linear-gradient(90deg, #cd7e4e 0%, #eabd83 100%)",
+        },
+        badge: "OCTOBER 2025",
+        i: [
+          {
+            n: "Trick Pumpkin",
+            d: "A spooky pumpkin with a trick in hand.",
+            f: "trick_pumpkin",
+          },
+          {
+            n: "Treat Pumpkin",
+            d: "A spooky pumpkin with a treat in hand.",
+            f: "treat_pumpkin",
+          },
+          {
+            n: "Trick Spider",
+            d: "A spooky spider with a trick in hand.",
+            f: "trick_spider",
+          },
+          {
+            n: "Treat Spider",
+            d: "A spooky spider with a treat in hand.",
+            f: "treat_spider",
+          },
+          {
+            n: "Trick Skull",
+            d: "A spooky skull with a trick in hand.",
+            f: "trick_skull",
+          },
+          {
+            n: "Treat Skull",
+            d: "A spooky skull with a treat in hand.",
+            f: "treat_skull",
+          },
+          {
+            n: "Trick Ghost",
+            d: "A spooky ghost with a trick in hand.",
+            f: "trick_ghost",
+          },
+          {
+            n: "Treat Ghost",
+            d: "A spooky ghost with a treat in hand.",
+            f: "treat_ghost",
+          },
+        ],
+      },
       {
+        n: "Nitro",
+        d: "Decorations only available through Nitro purchases.",
+        b: {
+          i: [
+            {
+              url: "string_lights",
+              align: "top left",
+              height: "160%",
+              transform: "scaleX(-1) translateY(-20%)",
+            },
+            {
+              url: "hearts",
+              align: "top right",
+              height: "150%",
+              transform: "translateY(-5%)",
+            },
+          ],
+          bg: "linear-gradient(90deg, #8547c6 0%, #b845c1 50%, #ab5d8a 100%)",
+        },
+        i: [
+          {
+            n: "Jet Ring",
+            d: "Surround your avatar with a pulse of Nitro energy.",
+            f: "jet_ring",
+          },
+          {
+            n: "Freshly Picked",
+            d: "Now where's my blender? Given to Nitro gifters in June 2025.",
+            f: "freshly_picked",
+          },
+          {
+            n: "Shower Stroll",
+            d: "Chasing rainbows after the storm. Given to new Nitro subscribers in Spring 2025.",
+            f: "shower_stroll",
+          },
+          {
+            n: "Hoppy Day",
+            d: "Brb, out frolicking. Given to new Nitro subscribers in Spring 2025.",
+            f: "hoppy_day",
+          },
+          {
+            n: "Afternoon Breeze",
+            d: "A calm rest in the meadow. Given to new Nitro subscribers in Spring 2025.",
+            f: "afternoon_breeze",
+          },
+          {
+            n: "Heart-to-Heart",
+            d: "Feel the love all around. Given to Nitro gifters in February 2025.",
+            f: "heart_to_heart",
+          },
+          {
+            n: "Snowfall",
+            d: "From chill to chilly. Given to Nitro gifters in December 2024.",
+            f: "snowfall",
+          },
+          {
+            n: "Holiday Cat Ears",
+            d: "o<≽^ᴖ ωᴖ^≼ Given to Nitro gifters in December 2024.",
+            f: "santa_cat_ears",
+          },
+          {
+            n: "2025 Balloons",
+            d: "Cheers to 2025!! Given to Nitro gifters in December 2024.",
+            f: "new_year_2025",
+          },
+          {
+            n: "Minions",
+            d: "Name a more iconic duo. Given to Nitro gifters in October 2024.",
+            f: "minions",
+          },
+          {
+            n: "Gyoiko Sakura",
+            d: "A rare blossom only seen by a fortunate few. Given to new Nitro subscribers between April 24, 2024 and May 1, 2024.",
+            f: "sakura_gyoiko",
+          },
+        ],
+      },
+      {
+        n: "Quests",
+        d: "Miscellaneous decorations and quest rewards.",
+        b: {
+          i: [
+            {
+              url: "lootbox.svg",
+              align: "left",
+            },
+            {
+              url: "sakura.svg",
+              align: "right",
+              height: "100%",
+              opacity: "0.9",
+            },
+          ],
+          bg: "linear-gradient(90deg, #3441d9 0%, #9a44f7 100%)",
+        },
+        i: [
+          {
+            n: "Angela Avatar",
+            d: "Exclusive to Marvel Rivals S4.0 Quest for a limited time. Available to use until November 19, 2025.",
+            f: "angela_avatar",
+          },
+          {
+            n: "Echo 4",
+            d: "Exclusive to Borderlands 4 Launch Quest for a limited time. Available to use until November 18, 2025.",
+            f: "echo_4",
+          },
+          {
+            n: "NBA 2K26",
+            d: "Exclusive to NBA 2K26 Quest for a limited time. Available to use until November 4, 2025.",
+            f: "nba_2k26",
+          },
+          {
+            n: "The Conjuring: Last Rites",
+            d: "Exclusive to The Conjuring Quest for a limited time. Available to use until November 7, 2025.",
+            f: "the_conjuring_last_rites",
+          },
+          {
+            n: "Eye of Prophesy",
+            d: "Exclusive to Path of Exile 2 Quests Quest for a limited time. Available to use until November 4, 2025.",
+            f: "eye_of_prophesy",
+          },
+          {
+            n: "inZOI Psycat",
+            d: "Exclusive to inZOI Update Quest Quest for a limited time. Available to use until October 25, 2025.",
+            f: "inzoi_psycat",
+          },
+          {
+            n: "ESPN",
+            d: "Exclusive to ESPN Mobile Quest for a limited time. Available to use until October 25, 2025.",
+            f: "espn",
+          },
+          {
+            n: "Cow Glider",
+            d: "Exclusive to The Milk Cup Quest 2 Quest for a limited time. Available to use until October 20, 2025.",
+            f: "cow_glider",
+          },
+          {
+            n: "Wendy’s x Wednesday",
+            d: "Exclusive to View If You Dare Quest for a limited time. Available to use until October 30, 2025.",
+            f: "wendys_x_wednesday",
+          },
+          {
+            n: "BF Soldier Helmet",
+            d: "Exclusive to BF6 Open Beta Quest for a limited time. Available to use until October 16, 2025.",
+            f: "bf_soldier_helmet",
+          },
+          {
+            n: "Bing Bong",
+            d: "Exclusive to PEAK Quest for a limited time. Available to use until October 16, 2025.",
+            f: "bing_bong",
+          },
+          {
+            n: "Hank Hill",
+            d: "Exclusive to King of the Hill Quest for a limited time. Available to use until October 4, 2025.",
+            f: "hank_hill",
+          },
+          {
+            n: "The Entity",
+            d: "Exclusive to Dead by Daylight x TWD Quest for a limited time. Available to use until October 4, 2025.",
+            f: "the_entity",
+          },
+          {
+            n: "Descendant",
+            d: "Exclusive to The First Descendant Quest for a limited time. Available to use until October 13, 2025.",
+            f: "descendant",
+          },
+          {
+            n: "Sweet Tooth",
+            d: "Exclusive to Twisted Metal S2 Quest for a limited time. Available to use until October 6, 2025.",
+            f: "sweet_tooth",
+          },
+          {
+            n: "Chomp Chomp",
+            d: "Exclusive to SUPERVIVE 1.0 Quest for a limited time. Available to use until October 9, 2025.",
+            f: "chomp_chomp",
+          },
+          {
+            n: "Call of Duty: Mobile",
+            d: "Exclusive to CALL OF DUTY: MOBILE Quest for a limited time. Available to use until September 25, 2025.",
+            f: "call_of_duty_mobile",
+          },
+          {
+            n: "Phoenix",
+            d: "Jean Grey with her fiery Phoenix form. Available to use until September 16, 2025.",
+            f: "jean_grey_phoenix",
+          },
+          {
+            n: "THPS Half Pipe",
+            d: "Exclusive to the THPS 3+4 Quest for a limited time. Available to use until September 22, 2025.",
+            f: "thps_half_pipe",
+          },
+          {
+            n: "Mecha BREAK",
+            d: "Exclusive to the Mecha BREAK Quest for a limited time. Available to use until September 14, 2025.",
+            f: "mecha_break",
+          },
+          {
+            n: "Moomoo Hood",
+            d: "Exclusive to the Milk Cup Quest for a limited time. Available to use until September 10, 2025.",
+            f: "moomoo_hood",
+          },
+          {
+            n: "VALORANT Summer Kickoff",
+            d: "Exclusive to the VALORANT Summer Kickoff Quest for a limited time. Available to use until August 29, 2025.",
+            f: "valorant_summer_kickoff",
+          },
+          {
+            n: "Palia",
+            d: "Exclusive to the Palia Play Quest for a limited time. Available to use until August 29, 2025.",
+            f: "palia",
+          },
+          {
+            n: "SuperCell",
+            d: "Exclusive to the SuperCell Quest for a limited time. Available to use until August 28, 2025.",
+            f: "supercell",
+          },
+          {
+            n: "I Love R.E.P.O.",
+            d: "Exclusive to the R.E.P.O. Quest for a limited time. Available to use until August 23, 2025.",
+            f: "i_love_repo",
+          },
+          {
+            n: "LEGO® Fortnite",
+            d: "Exclusive to the LEGO® Fortnite Quest for a limited time. Available to use until August 21, 2025.",
+            f: "lego_fortnite",
+          },
+          {
+            n: "M3GAN 2.0",
+            d: "Exclusive to the M3GAN 2.0 Quest for a limited time. Available to use until August 21, 2025.",
+            f: "m3gan_2_0",
+          },
+          {
+            n: "28 Years Later",
+            d: "Exclusive to the 28 Years Later Quest for a limited time. Available to use until August 21, 2025.",
+            f: "28_years_later",
+          },
+          {
+            n: "R6 Siege X Avatar",
+            d: "Exclusive to the R6 Siege X Avatar Quest for a limited time. Available to use until August 18, 2025.",
+            f: "r6_siege_x_avatar",
+          },
+          {
+            n: "Towerborne Play",
+            d: "Exclusive to the Towerborne Play Quest for a limited time. Available to use until August 17, 2025.",
+            f: "towerborne_play",
+          },
+          {
+            n: "Starlight Revolver",
+            d: "Exclusive to the Starlight Revolver Quest for a limited time. Available to use until August 14, 2025.",
+            f: "starlight_revolver",
+          },
+          {
+            n: "How to Train Your Dragon",
+            d: "Exclusive to the How to Train Your Dragon Quest for a limited time. Available to use until August 12, 2025.",
+            f: "how_to_train_your_dragon",
+          },
+          {
+            n: "Marvel Snap Venom",
+            d: "Exclusive to the Symbiote Spider-Man Quest for a limited time. Available to use until August 8, 2025.",
+            f: "marvel_snap_venom",
+          },
+          {
+            n: "Ballerina",
+            d: "Exclusive to the Ballerina Trailer Quest for a limited time. Available to use until August 6, 2025.",
+            f: "ballerina",
+          },
+          {
+            n: "Ultron",
+            d: "Exclusive to the Marvel Rivals S2.5 Quest for a limited time. Available to use until August 5, 2025.",
+            f: "ultron",
+          },
+          {
+            n: "Open Beta",
+            d: "Exclusive to the Open Beta Quest for a limited time. Available to use until July 24, 2025.",
+            f: "open_beta",
+          },
+          {
+            n: "Jurassic World Rebirth Trailer",
+            d: "Exclusive to Jurassic World Rebirth Trailer Quest for a limited time. Available to use until July 25, 2025.",
+            f: "jurassic_world_rebirth",
+          },
+          {
+            n: "Mission: Impossible",
+            d: "Exclusive to Mission: Impossible Quest for a limited time. Available to use until July 24, 2025.",
+            f: "mission_impossible",
+          },
+          {
+            n: "The Bad Guys 2 Trailer",
+            d: "Exclusive to the Bad Guys 2 Trailer Quest for a limited time. Available to use until July 20, 2025.",
+            f: "bad_guys_2",
+          },
+          {
+            n: "Fortnite Galactic Battle",
+            d: "Exclusive to the Fortnite Galactic Battle Quest for a limited time. Available to use until July 13, 2025.",
+            f: "fortnite_galactic_battle",
+          },
+          {
+            n: "Shield Saw",
+            d: "Exclusive to the Doom Quest for a limited time. Available to use until July 11, 2025.",
+            f: "shield_saw",
+          },
+          {
+            n: "Friend of Dex",
+            d: "Exclusive to the Fragpunk Season 1 Chapter 2 Quest for a limited time. Available to use until July 5, 2025.",
+            f: "friend_of_dex",
+          },
+          {
+            n: "Hackclaw",
+            d: "Exclusive to the Delta Force Quest for a limited time. Available to use until June 27, 2025.",
+            f: "hackclaw",
+          },
+          {
+            n: "Slurp Barrel",
+            d: "Exclusive to the Fortnite Reload Quest for a limited time. Available to use until June 20, 2025.",
+            f: "slurp_barrel",
+          },
+          {
+            n: "Signal from Tau Ceti",
+            d: "Exclusive to the Marathon Reveal Quest for a limited time. Available to use until June 20, 2025.",
+            f: "signal_from_tau_ceti",
+          },
+          {
+            n: "Emma Frost",
+            d: "Exclusive to the Marvel Rivals S2 Quest for a limited time. Available to use until June 18, 2025.",
+            f: "emma_frost",
+          },
+          {
+            n: "Face of Corruption",
+            d: "Exclusive to the Path of Exile 2 Quest for a limited time. Available to use until June 17, 2025.",
+            f: "face_of_corruption",
+          },
+          {
+            n: "Clicker",
+            d: "Exclusive to The Last of Us Season 2 Quest for a limited time. Available to use until June 13, 2025.",
+            f: "clicker",
+          },
+          {
+            n: "Touch Grass",
+            d: "It’s time to touch some reality. Exclusive to April Fools 2025 for a limited time.",
+            f: "touch_grass",
+          },
+          {
+            n: "Supply Llama",
+            d: "Exclusive to the Fortnite Quest for a limited time. Available to use until May 31, 2025.",
+            f: "supply_llama",
+          },
+          {
+            n: "Gallica",
+            d: "Exclusive to Metaphor Rank Up Quest for a limited time. Available to use until May 18, 2025.",
+            f: "gallica",
+          },
+          {
+            n: "Khazan",
+            d: "Exclusive to the Kazan Quest for a limited time. Available to use until May 17, 2025.",
+            f: "khazan",
+          },
+          {
+            n: "Split",
+            d: "Exclusive to the Split Fiction Quest for a limited time. Available to use until May 12, 2025.",
+            f: "split",
+          },
+          {
+            n: "Pathojen",
+            d: "Exclusive to the FragPunk Launch Quest for a limited time. Available to use until May 13, 2025.",
+            f: "pathojen",
+          },
+          {
+            n: "Big Dill Chain",
+            d: "Exclusive to the Fortnite Quest for a limited time. Available to use until April 29, 2025.",
+            f: "big_dill_chain",
+          },
+          {
+            n: "Exoborne",
+            d: "Exclusive to the Exoborne Wishlist Quest for a limited time. Available to use until April 18, 2025.",
+            f: "exoborne",
+          },
+          {
+            n: "Scout",
+            d: "Exclusive to the Sid Meier's Civilization VII Quest for a limited time. Available to use until April 26, 2025.",
+            f: "scout",
+          },
+          {
+            n: "Fortnite Boogie Bomb",
+            d: "Exclusive to the Fortnite OG S2 Quest for a limited time. Available to use until April 5, 2025.",
+            f: "fortnite_boogie_bomb",
+          },
+          {
+            n: "Fuchsia Agent",
+            d: "Exclusive to the Strinova Fuchsia Quest for a limited time. Available to use until March 24, 2025.",
+            f: "fuchsia_agent",
+          },
+          {
+            n: "Jeff the Land Shark",
+            d: "Exclusive to the Marvel Rivals Quest for a limited time. Available to use until March 16, 2025.",
+            f: "jeff_the_land_shark",
+          },
+          {
+            n: "WINGMAN'S GOT IT",
+            d: "Exclusive to the VALORANT GO GET EM WINGS Quest for a limited time. Available to use until March 12, 2025.",
+            f: "wingmans_got_it",
+          },
+          {
+            n: "Rec Room Lightning",
+            d: "Exclusive to the Rec Room Quest for a limited time. Available until to use March 1, 2025.",
+            f: "rec_room_lightning",
+          },
+          {
+            n: "Shadow",
+            d: "Exclusive to The Sonic 3 Quest for a limited time. Available until to use February 21, 2025.",
+            f: "shadow",
+          },
+          {
+            n: "TGA Controller",
+            d: "Exclusive to The Game Awards Quest for a limited time. Available until to use February 14, 2025.",
+            f: "tga_controller",
+          },
+          {
+            n: "Shield Potion",
+            d: "Exclusive to the Fortnite Ballistic Quest for a limited time. Available until to use February 16, 2025.",
+            f: "shield_potion",
+          },
+          {
+            n: "Bush Camper",
+            d: "Exclusive to the Fortnite OG Quest for a limited time. Available until to use February 11, 2025.",
+            f: "bush_camper",
+          },
+          {
+            n: "Rift Butterfly",
+            d: "The Rift Butterfly is a type of sentient Rift that is shaped like a butterfly. This reward is exclusive to the Fortnite Quest. Available until to use February 5, 2025.",
+            f: "rift_butterfly",
+          },
+          {
+            n: "Batarang",
+            d: "The Batarang is Batman’s legendary throwing weapon, blending precision and versatility to instill fear in his enemies. This reward is exclusive to the Become the Knight Quest. Available until to use February 8, 2025.",
+            f: "batarang",
+          },
+          {
+            n: "Wallach IX Spaceport",
+            d: "The Wallach IX Spaceport is a dynamic port for space travel on the planet Wallach IX. This reward is exclusive to the Dune: Prophecy Quest. Available until to use January 25, 2025.",
+            f: "wallach_spaceport",
+          },
+          {
+            n: "Wolf Morph",
+            d: "Your Morph can take on many unique forms and help you move throughout the world in THRONE AND LIBERTY. Available until to use November 30, 2024.",
+            f: "wolf_morph",
+          },
+          {
+            n: "Street Fighter 6 Battle Field",
+            d: "Avatar Decoration for the Award winning Street Fighter 6. Exclusive to Street Fighter 6 Quest for a limited time. Available until to use November 29, 2024.",
+            f: "street_fighter_6_battle_field",
+          },
+          {
+            n: "Torgal Puppy",
+            d: "Torgal the puppy is here to keep you company! This reward is exclusive to the FFXVI Quest. Available until to use November 23, 2024.",
+            f: "torgal_puppy",
+          },
+          {
+            n: "Bunny",
+            d: "Worn by Albion's speedster, Bunny, in The First Descendant. Available until to use November 12, 2024.",
+            f: "bunny",
+          },
+          {
+            n: "Hailey",
+            d: "Worn by the legendary sniper in The First Descendant. Available until to use November 6, 2024.",
+            f: "hailey",
+          },
+          {
+            n: "Los Santos",
+            d: "Get to the chopper! Los Santos sky-high pursuit! Available to use until October 14, 2024.",
+            f: "los_santos",
+          },
+          {
+            n: "Wingman Boba",
+            d: "Your trusty VALORANT buddy, with a refreshing bubbly twist. Available to use until October 6, 2024.",
+            f: "wingman_boba",
+          },
+          {
+            n: "Freezer Bunny Lovebug",
+            d: "A Sim's coolest companion! Available to use until September 30, 2024.",
+            f: "freezer_bunny_lovebug",
+          },
+          {
+            n: "Fortnite Victory Crown",
+            d: "A sparkly crown! Available to use until September 3, 2024.",
+            f: "victory_crown",
+          },
+          {
+            n: "Warp Helmet",
+            d: "Traveling at the speed of light. Available to use until September 9, 2024.",
+            f: "warp_helmet",
+          },
+          {
+            n: "Mokoko",
+            d: "An affectionate Mokoko wants to give you plenty of hugs! Exclusive to Mokoko Quest 2024 for a limited time.",
+            f: "mokoko",
+          },
+          {
+            n: "I'm a Clown",
+            d: "I opened a bunch of Loot Boxes and all I got was this stupid clown decoration. Exclusive to April Fools 2024 for a limited time.",
+            f: "im_a_clown",
+          },
+        ],
+      },
+      {
+        n: "Orbs Exclusive",
+        d: "",
+        b: {
+          i: "orbs_exclusive",
+        },
+        i: [
+          {
+            n: "Pondering Portal",
+            d: "Dazzling thoughts create neon sparks.",
+            f: "pondering_portal",
+          },
+        ],
+      },
+      {
+        n: "Discord 8th Birthday",
+        d: "",
+        b: {
+          i: [],
+          bg: "linear-gradient(90deg, #000 0%, #100625 100%)",
+        },
+        badge: "JUNE 2023",
+        i: [
+          {
+            n: "Blue Headset",
+            d: "Everything sounds better with these on.",
+            f: "disxcore_headset",
+          },
+          {
+            n: "Pink Headset",
+            d: "Everything sounds better with these on.",
+            f: "pink_headset",
+          },
+          {
+            n: "Green Headset",
+            d: "Everything sounds better with these on.",
+            f: "green_headset",
+          },
+          {
+            n: "Blue Futuristic UI",
+            d: "BEEP BOOP",
+            f: "blue_futuristic_ui",
+          },
+          {
+            n: "Pink Futuristic UI",
+            d: "BEEP BOOP",
+            f: "pink_futuristic_ui",
+          },
+          {
+            n: "Green Futuristic UI",
+            d: "BEEP BOOP",
+            f: "green_futuristic_ui",
+          },
+          {
+            n: "Blue Smoke",
+            d: "Now you see me, now you don't",
+            f: "blue_smoke",
+          },
+          {
+            n: "Pink Smoke",
+            d: "Now you see me, now you don't",
+            f: "pink_smoke",
+          },
+          {
+            n: "Green Smoke",
+            d: "Now you see me, now you don't",
+            f: "green_smoke",
+          },
+          {
+            n: "Blue Gyroscope",
+            d: "Keeping your avatar stable while stylish.",
+            f: "blue_gyroscope",
+          },
+          {
+            n: "Pink Gyroscope",
+            d: "Keeping your avatar stable while stylish.",
+            f: "pink_gyroscope",
+          },
+          {
+            n: "Green Gyroscope",
+            d: "Keeping your avatar stable while stylish.",
+            f: "green_gyroscope",
+          },
+          {
+            n: "Blue Shine Helmet",
+            d: "Always wear your helmet.",
+            f: "blue_shine_helmet",
+          },
+          {
+            n: "Pink Shine Helmet",
+            d: "Always wear your helmet.",
+            f: "pink_shine_helmet",
+          },
+          {
+            n: "Green Shine Helmet",
+            d: "Always wear your helmet.",
+            f: "green_shine_helmet",
+          },
+          {
+            n: "Blue Hyper Helmet",
+            d: "Always wear your helmet.",
+            f: "blue_hyper_helmet",
+          },
+          {
+            n: "Pink Hyper Helmet",
+            d: "Always wear your helmet.",
+            f: "pink_hyper_helmet",
+          },
+          {
+            n: "Green Hyper Helmet",
+            d: "Always wear your helmet.",
+            f: "green_hyper_helmet",
+          },
+          {
+            n: "Saw",
+            d: "Here to make your avatar more stylish... and dangerous!",
+            f: "saw",
+          },
+        ],
+      },
+      {
+        n: "Spring '23",
+        d: "Limited time decoration from Spring 2023",
+        darkText: true,
+        b: {
+          i: [],
+          bg: "linear-gradient(90deg, #d1dd93 0%, #f0edaa 100%)",
+        },
+        badge: "APRIL 2023",
+        i: [
+          {
+            n: "Sakura",
+            d: "Close your eyes and breathe.",
+            f: "sakura",
+          },
+          {
+            n: "Pink Sakura",
+            d: "Close your eyes and breathe.",
+            f: "sakura_pink",
+          },
+          {
+            n: "Ukon Sakura",
+            d: "Close your eyes and breathe.",
+            f: "sakura_ukon",
+          },
+          {
+            n: "Gyoiko Sakura",
+            d: "Close your eyes and breathe.",
+            f: "sakura_gyoiko",
+          },
+          {
+            n: "Mushroom #1",
+            d: "A mushroom.",
+            f: "mushroom_1",
+          },
+          {
+            n: "Mushroom #2",
+            d: "A mushroom.",
+            f: "mushroom_2",
+          },
+          {
+            n: "Mushroom #3",
+            d: "A mushroom.",
+            f: "mushroom_3",
+          },
+          {
+            n: "Mushroom #4",
+            d: "A mushroom.",
+            f: "mushroom_4",
+          },
+          {
+            n: "Forest",
+            d: "A forest.",
+            f: "forest",
+          },
+          {
+            n: "Frog #1",
+            d: "*ribbit*",
+            f: "frog_1",
+          },
+          {
+            n: "Frog #2",
+            d: "*ribbit*",
+            f: "frog_derpy",
+          },
+          {
+            n: "Frog #3",
+            d: "*ribbit*",
+            f: "frog_3",
+          },
+          {
+            n: "Frog #4",
+            d: "*ribbit*",
+            f: "frog_angry",
+          },
+          {
+            n: "Lazy Cat #1",
+            d: "A lazy cat.",
+            f: "cat_1",
+          },
+          {
+            n: "Lazy Cat #2",
+            d: "A lazy cat.",
+            f: "cat_2",
+          },
+          {
+            n: "Lazy Cat #3",
+            d: "A lazy cat.",
+            f: "cat_3",
+          },
+          {
+            n: "Lazy Cat #4",
+            d: "A lazy cat.",
+            f: "cat_4",
+          },
+          {
+            n: "Dogs #1",
+            d: "Happy dogs.",
+            f: "dog_1",
+          },
+          {
+            n: "Dogs #2",
+            d: "Happy dogs.",
+            f: "dog_2",
+          },
+          {
+            n: "Dogs #3",
+            d: "Happy dogs.",
+            f: "dog_3",
+          },
+        ],
+      },
+      {
+        n: "Snowsgiving",
+        d: "❆ Happy Snowsgiving! ❆",
+        b: {
+          i: "snowsgiving",
+          t: "snowsgiving.svg",
+          h: 46,
+        },
+        badge: "WINTER 2022",
+        i: [
+          {
+            n: "Green Blanket",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "blanket_green",
+          },
+          {
+            n: "Orange Blanket",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "blanket_orange",
+          },
+          {
+            n: "Pink Blanket",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "blanket_pink",
+          },
+          {
+            n: "Purple Blanket",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "blanket_purple",
+          },
+          {
+            n: "White Box",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "box_white_blue",
+          },
+          {
+            n: "Blue Box",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "box_blue_yellow",
+          },
+          {
+            n: "Green Box",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "box_green_red",
+          },
+          {
+            n: "Red Box",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "box_red_white",
+          },
+          {
+            n: "Red White Box",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "box_red_white_blue",
+          },
+          {
+            n: "Festive Confetti",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "confetti_festive",
+          },
+          {
+            n: "Fire Confetti",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "confetti_fire",
+          },
+          {
+            n: "Ice Confetti",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "confetti_ice",
+          },
+          {
+            n: "Mint Confetti",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "confetti_mint",
+          },
+          {
+            n: "Star Confetti",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "confetti_star",
+          },
+          {
+            n: "Vaporwave Confetti",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "confetti_vaporwave",
+          },
+          {
+            n: "Icecube",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "ice_cube",
+          },
+          {
+            n: "Gleaming Icicle",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "icicle_gleaming",
+          },
+          {
+            n: "Snowing Icicle",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "icicle_snowing",
+          },
+          {
+            n: "Blue Teacup",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "teacup_blue",
+          },
+          {
+            n: "Orange Teacup",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "teacup_orange",
+          },
+          {
+            n: "Pink Teacup",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "teacup_pink",
+          },
+          {
+            n: "Red Teacup",
+            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
+            f: "teacup_red",
+          },
+        ],
+      },,
+{
         n: "Borderlands 4",
         d: "",
         b: {
@@ -3328,921 +4237,6 @@ export const decorationsData = [
             n: "Smoke",
             d: "Now you see me, now you don't",
             f: "green_smoke",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Other",
-    icon: "lootbox",
-    data: [
-      {
-        n: "Halloween '25",
-        d: "Limited time decorations from Halloween 2025.",
-        b: {
-          i: [],
-          bg: "linear-gradient(90deg, #cd7e4e 0%, #eabd83 100%)",
-        },
-        badge: "OCTOBER 2025",
-        i: [
-          {
-            n: "Trick Pumpkin",
-            d: "A spooky pumpkin with a trick in hand.",
-            f: "trick_pumpkin",
-          },
-          {
-            n: "Treat Pumpkin",
-            d: "A spooky pumpkin with a treat in hand.",
-            f: "treat_pumpkin",
-          },
-          {
-            n: "Trick Spider",
-            d: "A spooky spider with a trick in hand.",
-            f: "trick_spider",
-          },
-          {
-            n: "Treat Spider",
-            d: "A spooky spider with a treat in hand.",
-            f: "treat_spider",
-          },
-          {
-            n: "Trick Skull",
-            d: "A spooky skull with a trick in hand.",
-            f: "trick_skull",
-          },
-          {
-            n: "Treat Skull",
-            d: "A spooky skull with a treat in hand.",
-            f: "treat_skull",
-          },
-          {
-            n: "Trick Ghost",
-            d: "A spooky ghost with a trick in hand.",
-            f: "trick_ghost",
-          },
-          {
-            n: "Treat Ghost",
-            d: "A spooky ghost with a treat in hand.",
-            f: "treat_ghost",
-          },
-        ],
-      },
-      {
-        n: "Nitro",
-        d: "Decorations only available through Nitro purchases.",
-        b: {
-          i: [
-            {
-              url: "string_lights",
-              align: "top left",
-              height: "160%",
-              transform: "scaleX(-1) translateY(-20%)",
-            },
-            {
-              url: "hearts",
-              align: "top right",
-              height: "150%",
-              transform: "translateY(-5%)",
-            },
-          ],
-          bg: "linear-gradient(90deg, #8547c6 0%, #b845c1 50%, #ab5d8a 100%)",
-        },
-        i: [
-          {
-            n: "Jet Ring",
-            d: "Surround your avatar with a pulse of Nitro energy.",
-            f: "jet_ring",
-          },
-          {
-            n: "Freshly Picked",
-            d: "Now where's my blender? Given to Nitro gifters in June 2025.",
-            f: "freshly_picked",
-          },
-          {
-            n: "Shower Stroll",
-            d: "Chasing rainbows after the storm. Given to new Nitro subscribers in Spring 2025.",
-            f: "shower_stroll",
-          },
-          {
-            n: "Hoppy Day",
-            d: "Brb, out frolicking. Given to new Nitro subscribers in Spring 2025.",
-            f: "hoppy_day",
-          },
-          {
-            n: "Afternoon Breeze",
-            d: "A calm rest in the meadow. Given to new Nitro subscribers in Spring 2025.",
-            f: "afternoon_breeze",
-          },
-          {
-            n: "Heart-to-Heart",
-            d: "Feel the love all around. Given to Nitro gifters in February 2025.",
-            f: "heart_to_heart",
-          },
-          {
-            n: "Snowfall",
-            d: "From chill to chilly. Given to Nitro gifters in December 2024.",
-            f: "snowfall",
-          },
-          {
-            n: "Holiday Cat Ears",
-            d: "o<≽^ᴖ ωᴖ^≼ Given to Nitro gifters in December 2024.",
-            f: "santa_cat_ears",
-          },
-          {
-            n: "2025 Balloons",
-            d: "Cheers to 2025!! Given to Nitro gifters in December 2024.",
-            f: "new_year_2025",
-          },
-          {
-            n: "Minions",
-            d: "Name a more iconic duo. Given to Nitro gifters in October 2024.",
-            f: "minions",
-          },
-          {
-            n: "Gyoiko Sakura",
-            d: "A rare blossom only seen by a fortunate few. Given to new Nitro subscribers between April 24, 2024 and May 1, 2024.",
-            f: "sakura_gyoiko",
-          },
-        ],
-      },
-      {
-        n: "Quests",
-        d: "Miscellaneous decorations and quest rewards.",
-        b: {
-          i: [
-            {
-              url: "lootbox.svg",
-              align: "left",
-            },
-            {
-              url: "sakura.svg",
-              align: "right",
-              height: "100%",
-              opacity: "0.9",
-            },
-          ],
-          bg: "linear-gradient(90deg, #3441d9 0%, #9a44f7 100%)",
-        },
-        i: [
-          {
-            n: "Angela Avatar",
-            d: "Exclusive to Marvel Rivals S4.0 Quest for a limited time. Available to use until November 19, 2025.",
-            f: "angela_avatar",
-          },
-          {
-            n: "Echo 4",
-            d: "Exclusive to Borderlands 4 Launch Quest for a limited time. Available to use until November 18, 2025.",
-            f: "echo_4",
-          },
-          {
-            n: "NBA 2K26",
-            d: "Exclusive to NBA 2K26 Quest for a limited time. Available to use until November 4, 2025.",
-            f: "nba_2k26",
-          },
-          {
-            n: "The Conjuring: Last Rites",
-            d: "Exclusive to The Conjuring Quest for a limited time. Available to use until November 7, 2025.",
-            f: "the_conjuring_last_rites",
-          },
-          {
-            n: "Eye of Prophesy",
-            d: "Exclusive to Path of Exile 2 Quests Quest for a limited time. Available to use until November 4, 2025.",
-            f: "eye_of_prophesy",
-          },
-          {
-            n: "inZOI Psycat",
-            d: "Exclusive to inZOI Update Quest Quest for a limited time. Available to use until October 25, 2025.",
-            f: "inzoi_psycat",
-          },
-          {
-            n: "ESPN",
-            d: "Exclusive to ESPN Mobile Quest for a limited time. Available to use until October 25, 2025.",
-            f: "espn",
-          },
-          {
-            n: "Cow Glider",
-            d: "Exclusive to The Milk Cup Quest 2 Quest for a limited time. Available to use until October 20, 2025.",
-            f: "cow_glider",
-          },
-          {
-            n: "Wendy’s x Wednesday",
-            d: "Exclusive to View If You Dare Quest for a limited time. Available to use until October 30, 2025.",
-            f: "wendys_x_wednesday",
-          },
-          {
-            n: "BF Soldier Helmet",
-            d: "Exclusive to BF6 Open Beta Quest for a limited time. Available to use until October 16, 2025.",
-            f: "bf_soldier_helmet",
-          },
-          {
-            n: "Bing Bong",
-            d: "Exclusive to PEAK Quest for a limited time. Available to use until October 16, 2025.",
-            f: "bing_bong",
-          },
-          {
-            n: "Hank Hill",
-            d: "Exclusive to King of the Hill Quest for a limited time. Available to use until October 4, 2025.",
-            f: "hank_hill",
-          },
-          {
-            n: "The Entity",
-            d: "Exclusive to Dead by Daylight x TWD Quest for a limited time. Available to use until October 4, 2025.",
-            f: "the_entity",
-          },
-          {
-            n: "Descendant",
-            d: "Exclusive to The First Descendant Quest for a limited time. Available to use until October 13, 2025.",
-            f: "descendant",
-          },
-          {
-            n: "Sweet Tooth",
-            d: "Exclusive to Twisted Metal S2 Quest for a limited time. Available to use until October 6, 2025.",
-            f: "sweet_tooth",
-          },
-          {
-            n: "Chomp Chomp",
-            d: "Exclusive to SUPERVIVE 1.0 Quest for a limited time. Available to use until October 9, 2025.",
-            f: "chomp_chomp",
-          },
-          {
-            n: "Call of Duty: Mobile",
-            d: "Exclusive to CALL OF DUTY: MOBILE Quest for a limited time. Available to use until September 25, 2025.",
-            f: "call_of_duty_mobile",
-          },
-          {
-            n: "Phoenix",
-            d: "Jean Grey with her fiery Phoenix form. Available to use until September 16, 2025.",
-            f: "jean_grey_phoenix",
-          },
-          {
-            n: "THPS Half Pipe",
-            d: "Exclusive to the THPS 3+4 Quest for a limited time. Available to use until September 22, 2025.",
-            f: "thps_half_pipe",
-          },
-          {
-            n: "Mecha BREAK",
-            d: "Exclusive to the Mecha BREAK Quest for a limited time. Available to use until September 14, 2025.",
-            f: "mecha_break",
-          },
-          {
-            n: "Moomoo Hood",
-            d: "Exclusive to the Milk Cup Quest for a limited time. Available to use until September 10, 2025.",
-            f: "moomoo_hood",
-          },
-          {
-            n: "VALORANT Summer Kickoff",
-            d: "Exclusive to the VALORANT Summer Kickoff Quest for a limited time. Available to use until August 29, 2025.",
-            f: "valorant_summer_kickoff",
-          },
-          {
-            n: "Palia",
-            d: "Exclusive to the Palia Play Quest for a limited time. Available to use until August 29, 2025.",
-            f: "palia",
-          },
-          {
-            n: "SuperCell",
-            d: "Exclusive to the SuperCell Quest for a limited time. Available to use until August 28, 2025.",
-            f: "supercell",
-          },
-          {
-            n: "I Love R.E.P.O.",
-            d: "Exclusive to the R.E.P.O. Quest for a limited time. Available to use until August 23, 2025.",
-            f: "i_love_repo",
-          },
-          {
-            n: "LEGO® Fortnite",
-            d: "Exclusive to the LEGO® Fortnite Quest for a limited time. Available to use until August 21, 2025.",
-            f: "lego_fortnite",
-          },
-          {
-            n: "M3GAN 2.0",
-            d: "Exclusive to the M3GAN 2.0 Quest for a limited time. Available to use until August 21, 2025.",
-            f: "m3gan_2_0",
-          },
-          {
-            n: "28 Years Later",
-            d: "Exclusive to the 28 Years Later Quest for a limited time. Available to use until August 21, 2025.",
-            f: "28_years_later",
-          },
-          {
-            n: "R6 Siege X Avatar",
-            d: "Exclusive to the R6 Siege X Avatar Quest for a limited time. Available to use until August 18, 2025.",
-            f: "r6_siege_x_avatar",
-          },
-          {
-            n: "Towerborne Play",
-            d: "Exclusive to the Towerborne Play Quest for a limited time. Available to use until August 17, 2025.",
-            f: "towerborne_play",
-          },
-          {
-            n: "Starlight Revolver",
-            d: "Exclusive to the Starlight Revolver Quest for a limited time. Available to use until August 14, 2025.",
-            f: "starlight_revolver",
-          },
-          {
-            n: "How to Train Your Dragon",
-            d: "Exclusive to the How to Train Your Dragon Quest for a limited time. Available to use until August 12, 2025.",
-            f: "how_to_train_your_dragon",
-          },
-          {
-            n: "Marvel Snap Venom",
-            d: "Exclusive to the Symbiote Spider-Man Quest for a limited time. Available to use until August 8, 2025.",
-            f: "marvel_snap_venom",
-          },
-          {
-            n: "Ballerina",
-            d: "Exclusive to the Ballerina Trailer Quest for a limited time. Available to use until August 6, 2025.",
-            f: "ballerina",
-          },
-          {
-            n: "Ultron",
-            d: "Exclusive to the Marvel Rivals S2.5 Quest for a limited time. Available to use until August 5, 2025.",
-            f: "ultron",
-          },
-          {
-            n: "Open Beta",
-            d: "Exclusive to the Open Beta Quest for a limited time. Available to use until July 24, 2025.",
-            f: "open_beta",
-          },
-          {
-            n: "Jurassic World Rebirth Trailer",
-            d: "Exclusive to Jurassic World Rebirth Trailer Quest for a limited time. Available to use until July 25, 2025.",
-            f: "jurassic_world_rebirth",
-          },
-          {
-            n: "Mission: Impossible",
-            d: "Exclusive to Mission: Impossible Quest for a limited time. Available to use until July 24, 2025.",
-            f: "mission_impossible",
-          },
-          {
-            n: "The Bad Guys 2 Trailer",
-            d: "Exclusive to the Bad Guys 2 Trailer Quest for a limited time. Available to use until July 20, 2025.",
-            f: "bad_guys_2",
-          },
-          {
-            n: "Fortnite Galactic Battle",
-            d: "Exclusive to the Fortnite Galactic Battle Quest for a limited time. Available to use until July 13, 2025.",
-            f: "fortnite_galactic_battle",
-          },
-          {
-            n: "Shield Saw",
-            d: "Exclusive to the Doom Quest for a limited time. Available to use until July 11, 2025.",
-            f: "shield_saw",
-          },
-          {
-            n: "Friend of Dex",
-            d: "Exclusive to the Fragpunk Season 1 Chapter 2 Quest for a limited time. Available to use until July 5, 2025.",
-            f: "friend_of_dex",
-          },
-          {
-            n: "Hackclaw",
-            d: "Exclusive to the Delta Force Quest for a limited time. Available to use until June 27, 2025.",
-            f: "hackclaw",
-          },
-          {
-            n: "Slurp Barrel",
-            d: "Exclusive to the Fortnite Reload Quest for a limited time. Available to use until June 20, 2025.",
-            f: "slurp_barrel",
-          },
-          {
-            n: "Signal from Tau Ceti",
-            d: "Exclusive to the Marathon Reveal Quest for a limited time. Available to use until June 20, 2025.",
-            f: "signal_from_tau_ceti",
-          },
-          {
-            n: "Emma Frost",
-            d: "Exclusive to the Marvel Rivals S2 Quest for a limited time. Available to use until June 18, 2025.",
-            f: "emma_frost",
-          },
-          {
-            n: "Face of Corruption",
-            d: "Exclusive to the Path of Exile 2 Quest for a limited time. Available to use until June 17, 2025.",
-            f: "face_of_corruption",
-          },
-          {
-            n: "Clicker",
-            d: "Exclusive to The Last of Us Season 2 Quest for a limited time. Available to use until June 13, 2025.",
-            f: "clicker",
-          },
-          {
-            n: "Touch Grass",
-            d: "It’s time to touch some reality. Exclusive to April Fools 2025 for a limited time.",
-            f: "touch_grass",
-          },
-          {
-            n: "Supply Llama",
-            d: "Exclusive to the Fortnite Quest for a limited time. Available to use until May 31, 2025.",
-            f: "supply_llama",
-          },
-          {
-            n: "Gallica",
-            d: "Exclusive to Metaphor Rank Up Quest for a limited time. Available to use until May 18, 2025.",
-            f: "gallica",
-          },
-          {
-            n: "Khazan",
-            d: "Exclusive to the Kazan Quest for a limited time. Available to use until May 17, 2025.",
-            f: "khazan",
-          },
-          {
-            n: "Split",
-            d: "Exclusive to the Split Fiction Quest for a limited time. Available to use until May 12, 2025.",
-            f: "split",
-          },
-          {
-            n: "Pathojen",
-            d: "Exclusive to the FragPunk Launch Quest for a limited time. Available to use until May 13, 2025.",
-            f: "pathojen",
-          },
-          {
-            n: "Big Dill Chain",
-            d: "Exclusive to the Fortnite Quest for a limited time. Available to use until April 29, 2025.",
-            f: "big_dill_chain",
-          },
-          {
-            n: "Exoborne",
-            d: "Exclusive to the Exoborne Wishlist Quest for a limited time. Available to use until April 18, 2025.",
-            f: "exoborne",
-          },
-          {
-            n: "Scout",
-            d: "Exclusive to the Sid Meier's Civilization VII Quest for a limited time. Available to use until April 26, 2025.",
-            f: "scout",
-          },
-          {
-            n: "Fortnite Boogie Bomb",
-            d: "Exclusive to the Fortnite OG S2 Quest for a limited time. Available to use until April 5, 2025.",
-            f: "fortnite_boogie_bomb",
-          },
-          {
-            n: "Fuchsia Agent",
-            d: "Exclusive to the Strinova Fuchsia Quest for a limited time. Available to use until March 24, 2025.",
-            f: "fuchsia_agent",
-          },
-          {
-            n: "Jeff the Land Shark",
-            d: "Exclusive to the Marvel Rivals Quest for a limited time. Available to use until March 16, 2025.",
-            f: "jeff_the_land_shark",
-          },
-          {
-            n: "WINGMAN'S GOT IT",
-            d: "Exclusive to the VALORANT GO GET EM WINGS Quest for a limited time. Available to use until March 12, 2025.",
-            f: "wingmans_got_it",
-          },
-          {
-            n: "Rec Room Lightning",
-            d: "Exclusive to the Rec Room Quest for a limited time. Available until to use March 1, 2025.",
-            f: "rec_room_lightning",
-          },
-          {
-            n: "Shadow",
-            d: "Exclusive to The Sonic 3 Quest for a limited time. Available until to use February 21, 2025.",
-            f: "shadow",
-          },
-          {
-            n: "TGA Controller",
-            d: "Exclusive to The Game Awards Quest for a limited time. Available until to use February 14, 2025.",
-            f: "tga_controller",
-          },
-          {
-            n: "Shield Potion",
-            d: "Exclusive to the Fortnite Ballistic Quest for a limited time. Available until to use February 16, 2025.",
-            f: "shield_potion",
-          },
-          {
-            n: "Bush Camper",
-            d: "Exclusive to the Fortnite OG Quest for a limited time. Available until to use February 11, 2025.",
-            f: "bush_camper",
-          },
-          {
-            n: "Rift Butterfly",
-            d: "The Rift Butterfly is a type of sentient Rift that is shaped like a butterfly. This reward is exclusive to the Fortnite Quest. Available until to use February 5, 2025.",
-            f: "rift_butterfly",
-          },
-          {
-            n: "Batarang",
-            d: "The Batarang is Batman’s legendary throwing weapon, blending precision and versatility to instill fear in his enemies. This reward is exclusive to the Become the Knight Quest. Available until to use February 8, 2025.",
-            f: "batarang",
-          },
-          {
-            n: "Wallach IX Spaceport",
-            d: "The Wallach IX Spaceport is a dynamic port for space travel on the planet Wallach IX. This reward is exclusive to the Dune: Prophecy Quest. Available until to use January 25, 2025.",
-            f: "wallach_spaceport",
-          },
-          {
-            n: "Wolf Morph",
-            d: "Your Morph can take on many unique forms and help you move throughout the world in THRONE AND LIBERTY. Available until to use November 30, 2024.",
-            f: "wolf_morph",
-          },
-          {
-            n: "Street Fighter 6 Battle Field",
-            d: "Avatar Decoration for the Award winning Street Fighter 6. Exclusive to Street Fighter 6 Quest for a limited time. Available until to use November 29, 2024.",
-            f: "street_fighter_6_battle_field",
-          },
-          {
-            n: "Torgal Puppy",
-            d: "Torgal the puppy is here to keep you company! This reward is exclusive to the FFXVI Quest. Available until to use November 23, 2024.",
-            f: "torgal_puppy",
-          },
-          {
-            n: "Bunny",
-            d: "Worn by Albion's speedster, Bunny, in The First Descendant. Available until to use November 12, 2024.",
-            f: "bunny",
-          },
-          {
-            n: "Hailey",
-            d: "Worn by the legendary sniper in The First Descendant. Available until to use November 6, 2024.",
-            f: "hailey",
-          },
-          {
-            n: "Los Santos",
-            d: "Get to the chopper! Los Santos sky-high pursuit! Available to use until October 14, 2024.",
-            f: "los_santos",
-          },
-          {
-            n: "Wingman Boba",
-            d: "Your trusty VALORANT buddy, with a refreshing bubbly twist. Available to use until October 6, 2024.",
-            f: "wingman_boba",
-          },
-          {
-            n: "Freezer Bunny Lovebug",
-            d: "A Sim's coolest companion! Available to use until September 30, 2024.",
-            f: "freezer_bunny_lovebug",
-          },
-          {
-            n: "Fortnite Victory Crown",
-            d: "A sparkly crown! Available to use until September 3, 2024.",
-            f: "victory_crown",
-          },
-          {
-            n: "Warp Helmet",
-            d: "Traveling at the speed of light. Available to use until September 9, 2024.",
-            f: "warp_helmet",
-          },
-          {
-            n: "Mokoko",
-            d: "An affectionate Mokoko wants to give you plenty of hugs! Exclusive to Mokoko Quest 2024 for a limited time.",
-            f: "mokoko",
-          },
-          {
-            n: "I'm a Clown",
-            d: "I opened a bunch of Loot Boxes and all I got was this stupid clown decoration. Exclusive to April Fools 2024 for a limited time.",
-            f: "im_a_clown",
-          },
-        ],
-      },
-      {
-        n: "Orbs Exclusive",
-        d: "",
-        b: {
-          i: "orbs_exclusive",
-        },
-        i: [
-          {
-            n: "Pondering Portal",
-            d: "Dazzling thoughts create neon sparks.",
-            f: "pondering_portal",
-          },
-        ],
-      },
-      {
-        n: "Discord 8th Birthday",
-        d: "",
-        b: {
-          i: [],
-          bg: "linear-gradient(90deg, #000 0%, #100625 100%)",
-        },
-        badge: "JUNE 2023",
-        i: [
-          {
-            n: "Blue Headset",
-            d: "Everything sounds better with these on.",
-            f: "disxcore_headset",
-          },
-          {
-            n: "Pink Headset",
-            d: "Everything sounds better with these on.",
-            f: "pink_headset",
-          },
-          {
-            n: "Green Headset",
-            d: "Everything sounds better with these on.",
-            f: "green_headset",
-          },
-          {
-            n: "Blue Futuristic UI",
-            d: "BEEP BOOP",
-            f: "blue_futuristic_ui",
-          },
-          {
-            n: "Pink Futuristic UI",
-            d: "BEEP BOOP",
-            f: "pink_futuristic_ui",
-          },
-          {
-            n: "Green Futuristic UI",
-            d: "BEEP BOOP",
-            f: "green_futuristic_ui",
-          },
-          {
-            n: "Blue Smoke",
-            d: "Now you see me, now you don't",
-            f: "blue_smoke",
-          },
-          {
-            n: "Pink Smoke",
-            d: "Now you see me, now you don't",
-            f: "pink_smoke",
-          },
-          {
-            n: "Green Smoke",
-            d: "Now you see me, now you don't",
-            f: "green_smoke",
-          },
-          {
-            n: "Blue Gyroscope",
-            d: "Keeping your avatar stable while stylish.",
-            f: "blue_gyroscope",
-          },
-          {
-            n: "Pink Gyroscope",
-            d: "Keeping your avatar stable while stylish.",
-            f: "pink_gyroscope",
-          },
-          {
-            n: "Green Gyroscope",
-            d: "Keeping your avatar stable while stylish.",
-            f: "green_gyroscope",
-          },
-          {
-            n: "Blue Shine Helmet",
-            d: "Always wear your helmet.",
-            f: "blue_shine_helmet",
-          },
-          {
-            n: "Pink Shine Helmet",
-            d: "Always wear your helmet.",
-            f: "pink_shine_helmet",
-          },
-          {
-            n: "Green Shine Helmet",
-            d: "Always wear your helmet.",
-            f: "green_shine_helmet",
-          },
-          {
-            n: "Blue Hyper Helmet",
-            d: "Always wear your helmet.",
-            f: "blue_hyper_helmet",
-          },
-          {
-            n: "Pink Hyper Helmet",
-            d: "Always wear your helmet.",
-            f: "pink_hyper_helmet",
-          },
-          {
-            n: "Green Hyper Helmet",
-            d: "Always wear your helmet.",
-            f: "green_hyper_helmet",
-          },
-          {
-            n: "Saw",
-            d: "Here to make your avatar more stylish... and dangerous!",
-            f: "saw",
-          },
-        ],
-      },
-      {
-        n: "Spring '23",
-        d: "Limited time decoration from Spring 2023",
-        darkText: true,
-        b: {
-          i: [],
-          bg: "linear-gradient(90deg, #d1dd93 0%, #f0edaa 100%)",
-        },
-        badge: "APRIL 2023",
-        i: [
-          {
-            n: "Sakura",
-            d: "Close your eyes and breathe.",
-            f: "sakura",
-          },
-          {
-            n: "Pink Sakura",
-            d: "Close your eyes and breathe.",
-            f: "sakura_pink",
-          },
-          {
-            n: "Ukon Sakura",
-            d: "Close your eyes and breathe.",
-            f: "sakura_ukon",
-          },
-          {
-            n: "Gyoiko Sakura",
-            d: "Close your eyes and breathe.",
-            f: "sakura_gyoiko",
-          },
-          {
-            n: "Mushroom #1",
-            d: "A mushroom.",
-            f: "mushroom_1",
-          },
-          {
-            n: "Mushroom #2",
-            d: "A mushroom.",
-            f: "mushroom_2",
-          },
-          {
-            n: "Mushroom #3",
-            d: "A mushroom.",
-            f: "mushroom_3",
-          },
-          {
-            n: "Mushroom #4",
-            d: "A mushroom.",
-            f: "mushroom_4",
-          },
-          {
-            n: "Forest",
-            d: "A forest.",
-            f: "forest",
-          },
-          {
-            n: "Frog #1",
-            d: "*ribbit*",
-            f: "frog_1",
-          },
-          {
-            n: "Frog #2",
-            d: "*ribbit*",
-            f: "frog_derpy",
-          },
-          {
-            n: "Frog #3",
-            d: "*ribbit*",
-            f: "frog_3",
-          },
-          {
-            n: "Frog #4",
-            d: "*ribbit*",
-            f: "frog_angry",
-          },
-          {
-            n: "Lazy Cat #1",
-            d: "A lazy cat.",
-            f: "cat_1",
-          },
-          {
-            n: "Lazy Cat #2",
-            d: "A lazy cat.",
-            f: "cat_2",
-          },
-          {
-            n: "Lazy Cat #3",
-            d: "A lazy cat.",
-            f: "cat_3",
-          },
-          {
-            n: "Lazy Cat #4",
-            d: "A lazy cat.",
-            f: "cat_4",
-          },
-          {
-            n: "Dogs #1",
-            d: "Happy dogs.",
-            f: "dog_1",
-          },
-          {
-            n: "Dogs #2",
-            d: "Happy dogs.",
-            f: "dog_2",
-          },
-          {
-            n: "Dogs #3",
-            d: "Happy dogs.",
-            f: "dog_3",
-          },
-        ],
-      },
-      {
-        n: "Snowsgiving",
-        d: "❆ Happy Snowsgiving! ❆",
-        b: {
-          i: "snowsgiving",
-          t: "snowsgiving.svg",
-          h: 46,
-        },
-        badge: "WINTER 2022",
-        i: [
-          {
-            n: "Green Blanket",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "blanket_green",
-          },
-          {
-            n: "Orange Blanket",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "blanket_orange",
-          },
-          {
-            n: "Pink Blanket",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "blanket_pink",
-          },
-          {
-            n: "Purple Blanket",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "blanket_purple",
-          },
-          {
-            n: "White Box",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "box_white_blue",
-          },
-          {
-            n: "Blue Box",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "box_blue_yellow",
-          },
-          {
-            n: "Green Box",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "box_green_red",
-          },
-          {
-            n: "Red Box",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "box_red_white",
-          },
-          {
-            n: "Red White Box",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "box_red_white_blue",
-          },
-          {
-            n: "Festive Confetti",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "confetti_festive",
-          },
-          {
-            n: "Fire Confetti",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "confetti_fire",
-          },
-          {
-            n: "Ice Confetti",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "confetti_ice",
-          },
-          {
-            n: "Mint Confetti",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "confetti_mint",
-          },
-          {
-            n: "Star Confetti",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "confetti_star",
-          },
-          {
-            n: "Vaporwave Confetti",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "confetti_vaporwave",
-          },
-          {
-            n: "Icecube",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "ice_cube",
-          },
-          {
-            n: "Gleaming Icicle",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "icicle_gleaming",
-          },
-          {
-            n: "Snowing Icicle",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "icicle_snowing",
-          },
-          {
-            n: "Blue Teacup",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "teacup_blue",
-          },
-          {
-            n: "Orange Teacup",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "teacup_orange",
-          },
-          {
-            n: "Pink Teacup",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "teacup_pink",
-          },
-          {
-            n: "Red Teacup",
-            d: "Limited time decoration from December 2022. Given to all nitro subscribers.",
-            f: "teacup_red",
           },
         ],
       },
