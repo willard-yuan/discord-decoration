@@ -37,6 +37,8 @@ import Navbar from "@/components/Navbar.jsx";
 import Hero from "@/components/Hero.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
+import HowToCreate from "@/components/HowToCreate.jsx";
+import Testimonials from "@/components/Testimonials.jsx";
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -632,19 +634,6 @@ const App = ({ ensureLoaded }) => {
           <ExtraLinks />
         </div>
       </main>
-      {/* 自然模糊渐变过渡区域 */}
-      <div className="relative w-full h-32 overflow-hidden">
-        {/* 从main区域的背景色渐变到footer区域 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-surface-overlay via-surface-overlay/50 to-transparent"></div>
-        {/* 模糊效果层 */}
-        <div className="absolute inset-0 backdrop-blur-sm bg-gradient-to-b from-transparent via-primary/5 to-purple-500/10"></div>
-        {/* 动态光效 */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-8 right-1/3 w-24 h-24 bg-purple-400/15 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
-          <div className="absolute bottom-4 left-1/2 w-28 h-28 bg-pink-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-        </div>
-      </div>
       <Modal
         title={"Save Decorated Avatar"}
         subtitle={
@@ -732,6 +721,8 @@ const App = ({ ensureLoaded }) => {
           };
         }}
       />
+      <HowToCreate />
+      <Testimonials />
       <Footer />
     </CurrentData.Provider>
   );

@@ -27,7 +27,28 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher overflow-hidden">
+      {/* 顶部渐变过渡区域 - 连接Testimonials */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-surface-overlay via-surface-overlay/95 via-surface-overlay/80 via-surface-overlay/60 to-transparent z-[1]" />
+      
+      {/* 额外的平滑过渡层 */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface-overlay/98 via-surface-overlay/70 to-transparent z-[2]" />
+      
+      {/* 顶部动态光效 - 增强过渡效果 */}
+      <div className="absolute top-0 left-0 right-0 h-40 z-[0] opacity-25">
+        <div className="absolute top-0 left-1/4 w-40 h-40 bg-primary/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute top-8 right-1/3 w-32 h-32 bg-purple-400/12 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '9s', animationDelay: '1.5s' }} />
+        <div className="absolute top-4 left-1/2 w-36 h-36 bg-pink-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '3s' }} />
+        <div className="absolute top-12 right-1/4 w-28 h-28 bg-blue-400/8 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '11s', animationDelay: '1s' }} />
+      </div>
+
+      {/* 背景动画元素 */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-pink-400/25 rounded-full blur-xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+      </div>
+
       {/* Background with matching Hero gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-surface-high via-surface-higher to-surface-overlay">
         <div className="absolute inset-0 bg-gradient-to-t from-surface-overlay/80 via-surface-high/40 to-transparent" />

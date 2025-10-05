@@ -14,18 +14,24 @@
     "@giscus/react": "^3.1.0",
     "@jsquash/webp": "1.5.0-animated-webp-support-beta.2",
     "@tailwindcss/vite": "^4.1.13",
+    "framer-motion": "^12.23.22",
     "gifski-wasm": "^2.2.0",
     "preact": "^10.27.1",
     "preact-iso": "^2.10.0",
     "preact-render-to-string": "^6.6.1",
+    "react-icons": "^5.5.0",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",
     "browserslist": "^4.25.4",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
     "lightningcss": "^1.30.1",
     "terser": "^5.44.0",
-    "vite": "^7.1.4"
+    "vite": "^7.1.4",
+    "vite-plugin-imagemin": "^0.6.1"
   },
   "packageManager": "yarn@4.9.2"
 }

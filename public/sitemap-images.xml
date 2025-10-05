@@ -60,6 +60,19 @@
     </image:image>
   </url>
 
+  <!-- Changelog page -->
+  <url>
+    <loc>https://discord-decoration.art/changelog</loc>
+    <lastmod>2025-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://discord-decoration.art/banner.svg</image:loc>
+      <image:caption>Discord Decoration Art Banner - Featured in changelog page</image:caption>
+      <image:title>Discord Decoration Art Logo</image:title>
+    </image:image>
+  </url>
+
   <!-- Avatar decoration page with all decorations -->
   <url>
     <loc>https://discord-decoration.art/discord_avatar_decoration</loc>

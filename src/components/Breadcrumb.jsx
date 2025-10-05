@@ -29,6 +29,8 @@ const Breadcrumb = () => {
       items.push({ name: 'Terms of Service', path: '/terms-of-service/', keywords: 'terms of service legal conditions' });
     } else if (pathname.includes('/privacy-policy')) {
       items.push({ name: 'Privacy Policy', path: '/privacy-policy/', keywords: 'privacy policy data protection' });
+    } else if (pathname.includes('/changelog')) {
+      items.push({ name: 'Changelog', path: '/changelog/', keywords: 'changelog version history updates' });
     }
     
     return items;

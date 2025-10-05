@@ -18,6 +18,7 @@ import PrivacyPolicy from "@/pages/privacy-policy/page.jsx";
 import DiscordAvatar from "@/pages/discord_avatar/page.jsx";
 import DiscordAvatarDecoration from "@/pages/discord_avatar_decoration/page.jsx";
 import DiscordFonts from "@/pages/discord_front/page.jsx";
+import Changelog from "@/pages/changelog/page.jsx";
 import { NotFound } from "@/pages/_404.jsx";
 
 import "@/global.css";
@@ -41,6 +42,7 @@ export function App() {
           <Route path="/discord_avatar" component={DiscordAvatar} />
           <Route path="/discord_avatar_decoration" component={DiscordAvatarDecoration} />
           <Route path="/discord_front" component={DiscordFonts} />
+          <Route path="/changelog" component={Changelog} />
           <Route default component={NotFound} />
         </Router>
         <FontPreloader />
