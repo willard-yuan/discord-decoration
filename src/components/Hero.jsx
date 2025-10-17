@@ -54,7 +54,7 @@ const Hero = () => {
                 Discord Decoration
               </span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mt-2">
-                Free Avatar Decorations
+                Free Avatar Decorations for Discord
               </span>
             </h1>
           </div>

@@ -73,6 +73,50 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.1",
+      date: "October 17th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "📄 New Pages",
+          items: [
+            "Added comprehensive About Us page with company information and mission statement",
+            "Created detailed Cookies Policy page with complete cookie usage information",
+            "Implemented Contact Support page with multiple support channels and response times",
+            "All new pages feature consistent design language and SEO optimization"
+          ]
+        },
+        {
+          category: "🎨 Footer Enhancement",
+          items: [
+            "Reorganized footer layout from 3-column to 4-column grid for better balance",
+            "Created new 'About Us' section in footer alongside existing sections",
+            "Moved 'About Us' and 'Contact Support' links from 'Legal' to new 'About Us' section",
+            "Improved footer visual hierarchy and link organization",
+            "Enhanced responsive design for better mobile experience"
+          ]
+        },
+        {
+          category: "🔗 Navigation & Routing",
+          items: [
+            "Added proper routing configuration for all new pages",
+            "Updated prerender routes to include new pages for better SEO",
+            "Fixed 404 errors for newly created pages",
+            "Ensured all footer links are properly functional"
+          ]
+        },
+        {
+          category: "🎯 User Experience",
+          items: [
+            "Improved site navigation with clear legal and support information",
+            "Enhanced transparency with detailed cookies and privacy information",
+            "Streamlined support process with dedicated contact page",
+            "Better organized footer sections for easier information discovery"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.0",
       date: "October 5th, 2025",
       type: "major",

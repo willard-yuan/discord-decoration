@@ -17,6 +17,11 @@ const Footer = () => {
     Legal: [
       { name: "Terms of Service", href: "/terms-of-service", description: "Terms and conditions of use" },
       { name: "Privacy Policy", href: "/privacy-policy", description: "Privacy policy and data protection" },
+      { name: "Cookies Policy", href: "/cookies-policy", description: "How we use cookies and tracking" },
+    ],
+    "About Us": [
+      { name: "About Us", href: "/about-us", description: "Learn about Discord Decoration's story" },
+      { name: "Contact Support", href: "/contact-support", description: "Get help and support" },
     ],
   };
 
@@ -86,7 +91,7 @@ const Footer = () => {
         </div>
 
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-12">
           {/* Discord Tools */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
@@ -153,6 +158,31 @@ const Footer = () => {
                     title={item.description}
                   >
                     <span className="font-medium group-hover:text-pink-400 transition-colors">{item.name}</span>
+                    <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                      {item.description}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* About Us */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
+              <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                About Us
+              </span>
+            </h3>
+            <ul className="space-y-3">
+              {footerSections["About Us"].map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="group flex flex-col space-y-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
+                    title={item.description}
+                  >
+                    <span className="font-medium group-hover:text-orange-400 transition-colors">{item.name}</span>
                     <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                       {item.description}
                     </span>

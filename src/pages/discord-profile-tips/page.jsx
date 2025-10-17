@@ -71,11 +71,11 @@ export default function DiscordProfileTips() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+    <div className="min-h-screen bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
       <Navbar />
       
       {/* Breadcrumb */}
-      <Breadcrumb />
+      <Breadcrumb title="Discord Profile Tips" />
       
       {/* Hero Section */}
       <div className="relative overflow-hidden">

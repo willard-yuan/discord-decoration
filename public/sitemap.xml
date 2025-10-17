@@ -48,6 +48,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://discord-decoration.art/blog/discord-avatar-decorations</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://discord-decoration.art/blog/discord-font</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://discord-decoration.art/changelog</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -74,7 +86,25 @@
     <priority>0.6</priority>
   </url>
   
-  <!-- Legal pages -->
+  <!-- Legal and company pages -->
+  <url>
+    <loc>https://discord-decoration.art/about-us</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://discord-decoration.art/cookies-policy</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://discord-decoration.art/contact-support</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
   <url>
     <loc>https://discord-decoration.art/terms-of-service</loc>
     <lastmod>2025-09-06</lastmod>

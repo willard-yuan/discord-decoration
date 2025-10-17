@@ -1,6 +1,6 @@
 import { useLocation } from "preact-iso";
 
-const Breadcrumb = () => {
+const Breadcrumb = ({ title }) => {
   const location = useLocation();
   const pathname = location.path || '/';
   
@@ -17,6 +17,11 @@ const Breadcrumb = () => {
       items.push({ name: 'GIF Extractor', path: '/gif-extractor/', keywords: 'discord gif extractor' });
     } else if (pathname.includes('/blog')) {
       items.push({ name: 'Blog', path: '/blog/', keywords: 'discord decoration blog article' });
+      
+      // If we have a title prop and we're in a blog detail page, add it as the final breadcrumb
+      if (title && pathname !== '/blog' && pathname !== '/blog/') {
+        items.push({ name: title, path: pathname, keywords: 'blog article' });
+      }
     } else if (pathname.includes('/discuss')) {
       items.push({ name: 'Discussion', path: '/discuss/', keywords: 'discord decoration discussion' });
     } else if (pathname.includes('/faq')) {

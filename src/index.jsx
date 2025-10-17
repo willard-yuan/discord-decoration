@@ -12,9 +12,14 @@ import GifExtractor from "@/pages/gif-extractor/page.jsx";
 import FAQ from "@/pages/faq/page.jsx";
 import HowToUse from "@/pages/how-to-use/page.jsx";
 import BlogArticle from "@/pages/blog/page.jsx";
+import DiscordFontBlog from "@/pages/blog/discord-font/page.jsx";
+import DiscordAvatarDecorationsArticle from "@/pages/blog/discord-avatar-decorations/page.jsx";
 import DiscordProfileTips from "@/pages/discord-profile-tips/page.jsx";
 import TermsOfService from "@/pages/terms-of-service/page.jsx";
 import PrivacyPolicy from "@/pages/privacy-policy/page.jsx";
+import AboutUs from "@/pages/about-us/page.jsx";
+import CookiesPolicy from "@/pages/cookies-policy/page.jsx";
+import ContactSupport from "@/pages/contact-support/page.jsx";
 import DiscordAvatar from "@/pages/discord_avatar/page.jsx";
 import DiscordAvatarDecoration from "@/pages/discord_avatar_decoration/page.jsx";
 import DiscordFonts from "@/pages/discord_front/page.jsx";
@@ -36,9 +41,14 @@ export function App() {
           <Route path="/faq" component={FAQ} />
           <Route path="/how-to-use" component={HowToUse} />
           <Route path="/blog" component={BlogArticle} />
+          <Route path="/blog/discord-font" component={DiscordFontBlog} />
+          <Route path="/blog/discord-avatar-decorations" component={DiscordAvatarDecorationsArticle} />
           <Route path="/discord-profile-tips" component={DiscordProfileTips} />
           <Route path="/terms-of-service" component={TermsOfService} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/cookies-policy" component={CookiesPolicy} />
+          <Route path="/contact-support" component={ContactSupport} />
           <Route path="/discord_avatar" component={DiscordAvatar} />
           <Route path="/discord_avatar_decoration" component={DiscordAvatarDecoration} />
           <Route path="/discord_front" component={DiscordFonts} />

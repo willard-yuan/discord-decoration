@@ -81,6 +81,9 @@ const Navbar = () => {
             <a href="/faq" className="text-text-secondary hover:text-text-primary transition-colors">
               FAQs
             </a>
+            <a href="/blog" className="text-text-secondary hover:text-text-primary transition-colors">
+              Blog
+            </a>
             <a href="/changelog" className="text-text-secondary hover:text-text-primary transition-colors">
               Changelog
             </a>
@@ -125,7 +128,10 @@ const Navbar = () => {
             <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               FAQs
             </a>
-            <a href="/changelog" className="block px-3 py-2 text-text-secondary hover:text-text-primary transition-colors">
+            <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              Blog
+            </a>
+            <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
                 Changelog
               </a>
           </div>
