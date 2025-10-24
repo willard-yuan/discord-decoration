@@ -73,6 +73,32 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.2",
+      date: "October 24th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "🔍 Search Bar Improvements",
+          items: [
+            "Removed gradient border background effects from search boxes for cleaner appearance",
+            "Eliminated fuzzy gradient glow effects while maintaining original color scheme",
+            "Simplified search box styling with solid borders for better readability",
+            "Improved visual clarity and reduced visual noise in search interface",
+            "Enhanced focus and hover states for better user interaction feedback"
+          ]
+        },
+        {
+          category: "🎨 UI/UX Enhancements",
+          items: [
+            "Streamlined search component design for more professional appearance",
+            "Maintained pink, purple, and blue color scheme while removing blur effects",
+            "Improved search box accessibility with clearer visual boundaries",
+            "Enhanced overall visual consistency across search interfaces"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.1",
       date: "October 17th, 2025",
       type: "minor",
