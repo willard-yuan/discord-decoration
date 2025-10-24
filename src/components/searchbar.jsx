@@ -7,7 +7,7 @@ export default function SearchBar({ onValueChanged, placeholder }) {
   return (
     <div className="relative group">
       {/* Gradient border background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
       
       {/* Input container */}
       <div className="relative bg-surface-primary rounded-xl p-0.5">
@@ -45,7 +45,7 @@ export default function SearchBar({ onValueChanged, placeholder }) {
       </div>
       
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
     </div>
   );
 }

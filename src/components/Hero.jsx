@@ -69,7 +69,7 @@ const Hero = () => {
           </h2>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <button 
               onClick={() => {
                 const settingsElement = document.getElementById('settings');
@@ -89,6 +89,31 @@ const Hero = () => {
             >
               Learn More →
             </a>
+          </div>
+
+          {/* Comet AI Promotion */}
+          <div className="mb-16">
+            <div className="max-w-2xl mx-auto bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-orange-600/20 backdrop-blur-sm rounded-2xl p-6 border-2 border-orange-400/50 shadow-2xl transform hover:scale-105 transition-all duration-300">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <span className="text-3xl">🚀</span>
+                <h3 className="text-xl sm:text-2xl font-bold text-orange-300 ginto">Special Offer!</h3>
+                <span className="text-3xl">🚀</span>
+              </div>
+              <p className="text-lg sm:text-xl text-white font-semibold mb-4 leading-relaxed">
+                Download Comet AI browser to get a free Pro month
+              </p>
+              <a 
+                href="https://pplx.ai/willard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <span>Get Free Pro Month</span>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           {/* Stats or features */}

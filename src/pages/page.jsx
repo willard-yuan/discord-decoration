@@ -287,7 +287,7 @@ const App = ({ ensureLoaded }) => {
   const [avatarName, setAvatarName] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [decoUrl, setDecoUrl] = useState("");
+  const [decoUrl, setDecoUrl] = useState("/decorations/treat_pumpkin.png");
   const [avUrl, setAvUrl] = useState("");
 
   const [finishedAv, setFinishedAv] = useState("");
@@ -457,7 +457,7 @@ const App = ({ ensureLoaded }) => {
                     <>
                       <Image
                         id="avatar"
-                        src={avUrl || `${baseImgUrl}/avatars/blue.png`}
+                        src={avUrl || `${baseImgUrl}/avatars/in_rainbows.png`}
                         className={
                           "absolute top-[calc(80px*0.09)] left-[calc(80px*0.09)] w-[calc(80px*0.82)] h-[calc(80px*0.82)] rounded-full"
                         }
@@ -490,7 +490,7 @@ const App = ({ ensureLoaded }) => {
                     setGenerationFailed(false);
                     setDownloadModalVisible(true);
                     createAvatar(
-                      avUrl || `${baseImgUrl}/avatars/blue.png`,
+                      avUrl || `${baseImgUrl}/avatars/in_rainbows.png`,
                       decoUrl
                     );
                   }}
@@ -564,7 +564,7 @@ const App = ({ ensureLoaded }) => {
                           {m.styled ? (
                             <div className="relative rounded-full w-10 h-10 overflow-hidden shrink-0">
                               <Image
-                                src={avUrl || `${baseImgUrl}/avatars/blue.png`}
+                                src={avUrl || `${baseImgUrl}/avatars/in_rainbows.png`}
                                 draggable={false}
                                 width={32.8}
                                 height={32.8}
@@ -582,7 +582,7 @@ const App = ({ ensureLoaded }) => {
                             </div>
                           ) : (
                             <Image
-                              src={avUrl || `${baseImgUrl}/avatars/blue.png`}
+                              src={avUrl || `${baseImgUrl}/avatars/in_rainbows.png`}
                               draggable={false}
                               className="rounded-full w-10 h-10 shrink-0"
                             />
