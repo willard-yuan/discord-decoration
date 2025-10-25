@@ -27,7 +27,7 @@ export default function GifExtractor() {
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free online GIF frame extractor tool. Extract individual frames from animated GIFs for Discord avatars and profile pictures.');
+      metaDescription.setAttribute('content', 'Free online GIF frame extractor tool. Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars, profile pictures, and image editing projects.');
     }
     
     // Set meta keywords
@@ -140,92 +140,184 @@ export default function GifExtractor() {
       
       {loaded ? (
         <>
-          <main className="flex flex-col items-center gap-2 px-8 py-12 w-screen h-screen overflow-auto overflow-x-hidden text-white discord-scrollbar">
-            <p className="mb-8 text-3xl ginto">Gif Frame Extractor</p>
-
-            {file == null ? (
-              <>
-                <button
-                  className="flex justify-center items-center gap-1 mt-3 py-1.5 w-72 button-primary"
-                  onClick={() => {
-                    document.getElementById("upload-gif").click();
-                  }}
-                >
-                  <input
-                    type="file"
-                    id="upload-gif"
-                    className="hidden"
-                    accept="image/png, image/gif, image/webp"
-                    onChange={(e) => {
-                      // @ts-ignore
-                      const [file] = e.target.files;
-                      if (file) {
-                        const reader = new FileReader();
-                        reader.readAsDataURL(file);
-                        reader.onload = () => {
-                          setFile(reader.result);
-                        };
-                      }
-                    }}
-                  />
-                  Upload a GIF
-                </button>
-                <p className="text-gray-300 text-sm">
-                  You can also drag and drop a GIF file here
+          <main className="min-h-screen bg-gradient-to-br from-surface-overlay via-surface-high/30 to-surface-overlay">
+            {/* Hero Section */}
+            <div className="container-responsive py-16">
+              <div className="text-center mb-12">
+                <h1 className="text-4xl md:text-5xl font-bold ginto bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4">
+                  GIF Frame Extractor
+                </h1>
+                <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
+                  Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars and profile pictures.
                 </p>
-              </>
-            ) : (
-              <>
-                <div className="relative flex flex-col items-center">
-                  <button
-                    className="top-2 right-2 absolute bg-surface-high hover:bg-surface-higher shadow-sm p-2 rounded-lg text-critical text-lg transition-colors"
-                    onClick={() => {
-                      setFile(null);
-                      setFrames(null);
-                    }}
-                  >
-                    <Icons.delete />
-                  </button>
-                  <Image
-                    src={file}
-                    className="rounded-lg w-72 max-w-[calc(100vw-4rem)] sm:max-w-[32rem]"
-                    draggable="false"
-                  />
-                  <button
-                    className="flex justify-center items-center gap-1 mt-3 py-1.5 w-72 max-w-[calc(100vw-4rem)] button-primary"
-                    onClick={async () => {
-                      setFrames(await imagesFromGif(file));
-                    }}
-                  >
-                    Extract frames
-                  </button>
-                </div>
-                <div className="flex flex-wrap justify-center gap-2 mt-8">
-                  {frames &&
-                    typeof frames === "object" &&
-                    typeof frames.map === "function" &&
-                    frames.map((frame, i) => (
+              </div>
+
+              {file == null ? (
+                /* Upload Section */
+                <div className="max-w-2xl mx-auto">
+                  <div className="bg-surface-overlay/50 backdrop-blur-sm rounded-2xl p-8 border border-border-faint hover:border-border-normal transition-all duration-300">
+                    <div className="text-center">
+                      <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full flex items-center justify-center">
+                        <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                      </div>
+                      
+                      <h3 className="text-xl font-semibold text-text-primary mb-2">Upload Your GIF</h3>
+                      <p className="text-text-secondary mb-6">
+                        Choose a GIF file to extract frames from
+                      </p>
+                      
                       <button
-                        key={i}
-                        className="flex justify-center items-center bg-base-lowest p-1 rounded-[5px] w-32 aspect-square"
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-purple-500 hover:from-primary/80 hover:to-purple-500/80 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                         onClick={() => {
-                          const a = document.createElement("a");
-                          a.href = `data:image/png;base64,${frame}`;
-                          a.download = `discord_fake_avatar_decorations_${Date.now()}.png`;
-                          a.click();
+                          document.getElementById("upload-gif").click();
                         }}
                       >
-                        <img
-                          alt=""
-                          src={`data:image/png;base64,${frame}`}
-                          className="rounded"
-                          draggable={false}
-                        />
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        Choose GIF File
                       </button>
-                    ))}
+                      
+                      <input
+                        type="file"
+                        id="upload-gif"
+                        className="hidden"
+                        accept="image/png, image/gif, image/webp"
+                        onChange={(e) => {
+                          // @ts-ignore
+                          const [file] = e.target.files;
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onload = () => {
+                              setFile(reader.result);
+                            };
+                          }
+                        }}
+                      />
+                      
+                      <div className="mt-6 p-4 bg-surface-high/30 rounded-xl border border-border-faint">
+                        <p className="text-text-secondary text-sm flex items-center justify-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          You can also drag and drop a GIF file here
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </>
-            )}
+              ) : (
+                /* Processing Section */
+                <div className="max-w-4xl mx-auto space-y-8">
+                  {/* GIF Preview Card */}
+                  <div className="bg-surface-overlay/50 backdrop-blur-sm rounded-2xl p-8 border border-border-faint">
+                    <div className="flex flex-col items-center">
+                      <div className="relative group">
+                        <button
+                           className="absolute -top-2 -right-2 z-10 bg-critical hover:bg-critical/80 text-white p-2 rounded-full shadow-lg transition-all duration-200 transform hover:scale-110"
+                           onClick={() => {
+                             setFile(null);
+                             setFrames(null);
+                           }}
+                         >
+                           <Icons.delete />
+                         </button>
+                        
+                        <div className="bg-gradient-to-br from-surface-high to-surface-higher p-4 rounded-xl">
+                          <Image
+                            src={file}
+                            className="rounded-lg max-w-full max-h-80 shadow-lg"
+                            draggable="false"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="mt-6 text-center">
+                        <h3 className="text-xl font-semibold text-text-primary mb-2">Ready to Extract</h3>
+                        <p className="text-text-secondary mb-6">
+                          Click the button below to extract all frames from your GIF
+                        </p>
+                        
+                        <button
+                          className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-success to-green-500 hover:from-success/80 hover:to-green-500/80 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                          onClick={async () => {
+                            setFrames(await imagesFromGif(file));
+                          }}
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          Extract Frames
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Frames Grid */}
+                  {frames && typeof frames === "object" && typeof frames.map === "function" && (
+                    <div className="bg-surface-overlay/50 backdrop-blur-sm rounded-2xl p-8 border border-border-faint">
+                      <div className="text-center mb-8">
+                        <h3 className="text-2xl font-semibold text-text-primary mb-2">Extracted Frames</h3>
+                        <p className="text-text-secondary">
+                          Click on any frame to download it as a PNG file
+                        </p>
+                      </div>
+                      
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                        {frames.map((frame, i) => (
+                          <button
+                            key={i}
+                            className="group relative bg-surface-high hover:bg-surface-higher p-3 rounded-xl border border-border-faint hover:border-border-normal transition-all duration-300 transform hover:scale-105 hover:shadow-lg aspect-square"
+                            onClick={() => {
+                              const a = document.createElement("a");
+                              a.href = `data:image/png;base64,${frame}`;
+                              a.download = `frame_${i + 1}_${Date.now()}.png`;
+                              a.click();
+                            }}
+                          >
+                            <img
+                              alt={`Frame ${i + 1}`}
+                              src={`data:image/png;base64,${frame}`}
+                              className="w-full h-full object-cover rounded-lg"
+                              draggable={false}
+                            />
+                            
+                            {/* Download overlay */}
+                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl flex items-center justify-center">
+                              <div className="text-white text-center">
+                                <svg className="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span className="text-xs font-medium">Download</span>
+                              </div>
+                            </div>
+                            
+                            {/* Frame number */}
+                            <div className="absolute top-1 left-1 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                              #{i + 1}
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-8 text-center">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface-high rounded-lg border border-border-faint">
+                          <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-text-secondary text-sm">
+                            {frames.length} frames extracted successfully
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </main>
           <FileUpload
             onUpload={async (e) => {
