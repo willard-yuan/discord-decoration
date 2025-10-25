@@ -4589,6 +4589,19 @@
     </image:image>
   </url>
 
+  <!-- How to Split GIF into Frames Blog -->
+  <url>
+    <loc>https://discord-decoration.art/blog/how-to-split-gif-into-frames</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://discord-decoration.art/banner.svg</image:loc>
+      <image:caption>How to Split GIF into Frames - Complete guide for extracting frames from GIF files</image:caption>
+      <image:title>How to Split GIF into Frames Guide</image:title>
+    </image:image>
+  </url>
+
   <!-- GIF Extractor page -->
   <url>
     <loc>https://discord-decoration.art/gif-extractor</loc>

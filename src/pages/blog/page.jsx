@@ -63,6 +63,17 @@ export default function BlogList() {
   const blogPosts = [
     {
       id: 1,
+      title: "How to Split a GIF into Frames?",
+      description: "Learn how to extract individual frames from animated GIFs using our free online tool. Perfect for creating Discord avatars, profile pictures, and image editing projects.",
+      publishDate: "2025-10-25",
+      readTime: "5 min read",
+      category: "GIF Frame Extractor",
+      image: "/gif_frames_extractor_2.webp",
+      link: "/blog/how-to-split-gif-into-frames",
+      tags: ["GIF Frame Extractor", "Discord Avatar Tool"]
+    },
+    {
+      id: 2,
       title: "How to Get Free Discord Avatar Decorations",
       description: "Transform your Discord profile with stunning avatar decorations without spending a dime on Nitro. Learn how to get free Discord decorations with Discord Decoration Art.",
       publishDate: "2025-10-17",
@@ -73,7 +84,7 @@ export default function BlogList() {
       tags: ["Discord", "Avatar", "Free", "Decorations"]
     },
     {
-      id: 2,
+      id: 3,
       title: "How to Get Custom Discord Font: Transform Your Messages with Stylish Text",
       description: "Discover how to customize your Discord messages with unique fonts and text styles. Learn about Unicode generators, formatting tricks, and text transformation tools.",
       publishDate: "2025-10-10",

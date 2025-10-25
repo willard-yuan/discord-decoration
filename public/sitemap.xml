@@ -60,6 +60,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://discord-decoration.art/blog/how-to-split-gif-into-frames</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://discord-decoration.art/changelog</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
