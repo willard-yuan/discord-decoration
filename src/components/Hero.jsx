@@ -44,6 +44,58 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
+      {/* Animated Stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large Golden Star */}
+        <div className="absolute top-20 left-20 animate-pulse" style={{ animationDelay: '0s', animationDuration: '3s' }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-yellow-400 drop-shadow-lg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="1"/>
+          </svg>
+        </div>
+
+        {/* Medium Purple Star */}
+        <div className="absolute top-32 right-32 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-purple-400 drop-shadow-lg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="1"/>
+          </svg>
+        </div>
+
+        {/* Small Blue Star */}
+        <div className="absolute bottom-40 left-1/4 animate-pulse" style={{ animationDelay: '2s', animationDuration: '2.5s' }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-blue-400 drop-shadow-lg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="1"/>
+          </svg>
+        </div>
+
+        {/* Sparkle Star */}
+        <div className="absolute top-1/3 right-1/4 animate-ping" style={{ animationDelay: '0.5s', animationDuration: '3s' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-pink-400 drop-shadow-lg">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        {/* Twinkling Star */}
+        <div className="absolute bottom-1/3 right-20 animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '2s' }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-cyan-400 drop-shadow-lg">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        {/* Small Floating Star */}
+        <div className="absolute top-1/2 left-16 animate-bounce" style={{ animationDelay: '3s', animationDuration: '5s' }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="text-green-400 drop-shadow-lg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" stroke="currentColor" strokeWidth="1"/>
+          </svg>
+        </div>
+
+        {/* Distant Sparkle */}
+        <div className="absolute top-16 right-1/3 animate-ping" style={{ animationDelay: '2.5s', animationDuration: '4s' }}>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" className="text-orange-400 drop-shadow-lg">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
         <div className="text-center">

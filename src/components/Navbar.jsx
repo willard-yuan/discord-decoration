@@ -84,6 +84,9 @@ const Navbar = () => {
             <a href="/blog" className="text-text-secondary hover:text-text-primary transition-colors">
               Blog
             </a>
+            <a href="/discuss" className="text-text-secondary hover:text-text-primary transition-colors">
+              Discuss
+            </a>
             <a href="/changelog" className="text-text-secondary hover:text-text-primary transition-colors">
               Changelog
             </a>
@@ -93,10 +96,11 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors"
+              className="group relative p-3 rounded-full hover:bg-surface-high/50 transition-all duration-300 transform hover:scale-110"
               title={`Current theme: ${theme}`}
             >
-              <span className="text-lg">{getThemeIcon()}</span>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+              <span className="relative text-xl transition-transform duration-300 group-hover:rotate-12">{getThemeIcon()}</span>
             </button>
             
             {/* Mobile Menu Button */}
@@ -130,6 +134,9 @@ const Navbar = () => {
             </a>
             <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Blog
+            </a>
+            <a href="/discuss" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+              Discuss
             </a>
             <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
                 Changelog

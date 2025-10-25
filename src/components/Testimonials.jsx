@@ -47,65 +47,34 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-16">
-      {/* 主背景 - 深邃的宇宙感渐变 */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/90 to-indigo-900/80">
-        {/* 第二层 - 增加温暖色调 */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-rose-900/30 via-transparent via-transparent to-cyan-900/40" />
-        {/* 第三层 - 中心聚焦效果 */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-purple-800/20 via-indigo-800/30 to-slate-900/60" />
-        {/* 第四层 - 动态色彩叠加 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-violet-800/15 via-fuchsia-800/10 via-transparent to-emerald-900/20" />
+    <section className="relative overflow-hidden py-16 bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
+      {/* 动态背景层 */}
+      <div className="absolute inset-0">
+        {/* 主背景渐变 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher" />
+        
+        {/* 动态光效层 */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* 主要动态光源 */}
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-radial from-primary/8 via-primary/4 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0s', animationDuration: '8s' }} />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-radial from-purple-500/6 via-purple-500/3 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '10s' }} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-radial from-pink-500/4 via-pink-500/2 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }} />
+        </div>
+        
+        {/* 网格背景 */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(139, 92, 246, 0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
       </div>
       
-      {/* 增强的动态网格背景 */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139, 92, 246, 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-      
-      {/* 顶部渐变过渡 - 更平滑的连接 */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-surface-overlay via-surface-overlay/70 via-purple-900/40 to-transparent" />
-      
-      {/* 底部渐变过渡 - 更平滑的连接 */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-surface-overlay via-surface-overlay/70 via-indigo-900/40 to-transparent" />
-      
-      {/* 左右侧边缘柔化 */}
-      <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-surface-overlay/60 via-purple-900/30 to-transparent" />
-      <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-surface-overlay/60 via-indigo-900/30 to-transparent" />
-      
-      {/* 重新设计的动态光效系统 */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* 主要光源 - 更大更柔和 */}
-        <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-radial from-violet-400/20 via-purple-500/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0s', animationDuration: '8s' }} />
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-radial from-fuchsia-400/18 via-pink-500/12 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '10s' }} />
-        
-        {/* 中等光效 - 增加层次 */}
-        <div className="absolute top-1/4 left-1/3 w-48 h-48 bg-gradient-radial from-cyan-400/15 via-blue-500/10 to-transparent rounded-full blur-2xl animate-float" style={{ animationDelay: '1s', animationDuration: '12s' }} />
-        <div className="absolute bottom-1/4 right-1/3 w-56 h-56 bg-gradient-radial from-emerald-400/12 via-green-500/8 to-transparent rounded-full blur-2xl animate-float" style={{ animationDelay: '4s', animationDuration: '14s' }} />
-        
-        {/* 小型粒子光效 - 增加细节 */}
-        <div className="absolute top-1/6 left-1/2 w-32 h-32 bg-gradient-radial from-rose-400/20 via-pink-400/15 to-transparent rounded-full blur-xl animate-float" style={{ animationDelay: '3s', animationDuration: '6s' }} />
-        <div className="absolute top-2/3 left-1/4 w-24 h-24 bg-gradient-radial from-indigo-400/18 via-purple-400/12 to-transparent rounded-full blur-lg animate-float" style={{ animationDelay: '5s', animationDuration: '8s' }} />
-        <div className="absolute top-1/2 right-1/4 w-28 h-28 bg-gradient-radial from-teal-400/16 via-cyan-400/10 to-transparent rounded-full blur-xl animate-float" style={{ animationDelay: '2.5s', animationDuration: '10s' }} />
-        <div className="absolute bottom-1/3 left-2/3 w-20 h-20 bg-gradient-radial from-amber-400/14 via-yellow-400/8 to-transparent rounded-full blur-lg animate-float" style={{ animationDelay: '6s', animationDuration: '7s' }} />
-        
-        {/* 流动光线 - 更精细的效果 */}
-        <div className="absolute top-0 left-1/5 w-0.5 h-full bg-gradient-to-b from-transparent via-violet-400/25 via-purple-400/20 to-transparent animate-float opacity-60" style={{ animationDelay: '1.5s', animationDuration: '15s' }} />
-        <div className="absolute top-1/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-fuchsia-400/20 via-pink-400/15 to-transparent animate-float opacity-50" style={{ animationDelay: '3.5s', animationDuration: '18s' }} />
-        <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-transparent via-cyan-400/20 via-blue-400/15 to-transparent animate-float opacity-40" style={{ animationDelay: '7s', animationDuration: '20s' }} />
-        
-        {/* 新增：星光闪烁效果 */}
-        <div className="absolute top-1/8 left-1/6 w-2 h-2 bg-white/60 rounded-full animate-ping" style={{ animationDelay: '2s', animationDuration: '4s' }} />
-        <div className="absolute top-3/4 right-1/5 w-1.5 h-1.5 bg-violet-300/80 rounded-full animate-ping" style={{ animationDelay: '5s', animationDuration: '3s' }} />
-        <div className="absolute top-1/2 left-3/4 w-1 h-1 bg-cyan-300/70 rounded-full animate-ping" style={{ animationDelay: '8s', animationDuration: '5s' }} />
-        <div className="absolute bottom-1/6 left-1/2 w-1.5 h-1.5 bg-pink-300/75 rounded-full animate-ping" style={{ animationDelay: '3s', animationDuration: '6s' }} />
-      </div>
+      {/* 顶部渐变遮罩 */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface-overlay/95 via-surface-overlay/80 to-transparent z-[2]" />
 
 
       

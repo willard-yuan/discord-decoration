@@ -189,6 +189,19 @@ const ExtraLinks = () => (
       <p className="font-bold">Links</p>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
+        href="/gif-extractor"
+      >
+        <span className="place-items-center w-6">
+          <Icons.gif size="18px" />
+        </span>
+        GIF Frame Extractor
+        <span className="grow" />
+        <span className="rotate-45">
+          <Icons.up size="16px" />
+        </span>
+      </a>
+      <a
+        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
         href="/discord_avatar"
       >
         <span className="place-items-center w-6">
@@ -479,11 +492,11 @@ const App = ({ ensureLoaded }) => {
                   {name || "Display Name"}
                 </p>
                 <p className="mb-3 text-sm">{avatarName || "username"}</p>
-                <p className="text-sm">
+                <p className="text-sm mb-6">
                   {description ||
                     "This is an example profile so that you can see what the profile picture would actually look like on Discord."}
                 </p>
-                <NeutralButton
+                <button
                   onClick={() => {
                     setFinishedAv("");
                     setIsGeneratingAv(true);
@@ -494,10 +507,25 @@ const App = ({ ensureLoaded }) => {
                       decoUrl
                     );
                   }}
+                  className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary via-purple-600 to-pink-600 hover:from-primary/90 hover:via-purple-600/90 hover:to-pink-600/90 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30 overflow-hidden"
                 >
-                  <Icons.image />
-                  Save image
-                </NeutralButton>
+                  {/* 背景光效 */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-pink-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                  
+                  {/* 闪烁效果 */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                  
+                  {/* 内容 */}
+                  <div className="relative flex items-center gap-3">
+                    <div className="p-1 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors duration-300">
+                      <Icons.image />
+                    </div>
+                    <span className="font-bold">Save Image</span>
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                </button>
               </div>
             </div>
             {/* Message preview */}

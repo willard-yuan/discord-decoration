@@ -95,6 +95,26 @@ export default function Changelog() {
             "Improved search box accessibility with clearer visual boundaries",
             "Enhanced overall visual consistency across search interfaces"
           ]
+        },
+        {
+          category: "🎞️ GIF Frame Extractor Improvements",
+          items: [
+            "Added navigation bar (Navbar) component to GIF Frame Extractor page for consistent site navigation",
+            "Integrated footer component to maintain uniform page structure across the site",
+            "Updated SEO meta keywords to 'Free Animated GIF Frame Extractor, GIF Frame Extractor, Split GIF Image into Frames'",
+            "Reorganized page structure to ensure navigation and footer display correctly in all states",
+            "Enhanced page consistency with other site pages through proper component integration"
+          ]
+        },
+        {
+          category: "🔗 Navigation & Homepage Updates",
+          items: [
+            "Added 'GIF Frame Extractor' link to homepage Links section with dedicated GIF icon",
+            "Positioned GIF Frame Extractor link as the first item in the Links section for better visibility",
+            "Implemented consistent styling and hover effects matching other homepage links",
+            "Enhanced site navigation by providing direct access to GIF extraction tool from homepage",
+            "Improved user discovery of GIF Frame Extractor functionality"
+          ]
         }
       ]
     },

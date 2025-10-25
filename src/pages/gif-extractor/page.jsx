@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import FileUpload from "@/components/fileupload.jsx";
 import { Icons } from "@/components/icons.jsx";
 import Image from "@/components/image.jsx";
+import Navbar from "@/components/Navbar.jsx";
+import Footer from "@/components/Footer.jsx";
 
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { imagesFromGif } from "@/ffmpeg/extractFrames.js";
@@ -27,6 +29,15 @@ export default function GifExtractor() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Free online GIF frame extractor tool. Extract individual frames from animated GIFs for Discord avatars and profile pictures.');
     }
+    
+    // Set meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', 'Free Animated GIF Frame Extractor, GIF Frame Extractor, Split GIF Image into Frames');
     
     // Set meta robots
     let metaRobots = document.querySelector('meta[name="robots"]');
@@ -124,7 +135,9 @@ export default function GifExtractor() {
   const [frames, setFrames] = useState(null);
 
   return (
-    <>
+    <div className="min-h-screen bg-background text-text">
+      <Navbar />
+      
       {loaded ? (
         <>
           <main className="flex flex-col items-center gap-2 px-8 py-12 w-screen h-screen overflow-auto overflow-x-hidden text-white discord-scrollbar">
@@ -266,6 +279,8 @@ export default function GifExtractor() {
           </div>
         </main>
       )}
-    </>
+      
+      <Footer />
+    </div>
   );
 }
