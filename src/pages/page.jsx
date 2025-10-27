@@ -117,6 +117,28 @@ const UnsupportedModal = ({ unsupportedMsg }) =>
     </Modal>
   );
 
+const BuyMeCoffeeButton = () => {
+  return (
+    <a
+      href="https://www.buymeacoffee.com/yong1024"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center px-4 py-2 w-72 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+      style={{
+        backgroundColor: '#FFDD00',
+        color: '#000000',
+        border: '1px solid #000000',
+        fontFamily: 'Cookie, cursive',
+        fontSize: '18px',
+        fontWeight: 'normal'
+      }}
+    >
+      <span className="mr-2" style={{ fontSize: '16px' }}>☕</span>
+      Buy me a coffee
+    </a>
+  );
+};
+
 const CurrentData = createContext(null);
 
 const ExtraLinks = () => (
@@ -696,7 +718,7 @@ const App = ({ ensureLoaded }) => {
               height={128}
             />
             <div className="flex flex-col w-full">
-              <div className="flex flex-col items-center gap-2 mt-3 *:mt-0 w-full *:w-72">
+              <div className="flex flex-col items-center gap-3 mt-3 *:mt-0 w-full *:w-72">
                 <NeutralButton
                   onClick={() => {
                     const a = document.createElement("a");
@@ -719,6 +741,8 @@ const App = ({ ensureLoaded }) => {
                   <Icons.image />
                   Extract still image
                 </NeutralButton>
+                {/* Buy me a coffee button */}
+                <BuyMeCoffeeButton />
               </div>
             </div>
           </div>
