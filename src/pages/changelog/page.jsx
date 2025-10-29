@@ -73,6 +73,54 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.3",
+      date: "October 29th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "📱 Mobile Navigation Enhancement",
+          items: [
+            "Enhanced mobile navigation by displaying 'Discord Avatar Decorations' brand text on mobile devices",
+            "Improved brand visibility and recognition on smaller screens",
+            "Adjusted font sizing for optimal mobile display (text-lg on mobile, text-xl on desktop)",
+            "Maintained subtitle visibility only on desktop for cleaner mobile interface",
+            "Enhanced mobile user experience with better brand identification"
+          ]
+        },
+        {
+          category: "🎯 User Interaction Improvements",
+          items: [
+            "Implemented automatic scrolling to profile preview area when selecting avatars",
+            "Added smooth scroll animation to profile preview when choosing decorations",
+            "Enhanced user workflow by automatically focusing on preview after selection",
+            "Improved user experience with seamless navigation to preview area",
+            "Added 100ms delay to ensure DOM updates complete before scrolling",
+            "Configured smooth scrolling behavior with center block positioning"
+          ]
+        },
+        {
+          category: "☕ Buy Me a Coffee Integration",
+          items: [
+            "Updated 'Buy me a coffee' button font styling to match original design specifications",
+            "Applied Cookie font family with 18px font size for consistent branding",
+            "Adjusted emoji sizing to 16px for better visual balance",
+            "Maintained yellow background (#FFDD00) and black text styling",
+            "Ensured button styling matches official Buy Me a Coffee design guidelines"
+          ]
+        },
+        {
+          category: "🎨 UI/UX Polish",
+          items: [
+            "Unified button widths across Save Animated GIF, Extract still image, and Buy me a coffee buttons",
+            "Improved vertical spacing between action buttons for better visual hierarchy",
+            "Enhanced button layout consistency with w-72 width standard",
+            "Optimized button container spacing from gap-2 to gap-3 for better visual balance",
+            "Streamlined button styling for more professional appearance"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.2",
       date: "October 24th, 2025",
       type: "minor",

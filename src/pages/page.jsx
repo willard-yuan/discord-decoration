@@ -903,6 +903,17 @@ const AvatarList = () => {
     }
     // @ts-ignore
     event.target.classList.add("border-primary");
+    
+    // 自动滚动到profile-preview区域
+    setTimeout(() => {
+      const profilePreview = document.getElementById("profile-preview");
+      if (profilePreview) {
+        profilePreview.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "center" 
+        });
+      }
+    }, 100);
   }, []);
 
   return (
@@ -986,6 +997,17 @@ const DecorationsList = ({ decorationsList, style, className }) => {
       el.classList.remove("border-primary");
     }
     event.target.classList.add("border-primary");
+    
+    // 自动滚动到profile-preview区域
+    setTimeout(() => {
+      const profilePreview = document.getElementById("profile-preview");
+      if (profilePreview) {
+        profilePreview.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "center" 
+        });
+      }
+    }, 100);
   }, []);
 
   return (
