@@ -30,6 +30,9 @@ import { NotFound } from "@/pages/_404.jsx";
 import "@/global.css";
 import { FontPreloader } from "@/components/fontpreload.jsx";
 import { Utils } from "@/components/utils.jsx";
+import serviceWorkerManager from "@/utils/serviceWorker.js";
+import cacheManager from "@/utils/cache.js";
+import cacheBustingManager from "@/utils/cacheBusting.js";
 
 export function App() {
   return (
@@ -65,7 +68,39 @@ export function App() {
 }
 
 if (typeof window !== "undefined") {
+  // Initialize caching system
+  console.log('Initializing caching system...');
+  
+  // Initialize cache busting (version management)
+  cacheBustingManager.init();
+  
+  // Register service worker for advanced caching
+  serviceWorkerManager.register().then((registered) => {
+    if (registered) {
+      console.log('Service worker registered successfully');
+      // Preload critical resources after service worker is ready
+      cacheBustingManager.preloadCriticalResources();
+    } else {
+      console.log('Service worker registration failed or not supported');
+    }
+  });
+
+  // Initialize cache cleanup
+  cacheManager.cleanup();
+  
+  // Set up periodic cache cleanup (every 6 hours)
+  setInterval(() => {
+    cacheManager.cleanup();
+  }, 6 * 60 * 60 * 1000);
+
+  // Hydrate the app
   hydrate(<App />, document.getElementById("app"));
+  
+  // Log cache statistics
+  setTimeout(() => {
+    const stats = cacheManager.getStats();
+    console.log('Cache statistics:', stats);
+  }, 2000);
 }
 
 export async function prerender(data) {
