@@ -130,7 +130,7 @@ export default function ContactSupport() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
-                    href="https://discord.gg/your-server" 
+                    href="https://discord.com/channels/1420773218880589943/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
@@ -159,10 +159,10 @@ export default function ContactSupport() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
-                    href="mailto:support@discord-decoration.art" 
+                    href="mailto:aiflow1024@gmail.com" 
                     className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
                   >
-                    support@discord-decoration.art
+                    aiflow1024@gmail.com
                   </a>
                   <div className="text-sm text-text-muted flex items-center">
                     <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
@@ -186,7 +186,7 @@ export default function ContactSupport() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
-                    href="https://github.com/your-repo/issues" 
+                    href="https://github.com/willard-yuan/discord-decoration/issues" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"

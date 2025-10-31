@@ -104,10 +104,16 @@ class CacheBustingManager {
 
   // Clear browser cache for critical resources
   clearBrowserCache() {
-    // Force reload of critical CSS and JS files
+    // In development mode, we don't need to force reload resources
+    // as Vite handles hot module replacement automatically
+    if (import.meta.env.DEV) {
+      console.log('CacheBusting: Skipping browser cache clear in development mode');
+      return;
+    }
+
+    // Force reload of critical CSS files only in production
     const criticalResources = [
-      '/src/global.css',
-      '/src/index.jsx'
+      '/assets/index.css', // Production CSS bundle
     ];
 
     criticalResources.forEach(resource => {
@@ -115,7 +121,8 @@ class CacheBustingManager {
       if (link && link instanceof HTMLLinkElement) {
         const newLink = link.cloneNode();
         if (newLink instanceof HTMLLinkElement) {
-          newLink.href = `${resource}?v=${this.currentVersion}&t=${Date.now()}`;
+          const versionParam = this.currentVersion.replace(/\./g, '_'); // Replace dots with underscores
+          newLink.href = `${resource}?v=${versionParam}&t=${Date.now()}`;
           link.parentNode?.replaceChild(newLink, link);
           console.log(`CacheBusting: Reloaded ${resource}`);
         }
@@ -167,7 +174,8 @@ class CacheBustingManager {
   // Get cache busting URL for resources
   getCacheBustedUrl(url) {
     const separator = url.includes('?') ? '&' : '?';
-    return `${url}${separator}v=${this.currentVersion}&t=${Date.now()}`;
+    const versionParam = this.currentVersion.replace(/\./g, '_'); // Replace dots with underscores
+    return `${url}${separator}v=${versionParam}&t=${Date.now()}`;
   }
 
   // Preload critical resources with cache busting
