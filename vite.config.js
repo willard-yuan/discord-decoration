@@ -22,48 +22,6 @@ export default defineConfig({
     terserOptions: {
       ecma: 2020,
     },
-    rollupOptions: {
-      output: {
-        manualChunks: (id) => {
-          // 将FFmpeg相关的大型库分离到单独的chunk
-          if (id.includes('@ffmpeg')) {
-            return 'ffmpeg';
-          }
-          
-          // 将动画库分离
-          if (id.includes('framer-motion')) {
-            return 'animation';
-          }
-          
-          // 将图标库分离
-          if (id.includes('react-icons')) {
-            return 'icons';
-          }
-          
-          // 将图像处理库分离
-          if (id.includes('@jsquash/webp') || id.includes('gifski-wasm')) {
-            return 'image-processing';
-          }
-          
-          // 将Preact核心库分离
-          if (id.includes('preact') && !id.includes('node_modules')) {
-            return 'preact-vendor';
-          }
-          
-          // 将Giscus评论系统分离
-          if (id.includes('@giscus/react')) {
-            return 'giscus';
-          }
-          
-          // 将node_modules中的大型库分离
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-        }
-      }
-    },
-    // 调整chunk大小警告限制到1MB
-    chunkSizeWarningLimit: 1000,
   },
   resolve: {
     alias: {
@@ -86,9 +44,9 @@ export default defineConfig({
     },
     preact({
       prerender: {
-        enabled: false, // 禁用预渲染以避免与动态导入的兼容性问题
+        enabled: true,
         renderTarget: "#app",
-        additionalPrerenderRoutes: [],
+        additionalPrerenderRoutes: ["/404", "/faq", "/discuss", "/discord_avatar", "/discord_avatar_decoration", "/discord_front", "/gif-extractor", "/changelog", "/blog/discord-font", "/blog/discord-avatar-decorations", "/blog/how-to-split-gif-into-frames", "/about-us", "/cookies-policy", "/contact-support"],
         previewMiddlewareEnabled: true,
         previewMiddlewareFallback: "/404",
       },
