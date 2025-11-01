@@ -6,7 +6,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "remove-build-assets": "node build/removeAssets.js",
-    "extract-info": "node utils/extractInfoCli.js"
+    "extract-info": "node utils/extractInfoCli.js",
+    "verify-deployment": "node verify-deployment.js"
   },
   "dependencies": {
     "@ffmpeg/ffmpeg": "0.12.15",
