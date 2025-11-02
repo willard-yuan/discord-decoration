@@ -4589,6 +4589,34 @@
     </image:image>
   </url>
 
+  <!-- New Free Discord Avatar Decorations Blog -->
+  <url>
+    <loc>https://discord-decoration.art/blog/new-free-discord-avatar-decorations</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/the_final_peel.png</image:loc>
+      <image:caption>The Final Peel Discord Avatar Decoration - New free decoration for Discord profiles</image:caption>
+      <image:title>The Final Peel Discord Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/warframe_clem.png</image:loc>
+      <image:caption>Warframe Clem Discord Avatar Decoration - New free decoration for Discord profiles</image:caption>
+      <image:title>Warframe Clem Discord Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/dart_monkey.png</image:loc>
+      <image:caption>Dart Monkey Discord Avatar Decoration - New free decoration for Discord profiles</image:caption>
+      <image:title>Dart Monkey Discord Decoration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/decorations/infinite_swirl.png</image:loc>
+      <image:caption>Infinite Swirl Discord Avatar Decoration - New free decoration for Discord profiles</image:caption>
+      <image:title>Infinite Swirl Discord Decoration</image:title>
+    </image:image>
+  </url>
+
   <!-- How to Split GIF into Frames Blog -->
   <url>
     <loc>https://discord-decoration.art/blog/how-to-split-gif-into-frames</loc>

@@ -15,6 +15,7 @@ import BlogArticle from "@/pages/blog/page.jsx";
 import DiscordFontBlog from "@/pages/blog/discord-font/page.jsx";
 import DiscordAvatarDecorationsArticle from "@/pages/blog/discord-avatar-decorations/page.jsx";
 import HowToSplitGifIntoFramesBlog from "@/pages/blog/how-to-split-gif-into-frames/page.jsx";
+import NewFreeDiscordAvatarDecorationsArticle from "@/pages/blog/new-free-discord-avatar-decorations/page.jsx";
 import DiscordProfileTips from "@/pages/discord-profile-tips/page.jsx";
 import TermsOfService from "@/pages/terms-of-service/page.jsx";
 import PrivacyPolicy from "@/pages/privacy-policy/page.jsx";
@@ -45,6 +46,7 @@ export function App() {
           <Route path="/blog/discord-font" component={DiscordFontBlog} />
           <Route path="/blog/discord-avatar-decorations" component={DiscordAvatarDecorationsArticle} />
           <Route path="/blog/how-to-split-gif-into-frames" component={HowToSplitGifIntoFramesBlog} />
+          <Route path="/blog/new-free-discord-avatar-decorations" component={NewFreeDiscordAvatarDecorationsArticle} />
           <Route path="/discord-profile-tips" component={DiscordProfileTips} />
           <Route path="/terms-of-service" component={TermsOfService} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />

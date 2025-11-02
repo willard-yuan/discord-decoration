@@ -73,6 +73,40 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.4",
+      date: "November 2nd, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "📝 Content Updates",
+          items: [
+            "Added new blog post: 'New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!'",
+            "Featured new Discord avatar decorations including The Final Peel, Warframe Clem, Dart Monkey, and Infinite Swirl",
+            "Enhanced blog content with detailed descriptions of new decoration features",
+            "Added comprehensive SEO optimization for the new blog post"
+          ]
+        },
+        {
+          category: "🔧 Technical Improvements",
+          items: [
+            "Fixed client-side routing configuration for new blog post URL",
+            "Added proper route mapping in src/index.jsx for /blog/new-free-discord-avatar-decorations",
+            "Updated sitemap.xml with new blog post entry",
+            "Enhanced sitemap-images.xml with featured decoration images from the new blog post"
+          ]
+        },
+        {
+          category: "🎨 New Decorations Showcase",
+          items: [
+            "Showcased The Final Peel decoration with detailed preview",
+            "Featured Warframe Clem decoration for gaming enthusiasts",
+            "Highlighted Dart Monkey decoration with unique design elements",
+            "Presented Infinite Swirl decoration with dynamic visual effects"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.3",
       date: "October 29th, 2025",
       type: "minor",
