@@ -103,7 +103,7 @@ const Hero = () => {
           <div className="mb-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-text-primary ginto mb-4">
               <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Discord Decoration
+                Discord Decorations
               </span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mt-2">
                 Free Avatar Decorations for Discord
@@ -146,11 +146,11 @@ const Hero = () => {
           {/* Stats or features */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-primary ginto mb-2">100+</div>
+              <div className="text-3xl sm:text-4xl font-bold text-primary ginto mb-2">300+</div>
               <h3 className="text-text-muted">Avatar Presets</h3>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-purple-400 ginto mb-2">50+</div>
+              <div className="text-3xl sm:text-4xl font-bold text-purple-400 ginto mb-2">600+</div>
               <h3 className="text-text-muted">Decorations</h3>
             </div>
             <div className="text-center">

@@ -170,13 +170,13 @@ export default function AboutUs() {
               
               <div className="grid md:grid-cols-3 gap-6 mt-8">
                 <div className="text-center bg-surface-high/30 rounded-xl p-6">
-                  <div className="text-3xl font-bold text-primary mb-2">100+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">300+</div>
                   <div className="text-text-primary font-semibold">Avatar Decorations</div>
                   <div className="text-sm text-text-secondary mt-1">Seasonal, themed, and custom designs</div>
                 </div>
                 
                 <div className="text-center bg-surface-high/30 rounded-xl p-6">
-                  <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">600+</div>
                   <div className="text-text-primary font-semibold">Font Styles</div>
                   <div className="text-sm text-text-secondary mt-1">Unicode text generators and formatters</div>
                 </div>

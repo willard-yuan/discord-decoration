@@ -17,10 +17,12 @@
 
 ### 构建配置
 在Cloudflare Pages控制台中设置：
-- **框架预设**: 无（或选择Vite）
+- **框架预设**: 无（重要：不要选择Next.js）
 - **构建命令**: `yarn build`
 - **构建输出目录**: `dist`
 - **根目录**: `/`（默认）
+
+**重要提示**: 如果Cloudflare自动检测为Next.js框架，请手动将框架预设改为"无"或"静态站点"。
 
 ### 环境变量
 在Cloudflare Pages设置中添加以下环境变量：
@@ -38,9 +40,19 @@ YARN_VERSION=4.9.2
 
 ## 文件说明
 
--   `wrangler.toml`: 修复 Cloudflare Pages "internal error" 的配置文件。内容如下：
+-   `wrangler.toml`: 修复 Cloudflare Pages 部署问题的配置文件。内容如下：
     ```toml
     name = "discord-decoration"
+    compatibility_date = "2024-01-01"
+    
+    [build]
+    command = "yarn build"
+    cwd = "."
+    
+    [build.upload]
+    format = "directory"
+    dir = "dist"
+    
     pages_build_output_dir = "dist"
     ```
 -   `public/_redirects`: SPA路由重定向配置。
@@ -55,6 +67,13 @@ YARN_VERSION=4.9.2
 2.  检查 package.json 格式是否正确。
 3.  确保所有依赖都已正确安装。
 4.  在本地运行 `yarn build` 确保构建成功。
+
+### 如果遇到"No Next.js version detected"错误：
+1.  在Cloudflare Pages控制台中，将**框架预设**设置为"无"或"静态站点"。
+2.  确保**构建命令**设置为 `yarn build`。
+3.  确保**构建输出目录**设置为 `dist`。
+4.  检查 `wrangler.toml` 文件是否正确配置了构建设置。
+5.  如果问题持续，删除项目并重新创建，确保不选择Next.js框架。
 
 ### 如果路由不工作：
 -   检查 `public/_redirects` 文件是否存在。

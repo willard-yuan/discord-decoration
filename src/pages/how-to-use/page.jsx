@@ -178,7 +178,7 @@ export default function HowToUse() {
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <span className="text-pink-400 mr-2">•</span>
-                    <span><strong className="text-white">Browse our collection:</strong> Choose from 100+ pre-made avatars including popular characters, animals, and abstract designs</span>
+                    <span><strong className="text-white">Browse our collection:</strong> Choose from 300+ pre-made avatars including popular characters, animals, and abstract designs</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-purple-400 mr-2">•</span>
@@ -243,7 +243,7 @@ export default function HowToUse() {
                     </div>
                   ))}
                 </div>
-                <p className="text-gray-400 text-sm text-center mt-4">Choose from 50+ decorations</p>
+                <p className="text-gray-400 text-sm text-center mt-4">Choose from 600+ decorations</p>
               </div>
             </div>
           </div>

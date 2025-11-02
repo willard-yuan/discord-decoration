@@ -1,5 +1,0 @@
-{
-  "version": 1,
-  "include": ["/*"],
-  "exclude": ["/assets/*", "/avatars/*", "/decorations/*", "/mdecorations/*", "/banners/*", "/backgrounds/*", "/nameplates/*", "/wallpaper/*"]
-}

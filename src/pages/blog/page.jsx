@@ -62,6 +62,17 @@ export default function BlogList() {
 
   const blogPosts = [
     {
+      id: 4,
+      title: "New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!",
+      description: "Discover 30+ brand new free Discord avatar decorations! Get exclusive access to The Final Peel, Warframe Clem, Dart Monkey, Infinite Swirl and many more stunning decorations.",
+      publishDate: "2025-11-02",
+      readTime: "6 min read",
+      category: "New Release",
+      image: "/decorations/the_final_peel.png",
+      link: "/blog/new-free-discord-avatar-decorations",
+      tags: ["Discord", "Avatar", "Decorations", "Free", "New Release"]
+    },
+    {
       id: 1,
       title: "How to Split a GIF into Frames?",
       description: "Learn how to extract individual frames from animated GIFs using our free online tool. Perfect for creating Discord avatars, profile pictures, and image editing projects.",
@@ -101,7 +112,7 @@ export default function BlogList() {
       <Navbar />
       
       {/* Breadcrumb */}
-      <Breadcrumb />
+      <Breadcrumb title="Blog" />
       
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">

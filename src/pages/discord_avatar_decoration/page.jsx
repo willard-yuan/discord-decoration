@@ -103,11 +103,29 @@ const DiscordAvatarDecoration = () => {
         category.data.forEach(subcategory => {
           if (subcategory.i && Array.isArray(subcategory.i)) {
             subcategory.i.forEach(decoration => {
-              allDecorations.push({
-                ...decoration,
-                category: category.name,
-                subcategory: subcategory.n
-              });
+              // Handle nested decorations (like Orbs Exclusive)
+              if (decoration.i && Array.isArray(decoration.i)) {
+                decoration.i.forEach(nestedDecoration => {
+                  // Only add decorations that have a filename property
+                  if (nestedDecoration.f) {
+                    allDecorations.push({
+                      ...nestedDecoration,
+                      category: category.name,
+                      subcategory: subcategory.n,
+                      parentDecoration: decoration.n
+                    });
+                  }
+                });
+              } else {
+                // Only add decorations that have a filename property
+                if (decoration.f) {
+                  allDecorations.push({
+                    ...decoration,
+                    category: category.name,
+                    subcategory: subcategory.n
+                  });
+                }
+              }
             });
           }
         });
@@ -197,7 +215,8 @@ const DiscordAvatarDecoration = () => {
       const filteredDecorations = decorations.filter(decoration => 
         decoration.n.toLowerCase().includes(query) ||
         decoration.subcategory.toLowerCase().includes(query) ||
-        (decoration.d && decoration.d.toLowerCase().includes(query))
+        (decoration.d && decoration.d.toLowerCase().includes(query)) ||
+        (decoration.parentDecoration && decoration.parentDecoration.toLowerCase().includes(query))
       );
       
       if (filteredDecorations.length > 0) {

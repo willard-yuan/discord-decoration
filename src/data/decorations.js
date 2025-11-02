@@ -152,6 +152,126 @@ export const decorationsData = [
         },
         i: [
           {
+            n: "The Final Peel",
+            d: "Exclusive to Fortnitemares Quest for a limited time. Available to use until December 20, 2025.",
+            f: "the_final_peel",
+          },
+          {
+            n: "Warframe Clem",
+            d: "Exclusive to Warframe Quest for a limited time. Available to use until December 22, 2025.",
+            f: "warframe_clem",
+          },
+          {
+            n: "Dart Monkey",
+            d: "Exclusive to Bloons TD 6 Dart Monkey Quest for a limited time. Available to use until December 26, 2025.",
+            f: "dart_monkey",
+          },
+          {
+            n: "KOM",
+            d: "Exclusive to King of Meat Avatar Quest for a limited time. Available to use until December 6, 2025.",
+            f: "kom",
+          },
+          {
+            n: "Mr. M",
+            d: "Exclusive to the Monopoly at McD's Quest for a limited time. Available to use until January 2, 2026.",
+            f: "mr_m",
+          },
+          {
+            n: "FC 26 Icon",
+            d: "Exclusive to EA SPORTS FC 26 Quest for a limited time. Available to use until December 8, 2025.",
+            f: "fc_26_icon",
+          },
+          {
+            n: "skate.",
+            d: "Exclusive to skate. Trailer Quest for a limited time. Available to use until November 28, 2025.",
+            f: "skate",
+          },
+          {
+            n: "Airona Fireworks",
+            d: "Exclusive to Blue Protocol: Star Resonance Quest for a limited time. Available to use until December 13, 2025.",
+            f: "airona_fireworks",
+          },
+          {
+            n: "Daredevil",
+            d: "Exclusive to Marvel Rivals Quest S4.5 Quest for a limited time. Available to use until December 17, 2025.",
+            f: "daredevil",
+          },
+          {
+            n: "Champions Tactibear",
+            d: "Exclusive to VALORANT Champions Paris Quest for a limited time. Available to use until December 5, 2025.",
+            f: "champions_tactibear",
+          },
+          {
+            n: "Travel Ring",
+            d: "Exclusive to Sonic Racing: CrossWorlds Quest for a limited time. Available to use until December 1, 2025.",
+            f: "travel_ring",
+          },
+          {
+            n: "A Real Fungi",
+            d: "Give your avatar a new look.",
+            f: "a_real_fungi",
+          },
+          {
+            n: "Dream Dive Stars",
+            d: "Exclusive to Early Access Quest for a limited time. Available to use until November 14, 2025.",
+            f: "dream_dive_stars",
+          },
+          {
+            n: "Lover Girl Autumn",
+            d: "Give your avatar a new look.",
+            f: "lover_girl_autumn",
+          },
+          {
+            n: "Cab Monster",
+            d: "Exclusive to 2XKO Early Access Quest for a limited time. Available to use until December 17, 2025.",
+            f: "cab_monster",
+          },
+          {
+            n: "Black Phone 2",
+            d: "Exclusive to The Black Phone 2 Main Quest for a limited time. Available to use until December 17, 2025.",
+            f: "black_phone_2",
+          },
+          {
+            n: "Cosy Deer",
+            d: "Give your avatar a new look.",
+            f: "cosy_deer",
+          },
+          {
+            n: "Atsu's Mask",
+            d: "Exclusive to Ghost of Yōtei Quest for a limited time. Available to use until December 4, 2025.",
+            f: "atsus_mask",
+          },
+          {
+            n: "Autumn Foliage",
+            d: "Give your avatar a new look.",
+            f: "autumn_foliage",
+          },
+          {
+            n: "Lights, Camera, Action! (Orange)",
+            d: "Give your avatar a new look.",
+            f: "lights_camera_action_orange",
+          },
+          {
+            n: "Tactibear Flex",
+            d: "Exclusive to VALORANT Invite Quest for a limited time. Available to use until December 12, 2025.",
+            f: "tactibear_flex",
+          },
+          {
+            n: "Hoppy Boi",
+            d: "Give your avatar a new look.",
+            f: "hoppy_boi",
+          },
+          {
+            n: "Forest Frolic",
+            d: "Give your avatar a new look.",
+            f: "forest_frolic",
+          },
+          {
+            n: "Lights, Camera, Action! (Teal)",
+            d: "Give your avatar a new look.",
+            f: "lights_camera_action_teal",
+          },
+          {
             n: "Angela Avatar",
             d: "Exclusive to Marvel Rivals S4.0 Quest for a limited time. Available to use until November 19, 2025.",
             f: "angela_avatar",
@@ -565,6 +685,21 @@ export const decorationsData = [
           i: "orbs_exclusive",
         },
         i: [
+          {
+            n: "Pondering Portal",
+            d: "Dazzling thoughts create neon sparks.",
+            f: "pondering_portal",
+          },
+          {
+            n: "Magic Mists",
+            d: "Give your avatar a new look.",
+            f: "magic_mists",
+          },
+          {
+            n: "Infinite Swirl",
+            d: "Give your avatar a new look.",
+            f: "infinite_swirl",
+          },
           {
             n: "Pondering Portal",
             d: "Dazzling thoughts create neon sparks.",
