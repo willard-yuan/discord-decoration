@@ -51,14 +51,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <a href="/" aria-label="Home" className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity cursor-pointer">
+          <div className="flex items-center space-x-4">
+            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">D</span>
               </div>
               <div className="block">
-                <h2 className="text-base sm:text-xl font-bold text-text-primary ginto truncate">
-                  Discord Decorations
+                <h2 className="text-lg sm:text-xl font-bold text-text-primary ginto">
+                  Discord Avatar Decorations
                 </h2>
                 <p className="text-xs text-text-muted hidden sm:block">
                   Create custom avatar decorations for free
@@ -105,10 +105,7 @@ const Navbar = () => {
             
             {/* Mobile Menu Button */}
             <button 
-              className="md:hidden p-3 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
-              aria-label="Toggle navigation"
-              aria-controls="mobile-nav"
-              aria-expanded={isMobileMenuOpen}
+              className="md:hidden p-2 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg className="w-5 h-5 text-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,27 +118,27 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-nav" className="md:hidden border-t border-border-faint bg-surface-overlay/80 backdrop-blur-lg shadow-lg">
+        <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Avatars
             </a>
-            <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Decorations
             </a>
-            <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Fronts
             </a>
-            <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               FAQs
             </a>
-            <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Blog
             </a>
-            <a href="/discuss" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/discuss" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
               Discuss
             </a>
-            <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
+            <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
                 Changelog
               </a>
           </div>
