@@ -4,10 +4,16 @@ import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import SearchBar from '../../components/searchbar.jsx';
+import Modal from '../../components/modal.jsx';
+import Image from '../../components/image.jsx';
 
 const DiscordAvatarDecoration = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [copiedDecoration, setCopiedDecoration] = useState(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [previewAvatarUrl, setPreviewAvatarUrl] = useState('/avatars/in_rainbows.png');
+  const [previewDecorationUrl, setPreviewDecorationUrl] = useState('');
+  const [previewDecorationName, setPreviewDecorationName] = useState('');
+  const [copied, setCopied] = useState(false);
   
   useEffect(() => {
     document.title = "Discord Avatar Decorations - Free Decoration Collection";
@@ -69,28 +75,31 @@ const DiscordAvatarDecoration = () => {
     };
   }, []);
 
-  // Handle decoration click to copy name to clipboard
-  const handleDecorationClick = async (decorationName) => {
+  // Handle decoration click to open profile preview modal
+  const handleDecorationClick = (decorationFile, decorationName) => {
+    setPreviewDecorationUrl(`/decorations/${decorationFile}.png`);
+    setPreviewDecorationName(decorationName || '');
+    setIsPreviewOpen(true);
+  };
+
+  const copyDecorationName = async () => {
     try {
-      await navigator.clipboard.writeText(decorationName);
-      setCopiedDecoration(decorationName);
-      // Hide the copied message after 2 seconds
-      setTimeout(() => {
-        setCopiedDecoration(null);
-      }, 2000);
-    } catch (err) {
-      console.error('Failed to copy to clipboard:', err);
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = decorationName;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      setCopiedDecoration(decorationName);
-      setTimeout(() => {
-        setCopiedDecoration(null);
-      }, 2000);
+      if (!previewDecorationName) return;
+      await navigator.clipboard.writeText(previewDecorationName);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = previewDecorationName;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1800);
+      } finally {
+        document.body.removeChild(ta);
+      }
     }
   };
 
@@ -232,7 +241,7 @@ const DiscordAvatarDecoration = () => {
   return (
     <div className="min-h-screen bg-surface-primary">
       <Navbar />
-      <Breadcrumb />
+      <Breadcrumb title="Avatar Decorations" />
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
@@ -282,16 +291,26 @@ const DiscordAvatarDecoration = () => {
                   <div key={index} className="relative">
                     <button 
                       className="w-full bg-surface-secondary rounded-lg p-4 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-surface-primary"
-                      onClick={() => handleDecorationClick(decoration.n)}
+                      onClick={() => handleDecorationClick(decoration.f, decoration.n)}
                       aria-label={`Select ${decoration.n} decoration`}
                     >
-                      <div className="aspect-square bg-surface-tertiary rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                      <div className="aspect-square bg-surface-tertiary rounded-lg mb-3 flex items-center justify-center overflow-hidden relative">
                         <img 
                           src={`/decorations/${decoration.f}.png`}
                           alt={decoration.n}
                           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-200"
                           loading="lazy"
                         />
+                        {/* Hover overlay to hint preview */}
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                          <div className="flex items-center gap-2 text-white text-sm font-medium px-3 py-2 bg-black/50 rounded-lg">
+                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
+                            </svg>
+                            <span>Click to preview</span>
+                          </div>
+                        </div>
                       </div>
                       <div className="text-center">
                         <h3 className="text-sm font-semibold text-text-primary mb-1 truncate" title={decoration.n}>
@@ -308,17 +327,7 @@ const DiscordAvatarDecoration = () => {
                       </div>
                     </button>
                     
-                    {/* Copy Success Toast */}
-                    {copiedDecoration === decoration.n && (
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                        <div className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 animate-pulse">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="text-sm font-medium whitespace-nowrap">Copied Decoration Name</span>
-                        </div>
-                      </div>
-                    )}
+                    
                   </div>
                 ))}
               </div>
@@ -354,6 +363,66 @@ const DiscordAvatarDecoration = () => {
         </div>
       </div>
       <Footer />
+      
+      {/* Profile Preview Modal */}
+      <Modal
+        visible={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+        title={"Profile Preview"}
+        subtitle={"This is how your avatar looks on Discord"}
+      >
+        <div className="flex justify-center py-2">
+          <div
+            id="profile-preview"
+            className="relative bg-surface-overlay shadow-lg rounded-lg w-[300px] overflow-hidden select-none"
+          >
+            <div className="bg-primary h-[105px]" />
+            <div className="top-[61px] left-[16px] absolute bg-surface-overlay p-[6px] rounded-full w-[92px] h-[92px] select-none">
+              <div className="relative rounded-full w-[80px] h-[80px] overflow-hidden">
+                <Image
+                  id="avatar"
+                  src={previewAvatarUrl}
+                  className={
+                    "absolute top-[calc(80px*0.09)] left-[calc(80px*0.09)] w-[calc(80px*0.82)] h-[calc(80px*0.82)] rounded-full"
+                  }
+                  draggable={false}
+                />
+                {/* Decoration overlay */}
+                {previewDecorationUrl && (
+                  <Image
+                    id="decoration"
+                    src={previewDecorationUrl}
+                    className={
+                      "absolute top-0 left-0 w-[80px] h-[80px]"
+                    }
+                    draggable={false}
+                  />
+                )}
+              </div>
+              <div className="right-[-4px] bottom-[-4px] absolute bg-[#229f56] border-[5px] border-surface-overlay rounded-full w-7 h-7" />
+            </div>
+            <div className="bg-surface-overlay mt-[35px] p-4 rounded-lg w-[calc(100%)] *:w-full">
+              <p className="font-semibold text-xl [letter-spacing:.02em]">Display Name</p>
+              <p className="mb-3 text-sm">username</p>
+              <p className="text-sm mb-2">
+                This is an example profile so that you can see what the decorated avatar would actually look like on Discord.
+              </p>
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={copyDecorationName}
+                  className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
+                >
+                  Copy decoration name
+                </button>
+                {copied && (
+                  <span className="text-green-400 text-xs">Copied!</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
