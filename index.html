@@ -40,8 +40,7 @@
     <link rel="dns-prefetch" href="https://discord-decoration.art" />
     
     <!-- Resource Hints -->
-    <!-- Use modulepreload for ES modules to avoid unused preload warnings -->
-    <link rel="modulepreload" href="/src/index.jsx" />
+    <!-- Avoid preloading JS module in dev to prevent MIME errors -->
     <link rel="preload" href="/src/global.css" as="style" />
     
     <!-- Structured Data (JSON-LD) -->
