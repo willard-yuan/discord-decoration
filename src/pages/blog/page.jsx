@@ -68,7 +68,7 @@ export default function BlogList() {
       publishDate: "2025-11-02",
       readTime: "6 min read",
       category: "New Release",
-      image: "/decorations/the_final_peel.png",
+      image: "/free_discord_avatar_decorations.webp",
       link: "/blog/new-free-discord-avatar-decorations",
       tags: ["Discord", "Avatar", "Decorations", "Free", "New Release"]
     },

@@ -28,7 +28,7 @@ export default function NewFreeDiscordAvatarDecorationsArticle() {
       "@type": "Article",
       "headline": "New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!",
       "description": "Discover 30+ brand new free Discord avatar decorations! Get exclusive access to The Final Peel, Warframe Clem, Dart Monkey, Infinite Swirl and many more stunning decorations.",
-      "image": "https://discord-decoration.art/decorations/the_final_peel.png",
+      "image": "https://discord-decoration.art/free_discord_avatar_decorations.webp",
       "author": {
         "@type": "Organization",
         "name": "Discord Decoration Art"
