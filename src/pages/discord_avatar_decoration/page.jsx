@@ -422,26 +422,6 @@ const DiscordAvatarDecoration = () => {
             </div>
           </div>
         </div>
-      </Modal>">Display Name</p>
-              <p className="mb-3 text-sm">username</p>
-              <p className="text-sm mb-2">
-                This is an example profile so that you can see what the decorated avatar would actually look like on Discord.
-              </p>
-              <div className="mt-3 flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={copyDecorationName}
-                  className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
-                >
-                  Copy decoration name
-                </button>
-                {copied && (
-                  <span className="text-green-400 text-xs">Copied!</span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
       </Modal>
     </div>
   );
