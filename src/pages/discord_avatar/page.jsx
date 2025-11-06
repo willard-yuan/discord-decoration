@@ -318,39 +318,39 @@ const DiscordAvatar = () => {
           <div className="flex justify-center py-2">
             <div
               id="profile-preview"
-              className="relative bg-surface-overlay shadow-lg rounded-lg w-[300px] overflow-hidden select-none"
+              className="relative bg-surface-overlay shadow-lg rounded-lg w-full max-w-[300px] sm:max-w-[350px] overflow-hidden select-none mx-4"
             >
-              <div className="bg-primary h-[105px]" />
-              <div className="top-[61px] left-[16px] absolute bg-surface-overlay p-[6px] rounded-full w-[92px] h-[92px] select-none">
-                <div className="relative rounded-full w-[80px] h-[80px] overflow-hidden">
+              <div className="bg-primary h-[90px] sm:h-[105px]" />
+              <div className="top-[46px] sm:top-[61px] left-[12px] sm:left-[16px] absolute bg-surface-overlay p-[4px] sm:p-[6px] rounded-full w-[76px] h-[76px] sm:w-[92px] sm:h-[92px] select-none">
+                <div className="relative rounded-full w-[68px] h-[68px] sm:w-[80px] sm:h-[80px] overflow-hidden">
                   <Image
                     id="avatar"
                     src={previewAvatarUrl || `/avatars/in_rainbows.png`}
                     className={
-                      "absolute top-[calc(80px*0.09)] left-[calc(80px*0.09)] w-[calc(80px*0.82)] h-[calc(80px*0.82)] rounded-full"
+                      "absolute top-[calc(100%*0.09)] left-[calc(100%*0.09)] w-[calc(100%*0.82)] h-[calc(100%*0.82)] rounded-full"
                     }
                     draggable={false}
                   />
                 </div>
-                <div className="right-[-4px] bottom-[-4px] absolute bg-[#229f56] border-[5px] border-surface-overlay rounded-full w-7 h-7" />
+                <div className="right-[-3px] bottom-[-3px] sm:right-[-4px] sm:bottom-[-4px] absolute bg-[#229f56] border-[4px] sm:border-[5px] border-surface-overlay rounded-full w-5 h-5 sm:w-7 sm:h-7" />
               </div>
-              <div className="bg-surface-overlay mt-[35px] p-4 rounded-lg w-[calc(100%)] *:w-full">
-                <p className="font-semibold text-xl [letter-spacing:.02em]">Display Name</p>
-                <p className="mb-3 text-sm">username</p>
-                <p className="text-sm mb-2">
+              <div className="bg-surface-overlay mt-[28px] sm:mt-[35px] p-3 sm:p-4 rounded-lg w-[calc(100%)] *:w-full">
+                <p className="font-semibold text-lg sm:text-xl [letter-spacing:.02em]">Display Name</p>
+                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">username</p>
+                <p className="text-xs sm:text-sm mb-2">
                   This is an example profile so that you can see what the profile picture would actually look like on Discord.
                 </p>
-                <div className="mt-3 flex items-center gap-3">
+                <div className="mt-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                   <button
                     type="button"
                     onClick={copyAvatarName}
-                    className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
+                    className="px-4 py-3 sm:py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm transition-colors min-h-[44px] flex items-center justify-center"
                     aria-label="Copy Avatar Name"
                   >
                     Copy Avatar Name
                   </button>
                   {copied && (
-                    <span className="text-green-400 text-xs">Copied!</span>
+                    <span className="text-green-400 text-xs sm:text-sm text-center sm:text-left">Copied!</span>
                   )}
                 </div>
               </div>

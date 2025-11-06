@@ -371,19 +371,19 @@ const DiscordAvatarDecoration = () => {
         title={"Profile Preview"}
         subtitle={"This is how your avatar looks on Discord"}
       >
-        <div className="flex justify-center py-2">
+        <div className="flex justify-center py-2 sm:py-4">
           <div
             id="profile-preview"
-            className="relative bg-surface-overlay shadow-lg rounded-lg w-[300px] overflow-hidden select-none"
+            className="relative bg-surface-overlay shadow-lg rounded-lg w-[280px] sm:w-[300px] overflow-hidden select-none"
           >
-            <div className="bg-primary h-[105px]" />
-            <div className="top-[61px] left-[16px] absolute bg-surface-overlay p-[6px] rounded-full w-[92px] h-[92px] select-none">
-              <div className="relative rounded-full w-[80px] h-[80px] overflow-hidden">
+            <div className="bg-primary h-[90px] sm:h-[105px]" />
+            <div className="top-[50px] sm:top-[61px] left-[12px] sm:left-[16px] absolute bg-surface-overlay p-[4px] sm:p-[6px] rounded-full w-[80px] h-[80px] sm:w-[92px] sm:h-[92px] select-none">
+              <div className="relative rounded-full w-[72px] h-[72px] sm:w-[80px] sm:h-[80px] overflow-hidden">
                 <Image
                   id="avatar"
                   src={previewAvatarUrl}
                   className={
-                    "absolute top-[calc(80px*0.09)] left-[calc(80px*0.09)] w-[calc(80px*0.82)] h-[calc(80px*0.82)] rounded-full"
+                    "absolute top-[calc(72px*0.09)] left-[calc(72px*0.09)] w-[calc(72px*0.82)] h-[calc(72px*0.82)] sm:top-[calc(80px*0.09)] sm:left-[calc(80px*0.09)] sm:w-[calc(80px*0.82)] sm:h-[calc(80px*0.82)] rounded-full"
                   }
                   draggable={false}
                 />
@@ -393,16 +393,36 @@ const DiscordAvatarDecoration = () => {
                     id="decoration"
                     src={previewDecorationUrl}
                     className={
-                      "absolute top-0 left-0 w-[80px] h-[80px]"
+                      "absolute top-0 left-0 w-[72px] h-[72px] sm:w-[80px] sm:h-[80px]"
                     }
                     draggable={false}
                   />
                 )}
               </div>
-              <div className="right-[-4px] bottom-[-4px] absolute bg-[#229f56] border-[5px] border-surface-overlay rounded-full w-7 h-7" />
+              <div className="right-[-3px] bottom-[-3px] sm:right-[-4px] sm:bottom-[-4px] absolute bg-[#229f56] border-[4px] sm:border-[5px] border-surface-overlay rounded-full w-6 h-6 sm:w-7 sm:h-7" />
             </div>
-            <div className="bg-surface-overlay mt-[35px] p-4 rounded-lg w-[calc(100%)] *:w-full">
-              <p className="font-semibold text-xl [letter-spacing:.02em]">Display Name</p>
+            <div className="bg-surface-overlay mt-[30px] sm:mt-[35px] p-3 sm:p-4 rounded-lg w-[calc(100%)] *:w-full">
+              <p className="font-semibold text-lg sm:text-xl [letter-spacing:.02em] mb-1 sm:mb-0">Display Name</p>
+              <p className="mb-2 sm:mb-3 text-xs sm:text-sm">username</p>
+              <p className="text-xs sm:text-sm mb-2">
+                This is an example profile so that you can see what the decorated avatar would actually look like on Discord.
+              </p>
+              <div className="mt-2 sm:mt-3 flex items-center gap-2 sm:gap-3">
+                <button
+                  type="button"
+                  onClick={copyDecorationName}
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm transition-colors min-h-[36px] min-w-[120px] flex items-center justify-center"
+                >
+                  Copy decoration name
+                </button>
+                {copied && (
+                  <span className="text-green-400 text-xs">Copied!</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>">Display Name</p>
               <p className="mb-3 text-sm">username</p>
               <p className="text-sm mb-2">
                 This is an example profile so that you can see what the decorated avatar would actually look like on Discord.
