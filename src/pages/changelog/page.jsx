@@ -73,6 +73,30 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.5",
+      date: "November 7th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "✨ Feature Updates",
+          items: [
+            [
+              { text: "The discord avatar gallery page", href: "/discord_avatar" },
+              { text: " supports real-time avatar preview with immediate updates" }
+            ],
+            [
+              { text: "The discord avatar decorations gallery page", href: "/discord_avatar_decoration" },
+              { text: " supports live preview when selecting decorations" }
+            ],
+            [
+              { text: "The gif-extractor page", href: "/gif-extractor" },
+              { text: " adds one-click 'Download All Frames (.zip)' bulk download" }
+            ]
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.4",
       date: "November 2nd, 2025",
       type: "minor",
@@ -332,7 +356,7 @@ export default function Changelog() {
       <Navbar />
       
       <div className="relative z-10">
-        <Breadcrumb />
+        <Breadcrumb title="Changelog" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
@@ -377,12 +401,45 @@ export default function Changelog() {
                         <span className="mr-2">{category.category}</span>
                       </h3>
                       <ul className="space-y-3">
-                        {category.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start space-x-3">
-                            <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
-                            <span className="text-text-secondary leading-relaxed">{item}</span>
-                          </li>
-                        ))}
+                        {category.items.map((item, itemIndex) => {
+                          // Support segmented items for partial links
+                          if (Array.isArray(item)) {
+                            return (
+                              <li key={itemIndex} className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                <span className="text-text-secondary leading-relaxed">
+                                  {item.map((seg, segIndex) => {
+                                    const isLink = typeof seg === 'object' && seg !== null && 'href' in seg;
+                                    const segText = typeof seg === 'string' ? seg : seg.text;
+                                    return isLink ? (
+                                      <a key={segIndex} href={seg.href} className="hover:text-primary underline underline-offset-2">
+                                        {segText}
+                                      </a>
+                                    ) : (
+                                      <span key={segIndex}>{segText}</span>
+                                    );
+                                  })}
+                                </span>
+                              </li>
+                            );
+                          }
+
+                          const isObj = typeof item === 'object' && item !== null;
+                          const text = isObj ? item.text : item;
+                          const href = isObj && 'href' in item ? item.href : null;
+                          return (
+                            <li key={itemIndex} className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                              {href ? (
+                                <a href={href} className="text-text-secondary hover:text-primary underline underline-offset-2">
+                                  {text}
+                                </a>
+                              ) : (
+                                <span className="text-text-secondary leading-relaxed">{text}</span>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   ))}

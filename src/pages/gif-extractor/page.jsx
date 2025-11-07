@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import JSZip from "jszip";
 
 import FileUpload from "@/components/fileupload.jsx";
 import { Icons } from "@/components/icons.jsx";
@@ -133,6 +134,41 @@ export default function GifExtractor() {
 
   const [file, setFile] = useState(null);
   const [frames, setFrames] = useState(null);
+  const [zipping, setZipping] = useState(false);
+
+  const base64ToUint8Array = (base64) => {
+    const binaryString = atob(base64);
+    const len = binaryString.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes;
+  };
+
+  const downloadAllFrames = async () => {
+    if (!frames || !frames.length) return;
+    setZipping(true);
+    try {
+      const zip = new JSZip();
+      frames.forEach((frame, i) => {
+        const filename = `frame_${String(i + 1).padStart(3, "0")}.png`;
+        zip.file(filename, base64ToUint8Array(frame));
+      });
+      const blob = await zip.generateAsync({ type: "blob" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `gif_frames_${Date.now()}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      printErr("Failed to create ZIP");
+      console.error(err);
+    } finally {
+      setZipping(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-text">
@@ -259,11 +295,9 @@ export default function GifExtractor() {
                   {/* Frames Grid */}
                   {frames && typeof frames === "object" && typeof frames.map === "function" && (
                     <div className="bg-surface-overlay/50 backdrop-blur-sm rounded-2xl p-8 border border-border-faint">
-                      <div className="text-center mb-8">
+                      <div className="text-center mb-6">
                         <h3 className="text-2xl font-semibold text-text-primary mb-2">Extracted Frames</h3>
-                        <p className="text-text-secondary">
-                          Click on any frame to download it as a PNG file
-                        </p>
+                        <p className="text-text-secondary">Click on any frame to download it as a PNG file, or scroll to the bottom to download all frames (.zip) with one click.</p>
                       </div>
                       
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -312,6 +346,21 @@ export default function GifExtractor() {
                             {frames.length} frames extracted successfully
                           </span>
                         </div>
+                      </div>
+
+                      {/* Bulk download button moved to bottom */}
+                      <div className="mt-8 flex justify-center">
+                        <button
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-purple-500 hover:from-primary/80 hover:to-purple-500/80 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
+                          onClick={downloadAllFrames}
+                          disabled={zipping || !frames?.length}
+                          aria-label="Download all frames as a ZIP"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          {zipping ? "Preparing ZIP…" : "Download All Frames (.zip)"}
+                        </button>
                       </div>
                     </div>
                   )}
