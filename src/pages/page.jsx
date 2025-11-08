@@ -242,6 +242,19 @@ const ExtraLinks = () => (
       <p className="font-bold">Links</p>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
+        href="/other-tools"
+      >
+        <span className="place-items-center w-6">
+          <Icons.lootbox size="18px" />
+        </span>
+        Other Tools
+        <span className="grow" />
+        <span className="rotate-45">
+          <Icons.up size="16px" />
+        </span>
+      </a>
+      <a
+        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
         href="/gif-extractor"
       >
         <span className="place-items-center w-6">

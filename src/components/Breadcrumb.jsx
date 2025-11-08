@@ -13,6 +13,8 @@ const Breadcrumb = ({ title }) => {
       items.push({ name: 'Avatar Gallery', path: '/discord_avatar/', keywords: 'discord avatar gallery' });
     } else if (pathname.includes('/discord_front')) {
       items.push({ name: 'Discord Fonts', path: '/discord_front/', keywords: 'discord fonts generator stylish text' });
+    } else if (pathname.includes('/other-tools')) {
+      items.push({ name: 'Other Tools', path: '/other-tools/', keywords: 'discover other tools' });
     } else if (pathname.includes('/gif-extractor')) {
       items.push({ name: 'GIF Extractor', path: '/gif-extractor/', keywords: 'discord gif extractor' });
     } else if (pathname.includes('/blog')) {
