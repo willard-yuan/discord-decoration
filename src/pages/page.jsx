@@ -13,7 +13,6 @@ import Modal from "@/components/modal.jsx";
 import { LoadingCubes } from "@/components/spinner.jsx";
 import Twemoji from "@/components/twemoji.jsx";
 
-import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { addDecoration, cropToSquare } from "@/ffmpeg/processImage.js";
 import {
   getMimeTypeFromArrayBuffer,
@@ -52,7 +51,7 @@ export default function Home() {
   const [unsupported, setUnsupported] = useState("");
 
   const transferredFfmpeg = getData("ffmpeg");
-  const ffmpegRef = useRef(isServer ? null : transferredFfmpeg || new FFmpeg());
+  const ffmpegRef = useRef(isServer ? null : transferredFfmpeg || null);
 
   const ensureLoaded = useCallback(async () => {
     if (loaded) return;
@@ -60,32 +59,54 @@ export default function Home() {
       await loadingPromise;
       return;
     }
-    throw new Error("FFmpeg initialization not queued.");
-  }, []);
+    // Lazily initialize FFmpeg on first demand
+    loadingPromise = (async () => {
+      const { FFmpeg } = await import("@ffmpeg/ffmpeg");
+      ffmpegRef.current = new FFmpeg();
+      setFfmpeg(ffmpegRef.current);
+      await initFfmpeg();
+      setLoaded(true);
+    })();
+    await loadingPromise;
+  }, [loaded]);
 
-  const load = useCallback(async () => {
+  useEffect(() => {
     if (isServer) return;
-
     if (typeof WebAssembly === "undefined") {
       setUnsupported("Your browser does not support WebAssembly.");
+      return;
     }
-
-    if (!transferredFfmpeg) {
-      setFfmpeg(ffmpegRef.current);
-
-      loadingPromise = initFfmpeg();
-      await loadingPromise;
-    }
-
-    setLoaded(true);
+    // Optional: idle preloading to improve later interaction without affecting FCP
+    const idle = (cb) =>
+      typeof window.requestIdleCallback === "function"
+        ? window.requestIdleCallback(cb, { timeout: 5000 })
+        : window.setTimeout(cb, 2500);
+    const cancel = idle(async () => {
+      if (!transferredFfmpeg && !loaded && loadingPromise == null) {
+        // Begin preloading very late to avoid impacting initial paint
+        loadingPromise = (async () => {
+          const { FFmpeg } = await import("@ffmpeg/ffmpeg");
+          ffmpegRef.current = new FFmpeg();
+          setFfmpeg(ffmpegRef.current);
+          await initFfmpeg();
+          setLoaded(true);
+        })();
+        await loadingPromise;
+      }
+    });
+    return () => {
+      if (typeof window.cancelIdleCallback === "function") {
+        try {
+          window.cancelIdleCallback(cancel);
+        } catch {}
+      } else {
+        window.clearTimeout(cancel);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [t, setT] = useState(false);
-  useEffect(() => {
-    if (t) return;
-    setT(true);
-    load();
-  }, [load, t]);
+  // Removed eager ffmpeg load on mount to reduce FCP/LCP
 
   return (
     <>
@@ -109,6 +130,8 @@ const UnsupportedModal = ({ unsupportedMsg }) =>
               "https://github.com/ItsPi3141/discord-fake-avatar-decorations/issues"
             );
           }}
+          ariaLabel="Report a bug"
+          disabled={false}
         >
           <Icons.bug />
           Report a bug
@@ -164,6 +187,8 @@ const ExtraLinks = () => (
             `https://twitter.com/intent/tweet?url=${url}&text=${text}`
           );
         }}
+        ariaLabel="Share on X"
+        disabled={false}
       >
         <Icons.x />
         Share on X
@@ -173,6 +198,8 @@ const ExtraLinks = () => (
           const url = encodeURIComponent(window.location.href);
           window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
         }}
+        ariaLabel="Share on Facebook"
+        disabled={false}
       >
         <Icons.facebook />
         Share on Facebook
@@ -185,6 +212,8 @@ const ExtraLinks = () => (
             `https://www.reddit.com/submit?url=${url}&title=${title}`
           );
         }}
+        ariaLabel="Share on Reddit"
+        disabled={false}
       >
         <Icons.reddit />
         Share on Reddit
@@ -200,6 +229,8 @@ const ExtraLinks = () => (
             `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`
           );
         }}
+        ariaLabel="Share on LinkedIn"
+        disabled={false}
       >
         <Icons.linkedin />
         Share on LinkedIn
@@ -374,7 +405,7 @@ const App = ({ ensureLoaded }) => {
       }}
     >
       <Navbar />
-      <Breadcrumb />
+      <Breadcrumb title="Discord Decorations" />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
@@ -727,6 +758,7 @@ const App = ({ ensureLoaded }) => {
                     a.click();
                   }}
                   ariaLabel="Download decorated avatar as animated GIF"
+                  disabled={false}
                 >
                   <Icons.download />
                   Save Animated GIF
@@ -737,6 +769,8 @@ const App = ({ ensureLoaded }) => {
                     storeData("image", finishedAv);
                     router.route("/gif-extractor");
                   }}
+                  ariaLabel="Extract still image"
+                  disabled={false}
                 >
                   <Icons.image />
                   Extract still image
@@ -904,14 +938,16 @@ const AvatarList = () => {
     // @ts-ignore
     event.target.classList.add("border-primary");
     
-    // 自动滚动到profile-preview区域
+    // 自动滚动到 profile-preview 区域（考虑吸顶导航高度，适当下移）
     setTimeout(() => {
       const profilePreview = document.getElementById("profile-preview");
       if (profilePreview) {
-        profilePreview.scrollIntoView({ 
-          behavior: "smooth", 
-          block: "center" 
-        });
+        const rect = profilePreview.getBoundingClientRect();
+        const absoluteY = rect.top + window.pageYOffset;
+        const header = document.querySelector("nav");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const offset = headerHeight + 24; // 额外下移，避免锚点过高
+        window.scrollTo({ top: Math.max(absoluteY - offset, 0), behavior: "smooth" });
       }
     }, 100);
   }, []);
@@ -998,14 +1034,16 @@ const DecorationsList = ({ decorationsList, style, className }) => {
     }
     event.target.classList.add("border-primary");
     
-    // 自动滚动到profile-preview区域
+    // 自动滚动到 profile-preview 区域（考虑吸顶导航高度，适当下移）
     setTimeout(() => {
       const profilePreview = document.getElementById("profile-preview");
       if (profilePreview) {
-        profilePreview.scrollIntoView({ 
-          behavior: "smooth", 
-          block: "center" 
-        });
+        const rect = profilePreview.getBoundingClientRect();
+        const absoluteY = rect.top + window.pageYOffset;
+        const header = document.querySelector("nav");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const offset = headerHeight + 24; // 额外下移，避免锚点过高
+        window.scrollTo({ top: Math.max(absoluteY - offset, 0), behavior: "smooth" });
       }
     }, 100);
   }, []);

@@ -2,11 +2,10 @@ import { printErr, printMsg } from "@/utils/print";
 import { downloadWithProgress } from "@/utils/download";
 import { storeData } from "@/utils/dataHandler";
 
-import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
 
-export let /** @type {FFmpeg} */ ffmpeg;
-export const setFfmpeg = (/** @type {FFmpeg} */ f) => (ffmpeg = f);
+export let /** @type {any} */ ffmpeg;
+export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
 
 export const initFfmpeg = async (onProgress) => {
   const ffmpegBaseUrl =

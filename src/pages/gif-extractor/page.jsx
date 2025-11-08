@@ -7,7 +7,6 @@ import Image from "@/components/image.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 
-import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { imagesFromGif } from "@/ffmpeg/extractFrames.js";
 import {
   getMimeTypeFromArrayBuffer,
@@ -98,39 +97,39 @@ export default function GifExtractor() {
     };
   }, []);
 
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   const [loadPercentage, setLoadPercentage] = useState("0%");
+  const ffmpegRef = useRef(null);
 
-  const transferredFfmpeg = getData("ffmpeg");
-  const ffmpegRef = useRef(isServer ? null : transferredFfmpeg || new FFmpeg());
-
-  const load = useCallback(async () => {
+  // 按需初始化 FFmpeg，并显示进度条
+  const ensureLoaded = useCallback(async () => {
     if (isServer) return;
 
-    if (!transferredFfmpeg) {
+    const existing = getData("ffmpeg");
+    if (existing) {
+      ffmpegRef.current = existing;
       setFfmpeg(ffmpegRef.current);
-      await initFfmpeg((e) => {
-        setLoadPercentage(
-          `${Math.round((e.received / ffmpegTotalBytes) * 100)}%`
-        );
-      });
+      return;
     }
 
+    setLoaded(false);
+    const { FFmpeg } = await import("@ffmpeg/ffmpeg");
+    ffmpegRef.current = new FFmpeg();
+    setFfmpeg(ffmpegRef.current);
+    await initFfmpeg((e) => {
+      setLoadPercentage(`${Math.round((e.received / ffmpegTotalBytes) * 100)}%`);
+    });
     setLoaded(true);
+  }, []);
 
+  // 仅在挂载时恢复传递的图片数据，不初始化 FFmpeg
+  useEffect(() => {
     if (!isServer) {
       const i = getData("image");
       if (i) setFile(i);
       clearData("image");
     }
   }, []);
-
-  const [t, setT] = useState(false);
-  useEffect(() => {
-    if (t) return;
-    setT(true);
-    load();
-  }, [load, t]);
 
   const [file, setFile] = useState(null);
   const [frames, setFrames] = useState(null);
@@ -280,6 +279,7 @@ export default function GifExtractor() {
                         <button
                           className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-success to-green-500 hover:from-success/80 hover:to-green-500/80 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                           onClick={async () => {
+                            await ensureLoaded();
                             setFrames(await imagesFromGif(file));
                           }}
                         >
