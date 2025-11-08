@@ -366,7 +366,7 @@ const App = ({ ensureLoaded }) => {
   const [avatarName, setAvatarName] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [decoUrl, setDecoUrl] = useState("/decorations/treat_pumpkin.png");
+  const [decoUrl, setDecoUrl] = useState("/decorations/treat_ghost.png");
   const [avUrl, setAvUrl] = useState("");
 
   const [finishedAv, setFinishedAv] = useState("");
