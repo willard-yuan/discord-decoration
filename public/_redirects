@@ -1,2 +1,2 @@
 # Cloudflare Pages redirects
-/*    /index.html   200
+# SPA fallback rule removed to avoid Cloudflare's clean-URL loop warning
