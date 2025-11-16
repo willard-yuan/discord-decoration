@@ -23,10 +23,10 @@ const tools = [
     description: 'Extract frames from animated GIFs',
   },
   {
-    name: 'Mask Face with Emoji',
+    name: 'EmojiFace - Hide your Face with One Click',
     href: 'https://emojiface.us',
-    emoji: '😷',
-    description: 'Best Face AI to Cover Face with Emoji',
+    icon: '/emojiface-192x192.png',
+    description: 'Best Free Tool to Hide Your Face with Emoji, Blur or Pixelation for Privacy, and All You Need is One Click',
   },
   {
     name: 'Emoji to Image Converter',
@@ -87,7 +87,11 @@ export default function OtherTools() {
                 <div className="flex-grow">
                   <div className="flex items-center mb-4">
                     <div className="bg-surface-sunken rounded-lg p-2 mr-4">
-                      <div className="text-3xl" aria-hidden="true">{tool.emoji}</div>
+                      {tool.icon ? (
+                        <img src={tool.icon} alt="" className="w-30 rounded-lg object-cover" />
+                      ) : (
+                        <div className="text-3xl" aria-hidden="true">{tool.emoji}</div>
+                      )}
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-text-primary">{tool.name}</h3>

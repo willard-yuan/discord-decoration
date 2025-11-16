@@ -73,6 +73,46 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.6",
+      date: "November 16th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "🔗 Navigation Updates",
+          items: [
+            "Replaced 'Discuss' navbar item with 'Other Tools' linking to /other-tools",
+            "Synced change in mobile menu for consistent navigation"
+          ]
+        },
+        {
+          category: "📱 Mobile Menu Enhancement",
+          items: [
+            "Converted mobile menu to right-aligned, narrow floating panel",
+            "Added fade-in backdrop and slide-in up animation to menu panel",
+            "Enabled click-outside to close via semi-transparent overlay",
+            "Added mouse-follow highlight in panel for visual feedback",
+            "Enhanced menu item hover with subtle translate-x motion"
+          ]
+        },
+        {
+          category: "🛠 Other Tools Page",
+          items: [
+            "Updated 'Mask Face with Emoji' to 'EmojiFace - Hide your Face with One Click'",
+            "Refreshed description to privacy-focused capabilities",
+            "Switched to icon /emojiface-192x192.png with w-10 h-10 and rounded-lg",
+            "Added rendering support for tool.icon with fallback to emoji"
+          ]
+        },
+        {
+          category: "🖼 Homepage Updates",
+          items: [
+            "Changed default profile preview decoration to treat_ghost",
+            "Updated 'Other Tools' link icon to lootbox and placed first in Links"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.5",
       date: "November 7th, 2025",
       type: "minor",

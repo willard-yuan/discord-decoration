@@ -47,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-surface-overlay/80 backdrop-blur-xl border-b border-border-faint">
+    <nav className="sticky top-0 z-50 relative bg-surface-overlay/80 backdrop-blur-xl border-b border-border-faint">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
@@ -84,8 +84,8 @@ const Navbar = () => {
             <a href="/blog" className="text-text-secondary hover:text-text-primary transition-colors">
               Blog
             </a>
-            <a href="/discuss" className="text-text-secondary hover:text-text-primary transition-colors">
-              Discuss
+            <a href="/other-tools" className="text-text-secondary hover:text-text-primary transition-colors">
+              Other Tools
             </a>
             <a href="/changelog" className="text-text-secondary hover:text-text-primary transition-colors">
               Changelog
@@ -118,31 +118,50 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              Avatars
-            </a>
-            <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              Decorations
-            </a>
-            <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              Fronts
-            </a>
-            <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              FAQs
-            </a>
-            <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              Blog
-            </a>
-            <a href="/discuss" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-              Discuss
-            </a>
-            <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher">
-                Changelog
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black/20 animate-fade"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="md:hidden fixed right-4 top-16 z-50">
+            <div
+              className="bg-surface-high border border-border-faint rounded-xl shadow-lg w-64 max-w-[80vw] p-2 space-y-1 animate-slide-in-up interactive-panel"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                e.currentTarget.style.setProperty('--x', `${x}%`);
+                e.currentTarget.style.setProperty('--y', `${y}%`);
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.setProperty('--x', `50%`);
+                e.currentTarget.style.setProperty('--y', `50%`);
+              }}
+            >
+              <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                Avatars
               </a>
+              <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                Decorations
+              </a>
+              <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                Fronts
+              </a>
+              <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                FAQs
+              </a>
+              <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                Blog
+              </a>
+              <a href="/other-tools" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                Other Tools
+              </a>
+              <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+                  Changelog
+                </a>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );

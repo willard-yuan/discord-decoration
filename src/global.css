@@ -373,3 +373,38 @@ a.link {
       rgba(88, 101, 242, 0.3) 100%
     );
 }
+
+/* ANIMATIONS FOR OVERLAY & PANELS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade {
+  animation: fadeIn 150ms ease-out both;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in-up {
+  animation: slideInUp 160ms ease-out both;
+}
+
+/* INTERACTIVE PANEL HIGHLIGHT FOLLOWING MOUSE */
+.interactive-panel {
+  position: relative;
+  overflow: hidden;
+}
+.interactive-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(220px circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.06), transparent 40%);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.interactive-panel:hover::before {
+  opacity: 1;
+}
