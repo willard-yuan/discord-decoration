@@ -6,7 +6,6 @@ import { generateWebmanifest } from "./build/generateWebmanifest";
 import { generateFavicons } from "./build/generateFavicons";
 import { generateMeta } from "./build/generateMeta";
 import { cssOptimizationPlugin } from "./build/cssOptimizationPlugin.js";
-import { imagetools } from "vite-imagetools";
 
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
@@ -31,7 +30,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    imagetools(),
     {
       name: "custom-server-headers",
       configureServer: (server) => {

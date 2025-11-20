@@ -1,9 +1,4 @@
 import { useState } from "preact/hooks";
-// Optimized responsive image via vite-imagetools (build-time AVIF/WEBP/JPG + srcset)
-// Use a disk-relative path so Vite can include the asset in the module graph.
-// Public absolute paths (e.g. "/public/..." or "/banners/...") are not transformed.
-import heartsPicture from "../../public/banners/hearts.webp?w=480;960;1440&format=avif;webp;jpg&as=picture";
-import winterPicture from "../../public/wallpaper/winter.jpg?w=640;1024;1600&format=avif;webp;jpg&as=picture";
 
 const Hero = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
@@ -12,11 +7,9 @@ const Hero = () => {
   const getBannerImage = () => {
     switch (currentMonth) {
       case 2:
-        // When imagetools <picture> is rendered below, keep only gradient here
-        return `linear-gradient(135deg, rgba(221, 98, 98, 0.8), rgba(171, 12, 152, 0.8))`;
+        return `url(${baseImgUrl}/banners/hearts.webp) right top / contain no-repeat, linear-gradient(135deg, rgba(221, 98, 98, 0.8), rgba(171, 12, 152, 0.8))`;
       case 12:
-        // Render winter background via responsive <picture> below; retain gradient here
-        return `linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(184, 115, 245, 0.1) 100%)`;
+        return `url(${baseImgUrl}/wallpaper/winter.jpg) center / cover no-repeat`;
       default:
         return "linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(184, 115, 245, 0.1) 100%)";
     }
@@ -36,36 +29,6 @@ const Hero = () => {
             background: getBannerImage(),
           }}
         />
-        {/* February seasonal hearts banner rendered as responsive <picture> */}
-        {currentMonth === 2 && heartsPicture?.img && (
-          <picture className="absolute inset-0 pointer-events-none opacity-30">
-            {heartsPicture.sources?.map((source) => (
-              <source key={source.srcset} type={source.type} srcSet={source.srcset} sizes="100vw" />
-            ))}
-            <img
-              src={heartsPicture.img.src}
-              alt="Seasonal hearts banner"
-              className="absolute top-0 right-0 h-full w-auto object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        )}
-        {/* December winter wallpaper rendered as responsive <picture> */}
-        {currentMonth === 12 && winterPicture?.img && (
-          <picture className="absolute inset-0 pointer-events-none opacity-30">
-            {winterPicture.sources?.map((source) => (
-              <source key={source.srcset} type={source.type} srcSet={source.srcset} sizes="100vw" />
-            ))}
-            <img
-              src={winterPicture.img.src}
-              alt="Winter wallpaper"
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        )}
         <div 
           className="absolute inset-0"
           style={{
