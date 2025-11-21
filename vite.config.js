@@ -87,7 +87,7 @@ export default defineConfig({
         return html.replace(/[\n\t]| {2}/g, "");
       },
     },
-    // cssOptimizationPlugin(),
+    cssOptimizationPlugin(),
   ],
   optimizeDeps: {
     exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
