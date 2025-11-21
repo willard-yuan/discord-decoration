@@ -69,83 +69,78 @@ function extractCriticalCSS(cssContent) {
 
 // Vite插件：CSS优化
 export function cssOptimizationPlugin() {
-  let cssAssets = new Map(); // 存储CSS资源
-  
   return {
     name: 'css-optimization',
-    apply: 'build',
-    
-    // 收集CSS资源
-    generateBundle(options, bundle) {
-      // 查找CSS文件
-      for (const [fileName, asset] of Object.entries(bundle)) {
-        if (fileName.startsWith('assets/index-') && fileName.endsWith('.css') && asset.type === 'asset') {
-          cssAssets.set(fileName, asset.source);
-          console.log(`📦 找到CSS文件: ${fileName} (${(asset.source.length / 1024).toFixed(2)} KB)`);
-        }
-      }
+    apply(config, env) {
+      return env?.command === 'build';
     },
     
-    // 处理HTML
-    transformIndexHtml: {
-      order: 'post',
-      handler(html, context) {
-        try {
-          // 查找CSS链接
-          const cssLinkMatch = html.match(/<link[^>]*rel="stylesheet"[^>]*href="\/assets\/(index-[^"]+\.css)"[^>]*>/);
-          
-          if (!cssLinkMatch) {
-            console.warn('⚠️ 未找到CSS链接');
-            return html;
-          }
-          
-          const cssFileName = `assets/${cssLinkMatch[1]}`;
-          const cssContent = cssAssets.get(cssFileName);
-          
-          if (!cssContent) {
-            console.warn(`⚠️ 未找到CSS内容: ${cssFileName}`);
-            return html;
-          }
-          
-          // 提取关键CSS
-          const criticalCSS = extractCriticalCSS(cssContent);
-          
-          // 生成内联样式和延迟加载脚本
-          const inlineStyle = `<style>${criticalCSS}</style>`;
-          const deferScript = `<script>
-(function(){
+    // 在生成阶段直接修改输出的 HTML，避免 transformIndexHtml 与资源收集的顺序问题
+    generateBundle(options, bundle) {
+      try {
+        // 1) 找到主 CSS 文件（assets/index-*.css）
+        const cssEntry = Object.entries(bundle).find(([fileName, asset]) => {
+          return fileName.startsWith('assets/index-') && fileName.endsWith('.css') && asset.type === 'asset';
+        });
+
+        if (!cssEntry) {
+          console.warn('⚠️ 未找到主 CSS 文件（assets/index-*.css）');
+          return;
+        }
+
+        const [cssFileName, cssAsset] = cssEntry;
+        const cssContent = String(cssAsset.source || '');
+
+        // 2) 提取关键 CSS
+        const criticalCSS = extractCriticalCSS(cssContent);
+
+        // 3) 生成内联样式与延迟加载脚本（使用 media=print 提示，加载后切换为 all）
+        const inlineStyle = `<style>${criticalCSS}</style>`;
+        const deferScript = `<script>(function(){
   var link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = '/assets/${cssLinkMatch[1]}';
-  link.crossOrigin = '';
+  link.href = '/${cssFileName}';
+  link.media = 'print';
+  link.onload = function(){ this.media = 'all'; this.onload = null; };
+  link.onerror = function(){ this.media = 'all'; };
   document.head.appendChild(link);
-})();
-</script>`;
-          
-          // 移除原有的CSS链接
-          html = html.replace(cssLinkMatch[0], '');
-          
-          // 在现有的<style>标签后插入内联CSS和延迟加载脚本
-          html = html.replace(
-            /<\/style>/,
-            `</style>\n${inlineStyle}\n${deferScript}`
+})();</script>`;
+
+        // 4) 处理所有 HTML 文件：移除原始 CSS 链接，并在 </head> 前插入内联关键样式与延迟脚本
+        for (const [fileName, asset] of Object.entries(bundle)) {
+          if (asset.type !== 'asset' || !fileName.endsWith('.html')) continue;
+          let html = String(asset.source);
+
+          const cssLinkRegex = new RegExp(
+            `<link[^>]*rel="stylesheet"[^>]*href="\/${cssFileName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}"[^>]*>`,
+            'i'
           );
-          
-          // 统计信息
-          const originalSize = cssContent.length;
-          const criticalSize = criticalCSS.length;
-          const reduction = ((originalSize - criticalSize) / originalSize * 100).toFixed(1);
-          
-          console.log(`✅ CSS优化已应用:`);
-          console.log(`   原始CSS: ${(originalSize / 1024).toFixed(2)} KB`);
-          console.log(`   关键CSS: ${(criticalSize / 1024).toFixed(2)} KB`);
-          console.log(`   减少: ${reduction}%`);
-          
-          return html;
-        } catch (error) {
-          console.warn('⚠️ CSS优化失败，使用原始CSS:', error.message);
-          return html;
+
+          if (!cssLinkRegex.test(html)) continue;
+
+          // 移除原始 CSS link
+          html = html.replace(cssLinkRegex, '');
+
+          // 优先在已有的 </style> 之后插入；若不存在，则在 </head> 之前插入
+          if (/<\/style>/i.test(html)) {
+            html = html.replace(/<\/style>/i, `</style>\n${inlineStyle}\n${deferScript}`);
+          } else if (/<\/head>/i.test(html)) {
+            html = html.replace(/<\/head>/i, `${inlineStyle}\n${deferScript}</head>`);
+          } else {
+            // 极端情况：没有 head/style，直接前置
+            html = `${inlineStyle}\n${deferScript}\n${html}`;
+          }
+
+          asset.source = html;
         }
+
+        // 5) 统计信息输出
+        const originalSize = cssContent.length;
+        const criticalSize = criticalCSS.length;
+        const reduction = ((originalSize - criticalSize) / originalSize * 100).toFixed(1);
+        console.log(`✅ CSS优化已应用:\n   原始CSS: ${(originalSize / 1024).toFixed(2)} KB\n   关键CSS: ${(criticalSize / 1024).toFixed(2)} KB\n   减少: ${reduction}%`);
+      } catch (error) {
+        console.warn('⚠️ CSS优化失败，使用原始CSS:', error.message);
       }
     }
   };
