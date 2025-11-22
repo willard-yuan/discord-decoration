@@ -73,6 +73,63 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.7",
+      date: "November 22th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "🎯 Preview Modal Actions",
+          items: [
+            [
+              "Moved preview modal action buttons on ",
+              { text: "Discord Avatar Gallery", href: "/discord_avatar" },
+              " and ",
+              { text: "Discord Decorations Gallery", href: "/discord_avatar_decoration" },
+              " for clearer layout"
+            ],
+            "Unified action button widths to w-72 across Discord Avatar Gallery and Discord Decorations Gallery",
+            "Added 'Use This Avatar → Pick Decoration' in Discord Avatar Gallery preview",
+            "Added 'Use This Decoration → Pick Avatar' in Discord Decorations Gallery preview",
+            "Unified CTA icons across Discord Avatar Gallery and Discord Decorations Gallery",
+            "Added 'Buy me a coffee' button in preview actions on Discord Avatar Gallery and Discord Decorations Gallery",
+            "Removed 'Copy Avatar Name' button and related code in Discord Avatar Gallery"
+          ]
+        },
+        {
+          category: "🎞️ GIF Generation",
+          items: [
+            "'Save Animated GIF' now generates directly within the preview window on both pages using lazy‑loaded FFmpeg",
+            "Added generation progress indicator and failure feedback on Discord Avatar Gallery and Discord Decorations Gallery",
+            "GIF generation respects the currently selected decoration overlay on Discord Avatar Gallery and Discord Decorations Gallery",
+            [
+              "Integrated 'Extract still image' workflow and routing to ",
+              { text: "GIF Frame Extractor", href: "/gif-extractor" }
+            ]
+          ]
+        },
+        {
+          category: "🎨 Overlay & UX",
+          items: [
+            "Enhanced hover overlay with gradient + light blur and shiny hint pill on both pages",
+            "Mobile copy adapts on Discord Avatar Gallery and Discord Decorations Gallery: Tap to preview (mobile), Click to preview (desktop)",
+            "Aligned overlay size and rounded corners to match avatar container on Discord Avatar Gallery and Discord Decorations Gallery",
+            "Applied default decoration (treat_ghost) in Discord Avatar Gallery preview and supported cross‑page decoration transfer from Discord Decorations Gallery"
+          ]
+        },
+        {
+          category: "🏠 Homepage",
+          items: [
+            [
+              "Renamed 'Mask Face with Emoji' to 'Hide your Face with One Click' on ",
+              { text: "Homepage", href: "/" },
+              " and switched icon to /emojiface-192x192.png"
+            ],
+            "Renamed 'Discord Avatar Decorations Gallery' to 'Discord Decorations Gallery'"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.6",
       date: "November 16th, 2025",
       type: "minor",

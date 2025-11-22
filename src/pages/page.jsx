@@ -286,7 +286,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <Icons.star size="18px" />
         </span>
-        Discord Avatar Decorations Gallery
+        Discord Decorations Gallery
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -314,9 +314,9 @@ const ExtraLinks = () => (
         rel="noreferrer"
       >
         <span className="place-items-center w-6">
-          <Icons.emojiface size="18px" />
+          <img src="/emojiface-192x192.png" alt="EmojiFace" className="w-[18px] h-[18px] rounded" />
         </span>
-        Mask Face with Emoji
+        Hide your Face with One Click
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />

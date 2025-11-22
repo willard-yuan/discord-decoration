@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { avatarsData } from '../../data/avatars';
 import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
@@ -6,13 +6,50 @@ import Breadcrumb from '../../components/Breadcrumb.jsx';
 import SearchBar from '../../components/searchbar.jsx';
 import Modal from '../../components/modal.jsx';
 import Image from '../../components/image.jsx';
+import { Icons } from '../../components/icons.jsx';
+import { storeData } from '@/utils/dataHandler.js';
+import { getData, clearData } from '@/utils/dataHandler.js';
+import { LoadingCubes } from '@/components/spinner.jsx';
+import { addDecoration } from '@/ffmpeg/processImage.js';
+import { initFfmpeg, setFfmpeg } from '@/ffmpeg/utils.js';
+import { NeutralButton } from '../../components/button';
+import { useLocation } from 'preact-iso';
 
 const DiscordAvatar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [previewAvatarUrl, setPreviewAvatarUrl] = useState('');
-  const [previewAvatarName, setPreviewAvatarName] = useState('');
-  const [copied, setCopied] = useState(false);
+  const router = useLocation();
+  const [previewDecorationUrl, setPreviewDecorationUrl] = useState('/decorations/treat_ghost.png');
+  const ffmpegRef = useRef(null);
+  const [ffmpegLoaded, setFfmpegLoaded] = useState(false);
+  const [isGeneratingAv, setIsGeneratingAv] = useState(false);
+  const [generationFailed, setGenerationFailed] = useState(false);
+  const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
+
+  const ensureLoaded = async () => {
+    if (ffmpegLoaded) return;
+    const existing = getData('ffmpeg');
+    if (existing) {
+      ffmpegRef.current = existing;
+      setFfmpeg(ffmpegRef.current);
+      setFfmpegLoaded(true);
+      return;
+    }
+    const { FFmpeg } = await import('@ffmpeg/ffmpeg');
+    ffmpegRef.current = new FFmpeg();
+    setFfmpeg(ffmpegRef.current);
+    await initFfmpeg();
+    setFfmpegLoaded(true);
+  };
+
+  useEffect(() => {
+    const deco = getData('decoration');
+    if (deco) {
+      setPreviewDecorationUrl(deco);
+      clearData('decoration');
+    }
+  }, []);
   
   useEffect(() => {
     document.title = "Discord Avatar Gallery - Free Avatar Collection";
@@ -76,31 +113,9 @@ const DiscordAvatar = () => {
   }, []);
 
   // Handle avatar click to open profile preview modal
-  const handleAvatarClick = (avatarFile, avatarName) => {
+  const handleAvatarClick = (avatarFile) => {
     setPreviewAvatarUrl(`/avatars/${avatarFile}`);
-    setPreviewAvatarName(avatarName || '');
     setIsPreviewOpen(true);
-  };
-
-  const copyAvatarName = async () => {
-    try {
-      if (!previewAvatarName) return;
-      await navigator.clipboard.writeText(previewAvatarName);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch (e) {
-      const ta = document.createElement('textarea');
-      ta.value = previewAvatarName;
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1800);
-      } finally {
-        document.body.removeChild(ta);
-      }
-    }
   };
 
   // Categorize avatars based on their names and themes
@@ -246,7 +261,7 @@ const DiscordAvatar = () => {
                     <div key={index} className="relative">
                       <button 
                         className="w-full bg-surface-secondary rounded-lg p-3 hover:bg-surface-tertiary transition-colors duration-200 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-surface-primary"
-                        onClick={() => handleAvatarClick(avatar.f, avatar.n)}
+                        onClick={() => handleAvatarClick(avatar.f)}
                         aria-label={`Select ${avatar.n} avatar`}
                       >
                         <div className="aspect-square bg-surface-tertiary rounded-lg mb-2 flex items-center justify-center overflow-hidden relative">
@@ -256,14 +271,13 @@ const DiscordAvatar = () => {
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-200"
                             loading="lazy"
                           />
-                          {/* Hover overlay to hint preview */}
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                            <div className="flex items-center gap-2 text-white text-sm font-medium px-3 py-2 bg-black/50 rounded-lg">
-                              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-                              </svg>
-                              <span>Click to preview</span>
+                          <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-br from-black/40 via-primary/20 to-pink-600/20 backdrop-blur-[2px] flex items-center justify-center pointer-events-none">
+                            <div className="shiny-button relative inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm font-medium shadow-md ring-0 group-hover:ring-1 group-hover:ring-primary/30 group-hover:scale-105 transition-transform duration-300">
+                              <span className="place-items-center w-4 h-4 text-white/90">
+                                <Icons.search size="16px" />
+                              </span>
+                              <span className="ginto hidden sm:inline">Click to preview</span>
+                              <span className="ginto inline sm:hidden">Tap to preview</span>
                             </div>
                           </div>
                         </div>
@@ -314,6 +328,7 @@ const DiscordAvatar = () => {
           onClose={() => setIsPreviewOpen(false)}
           title={"Profile Preview"}
           subtitle={"This is how your avatar looks on Discord"}
+          hideActions={false}
         >
           <div className="flex justify-center py-2">
             <div
@@ -331,6 +346,12 @@ const DiscordAvatar = () => {
                     }
                     draggable={false}
                   />
+                  <Image
+                    id="decoration"
+                    src={previewDecorationUrl}
+                    className="top-0 left-0 absolute w-full h-full"
+                    draggable={false}
+                  />
                 </div>
                 <div className="right-[-3px] bottom-[-3px] sm:right-[-4px] sm:bottom-[-4px] absolute bg-[#229f56] border-[4px] sm:border-[5px] border-surface-overlay rounded-full w-5 h-5 sm:w-7 sm:h-7" />
               </div>
@@ -340,21 +361,91 @@ const DiscordAvatar = () => {
                 <p className="text-xs sm:text-sm mb-2">
                   This is an example profile so that you can see what the profile picture would actually look like on Discord.
                 </p>
-                <div className="mt-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                  <button
-                    type="button"
-                    onClick={copyAvatarName}
-                    className="px-4 py-3 sm:py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm transition-colors min-h-[44px] flex items-center justify-center"
-                    aria-label="Copy Avatar Name"
-                  >
-                    Copy Avatar Name
-                  </button>
-                  {copied && (
-                    <span className="text-green-400 text-xs sm:text-sm text-center sm:text-left">Copied!</span>
-                  )}
-                </div>
+                {/* actions moved outside */}
               </div>
             </div>
+          </div>
+          <div className="flex flex-col items-center gap-3 mt-3 *:mt-0 w-full">
+            <NeutralButton
+              onClick={() => {
+                const url = previewAvatarUrl || '/avatars/in_rainbows.png';
+                storeData('avatar', url);
+                router.route('/discord_avatar_decoration');
+              }}
+              ariaLabel="Use This Avatar → Pick Decoration"
+              disabled={false}
+              className="w-72"
+            >
+              <Icons.image />
+              Use This Avatar → Pick Decoration
+            </NeutralButton>
+            
+            <NeutralButton
+              onClick={async () => {
+                try {
+                  setGenerationFailed(false);
+                  setIsGeneratingAv(true);
+                  await ensureLoaded();
+                  const res = await addDecoration(
+                    previewAvatarUrl || '/avatars/in_rainbows.png',
+                    previewDecorationUrl ? `${baseImgUrl}${previewDecorationUrl}` : ''
+                  );
+                  const a = document.createElement('a');
+                  a.href = res;
+                  a.download = `discord_avatar_decoration_animated_${Date.now()}.gif`;
+                  a.click();
+                } catch (e) {
+                  setGenerationFailed(true);
+                } finally {
+                  setIsGeneratingAv(false);
+                }
+              }}
+              ariaLabel="Save Animated GIF"
+              disabled={false}
+              className="w-72"
+            >
+              <Icons.download />
+              Save Animated GIF
+            </NeutralButton>
+            <NeutralButton
+              onClick={() => {
+                const url = previewAvatarUrl || '/avatars/in_rainbows.png';
+                storeData('image', url);
+                router.route('/gif-extractor');
+              }}
+              ariaLabel="Extract still image"
+              disabled={false}
+              className="w-72"
+            >
+              <Icons.image />
+              Extract still image
+            </NeutralButton>
+            <a
+              href="https://www.buymeacoffee.com/yong1024"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-4 py-2 w-72 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+              style={{
+                backgroundColor: '#FFDD00',
+                color: '#000000',
+                border: '1px solid #000000',
+                fontFamily: 'Cookie, cursive',
+                fontSize: '18px',
+                fontWeight: 'normal'
+              }}
+            >
+              <span className="mr-2" style={{ fontSize: '16px' }}>☕</span>
+              Buy me a coffee
+            </a>
+            {isGeneratingAv && (
+              <div className="flex items-center gap-2 mt-2 text-text-secondary text-sm">
+                <LoadingCubes />
+                <span>Creating image...</span>
+              </div>
+            )}
+            {generationFailed && (
+              <p className="text-red-400 text-xs mt-2">Failed to generate image</p>
+            )}
           </div>
         </Modal>
       </div>
