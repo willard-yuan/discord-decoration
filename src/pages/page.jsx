@@ -164,6 +164,42 @@ const BuyMeCoffeeButton = () => {
 
 const CurrentData = createContext(null);
 
+const AdBanner = () => {
+  useEffect(() => {
+    if (isServer) return;
+    const scriptSrc = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509";
+    const hasScript = Array.from(document.scripts).some((s) => s.src === scriptSrc);
+    const pushAds = () => {
+      try {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch {}
+    };
+    if (!hasScript) {
+      const script = document.createElement("script");
+      script.src = scriptSrc;
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.onload = pushAds;
+      document.head.appendChild(script);
+    } else {
+      pushAds();
+    }
+  }, []);
+  return (
+    <div className="w-full flex justify-center items-center px-4">
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-4184498324686509"
+        data-ad-slot="9996208852"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+};
+
 const ExtraLinks = () => (
   <>
     {/* share with friends */}
@@ -419,6 +455,7 @@ const App = ({ ensureLoaded }) => {
     >
       <Navbar />
       <Breadcrumb title="Discord Decorations" />
+      <AdBanner />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
@@ -466,6 +503,8 @@ const App = ({ ensureLoaded }) => {
                 className="text-input grow"
                 placeholder="Enter image URL..."
                 aria-label="Enter avatar image URL"
+                id="avatar-url-input"
+                name="avatar-url"
                 onChange={async (e) => {
                   setAvatarName("");
                   // @ts-ignore

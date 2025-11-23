@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 import { Icons } from "./icons.jsx";
 
-export default function SearchBar({ onValueChanged, placeholder }) {
+export default function SearchBar({ onValueChanged, placeholder, id = "search-bar", name = "search" }) {
   const [query, setQuery] = useState("");
 
   return (
@@ -17,6 +17,8 @@ export default function SearchBar({ onValueChanged, placeholder }) {
           placeholder={placeholder}
           value={query}
           aria-label={placeholder || "Search"}
+          id={id}
+          name={name}
           onChange={(e) => {
             // @ts-ignore
             setQuery(e.target.value);
