@@ -98,7 +98,7 @@ export default function Home() {
       if (typeof window.cancelIdleCallback === "function") {
         try {
           window.cancelIdleCallback(cancel);
-        } catch {}
+        } catch (e) { void e; }
       } else {
         window.clearTimeout(cancel);
       }
@@ -165,32 +165,57 @@ const BuyMeCoffeeButton = () => {
 const CurrentData = createContext(null);
 
 const AdBanner = () => {
+  const slotRef = useRef(null);
   useEffect(() => {
     if (isServer) return;
     const scriptSrc = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509";
     const hasScript = Array.from(document.scripts).some((s) => s.src === scriptSrc);
-    const pushAds = () => {
-      try {
+    let ro = null;
+    let io = null;
+    const tryPush = () => {
+      const el = slotRef.current;
+      if (!el) return;
+      const w = el.offsetWidth || el.clientWidth || 0;
+      if (w > 0) {
+        const ads = (typeof window !== "undefined" && Array.isArray(window.adsbygoogle)) ? window.adsbygoogle : [];
+        ads.push({});
         // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch {}
+        window.adsbygoogle = ads;
+        if (ro) ro.disconnect();
+        if (io) io.disconnect();
+      }
     };
+    if (slotRef.current && "ResizeObserver" in window) {
+      ro = new ResizeObserver(() => tryPush());
+      ro.observe(slotRef.current);
+    }
+    if (slotRef.current && "IntersectionObserver" in window) {
+      io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) tryPush();
+      });
+      io.observe(slotRef.current);
+    }
     if (!hasScript) {
       const script = document.createElement("script");
       script.src = scriptSrc;
       script.async = true;
       script.crossOrigin = "anonymous";
-      script.onload = pushAds;
+      script.onload = tryPush;
       document.head.appendChild(script);
     } else {
-      pushAds();
+      tryPush();
     }
+    return () => {
+      if (ro) ro.disconnect();
+      if (io) io.disconnect();
+    };
   }, []);
   return (
-    <div className="w-full flex justify-center items-center px-4">
+    <div className="w-screen flex justify-center items-center px-4">
       <ins
+        ref={slotRef}
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", width: "100%" }}
         data-ad-client="ca-pub-4184498324686509"
         data-ad-slot="9996208852"
         data-ad-format="auto"
@@ -1284,7 +1309,7 @@ const Decoration = ({ name, fileName, onClick }) => {
           setIsHovered(true);
           try {
             clearTimeout(timer);
-          } catch (e) {}
+          } catch (e) { void e; }
         }, 100);
         setTimer(intervalId);
       }}
@@ -1292,7 +1317,7 @@ const Decoration = ({ name, fileName, onClick }) => {
         setIsHovered(false);
         try {
           clearTimeout(timer);
-        } catch (e) {}
+        } catch (e) { void e; }
       }}
     />
   );

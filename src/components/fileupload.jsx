@@ -15,7 +15,7 @@ export default function FileUpload({ onUpload }) {
       setVisible(true);
       try {
         clearInterval(closeInter);
-      } catch {}
+      } catch (e) { void e; }
     });
   }, []);
 
