@@ -3,7 +3,6 @@ import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import { allFontStyles, fontCategories } from '../../data/optimizedFontStyles';
-import { AdsenseResponsive, AdsenseSidebar } from '../../components/adsense.jsx';
 
 const DiscordFonts = () => {
   const [inputText, setInputText] = useState('');
@@ -86,7 +85,6 @@ const DiscordFonts = () => {
   return (
     <>
       <Navbar />
-      <AdsenseSidebar />
       <Breadcrumb />
       
       <div className="min-h-screen bg-surface-primary text-text-primary">
@@ -138,9 +136,6 @@ const DiscordFonts = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="max-w-2xl mx-auto mb-8">
-            <AdsenseResponsive slot="9996208852" />
           </div>
 
           {/* Category Filter Controls */}

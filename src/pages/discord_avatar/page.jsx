@@ -14,7 +14,6 @@ import { addDecoration } from '@/ffmpeg/processImage.js';
 import { initFfmpeg, setFfmpeg } from '@/ffmpeg/utils.js';
 import { NeutralButton } from '../../components/button';
 import { useLocation } from 'preact-iso';
-import { AdsenseResponsive, AdsenseSidebar } from '../../components/adsense.jsx';
 
 const DiscordAvatar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -212,7 +211,6 @@ const DiscordAvatar = () => {
   return (
       <div className="min-h-screen bg-surface-primary">
         <Navbar />
-        <AdsenseSidebar />
         <Breadcrumb title="Avatar Gallery" />
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center mb-12">
@@ -245,9 +243,6 @@ const DiscordAvatar = () => {
                   placeholder="Search avatars..."
                 />
               </div>
-            </div>
-            <div className="max-w-2xl mx-auto mb-12">
-              <AdsenseResponsive slot="9996208852" />
             </div>
           </div>
 

@@ -2,7 +2,6 @@ import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
-import { AdsenseResponsive, AdsenseSidebar } from "@/components/adsense.jsx";
 
 export default function HowToSplitGifIntoFramesArticle() {
   useEffect(() => {
@@ -74,7 +73,6 @@ export default function HowToSplitGifIntoFramesArticle() {
   return (
     <div className="min-h-screen bg-surface-overlay">
       <Navbar />
-      <AdsenseSidebar />
       
       {/* Breadcrumb */}
       <Breadcrumb title="How to Split a GIF into Frames?" />
@@ -112,9 +110,6 @@ export default function HowToSplitGifIntoFramesArticle() {
       
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-8">
-          <AdsenseResponsive />
-        </div>
         <article className="prose prose-lg max-w-none">
           
           {/* Introduction */}

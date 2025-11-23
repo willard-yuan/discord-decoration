@@ -14,7 +14,6 @@ import { useLocation } from 'preact-iso';
 import { LoadingCubes } from '@/components/spinner.jsx';
 import { addDecoration } from '@/ffmpeg/processImage.js';
 import { initFfmpeg, setFfmpeg } from '@/ffmpeg/utils.js';
-import { AdsenseResponsive, AdsenseSidebar } from '../../components/adsense.jsx';
 
 const DiscordAvatarDecoration = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -280,7 +279,6 @@ const DiscordAvatarDecoration = () => {
   return (
     <div className="min-h-screen bg-surface-primary">
       <Navbar />
-      <AdsenseSidebar />
       <Breadcrumb title="Avatar Decorations" />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center mb-12">
@@ -313,9 +311,6 @@ const DiscordAvatarDecoration = () => {
                 placeholder="Search decorations..."
               />
             </div>
-          </div>
-          <div className="max-w-2xl mx-auto mb-12">
-            <AdsenseResponsive slot="9996208852" />
           </div>
         </div>
 

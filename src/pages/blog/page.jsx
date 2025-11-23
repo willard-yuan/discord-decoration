@@ -2,7 +2,6 @@ import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
-import { AdsenseResponsive, AdsenseSidebar } from "@/components/adsense.jsx";
 
 export default function BlogList() {
   useEffect(() => {
@@ -111,7 +110,6 @@ export default function BlogList() {
   return (
     <div className="min-h-screen bg-surface-overlay">
       <Navbar />
-      <AdsenseSidebar />
       
       {/* Breadcrumb */}
       <Breadcrumb title="Blog" />
@@ -138,9 +136,6 @@ export default function BlogList() {
       
       {/* Blog Posts List */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-8">
-          <AdsenseResponsive slot="9996208852" />
-        </div>
         <div className="grid gap-8 md:gap-12">
           {blogPosts.map((post, index) => (
             <article key={post.id} className="bg-surface-overlay/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-border-faint hover:bg-surface-overlay/70 transition-all duration-300 hover:transform hover:scale-[1.02]">

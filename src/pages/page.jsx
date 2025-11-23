@@ -38,7 +38,6 @@ import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
 import HowToCreate from "@/components/HowToCreate.jsx";
 import Testimonials from "@/components/Testimonials.jsx";
-import { AdsenseResponsive, AdsenseSidebar } from "@/components/adsense.jsx";
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -164,6 +163,42 @@ const BuyMeCoffeeButton = () => {
 };
 
 const CurrentData = createContext(null);
+
+const AdBanner = () => {
+  useEffect(() => {
+    if (isServer) return;
+    const scriptSrc = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509";
+    const hasScript = Array.from(document.scripts).some((s) => s.src === scriptSrc);
+    const pushAds = () => {
+      try {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch {}
+    };
+    if (!hasScript) {
+      const script = document.createElement("script");
+      script.src = scriptSrc;
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.onload = pushAds;
+      document.head.appendChild(script);
+    } else {
+      pushAds();
+    }
+  }, []);
+  return (
+    <div className="w-full flex justify-center items-center px-4">
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-4184498324686509"
+        data-ad-slot="9996208852"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+};
 
 const ExtraLinks = () => (
   <>
@@ -419,8 +454,8 @@ const App = ({ ensureLoaded }) => {
       }}
     >
       <Navbar />
-      <AdsenseSidebar />
       <Breadcrumb title="Discord Decorations" />
+      <AdBanner />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
@@ -521,9 +556,6 @@ const App = ({ ensureLoaded }) => {
             />
 
             <DecorationsTabs />
-            <div className="my-6 w-full">
-              <AdsenseResponsive slot="9996208852" />
-            </div>
           </div>
 
           <div className="sticky top-0 z-20 flex flex-col items-center gap-8 order-1 md:order-2 md:top-12 bg-surface-overlay py-4">
