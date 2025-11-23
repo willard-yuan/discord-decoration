@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { decorationsData } from '../../data/decorations';
-import Navbar from '../../components/Navbar.jsx';
+import Navbar from '@/components/Navbar.jsx';
 import AdBanner from '@/components/AdBanner.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
