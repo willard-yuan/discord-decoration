@@ -25,10 +25,10 @@ export function imagesFromGif(/** @type {String} */ gifUrl) {
             await ffmpeg.deleteFile(`extract/${file.name}`);
           }
           await ffmpeg.deleteDir("extract");
-        } catch {}
+        } catch (e) { void e; }
         try {
           await ffmpeg.createDir("extract");
-        } catch {}
+        } catch (e) { void e; }
         await ffmpeg.exec([
           "-i",
           `image.${ext}`,
