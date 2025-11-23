@@ -211,16 +211,18 @@ const AdBanner = () => {
     };
   }, []);
   return (
-    <div className="w-screen flex justify-center items-center px-4">
-      <ins
-        ref={slotRef}
-        className="adsbygoogle"
-        style={{ display: "block", width: "100%" }}
-        data-ad-client="ca-pub-4184498324686509"
-        data-ad-slot="9996208852"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+    <div className="w-full flex justify-center items-center px-4 mt-4 mb-6">
+      <div className="w-full max-w-[900px]">
+        <ins
+          ref={slotRef}
+          className="adsbygoogle"
+          style={{ display: "block", width: "100%", margin: "0 auto" }}
+          data-ad-client="ca-pub-4184498324686509"
+          data-ad-slot="9996208852"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
     </div>
   );
 };
