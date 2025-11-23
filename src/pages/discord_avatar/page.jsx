@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { avatarsData } from '../../data/avatars';
 import Navbar from '../../components/Navbar.jsx';
+import AdBanner from '../../components/AdBanner.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import SearchBar from '../../components/searchbar.jsx';
@@ -212,6 +213,7 @@ const DiscordAvatar = () => {
       <div className="min-h-screen bg-surface-primary">
         <Navbar />
         <Breadcrumb title="Avatar Gallery" />
+        <AdBanner />
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">

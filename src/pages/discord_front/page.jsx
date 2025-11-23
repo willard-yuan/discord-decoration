@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../../components/Navbar.jsx';
+import AdBanner from '../../components/AdBanner.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import { allFontStyles, fontCategories } from '../../data/optimizedFontStyles';
@@ -86,6 +87,7 @@ const DiscordFonts = () => {
     <>
       <Navbar />
       <Breadcrumb />
+      <AdBanner />
       
       <div className="min-h-screen bg-surface-primary text-text-primary">
         <div className="container mx-auto px-4 py-8">
