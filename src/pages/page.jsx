@@ -563,6 +563,8 @@ const App = ({ ensureLoaded }) => {
             <SearchBar
               placeholder={"Search avatars..."}
               onValueChanged={setAvatarSearch}
+              id="avatar-search-bar"
+              name="avatar-search"
             />
             {/* SELECT AVATAR */}
             <div className="flex flex-col gap-8 mt-1 py-1 h-[280px] overflow-auto discord-scrollbar">
@@ -580,6 +582,8 @@ const App = ({ ensureLoaded }) => {
             <SearchBar
               placeholder={"Search decorations..."}
               onValueChanged={setDecoSearch}
+              id="decoration-search-bar"
+              name="decoration-search"
             />
 
             <DecorationsTabs />

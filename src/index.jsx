@@ -69,6 +69,9 @@ export function App() {
 }
 
 if (typeof window !== "undefined") {
+  if (navigator.storage && typeof navigator.storage.persist === "function") {
+    navigator.storage.persist().catch(() => void 0);
+  }
   hydrate(<App />, document.getElementById("app"));
 }
 
