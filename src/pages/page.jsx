@@ -522,7 +522,7 @@ const App = ({ ensureLoaded }) => {
 
             <DecorationsTabs />
             <div className="my-6 w-full">
-              <AdsenseResponsive />
+              <AdsenseResponsive slot="9996208852" />
             </div>
           </div>
 

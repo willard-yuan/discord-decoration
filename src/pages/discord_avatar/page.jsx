@@ -247,7 +247,7 @@ const DiscordAvatar = () => {
               </div>
             </div>
             <div className="max-w-2xl mx-auto mb-12">
-              <AdsenseResponsive />
+              <AdsenseResponsive slot="9996208852" />
             </div>
           </div>
 
