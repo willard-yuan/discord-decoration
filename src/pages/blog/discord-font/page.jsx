@@ -2,6 +2,7 @@ import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
+import { AdsenseResponsive, AdsenseSidebar } from "@/components/adsense.jsx";
 
 export default function DiscordFontBlog() {
   useEffect(() => {
@@ -56,9 +57,13 @@ export default function DiscordFontBlog() {
   return (
     <>
       <Navbar />
+      <AdsenseSidebar />
       <Breadcrumb title="How to Get Custom Discord Font: Transform Your Messages with Stylish Text" />
       
       <main className="min-h-screen bg-base-lower">
+        <div className="container mx-auto px-4 py-6">
+          <AdsenseResponsive />
+        </div>
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white py-16">
           <div className="container mx-auto px-4 text-center">

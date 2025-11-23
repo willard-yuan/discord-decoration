@@ -2,6 +2,7 @@ import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
+import { AdsenseResponsive, AdsenseSidebar } from "@/components/adsense.jsx";
 
 export default function DiscordAvatarDecorationsArticle() {
   useEffect(() => {
@@ -73,6 +74,7 @@ export default function DiscordAvatarDecorationsArticle() {
   return (
     <div className="min-h-screen bg-surface-overlay">
       <Navbar />
+      <AdsenseSidebar />
       
       {/* Breadcrumb */}
       <Breadcrumb title="How to Get Free Discord Avatar Decorations" />
@@ -105,8 +107,11 @@ export default function DiscordAvatarDecorationsArticle() {
           <img 
             src="/discord-decoration-art.webp" 
             alt="Discord Decoration Art - Free Avatar Decorations" 
-            className="w-full h-64 md:h-80 object-cover rounded-2xl border border-border-faint"
+            className="w/full h-64 md:h-80 object-cover rounded-2xl border border-border-faint"
           />
+        </div>
+        <div className="mb-8">
+          <AdsenseResponsive />
         </div>
         
         {/* Article Content */}

@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import { allFontStyles, fontCategories } from '../../data/optimizedFontStyles';
+import { AdsenseResponsive, AdsenseSidebar } from '../../components/adsense.jsx';
 
 const DiscordFonts = () => {
   const [inputText, setInputText] = useState('');
@@ -85,6 +86,7 @@ const DiscordFonts = () => {
   return (
     <>
       <Navbar />
+      <AdsenseSidebar />
       <Breadcrumb />
       
       <div className="min-h-screen bg-surface-primary text-text-primary">
@@ -107,6 +109,8 @@ const DiscordFonts = () => {
                   placeholder="Enter your text ＨＥＲＥ & 𝑐𝑙𝑖𝑐𝑘 𝑜𝑛 【Copy】 𝑡𝑜 𝕔𝕠𝕡𝕪 💚"
                   className="relative w-full p-4 text-lg border-2 border-border-normal rounded-xl bg-surface-overlay text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none resize-none transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary/25 hover:border-border-strong hover:shadow-md hover:shadow-primary/15 focus:bg-surface-high"
                   rows={3}
+                  id="discord-fonts-input-main"
+                  name="discord-fonts-input"
                 />
               </div>
             </div>
@@ -128,10 +132,15 @@ const DiscordFonts = () => {
                     placeholder="Enter your text ＨＥＲＥ & 𝑐𝑙𝑖𝑐𝑘 𝑜𝑛 【Copy】 𝑡𝑜 𝕔𝕠𝕡𝕪 💚"
                     className="relative w-full p-4 text-lg border-2 border-border-normal rounded-xl bg-surface-overlay text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none resize-none transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary/25 hover:border-border-strong hover:shadow-md hover:shadow-primary/15 focus:bg-surface-high"
                     rows={2}
+                    id="discord-fonts-input-sticky"
+                    name="discord-fonts-input"
                   />
                 </div>
               </div>
             </div>
+          </div>
+          <div className="max-w-2xl mx-auto mb-8">
+            <AdsenseResponsive />
           </div>
 
           {/* Category Filter Controls */}

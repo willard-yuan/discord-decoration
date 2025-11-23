@@ -38,6 +38,7 @@ import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
 import HowToCreate from "@/components/HowToCreate.jsx";
 import Testimonials from "@/components/Testimonials.jsx";
+import { AdsenseResponsive, AdsenseSidebar } from "@/components/adsense.jsx";
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -418,6 +419,7 @@ const App = ({ ensureLoaded }) => {
       }}
     >
       <Navbar />
+      <AdsenseSidebar />
       <Breadcrumb title="Discord Decorations" />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
@@ -466,6 +468,8 @@ const App = ({ ensureLoaded }) => {
                 className="text-input grow"
                 placeholder="Enter image URL..."
                 aria-label="Enter avatar image URL"
+                id="avatar-url-input"
+                name="avatar-url"
                 onChange={async (e) => {
                   setAvatarName("");
                   // @ts-ignore
@@ -517,6 +521,9 @@ const App = ({ ensureLoaded }) => {
             />
 
             <DecorationsTabs />
+            <div className="my-6 w-full">
+              <AdsenseResponsive />
+            </div>
           </div>
 
           <div className="sticky top-0 z-20 flex flex-col items-center gap-8 order-1 md:order-2 md:top-12 bg-surface-overlay py-4">
