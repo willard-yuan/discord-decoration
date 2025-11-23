@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../../components/Navbar.jsx';
-import AdBanner from '../../components/AdBanner.jsx';
+import AdBanner from '@/components/AdBanner.jsx';
 import Footer from '../../components/Footer.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import { allFontStyles, fontCategories } from '../../data/optimizedFontStyles';
