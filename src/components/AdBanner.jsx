@@ -2,7 +2,7 @@ import { useEffect, useRef } from "preact/hooks";
 
 const scriptSrc = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509";
 
-export default function AdBanner() {
+export default function AdBanner({ slot = "9996208852" }) {
   const slotRef = useRef(null);
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -55,7 +55,7 @@ export default function AdBanner() {
           className="adsbygoogle"
           style={{ display: "block", width: "100%", margin: "0 auto" }}
           data-ad-client="ca-pub-4184498324686509"
-          data-ad-slot="9996208852"
+          data-ad-slot={slot}
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
