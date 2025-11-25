@@ -281,7 +281,7 @@ const DiscordAvatarDecoration = () => {
     <div className="min-h-screen bg-surface-primary">
       <Navbar />
       <Breadcrumb title="Avatar Decorations" />
-      <AdBanner />
+      <AdBanner slot="8693653904" />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">

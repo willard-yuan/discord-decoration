@@ -420,7 +420,7 @@ const App = ({ ensureLoaded }) => {
     >
       <Navbar />
       <Breadcrumb title="Discord Decorations" />
-      <AdBanner />
+      <AdBanner slot="8363014594" />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
