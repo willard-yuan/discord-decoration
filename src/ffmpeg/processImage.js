@@ -292,11 +292,7 @@ export function addDecoration(
             const res = await ffmpeg
               .readFile("avatarwithdeco.gif")
               .catch((err) => console.error(err));
-            if (
-              typeof res === "undefined" ||
-              res.length === 0 ||
-              !document.documentElement.getAttribute("loaded")
-            ) {
+            if (typeof res === "undefined" || res.length === 0) {
               console.error("Error: Empty result from ffmpeg");
               return reject();
             }
