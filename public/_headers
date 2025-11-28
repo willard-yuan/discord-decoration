@@ -9,11 +9,3 @@
 /discuss
   Cross-Origin-Embedder-Policy: unsafe-none
 
-/gif-extractor
-  Cross-Origin-Embedder-Policy: require-corp
-
-/discord_avatar
-  Cross-Origin-Embedder-Policy: credentialless
-
-/discord_avatar_decoration
-  Cross-Origin-Embedder-Policy: credentialless

@@ -390,7 +390,7 @@ const DiscordAvatar = () => {
                   await ensureLoaded();
                   const res = await addDecoration(
                     previewAvatarUrl || '/avatars/in_rainbows.png',
-                    previewDecorationUrl ? `${baseImgUrl}${previewDecorationUrl}` : ''
+                    previewDecorationUrl || ''
                   );
                   const a = document.createElement('a');
                   a.href = res;
