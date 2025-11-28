@@ -1,62 +1,39 @@
+import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { printErr, printMsg } from "@/utils/print";
 import { downloadWithProgress } from "@/utils/download";
 import { storeData } from "@/utils/dataHandler";
-
-import { fetchFile, toBlobURL } from "@ffmpeg/util";
 
 export let /** @type {any} */ ffmpeg;
 export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
 
 export const initFfmpeg = async (onProgress) => {
-  if (!window.crossOriginIsolated) {
-    throw new Error("Cross-Origin Isolation is not enabled. Please check your server headers.");
+  // FFmpeg 0.11.x (single threaded) doesn't need crossOriginIsolated
+  
+  if (!ffmpeg) {
+     ffmpeg = createFFmpeg({
+      log: true,
+      corePath: "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js",
+      progress: ({ ratio }) => {
+        if (onProgress) {
+           onProgress({ ratio });
+        }
+      },
+    });
+    setFfmpeg(ffmpeg);
   }
 
-  const ffmpegBaseUrl =
-    "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/esm/";
-
-  // Add timeout for ffmpeg loading
-  const loadPromise = ffmpeg.load({
-    coreURL: await toBlobURL(
-      `${ffmpegBaseUrl}ffmpeg-core.js`,
-      "text/javascript"
-    ),
-    wasmURL: onProgress
-      ? URL.createObjectURL(
-          new Blob(
-            [
-              await downloadWithProgress(
-                `${ffmpegBaseUrl}ffmpeg-core.wasm`,
-                onProgress
-              ),
-            ],
-            { type: "application/wasm" }
-          )
-        )
-      : await toBlobURL(`${ffmpegBaseUrl}ffmpeg-core.wasm`, "application/wasm"),
-  });
-
-  const timeoutPromise = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error("FFmpeg load timed out")), 30000)
-  );
-
-  await Promise.race([loadPromise, timeoutPromise]);
-
-  ffmpeg.on("log", (e) =>
-    printMsg(
-      ["ffmpeg", e.message],
-      [
-        {
-          color: "white",
-          background: "#5765f2",
-          padding: "2px 8px",
-          borderRadius: "10px",
-        },
-      ]
-    )
-  );
+  if (!ffmpeg.isLoaded()) {
+    await ffmpeg.load();
+  }
+  
   storeData("ffmpeg", ffmpeg);
 };
+
+export function toBlobURL(url, mimeType) {
+  // Dummy implementation for compatibility if needed, or remove if unused
+  return Promise.resolve(url);
+}
+
 
 /**
  * Retrieves the MIME type of an ArrayBuffer or Uint8Array.

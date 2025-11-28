@@ -99,10 +99,9 @@ const DiscordAvatarDecoration = () => {
       setFfmpegLoaded(true);
       return;
     }
-    const { FFmpeg } = await import('@ffmpeg/ffmpeg');
-    ffmpegRef.current = new FFmpeg();
-    setFfmpeg(ffmpegRef.current);
     await initFfmpeg();
+    const { ffmpeg } = await import('@/ffmpeg/utils.js');
+    ffmpegRef.current = ffmpeg;
     setFfmpegLoaded(true);
   };
 
