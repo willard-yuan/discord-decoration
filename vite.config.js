@@ -41,7 +41,7 @@ export default defineConfig({
           res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
           res.setHeader(
             "Cross-Origin-Embedder-Policy",
-            req.originalUrl === "/discuss" ? "unsafe-none" : "require-corp"
+            req.originalUrl === "/discuss" ? "unsafe-none" : "credentialless"
           );
           next();
         });
