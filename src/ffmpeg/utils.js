@@ -8,10 +8,15 @@ export let /** @type {any} */ ffmpeg;
 export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
 
 export const initFfmpeg = async (onProgress) => {
+  if (!window.crossOriginIsolated) {
+    throw new Error("Cross-Origin Isolation is not enabled. Please check your server headers.");
+  }
+
   const ffmpegBaseUrl =
     "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/esm/";
 
-  await ffmpeg.load({
+  // Add timeout for ffmpeg loading
+  const loadPromise = ffmpeg.load({
     coreURL: await toBlobURL(
       `${ffmpegBaseUrl}ffmpeg-core.js`,
       "text/javascript"
@@ -30,6 +35,13 @@ export const initFfmpeg = async (onProgress) => {
         )
       : await toBlobURL(`${ffmpegBaseUrl}ffmpeg-core.wasm`, "application/wasm"),
   });
+
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error("FFmpeg load timed out")), 30000)
+  );
+
+  await Promise.race([loadPromise, timeoutPromise]);
+
   ffmpeg.on("log", (e) =>
     printMsg(
       ["ffmpeg", e.message],
