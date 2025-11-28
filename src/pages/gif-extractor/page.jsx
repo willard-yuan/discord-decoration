@@ -113,12 +113,12 @@ export default function GifExtractor() {
     }
 
     setLoaded(false);
-    const { FFmpeg } = await import("@ffmpeg/ffmpeg");
-    ffmpegRef.current = new FFmpeg();
-    setFfmpeg(ffmpegRef.current);
     await initFfmpeg((e) => {
-      setLoadPercentage(`${Math.round((e.received / ffmpegTotalBytes) * 100)}%`);
+       // FFmpeg 0.11.x progress event is { ratio: 0-1 }
+      setLoadPercentage(`${Math.round(e.ratio * 100)}%`);
     });
+    const { ffmpeg } = await import("@/ffmpeg/utils.js");
+    ffmpegRef.current = ffmpeg;
     setLoaded(true);
   }, []);
 

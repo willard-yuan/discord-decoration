@@ -16,7 +16,7 @@ export function cropToSquare(/** @type {String} */ url) {
         );
 
         const ext = type.replace("image/", "");
-        await ffmpeg.writeFile(`avatarpreview.${ext}`, data);
+        ffmpeg.FS('writeFile', `avatarpreview.${ext}`, data);
 
         const filter_complex = [
           // Crop
@@ -32,15 +32,15 @@ export function cropToSquare(/** @type {String} */ url) {
           "[s1][p]paletteuse",
         ];
 
-        await ffmpeg.exec([
+        await ffmpeg.run(
           "-i",
           `avatarpreview.${ext}`,
           "-filter_complex",
           filter_complex.join(""),
           "avatarpreviewcropped.gif",
-        ]);
+        );
 
-        const res = await ffmpeg.readFile("avatarpreviewcropped.gif");
+        const res = ffmpeg.FS('readFile', "avatarpreviewcropped.gif");
         const reader = new FileReader();
         reader.readAsDataURL(
           // @ts-ignore
@@ -76,7 +76,7 @@ export function addDecoration(
         const ext = avatarType.replace("image/", "");
 
         if (!decorationUrl) {
-          await ffmpeg.writeFile(`avatarbase.${ext}`, avatarData);
+          ffmpeg.FS('writeFile', `avatarbase.${ext}`, avatarData);
           const filter_complex = [
             // Start out with a transparent background
             "color=s=288x288:d=100,format=argb,colorchannelmixer=aa=0.0[background];",
@@ -102,17 +102,15 @@ export function addDecoration(
             "[s1][p]paletteuse",
           ];
 
-          await ffmpeg.exec([
+          await ffmpeg.run(
             "-i",
             `avatarbase.${ext}`,
             "-filter_complex",
             filter_complex.join(""),
             `avatarcircle.${ext}`,
-          ]);
+          );
 
-          const res = await ffmpeg
-            .readFile(`avatarcircle.${ext}`)
-            .catch((err) => console.error(err));
+          const res = ffmpeg.FS('readFile', `avatarcircle.${ext}`);
           const reader = new FileReader();
           reader.readAsDataURL(
             // @ts-ignore
@@ -136,8 +134,8 @@ export function addDecoration(
             const decoDuration = getAPngDuration(decoAB);
             const avatarDuration = getGifDuration(avatarAB);
             if (decoDuration > avatarDuration) {
-              await ffmpeg.writeFile("avatar_before_timing.gif", avatarData);
-              await ffmpeg.exec([
+              ffmpeg.FS('writeFile', "avatar_before_timing.gif", avatarData);
+              await ffmpeg.run(
                 "-stream_loop",
                 "-1",
                 "-i",
@@ -151,16 +149,16 @@ export function addDecoration(
                   "[s1][p]paletteuse",
                 ].join(" "),
                 `avatarbase.${ext}`,
-              ]);
+              );
             } else {
-              await ffmpeg.writeFile(`avatarbase.${ext}`, avatarData);
+              ffmpeg.FS('writeFile', `avatarbase.${ext}`, avatarData);
             }
           } else if (ext === "png") {
             const decoDuration = getAPngDuration(decoAB);
             const avatarDuration = getAPngDuration(avatarAB);
             if (decoDuration > avatarDuration && avatarDuration > 0) {
-              await ffmpeg.writeFile("avatar_before_timing.png", avatarData);
-              await ffmpeg.exec([
+              ffmpeg.FS('writeFile', "avatar_before_timing.png", avatarData);
+              await ffmpeg.run(
                 "-i",
                 "avatar_before_timing.png",
                 "-filter_complex",
@@ -172,14 +170,14 @@ export function addDecoration(
                   "[s1][p]paletteuse",
                 ].join(" "),
                 `avatarbase.${ext}`,
-              ]);
+              );
             } else {
-              await ffmpeg.writeFile(`avatarbase.${ext}`, avatarData);
+              ffmpeg.FS('writeFile', `avatarbase.${ext}`, avatarData);
             }
           } else {
-            await ffmpeg.writeFile(`avatarbase.${ext}`, avatarData);
+            ffmpeg.FS('writeFile', `avatarbase.${ext}`, avatarData);
           }
-          await ffmpeg.writeFile("decoration.png", decoData);
+          ffmpeg.FS('writeFile', "decoration.png", decoData);
 
           // Check if this is a restricted environment (but allow localhost for development)
           const isRestrictedEnvironment = 
@@ -216,7 +214,7 @@ export function addDecoration(
               "[s0]palettegen=reserve_transparent=on:transparency_color=ffffff[p];",
               "[s1][p]paletteuse",
             ];
-            await ffmpeg.exec([
+            await ffmpeg.run(
               "-i",
               `avatarbase.${ext}`,
               "-i",
@@ -224,11 +222,9 @@ export function addDecoration(
               "-filter_complex",
               filter_complex.join(""),
               "avatar.gif",
-            ]);
+            );
 
-            const res = await ffmpeg
-              .readFile("avatar.gif")
-              .catch((err) => console.error(err));
+            const res = ffmpeg.FS('readFile', "avatar.gif");
             const reader = new FileReader();
             reader.readAsDataURL(
               new Blob(
@@ -279,7 +275,7 @@ export function addDecoration(
               "[s0]palettegen=reserve_transparent=on:transparency_color=ffffff[p];",
               "[s1][p]paletteuse",
             ];
-            await ffmpeg.exec([
+            await ffmpeg.run(
               "-i",
               `avatarbase.${ext}`,
               "-i",
@@ -287,11 +283,9 @@ export function addDecoration(
               "-filter_complex",
               filter_complex.join(""),
               "avatarwithdeco.gif",
-            ]);
+            );
 
-            const res = await ffmpeg
-              .readFile("avatarwithdeco.gif")
-              .catch((err) => console.error(err));
+            const res = ffmpeg.FS('readFile', "avatarwithdeco.gif");
             if (typeof res === "undefined" || res.length === 0) {
               console.error("Error: Empty result from ffmpeg");
               return reject();

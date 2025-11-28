@@ -4,7 +4,7 @@ import {
 } from "@jsquash/webp/decode";
 import { encode as encodeGif, init as initGif } from "gifski-wasm";
 import { printMsg } from "./print";
-import { fetchFile } from "@ffmpeg/util";
+import { fetchFile } from "@ffmpeg/ffmpeg";
 
 /**
  * Converts a WebP file to a GIF file.

@@ -38,11 +38,8 @@ export default defineConfig({
       name: "custom-server-headers",
       configureServer: (server) => {
         server.middlewares.use((req, res, next) => {
-          res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-          res.setHeader(
-            "Cross-Origin-Embedder-Policy",
-            req.originalUrl === "/discuss" ? "unsafe-none" : "credentialless"
-          );
+          // COOP/COEP headers are no longer needed for FFmpeg 0.11 (single threaded)
+          // Removing them allows Ads to work without issues
           next();
         });
       },
