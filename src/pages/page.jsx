@@ -63,9 +63,6 @@ export default function Home() {
     }
     // Lazily initialize FFmpeg on first demand
     loadingPromise = (async () => {
-      const { FFmpeg } = await import("@ffmpeg/ffmpeg");
-      ffmpegRef.current = new FFmpeg();
-      setFfmpeg(ffmpegRef.current);
       await initFfmpeg();
       setLoaded(true);
     })();
@@ -87,9 +84,6 @@ export default function Home() {
       if (!transferredFfmpeg && !loaded && loadingPromise == null) {
         // Begin preloading very late to avoid impacting initial paint
         loadingPromise = (async () => {
-          const { FFmpeg } = await import("@ffmpeg/ffmpeg");
-          ffmpegRef.current = new FFmpeg();
-          setFfmpeg(ffmpegRef.current);
           await initFfmpeg();
           setLoaded(true);
         })();
