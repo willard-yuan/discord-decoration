@@ -8,7 +8,8 @@ export let /** @type {any} */ ffmpeg;
 export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
 
 export const initFfmpeg = async (onProgress) => {
-  const ffmpegBaseUrl = "/ffmpeg/";
+  const ffmpegBaseUrl =
+    "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/esm/";
 
   await ffmpeg.load({
     coreURL: await toBlobURL(
