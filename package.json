@@ -10,8 +10,8 @@
     "verify-deployment": "node verify-deployment.js"
   },
   "dependencies": {
-    "@ffmpeg/core": "^0.11.0",
-    "@ffmpeg/ffmpeg": "^0.11.6",
+    "@ffmpeg/core": "0.11.0",
+    "@ffmpeg/ffmpeg": "0.11.6",
     "@giscus/react": "^3.1.0",
     "@jsquash/webp": "1.5.0-animated-webp-support-beta.2",
     "@tailwindcss/vite": "^4.1.13",

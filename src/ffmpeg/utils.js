@@ -12,7 +12,7 @@ export const initFfmpeg = async (onProgress) => {
   if (!ffmpeg) {
      ffmpeg = createFFmpeg({
       log: true,
-      corePath: "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js",
+      corePath: "/ffmpeg/ffmpeg-core.js",
       progress: ({ ratio }) => {
         if (onProgress) {
            onProgress({ ratio });
@@ -23,7 +23,11 @@ export const initFfmpeg = async (onProgress) => {
   }
 
   if (!ffmpeg.isLoaded()) {
-    await ffmpeg.load();
+    const loadPromise = ffmpeg.load();
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("FFmpeg load timed out")), 30000)
+    );
+    await Promise.race([loadPromise, timeoutPromise]);
   }
   
   storeData("ffmpeg", ffmpeg);

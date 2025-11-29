@@ -450,14 +450,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ffmpeg/core@npm:^0.11.0":
+"@ffmpeg/core@npm:0.11.0":
   version: 0.11.0
   resolution: "@ffmpeg/core@npm:0.11.0"
   checksum: 10c0/78d5a5a3fd13ad9340016eb0fd49f0377920e2c7617928d476ece153b773d2338b033aba4e34383382fb0df2e119376cb2741c7d228f9cc35b7bda52fb56f26a
   languageName: node
   linkType: hard
 
-"@ffmpeg/ffmpeg@npm:^0.11.6":
+"@ffmpeg/ffmpeg@npm:0.11.6":
   version: 0.11.6
   resolution: "@ffmpeg/ffmpeg@npm:0.11.6"
   dependencies:
@@ -5653,8 +5653,8 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@babel/core": "npm:^7.26.0"
-    "@ffmpeg/core": "npm:^0.11.0"
-    "@ffmpeg/ffmpeg": "npm:^0.11.6"
+    "@ffmpeg/core": "npm:0.11.0"
+    "@ffmpeg/ffmpeg": "npm:0.11.6"
     "@giscus/react": "npm:^3.1.0"
     "@jsquash/webp": "npm:1.5.0-animated-webp-support-beta.2"
     "@preact/preset-vite": "npm:^2.10.2"
