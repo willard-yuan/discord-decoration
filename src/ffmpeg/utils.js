@@ -10,13 +10,22 @@ export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
 let commandQueue = Promise.resolve();
 
 export const runFfmpegCommand = async (...args) => {
-  const run = async () => {
+  // Create a new promise that waits for the previous one
+  const currentTask = commandQueue.then(async () => {
     if (!ffmpeg) throw new Error("FFmpeg not initialized");
-    await ffmpeg.run(...args);
-  };
+    try {
+      await ffmpeg.run(...args);
+    } catch (e) {
+      console.error("FFmpeg run error:", e);
+      throw e;
+    }
+  });
 
-  commandQueue = commandQueue.then(run, run);
-  return commandQueue;
+  // Update the queue pointer to the new task, but catch errors so the queue doesn't stall
+  commandQueue = currentTask.catch(() => {});
+  
+  // Return the task promise so the caller can await it (and catch its errors)
+  return currentTask;
 };
 
 export const initFfmpeg = async (onProgress) => {
