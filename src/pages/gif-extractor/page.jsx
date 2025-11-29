@@ -164,6 +164,16 @@ export default function GifExtractor() {
   const [frames, setFrames] = useState(null);
   const [zipping, setZipping] = useState(false);
 
+  const downloadSectionRef = useRef(null);
+
+  useEffect(() => {
+    if (frames && frames.length > 0 && downloadSectionRef.current) {
+      setTimeout(() => {
+        downloadSectionRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+  }, [frames]);
+
   const base64ToUint8Array = (base64) => {
     const binaryString = atob(base64);
     const len = binaryString.length;
@@ -225,9 +235,9 @@ export default function GifExtractor() {
               {file == null ? (
                 /* Upload Section */
                 <div className="max-w-2xl mx-auto animate-slide-in-up delay-200">
-                  <div 
-                    className="bg-surface-overlay/50 backdrop-blur-xl rounded-3xl p-12 border-2 border-dashed border-white/10 hover:border-violet-500/50 hover:bg-white/5 transition-all duration-300 group cursor-pointer relative overflow-hidden"
-                    onClick={() => document.getElementById("upload-gif").click()}
+                  <label 
+                    htmlFor="upload-gif"
+                    className="block bg-surface-overlay/50 backdrop-blur-xl rounded-3xl p-12 border-2 border-dashed border-white/10 hover:border-violet-500/50 hover:bg-white/5 transition-all duration-300 group cursor-pointer relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
@@ -243,18 +253,14 @@ export default function GifExtractor() {
                         Click to browse or drag and drop a GIF file here
                       </p>
                       
-                      <button
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-violet-500/25"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          document.getElementById("upload-gif").click();
-                        }}
+                      <div
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-violet-500/25 cursor-pointer"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
                         Choose GIF File
-                      </button>
+                      </div>
                       
                       <input
                         type="file"
@@ -274,7 +280,7 @@ export default function GifExtractor() {
                         }}
                       />
                     </div>
-                  </div>
+                  </label>
                 </div>
               ) : (
                 /* Processing Section */
@@ -381,7 +387,7 @@ export default function GifExtractor() {
                       </div>
 
                       {/* Bulk download button moved to bottom */}
-                      <div className="mt-8 flex justify-center">
+                      <div className="mt-8 flex justify-center" ref={downloadSectionRef}>
                         <button
                           className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-purple-500 hover:from-primary/80 hover:to-purple-500/80 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
                           onClick={downloadAllFrames}
