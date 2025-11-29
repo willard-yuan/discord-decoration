@@ -468,11 +468,11 @@ const DiscordAvatarDecoration = () => {
                 try {
                   setGenerationFailed(false);
                   setIsGeneratingAv(true);
-                  await ensureLoaded();
-                  const res = await addDecoration(
-                    previewAvatarUrl || '/avatars/in_rainbows.png',
-                    previewDecorationUrl ? `${baseImgUrl}${previewDecorationUrl}` : ''
-                  );
+              await ensureLoaded();
+              const res = await addDecoration(
+                previewAvatarUrl || '/avatars/in_rainbows.png',
+                previewDecorationUrl || ''
+              );
                   const a = document.createElement('a');
                   a.href = res;
                   a.download = `discord_avatar_decoration_animated_${Date.now()}.gif`;
@@ -495,11 +495,11 @@ const DiscordAvatarDecoration = () => {
                 try {
                   setGenerationFailed(false);
                   setIsGeneratingAv(true);
-                  await ensureLoaded();
-                  const res = await addDecoration(
-                    previewAvatarUrl || '/avatars/in_rainbows.png',
-                    previewDecorationUrl ? `${baseImgUrl}${previewDecorationUrl}` : ''
-                  );
+              await ensureLoaded();
+              const res = await addDecoration(
+                previewAvatarUrl || '/avatars/in_rainbows.png',
+                previewDecorationUrl || ''
+              );
                   storeData('image', res);
                   router.route('/gif-extractor');
                 } catch (e) {
