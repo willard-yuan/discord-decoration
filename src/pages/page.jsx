@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
 } from "preact/hooks";
+import { lazy, Suspense } from "preact/compat";
 
 import FileUpload from "@/components/fileupload.jsx";
 import { Icons } from "@/components/icons.jsx";
@@ -36,7 +37,7 @@ import Navbar from "@/components/Navbar.jsx";
 import Hero from "@/components/Hero.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
-import HowToCreate from "@/components/HowToCreate.jsx";
+const HowToCreate = lazy(() => import("@/components/HowToCreate.jsx"));
 import Testimonials from "@/components/Testimonials.jsx";
 import AdBanner from "@/components/AdBanner.jsx";
 
@@ -828,7 +829,9 @@ const App = ({ ensureLoaded }) => {
           };
         }}
       />
-      <HowToCreate />
+      <Suspense fallback={<div className="h-96" />}>
+        <HowToCreate />
+      </Suspense>
       <Testimonials />
       <Footer />
     </CurrentData.Provider>
