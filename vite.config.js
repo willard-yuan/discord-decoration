@@ -42,6 +42,16 @@ export default defineConfig({
           next();
         });
       },
+      configurePreviewServer: (server) => {
+        server.middlewares.use((req, res, next) => {
+          res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+          res.setHeader(
+            "Cross-Origin-Embedder-Policy",
+            req.originalUrl === "/discuss" ? "unsafe-none" : "require-corp"
+          );
+          next();
+        });
+      },
     },
     preact({
       prerender: {
