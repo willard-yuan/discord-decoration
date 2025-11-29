@@ -16,6 +16,11 @@ export const runFfmpegCommand = async (...args) => {
     try {
       await ffmpeg.run(...args);
     } catch (e) {
+      // Handle ExitStatus(0) as success (normal termination)
+      if (e && e.name === 'ExitStatus' && e.status === 0) {
+        // console.log("FFmpeg exited with status 0 (Success)");
+        return; 
+      }
       console.error("FFmpeg run error:", e);
       throw e;
     }
