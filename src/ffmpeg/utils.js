@@ -10,16 +10,24 @@ export const initFfmpeg = async (onProgress) => {
   // FFmpeg 0.11.x (single threaded) doesn't need crossOriginIsolated
   
   if (!ffmpeg) {
-     ffmpeg = createFFmpeg({
+    ffmpeg = createFFmpeg({
       log: true,
-      corePath: "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js",
+      mainName: 'main',
+      corePath: "https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js",
       progress: ({ ratio }) => {
         if (onProgress) {
-           onProgress({ ratio });
+          onProgress({ ratio });
         }
       },
     });
     setFfmpeg(ffmpeg);
+  } else {
+    // Update progress callback if provided
+    ffmpeg.setProgress(({ ratio }) => {
+      if (onProgress) {
+        onProgress({ ratio });
+      }
+    });
   }
 
   if (!ffmpeg.isLoaded()) {

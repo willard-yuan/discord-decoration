@@ -16,7 +16,6 @@ import {
 
 import { printErr, printMsg } from "@/utils/print.js";
 import { clearData, getData, storeData } from "@/utils/dataHandler.js";
-import { ffmpegTotalBytes } from "@/data/fileSizes.js";
 
 const isServer = typeof window === "undefined";
 
@@ -119,6 +118,7 @@ export default function GifExtractor() {
     });
     const { ffmpeg } = await import("@/ffmpeg/utils.js");
     ffmpegRef.current = ffmpeg;
+    setFfmpeg(ffmpeg);
     setLoaded(true);
   }, []);
 
