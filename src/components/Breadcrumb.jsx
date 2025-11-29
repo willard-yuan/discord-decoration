@@ -48,33 +48,51 @@ const Breadcrumb = ({ title }) => {
   if (breadcrumbItems.length <= 1) return null;
 
   return (
-    <nav className="bg-surface-high/50 border-b border-border-faint py-2 px-4" aria-label="Breadcrumb">
-      <div className="max-w-7xl mx-auto">
-        <ol className="flex items-center space-x-2 text-sm" itemScope itemType="https://schema.org/BreadcrumbList">
-          {breadcrumbItems.map((item, index) => (
-            <li key={item.path} className="flex items-center" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-              {index > 0 && (
-                <svg className="w-4 h-4 text-text-muted mx-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              )}
-              {index === breadcrumbItems.length - 1 ? (
-                <span className="text-text-primary font-medium" itemProp="name" aria-current="page">
-                  {item.name}
-                </span>
-              ) : (
-                <a 
-                  href={item.path} 
-                  className="text-text-secondary hover:text-text-primary transition-colors"
-                  itemProp="item"
-                  title={item.keywords}
-                >
-                  <span itemProp="name">{item.name}</span>
-                </a>
-              )}
-              <meta itemProp="position" content={String(index + 1)} />
-            </li>
-          ))}
+    <nav 
+      className="sticky top-0 z-40 w-full border-b border-white/5 bg-black/20 backdrop-blur-xl shadow-lg transition-all duration-300" 
+      aria-label="Breadcrumb"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center">
+        <ol className="flex items-center flex-wrap gap-1 text-sm" itemScope itemType="https://schema.org/BreadcrumbList">
+          {breadcrumbItems.map((item, index) => {
+            const isLast = index === breadcrumbItems.length - 1;
+            const isHome = index === 0;
+
+            return (
+              <li key={item.path} className="flex items-center" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                {index > 0 && (
+                   <svg className="w-4 h-4 mx-2 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l-4 14" />
+                   </svg>
+                )}
+                
+                {isLast ? (
+                  <span 
+                    className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/5 font-bold text-sm bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent shadow-[0_0_15px_rgba(139,92,246,0.1)] animate-in fade-in slide-in-from-left-2 duration-500" 
+                    itemProp="name" 
+                    aria-current="page"
+                  >
+                    {item.name}
+                  </span>
+                ) : (
+                  <a 
+                    href={item.path} 
+                    className={`group flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200 ${isHome ? 'pl-2' : ''}`}
+                    itemProp="item"
+                    title={item.keywords}
+                  >
+                    {isHome && (
+                      <svg className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                    )}
+                    <span itemProp="name" className={isHome ? "hidden sm:inline" : ""}>{item.name}</span>
+                  </a>
+                )}
+                <meta itemProp="position" content={String(index + 1)} />
+              </li>
+            );
+          })}
         </ol>
       </div>
     </nav>

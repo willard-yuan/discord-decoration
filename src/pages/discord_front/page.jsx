@@ -86,16 +86,23 @@ const DiscordFonts = () => {
   return (
     <>
       <Navbar />
-      <Breadcrumb />
+      <Breadcrumb title="Discord Fonts" />
       <AdBanner />
       
       <div className="min-h-screen bg-surface-primary text-text-primary">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4 text-primary">Discord Fonts Generator</h1>
-            <p className="text-lg text-text-secondary mb-6">
-              FREE fonts generator for 🎧 Discord ✂️ Copy and 📋 Paste cool Discord fonts. Change your classic Discord font and create cool text.🥇 2025 TOP fonts are ↓ here ↓ ⭐
+          <div className="text-center mb-16 relative z-10">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] -z-10" />
+            <h1 className="text-5xl md:text-7xl font-black ginto tracking-tight mb-6 animate-slide-in-up">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-white drop-shadow-[0_0_30px_rgba(129,140,248,0.5)]">
+                Discord Fonts Generator
+              </span>
+            </h1>
+            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium animate-slide-in-up delay-100">
+              Generate stylish <span className="text-white font-bold">Discord fonts</span> and text styles.
+              <br className="hidden md:block" />
+              Copy and paste cool fonts to stand out in your messages and profile.
             </p>
             
             {/* Input Section */}

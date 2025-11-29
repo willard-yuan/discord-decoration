@@ -20,6 +20,7 @@ const DiscordAvatar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [previewAvatarUrl, setPreviewAvatarUrl] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const router = useLocation();
   const [previewDecorationUrl, setPreviewDecorationUrl] = useState('/decorations/treat_ghost.png');
   const ffmpegRef = useRef(null);
@@ -33,7 +34,7 @@ const DiscordAvatar = () => {
     const existing = getData('ffmpeg');
     if (existing) {
       ffmpegRef.current = existing;
-      setFfmpeg(ffmpegRef.current);
+      setFfmpeg();
       setFfmpegLoaded(true);
       return;
     }
@@ -121,94 +122,241 @@ const DiscordAvatar = () => {
   };
 
   // Categorize avatars based on their names and themes
-  const categorizeAvatars = () => {
+  const allCategories = useMemo(() => {
     const categories = {
-      'Colors & Themes': [],
-      'Gaming & Entertainment': [],
+      'Seasonal & Holidays': [],
+      'Gaming': [],
+      'Anime & TV': [],
       'Characters & Mascots': [],
-      'Seasonal & Events': [],
-      'Fantasy & Sci-Fi': [],
+      'Fantasy & Magic': [],
+      'Sci-Fi & Tech': [],
       'Animals & Creatures': [],
+      'Nature & Floral': [],
+      'Food & Drink': [],
+      'Aesthetic & Vibe': [],
+      'Solid Colors': [],
       'Other': []
     };
 
     avatarsData.forEach(avatar => {
       const name = avatar.n.toLowerCase();
       
-      // Gaming & Entertainment
-      if (name.includes('valorant') || name.includes('street fighter') || name.includes('palworld') || 
-          name.includes('arcade') || name.includes('gaming') || name.includes('dungeons') || 
-          name.includes('magic') || name.includes('star wars') || name.includes('civilization') ||
-          name.includes('dojo') || name.includes('ggez')) {
-        categories['Gaming & Entertainment'].push(avatar);
+      // Seasonal & Holidays
+      if (name.includes('winter') || name.includes('summer') || name.includes('autumn') || 
+          name.includes('spring') || name.includes('halloween') || name.includes('christmas') || 
+          name.includes('valentine') || name.includes('lunar') || name.includes('new year') || 
+          name.includes('spooky') || name.includes('equinox') || name.includes('holiday')) {
+        categories['Seasonal & Holidays'].push(avatar);
       }
-      // Colors & Themes
-      else if (name.includes('blue') || name.includes('red') || name.includes('green') || 
-               name.includes('yellow') || name.includes('pink') || name.includes('gray') ||
-               name.includes('blurple') || name.includes('color') || name.includes('classic') ||
-               name.includes('pastel') || name.includes('holo') || name.includes('prismatic') ||
-               name.includes('rainbow') || name.includes('midnight') || name.includes('galactic')) {
-        categories['Colors & Themes'].push(avatar);
+      // Gaming
+      else if (name.includes('valorant') || name.includes('street fighter') || name.includes('palworld') || 
+               name.includes('arcade') || name.includes('gaming') || name.includes('dungeons') || 
+               name.includes('magic: the gathering') || name.includes('civilization') || name.includes('mario') ||
+               name.includes('zelda') || name.includes('league') || name.includes('overwatch') || 
+               name.includes('fortnite') || name.includes('minecraft') || name.includes('roblox') ||
+               name.includes('genshin') || name.includes('ggez') || name.includes('dojo') ||
+               name.includes('d–20') || name.includes('fighter') || name.includes('nba') ||
+               name.includes('playstation') || name.includes('xbox') || name.includes('game') ||
+               name.includes('winston') || name.includes('val') || name.includes('vroom')) {
+        categories['Gaming'].push(avatar);
       }
-      // Characters & Mascots (Wumpus, Clyde, etc.)
+      // Anime & TV
+      else if (name.includes('anime') || name.includes('manga') || name.includes('arcane') || 
+               name.includes('star wars') || name.includes('marvel') || name.includes('dc') ||
+               name.includes('ghibli') || name.includes('naruto') || name.includes('one piece') ||
+               name.includes('dragon ball') || name.includes('sailor moon') || name.includes('evangelion') ||
+               name.includes('gundam') || name.includes('pokemon') || name.includes('chibi') ||
+               name.includes('kawaii') || name.includes('lofi girl') || name.includes('aespa')) {
+        categories['Anime & TV'].push(avatar);
+      }
+      // Characters & Mascots
       else if (name.includes('wumpus') || name.includes('clyde') || name.includes('automod') ||
-               name.includes('ander') || name.includes('annabel') || name.includes('bento') ||
-               name.includes('froge') || name.includes('graggle') || name.includes('peppe') ||
-               name.includes('robot') || name.includes('cap') || name.includes('nelly')) {
+               name.includes('ander') || name.includes('annabel') || name.includes('felippe') ||
+               name.includes('nelly') || name.includes('cap') || name.includes('robot') ||
+               name.includes('graggle') || name.includes('phibi') || name.includes('milo') ||
+               name.includes('wump') || name.includes('boomer') || name.includes('bopper') ||
+               name.includes('bouncer') || name.includes('brainy') || name.includes('brib') ||
+               name.includes('chiller') || name.includes('doodie') || name.includes('elmer') ||
+               name.includes('froge') || name.includes('gero') || name.includes('gnarf') ||
+               name.includes('gobbi') || name.includes('grimma') || name.includes('hark') ||
+               name.includes('klayden') || name.includes('lukid') || name.includes('morf') ||
+               name.includes('nerm') || name.includes('noah') || name.includes('oslow') ||
+               name.includes('peeper') || name.includes('peppe') || name.includes('pinky') ||
+               name.includes('quirk') || name.includes('rezzy') || name.includes('roka') ||
+               name.includes('rumi') || name.includes('scotty') || name.includes('slormp') ||
+               name.includes('smeed') || name.includes('snumpus') || name.includes('speece') ||
+               name.includes('speek') || name.includes('spime') || name.includes('steve') ||
+               name.includes('thawne') || name.includes('thonk') || name.includes('tipp') ||
+               name.includes('trom') || name.includes('twoot') || name.includes('worf') ||
+               name.includes('wizzy') || name.includes('zipp') || name.includes('skibidi') ||
+               name.includes('bartender') || name.includes('bill') || name.includes('bling') ||
+               name.includes('blink') || name.includes('blip') || name.includes('cacdude') ||
+               name.includes('cambrella') || name.includes('camie') || name.includes('chance') ||
+               name.includes('chief') || name.includes('dee') || name.includes('fang') ||
+               name.includes('floop') || name.includes('flynn') || name.includes('gill') ||
+               name.includes('hand') || name.includes('hello') || name.includes('lady') ||
+               name.includes('leon') || name.includes('linda') || name.includes('locke') ||
+               name.includes('mason') || name.includes('moe') || name.includes('ono') ||
+               name.includes('painter') || name.includes('pawn') || name.includes('scena') ||
+               name.includes('snap') || name.includes('strech') || name.includes('wallp') ||
+               name.includes('willow')) {
         categories['Characters & Mascots'].push(avatar);
       }
-      // Seasonal & Events
-      else if (name.includes('winter') || name.includes('autumn') || name.includes('spring') ||
-               name.includes('summer') || name.includes('lunar') || name.includes('valentine') ||
-               name.includes('spooky') || name.includes('sakura') || name.includes('equinox')) {
-        categories['Seasonal & Events'].push(avatar);
+      // Fantasy & Magic
+      else if (name.includes('fantasy') || name.includes('magic') || name.includes('wizard') || 
+               name.includes('witch') || name.includes('dragon') || name.includes('fairy') || 
+               name.includes('myth') || name.includes('legend') || name.includes('spell') ||
+               name.includes('ethereal') || name.includes('spirit') || name.includes('ghost')) {
+        categories['Fantasy & Magic'].push(avatar);
       }
-      // Fantasy & Sci-Fi
-      else if (name.includes('fantasy') || name.includes('steampunk') || name.includes('galaxy') ||
-               name.includes('retro') || name.includes('mainframe') || name.includes('fuming') ||
-               name.includes('d64') || name.includes('tactical') || name.includes('chrome')) {
-        categories['Fantasy & Sci-Fi'].push(avatar);
+      // Sci-Fi & Tech
+      else if (name.includes('sci-fi') || name.includes('cyber') || name.includes('tech') || 
+               name.includes('robot') || name.includes('droid') || name.includes('space') || 
+               name.includes('galaxy') || name.includes('star') || name.includes('planet') || 
+               name.includes('alien') || name.includes('ufo') || name.includes('future') ||
+               name.includes('retro') || name.includes('mainframe') || name.includes('glitch') ||
+               name.includes('chrome') || name.includes('holo') || name.includes('digital') ||
+               name.includes('pixel') || name.includes('bit') || name.includes('d64') ||
+               name.includes('fuming') || name.includes('tactical') || name.includes('megatron')) {
+        categories['Sci-Fi & Tech'].push(avatar);
       }
       // Animals & Creatures
-      else if (name.includes('cat') || name.includes('birb') || name.includes('bunny') ||
-               name.includes('frog') || name.includes('dragon') || name.includes('skull') ||
-               name.includes('snail') || name.includes('snek') || name.includes('toad')) {
+      else if (name.includes('cat') || name.includes('dog') || name.includes('bird') || 
+               name.includes('bunny') || name.includes('frog') || name.includes('bear') || 
+               name.includes('fox') || name.includes('wolf') || name.includes('tiger') || 
+               name.includes('lion') || name.includes('panda') || name.includes('koala') || 
+               name.includes('duck') || name.includes('chicken') || name.includes('cow') || 
+               name.includes('pig') || name.includes('sheep') || name.includes('goat') || 
+               name.includes('horse') || name.includes('fish') || name.includes('shark') || 
+               name.includes('whale') || name.includes('dolphin') || name.includes('turtle') || 
+               name.includes('snake') || name.includes('snail') || name.includes('spider') || 
+               name.includes('bee') || name.includes('butterfly') || name.includes('toad') ||
+               name.includes('birb') || name.includes('snek') || name.includes('stork') ||
+               name.includes('roach') || name.includes('worm') || name.includes('flipper') ||
+               name.includes('oiseau')) {
         categories['Animals & Creatures'].push(avatar);
       }
-      // Everything else
+      // Nature & Floral
+      else if (name.includes('nature') || name.includes('flower') || name.includes('rose') || 
+               name.includes('lily') || name.includes('tulip') || name.includes('sunflower') || 
+               name.includes('daisy') || name.includes('cherry') || name.includes('blossom') || 
+               name.includes('sakura') || name.includes('tree') || name.includes('forest') || 
+               name.includes('mountain') || name.includes('river') || name.includes('ocean') || 
+               name.includes('sky') || name.includes('cloud') || name.includes('sun') || 
+               name.includes('moon') || name.includes('star') || name.includes('leaf') ||
+               name.includes('plant') || name.includes('garden') || name.includes('petal') ||
+               name.includes('lime') || name.includes('lemon') || name.includes('peach') ||
+               name.includes('mushroom')) {
+        categories['Nature & Floral'].push(avatar);
+      }
+      // Food & Drink
+      else if (name.includes('food') || name.includes('drink') || name.includes('coffee') || 
+               name.includes('tea') || name.includes('bento') || name.includes('sushi') || 
+               name.includes('pizza') || name.includes('burger') || name.includes('cake') || 
+               name.includes('cookie') || name.includes('donut') || name.includes('ice cream') || 
+               name.includes('candy') || name.includes('chocolate') || name.includes('fruit') || 
+               name.includes('vegetable') || name.includes('bread') || name.includes('toast') || 
+               name.includes('sandwich') || name.includes('noodle') || name.includes('ramen') ||
+               name.includes('bonbon') || name.includes('sherbet') || name.includes('sandmich') ||
+               name.includes('pea')) {
+        categories['Food & Drink'].push(avatar);
+      }
+      // Aesthetic & Vibe
+      else if (name.includes('aesthetic') || name.includes('vibe') || name.includes('lofi') || 
+               name.includes('pastel') || name.includes('neon') || name.includes('goth') || 
+               name.includes('grunge') || name.includes('emo') || name.includes('punk') || 
+               name.includes('vintage') || name.includes('retro') || name.includes('vaporwave') || 
+               name.includes('synthwave') || name.includes('chill') || name.includes('cool') || 
+               name.includes('cute') || name.includes('pretty') || name.includes('beautiful') ||
+               name.includes('insomnia') || name.includes('ceramic') || name.includes('charcoal') ||
+               name.includes('wham') || name.includes('prism') || name.includes('wave') ||
+               name.includes('twilight') || name.includes('rainbow') || name.includes('sunset') ||
+               name.includes('matey') || name.includes('uwu') || name.includes('skull') ||
+               name.includes('shenanigans') || name.includes('house') || name.includes('swirl')) {
+        categories['Aesthetic & Vibe'].push(avatar);
+      }
+      // Solid Colors
+      else if (name.includes('blue') || name.includes('red') || name.includes('green') || 
+               name.includes('yellow') || name.includes('pink') || name.includes('gray') || 
+               name.includes('purple') || name.includes('orange') || name.includes('black') || 
+               name.includes('white') || name.includes('brown') || name.includes('color') ||
+               name.includes('blurple') || name.includes('cyan') || name.includes('magenta') ||
+               name.includes('teal') || name.includes('indigo') || name.includes('violet') ||
+               name.includes('tan')) {
+        categories['Solid Colors'].push(avatar);
+      }
+      // Other
       else {
-        categories['Other'].push(avatar);
+        categories['Characters & Mascots'].push(avatar);
+      }
+    });
+
+    // Remove empty categories
+    Object.keys(categories).forEach(key => {
+      if (categories[key].length === 0) {
+        delete categories[key];
       }
     });
 
     return categories;
-  };
+  }, []);
 
-  // Filter avatars based on search query
+  // Filter avatars based on search query and selected category
   const filteredCategories = useMemo(() => {
-    const categories = categorizeAvatars();
-    
-    if (!searchQuery.trim()) {
-      return categories;
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const filtered = {};
+      const query = searchQuery.toLowerCase();
+      
+      Object.entries(allCategories).forEach(([categoryName, avatars]) => {
+        const filteredAvatars = avatars.filter(avatar => 
+          avatar.n.toLowerCase().includes(query)
+        );
+        
+        if (filteredAvatars.length > 0) {
+          filtered[categoryName] = filteredAvatars;
+        }
+      });
+
+      // If category is selected, filter the search results
+      if (selectedCategory !== 'All') {
+        const categoryFiltered = {};
+        if (filtered[selectedCategory]) {
+          categoryFiltered[selectedCategory] = filtered[selectedCategory];
+        }
+        return categoryFiltered;
+      }
+      
+      return filtered;
+    }
+
+    // Filter by selected category (no search)
+    if (selectedCategory !== 'All') {
+      const filtered = {};
+      if (allCategories[selectedCategory]) {
+        filtered[selectedCategory] = allCategories[selectedCategory];
+      }
+      return filtered;
     }
     
-    const filtered = {};
-    const query = searchQuery.toLowerCase();
-    
-    Object.entries(categories).forEach(([categoryName, avatars]) => {
-      const filteredAvatars = avatars.filter(avatar => 
-        avatar.n.toLowerCase().includes(query)
-      );
-      
-      if (filteredAvatars.length > 0) {
-        filtered[categoryName] = filteredAvatars;
-      }
-    });
-    
-    return filtered;
-  }, [searchQuery]);
+    return allCategories;
+  }, [searchQuery, selectedCategory, allCategories]);
 
-  const categories = categorizeAvatars();
+  const categoryColors = {
+    'All': 'from-slate-500 to-slate-700',
+    'Seasonal & Holidays': 'from-amber-500 to-orange-500',
+    'Gaming': 'from-violet-500 to-purple-500',
+    'Anime & TV': 'from-pink-500 to-rose-500',
+    'Characters & Mascots': 'from-blue-500 to-cyan-500',
+    'Fantasy & Magic': 'from-emerald-500 to-teal-500',
+    'Sci-Fi & Tech': 'from-indigo-500 to-blue-600',
+    'Animals & Creatures': 'from-green-500 to-emerald-600',
+    'Nature & Floral': 'from-lime-500 to-green-500',
+    'Food & Drink': 'from-yellow-500 to-amber-500',
+    'Aesthetic & Vibe': 'from-fuchsia-500 to-pink-500',
+    'Solid Colors': 'from-gray-500 to-zinc-500',
+    'Other': 'from-gray-500 to-zinc-500'
+  };
 
   return (
       <div className="min-h-screen bg-surface-primary">
@@ -216,35 +364,68 @@ const DiscordAvatar = () => {
         <Breadcrumb title="Avatar Gallery" />
         <AdBanner slot="4291390379" />
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-              Discord Avatar Gallery
+          <div className="text-center mb-10 relative z-10">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] -z-10" />
+            <h1 className="text-5xl md:text-7xl font-black ginto tracking-tight mb-6 animate-slide-in-up">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-white drop-shadow-[0_0_30px_rgba(96,165,250,0.5)]">
+                Discord Avatar Gallery
+              </span>
             </h1>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-8">
-              Explore our collection of Discord avatars organized by categories.
+            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium animate-slide-in-up delay-100">
+              Explore our collection of <span className="text-white font-bold">Discord avatars</span> organized by categories.
+              <br className="hidden md:block" />
               Find the perfect avatar to express your personality on Discord.
             </p>
             
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-12">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl">
+            <div className="max-w-2xl mx-auto mb-12 animate-slide-in-up delay-200 mt-12">
+              <div className="bg-surface-overlay/60 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/30 shadow-2xl shadow-blue-900/20 transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center mb-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-violet-500 rounded-full flex items-center justify-center mr-3 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
                     <h2 className="text-2xl font-bold text-white">Find Your Perfect Avatar</h2>
                   </div>
-                  <p className="text-gray-300 text-sm">
-                    Search through {Object.values(categories).flat().length}+ unique Discord avatars
+                  <p className="text-gray-400 text-sm font-medium">
+                    Search through <span className="text-blue-400 font-bold">{Object.values(allCategories).flat().length}+</span> unique Discord avatars
                   </p>
                 </div>
                 <SearchBar 
                   onValueChanged={setSearchQuery}
                   placeholder="Search avatars..."
+                  gradientClass="from-blue-500 via-violet-500 to-indigo-500"
                 />
+              </div>
+            </div>
+
+            {/* Tag Cloud */}
+            <div className="max-w-5xl mx-auto mb-16">
+              <div className="flex flex-wrap justify-center gap-3">
+                {['All', ...Object.keys(allCategories)].map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`
+                      px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 transform relative overflow-hidden group
+                      ${selectedCategory === cat 
+                        ? `bg-gradient-to-r ${categoryColors[cat] || 'from-primary to-accent-primary'} text-white scale-105 shadow-lg shadow-primary/20 ring-2 ring-white/20`
+                        : 'bg-surface-secondary/80 backdrop-blur-sm border border-white/5 text-text-secondary hover:bg-surface-tertiary hover:text-text-primary hover:scale-105 hover:shadow-md hover:border-white/10'}
+                    `}
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      {selectedCategory === cat && (
+                        <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                      )}
+                      {cat}
+                    </span>
+                    {selectedCategory !== cat && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    )}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -412,8 +593,9 @@ const DiscordAvatar = () => {
             </NeutralButton>
             <NeutralButton
               onClick={() => {
-                const url = previewAvatarUrl || '/avatars/in_rainbows.png';
-                storeData('image', url);
+                const avatarUrl = previewAvatarUrl || '/avatars/in_rainbows.png';
+                const decoUrl = previewDecorationUrl || '';
+                storeData('image', JSON.stringify({ avatar: avatarUrl, decoration: decoUrl }));
                 router.route('/gif-extractor');
               }}
               ariaLabel="Extract still image"

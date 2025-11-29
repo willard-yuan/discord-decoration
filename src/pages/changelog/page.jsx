@@ -73,6 +73,52 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.8",
+      date: "November 29th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "🌑 Theme Enforcement",
+          items: [
+            "Removed light/dark mode toggle from navigation bar",
+            "Enforced exclusive dark mode for the entire project",
+            "Eliminated all theme-related state logic from Navbar component"
+          ]
+        },
+        {
+          category: "🎨 UI Consistency",
+          items: [
+            "Enhanced SearchBar component with dynamic gradient support via gradientClass prop",
+            "Optimized search bar and hero section consistency on discord_avatar page (blue-violet theme)",
+            "Optimized search bar and hero section consistency on discord_avatar_decoration page (purple-pink theme)",
+            "Implemented glassmorphism design pattern for search bar containers"
+          ]
+        },
+        {
+          category: "🧹 Code Cleanup",
+          items: [
+            "Deleted all unused light mode theme variables from global.css"
+          ]
+        },
+        {
+          category: "🏷️ Categorization Updates",
+          items: [
+            "Refined categorization logic to completely eliminate the 'Other' category on both Avatar and Decoration galleries",
+            "Redistributed previously uncategorized items into granular categories (e.g., Characters & Mascots, Aesthetic & Vibe)",
+            "Expanded keyword matching for more accurate automatic classification",
+            "Ensured strict single-category assignment for all items to prevent duplicates"
+          ]
+        },
+        {
+          category: "🔗 Navigation",
+          items: [
+            "Optimized the logo and text in the navigation bar logo area",
+            "Refined the overall UI of the navigation bar"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.7",
       date: "November 22th, 2025",
       type: "minor",

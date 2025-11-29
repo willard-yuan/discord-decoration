@@ -6,8 +6,10 @@ import { Icons } from "@/components/icons.jsx";
 import Image from "@/components/image.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
+import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 import { imagesFromGif } from "@/ffmpeg/extractFrames.js";
+import { addDecoration } from "@/ffmpeg/processImage.js";
 import {
   getMimeTypeFromArrayBuffer,
   initFfmpeg,
@@ -107,7 +109,7 @@ export default function GifExtractor() {
     const existing = getData("ffmpeg");
     if (existing) {
       ffmpegRef.current = existing;
-      setFfmpeg(ffmpegRef.current);
+      setFfmpeg();
       return;
     }
 
@@ -118,7 +120,7 @@ export default function GifExtractor() {
     });
     const { ffmpeg } = await import("@/ffmpeg/utils.js");
     ffmpegRef.current = ffmpeg;
-    setFfmpeg(ffmpeg);
+    setFfmpeg();
     setLoaded(true);
   }, []);
 
@@ -126,7 +128,34 @@ export default function GifExtractor() {
   useEffect(() => {
     if (!isServer) {
       const i = getData("image");
-      if (i) setFile(i);
+      if (i) {
+        let composite = null;
+        try {
+          const parsed = JSON.parse(i);
+          if (parsed.avatar && typeof parsed.decoration !== 'undefined') {
+            composite = parsed;
+          }
+        } catch (e) {}
+
+        if (composite) {
+          (async () => {
+            setLoaded(false);
+            try {
+              await ensureLoaded();
+              setLoaded(false);
+              const res = await addDecoration(composite.avatar, composite.decoration);
+              setFile(res);
+            } catch (err) {
+              console.error("Failed to combine avatar and decoration", err);
+              setFile(composite.avatar);
+            } finally {
+              setLoaded(true);
+            }
+          })();
+        } else {
+          setFile(i);
+        }
+      }
       clearData("image");
     }
   }, []);
@@ -172,40 +201,52 @@ export default function GifExtractor() {
   return (
     <div className="min-h-screen bg-background text-text">
       <Navbar />
+      <Breadcrumb title="GIF Frame Extractor" />
       
       {loaded ? (
         <>
           <main className="min-h-screen bg-gradient-to-br from-surface-overlay via-surface-high/30 to-surface-overlay">
             {/* Hero Section */}
             <div className="container-responsive py-16">
-              <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold ginto bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4">
-                  GIF Frame Extractor
+              <div className="text-center mb-16 relative z-10">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[120px] -z-10" />
+                <h1 className="text-5xl md:text-7xl font-black ginto tracking-tight mb-6 animate-slide-in-up">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-white drop-shadow-[0_0_30px_rgba(167,139,250,0.5)]">
+                    GIF Frame Extractor
+                  </span>
                 </h1>
-                <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
-                  Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars and profile pictures.
+                <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium animate-slide-in-up delay-100">
+                  Extract individual frames from <span className="text-white font-bold">animated GIFs</span> quickly and easily.
+                  <br className="hidden md:block" />
+                  Perfect for creating Discord avatars and profile pictures.
                 </p>
               </div>
 
               {file == null ? (
                 /* Upload Section */
-                <div className="max-w-2xl mx-auto">
-                  <div className="bg-surface-overlay/50 backdrop-blur-sm rounded-2xl p-8 border border-border-faint hover:border-border-normal transition-all duration-300">
-                    <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full flex items-center justify-center">
-                        <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="max-w-2xl mx-auto animate-slide-in-up delay-200">
+                  <div 
+                    className="bg-surface-overlay/50 backdrop-blur-xl rounded-3xl p-12 border-2 border-dashed border-white/10 hover:border-violet-500/50 hover:bg-white/5 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                    onClick={() => document.getElementById("upload-gif").click()}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <div className="text-center relative z-10">
+                      <div className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/10 group-hover:border-violet-500/30 shadow-xl shadow-violet-500/10">
+                        <svg className="w-12 h-12 text-violet-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
                       </div>
                       
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Upload Your GIF</h3>
-                      <p className="text-text-secondary mb-6">
-                        Choose a GIF file to extract frames from
+                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-violet-200 transition-colors">Upload Your GIF</h3>
+                      <p className="text-gray-400 mb-8 group-hover:text-gray-300 transition-colors text-lg">
+                        Click to browse or drag and drop a GIF file here
                       </p>
                       
                       <button
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-purple-500 hover:from-primary/80 hover:to-purple-500/80 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                        onClick={() => {
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-violet-500/25"
+                        onClick={(e) => {
+                          e.stopPropagation();
                           document.getElementById("upload-gif").click();
                         }}
                       >
@@ -232,15 +273,6 @@ export default function GifExtractor() {
                           }
                         }}
                       />
-                      
-                      <div className="mt-6 p-4 bg-surface-high/30 rounded-xl border border-border-faint">
-                        <p className="text-text-secondary text-sm flex items-center justify-center gap-2">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          You can also drag and drop a GIF file here
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>

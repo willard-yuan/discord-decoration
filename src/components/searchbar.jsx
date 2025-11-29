@@ -1,13 +1,13 @@
 import { useState } from "preact/hooks";
 import { Icons } from "./icons.jsx";
 
-export default function SearchBar({ onValueChanged, placeholder, id = "search-bar", name = "search" }) {
+export default function SearchBar({ onValueChanged, placeholder, id = "search-bar", name = "search", gradientClass = "from-pink-500 via-purple-500 to-blue-500" }) {
   const [query, setQuery] = useState("");
 
   return (
     <div className="relative group">
       {/* Gradient border background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className={`absolute inset-0 bg-gradient-to-r ${gradientClass} rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300`}></div>
       
       {/* Input container */}
       <div className="relative bg-surface-primary rounded-xl p-0.5">
@@ -47,7 +47,7 @@ export default function SearchBar({ onValueChanged, placeholder, id = "search-ba
       </div>
       
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+      <div className={`absolute inset-0 bg-gradient-to-r ${gradientClass} rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10 blur-md`}></div>
     </div>
   );
 }
