@@ -1,5 +1,5 @@
 import { getAPngDuration } from "@/utils/apng";
-import { ffmpeg, ffmpegFetchAndConvert, getGifDuration } from "./utils";
+import { ffmpeg, ffmpegFetchAndConvert, getGifDuration, runFfmpegCommand } from "./utils";
 
 /**
  * Crop the image to a square shape using FFmpeg.
@@ -32,7 +32,7 @@ export function cropToSquare(/** @type {String} */ url) {
           "[s1][p]paletteuse",
         ];
 
-        await ffmpeg.run(
+        await runFfmpegCommand(
           "-i",
           `avatarpreview.${ext}`,
           "-filter_complex",
@@ -102,7 +102,7 @@ export function addDecoration(
             "[s1][p]paletteuse",
           ];
 
-          await ffmpeg.run(
+          await runFfmpegCommand(
             "-i",
             `avatarbase.${ext}`,
             "-filter_complex",
@@ -135,7 +135,7 @@ export function addDecoration(
             const avatarDuration = getGifDuration(avatarAB);
             if (decoDuration > avatarDuration) {
               ffmpeg.FS('writeFile', "avatar_before_timing.gif", avatarData);
-              await ffmpeg.run(
+              await runFfmpegCommand(
                 "-stream_loop",
                 "-1",
                 "-i",
@@ -158,7 +158,7 @@ export function addDecoration(
             const avatarDuration = getAPngDuration(avatarAB);
             if (decoDuration > avatarDuration && avatarDuration > 0) {
               ffmpeg.FS('writeFile', "avatar_before_timing.png", avatarData);
-              await ffmpeg.run(
+              await runFfmpegCommand(
                 "-i",
                 "avatar_before_timing.png",
                 "-filter_complex",
@@ -214,7 +214,7 @@ export function addDecoration(
               "[s0]palettegen=reserve_transparent=on:transparency_color=ffffff[p];",
               "[s1][p]paletteuse",
             ];
-            await ffmpeg.run(
+            await runFfmpegCommand(
               "-i",
               `avatarbase.${ext}`,
               "-i",
@@ -275,7 +275,7 @@ export function addDecoration(
               "[s0]palettegen=reserve_transparent=on:transparency_color=ffffff[p];",
               "[s1][p]paletteuse",
             ];
-            await ffmpeg.run(
+            await runFfmpegCommand(
               "-i",
               `avatarbase.${ext}`,
               "-i",

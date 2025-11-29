@@ -6,13 +6,25 @@ import { storeData } from "@/utils/dataHandler";
 export let /** @type {any} */ ffmpeg;
 export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
 
+// Queue system for FFmpeg commands
+let commandQueue = Promise.resolve();
+
+export const runFfmpegCommand = async (...args) => {
+  const run = async () => {
+    if (!ffmpeg) throw new Error("FFmpeg not initialized");
+    await ffmpeg.run(...args);
+  };
+
+  commandQueue = commandQueue.then(run, run);
+  return commandQueue;
+};
+
 export const initFfmpeg = async (onProgress) => {
   // FFmpeg 0.11.x (single threaded) doesn't need crossOriginIsolated
   
   if (!ffmpeg) {
     ffmpeg = createFFmpeg({
       log: true,
-      mainName: 'main',
       corePath: "https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js",
       progress: ({ ratio }) => {
         if (onProgress) {

@@ -1,5 +1,5 @@
 import { getAPngDuration } from "@/utils/apng";
-import { arraybuffer2base64, ffmpeg, ffmpegFetchAndConvert } from "./utils";
+import { arraybuffer2base64, ffmpeg, ffmpegFetchAndConvert, runFfmpegCommand } from "./utils";
 
 export function imagesFromGif(/** @type {String} */ gifUrl) {
   return new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ export function imagesFromGif(/** @type {String} */ gifUrl) {
         try {
           ffmpeg.FS('mkdir', "extract");
         } catch (e) { void e; }
-        await ffmpeg.run(
+        await runFfmpegCommand(
           "-i",
           `image.${ext}`,
           "-vsync",
