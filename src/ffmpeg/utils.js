@@ -1,12 +1,12 @@
-import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { printErr, printMsg } from "@/utils/print";
-import { downloadWithProgress } from "@/utils/download";
+import { FFmpeg } from "@ffmpeg/ffmpeg";
+import { fetchFile, toBlobURL } from "@ffmpeg/util";
+import { printErr } from "@/utils/print";
 import { storeData } from "@/utils/dataHandler";
 
-export let /** @type {any} */ ffmpeg;
-export const setFfmpeg = (/** @type {any} */ f) => (ffmpeg = f);
+export let /** @type {FFmpeg} */ ffmpeg;
+export const setFfmpeg = (/** @type {FFmpeg} */ f) => (ffmpeg = f);
 
-// Queue system for FFmpeg commands
+// Queue system for FFmpeg commands to prevent race conditions
 let commandQueue = Promise.resolve();
 
 export const runFfmpegCommand = async (...args) => {
@@ -14,13 +14,12 @@ export const runFfmpegCommand = async (...args) => {
   const currentTask = commandQueue.then(async () => {
     if (!ffmpeg) throw new Error("FFmpeg not initialized");
     try {
-      await ffmpeg.run(...args);
-    } catch (e) {
-      // Handle ExitStatus(0) as success (normal termination)
-      if (e && e.name === 'ExitStatus' && e.status === 0) {
-        // console.log("FFmpeg exited with status 0 (Success)");
-        return; 
+      // In v0.12, exec returns a promise that resolves with the exit code
+      const ret = await ffmpeg.exec(args);
+      if (ret !== 0) {
+         throw new Error(`FFmpeg exited with code ${ret}`);
       }
+    } catch (e) {
       console.error("FFmpeg run error:", e);
       throw e;
     }
@@ -34,45 +33,40 @@ export const runFfmpegCommand = async (...args) => {
 };
 
 export const initFfmpeg = async (onProgress) => {
-  // FFmpeg 0.11.x (single threaded) doesn't need crossOriginIsolated
-  
-  if (!ffmpeg) {
-    ffmpeg = createFFmpeg({
-      log: true,
-      mainName: 'main',
-      corePath: "https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js",
-      progress: ({ ratio }) => {
-        if (onProgress) {
-          onProgress({ ratio });
-        }
-      },
-    });
-    setFfmpeg(ffmpeg);
-  } else {
-    // Update progress callback if provided
-    ffmpeg.setProgress(({ ratio }) => {
-      if (onProgress) {
-        onProgress({ ratio });
-      }
-    });
+  if (ffmpeg) {
+     // If already initialized, just update progress handler
+     ffmpeg.on('progress', ({ progress }) => {
+        if (onProgress) onProgress({ ratio: progress });
+     });
+     return;
   }
 
-  if (!ffmpeg.isLoaded()) {
-    const loadPromise = ffmpeg.load();
-    const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("FFmpeg load timed out")), 30000)
-    );
-    await Promise.race([loadPromise, timeoutPromise]);
-  }
+  ffmpeg = new FFmpeg();
+  setFfmpeg(ffmpeg);
+
+  ffmpeg.on('log', ({ message }) => {
+    console.log(message);
+  });
+
+  ffmpeg.on('progress', ({ progress }) => {
+    if (onProgress) {
+      onProgress({ ratio: progress });
+    }
+  });
+
+  // Load FFmpeg with Multi-Threading support
+  const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm';
+  
+  await ffmpeg.load({
+    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+    workerURL: await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript'),
+  });
   
   storeData("ffmpeg", ffmpeg);
 };
 
-export function toBlobURL(url, mimeType) {
-  // Dummy implementation for compatibility if needed, or remove if unused
-  return Promise.resolve(url);
-}
-
+export { toBlobURL };
 
 /**
  * Retrieves the MIME type of an ArrayBuffer or Uint8Array.
