@@ -17,32 +17,31 @@ export function imagesFromGif(/** @type {String} */ gifUrl) {
           const duration = getAPngDuration(dataAB);
           if (duration < 0) return resolve([arraybuffer2base64(dataAB)]);
         }
-        await ffmpeg.writeFile(`image.${ext}`, data);
+        ffmpeg.FS('writeFile', `image.${ext}`, data);
         try {
-          for (const file of (await ffmpeg.listDir("extract")).filter(
-            (f) => !f.isDir
+          for (const file of ffmpeg.FS('readdir', "extract").filter(
+            (f) => f !== "." && f !== ".."
           )) {
-            await ffmpeg.deleteFile(`extract/${file.name}`);
+            ffmpeg.FS('unlink', `extract/${file}`);
           }
-          await ffmpeg.deleteDir("extract");
+          ffmpeg.FS('rmdir', "extract");
         } catch (e) { void e; }
         try {
-          await ffmpeg.createDir("extract");
+          ffmpeg.FS('mkdir', "extract");
         } catch (e) { void e; }
-        await ffmpeg.exec([
+        await ffmpeg.run(
           "-i",
           `image.${ext}`,
           "-vsync",
           "0",
           "extract/frame_%d.png",
-        ]);
+        );
 
-        let frames = (await ffmpeg.listDir("extract"))
-          .filter((f) => !f.isDir)
-          .map((f) => f.name);
+        let frames = ffmpeg.FS('readdir', "extract")
+          .filter((f) => f !== "." && f !== "..");
         frames = await Promise.all(
           frames.map(async (f) => {
-            const res = await ffmpeg.readFile(`extract/${f}`);
+            const res = ffmpeg.FS('readFile', `extract/${f}`);
             // @ts-ignore
             return arraybuffer2base64(res.buffer);
           })

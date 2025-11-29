@@ -37,10 +37,11 @@ const DiscordAvatar = () => {
       setFfmpegLoaded(true);
       return;
     }
-    const { FFmpeg } = await import('@ffmpeg/ffmpeg');
-    ffmpegRef.current = new FFmpeg();
-    setFfmpeg(ffmpegRef.current);
+    // Initialize FFmpeg 0.11.x (single threaded)
     await initFfmpeg();
+    // ffmpeg instance is set in initFfmpeg
+    const { ffmpeg } = await import('@/ffmpeg/utils.js');
+    ffmpegRef.current = ffmpeg;
     setFfmpegLoaded(true);
   };
 
@@ -390,7 +391,7 @@ const DiscordAvatar = () => {
                   await ensureLoaded();
                   const res = await addDecoration(
                     previewAvatarUrl || '/avatars/in_rainbows.png',
-                    previewDecorationUrl ? `${baseImgUrl}${previewDecorationUrl}` : ''
+                    previewDecorationUrl || ''
                   );
                   const a = document.createElement('a');
                   a.href = res;

@@ -4,34 +4,33 @@ import {
   Route,
   hydrate,
   prerender as ssr,
+  lazy,
 } from "preact-iso";
 
 import Home from "@/pages/page.jsx";
-import Discussion from "@/pages/discuss/page.jsx";
-import GifExtractor from "@/pages/gif-extractor/page.jsx";
-import FAQ from "@/pages/faq/page.jsx";
-import HowToUse from "@/pages/how-to-use/page.jsx";
-import BlogArticle from "@/pages/blog/page.jsx";
-import DiscordFontBlog from "@/pages/blog/discord-font/page.jsx";
-import DiscordAvatarDecorationsArticle from "@/pages/blog/discord-avatar-decorations/page.jsx";
-import HowToSplitGifIntoFramesBlog from "@/pages/blog/how-to-split-gif-into-frames/page.jsx";
-import NewFreeDiscordAvatarDecorationsArticle from "@/pages/blog/new-free-discord-avatar-decorations/page.jsx";
-import DiscordProfileTips from "@/pages/discord-profile-tips/page.jsx";
-import TermsOfService from "@/pages/terms-of-service/page.jsx";
-import PrivacyPolicy from "@/pages/privacy-policy/page.jsx";
-import AboutUs from "@/pages/about-us/page.jsx";
-import CookiesPolicy from "@/pages/cookies-policy/page.jsx";
-import ContactSupport from "@/pages/contact-support/page.jsx";
-import DiscordAvatar from "@/pages/discord_avatar/page.jsx";
-import DiscordAvatarDecoration from "@/pages/discord_avatar_decoration/page.jsx";
-import DiscordFonts from "@/pages/discord_front/page.jsx";
-import OtherTools from "@/pages/other-tools/page.jsx";
-import Changelog from "@/pages/changelog/page.jsx";
+const Discussion = lazy(() => import("@/pages/discuss/page.jsx"));
+const GifExtractor = lazy(() => import("@/pages/gif-extractor/page.jsx"));
+const FAQ = lazy(() => import("@/pages/faq/page.jsx"));
+const HowToUse = lazy(() => import("@/pages/how-to-use/page.jsx"));
+const BlogArticle = lazy(() => import("@/pages/blog/page.jsx"));
+const DiscordFontBlog = lazy(() => import("@/pages/blog/discord-font/page.jsx"));
+const DiscordAvatarDecorationsArticle = lazy(() => import("@/pages/blog/discord-avatar-decorations/page.jsx"));
+const HowToSplitGifIntoFramesBlog = lazy(() => import("@/pages/blog/how-to-split-gif-into-frames/page.jsx"));
+const NewFreeDiscordAvatarDecorationsArticle = lazy(() => import("@/pages/blog/new-free-discord-avatar-decorations/page.jsx"));
+const DiscordProfileTips = lazy(() => import("@/pages/discord-profile-tips/page.jsx"));
+const TermsOfService = lazy(() => import("@/pages/terms-of-service/page.jsx"));
+const PrivacyPolicy = lazy(() => import("@/pages/privacy-policy/page.jsx"));
+const AboutUs = lazy(() => import("@/pages/about-us/page.jsx"));
+const CookiesPolicy = lazy(() => import("@/pages/cookies-policy/page.jsx"));
+const ContactSupport = lazy(() => import("@/pages/contact-support/page.jsx"));
+const DiscordAvatar = lazy(() => import("@/pages/discord_avatar/page.jsx"));
+const DiscordAvatarDecoration = lazy(() => import("@/pages/discord_avatar_decoration/page.jsx"));
+const DiscordFonts = lazy(() => import("@/pages/discord_front/page.jsx"));
+const OtherTools = lazy(() => import("@/pages/other-tools/page.jsx"));
+const Changelog = lazy(() => import("@/pages/changelog/page.jsx"));
 import { NotFound } from "@/pages/_404.jsx";
 
 import "@/global.css";
-import { FontPreloader } from "@/components/fontpreload.jsx";
-import { Utils } from "@/components/utils.jsx";
 
 export function App() {
   return (
@@ -61,8 +60,6 @@ export function App() {
           <Route path="/changelog" component={Changelog} />
           <Route default component={NotFound} />
         </Router>
-        <FontPreloader />
-        <Utils />
       </div>
     </LocationProvider>
   );
