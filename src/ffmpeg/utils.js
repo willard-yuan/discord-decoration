@@ -25,6 +25,7 @@ export const initFfmpeg = async (onProgress) => {
   if (!ffmpeg) {
     ffmpeg = createFFmpeg({
       log: true,
+      mainName: 'main',
       corePath: "https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js",
       progress: ({ ratio }) => {
         if (onProgress) {
