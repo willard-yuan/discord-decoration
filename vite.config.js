@@ -37,18 +37,10 @@ export default defineConfig({
     {
       name: "custom-server-headers",
       configureServer: (server) => {
-        server.middlewares.use((req, res, next) => {
-          res.setHeader("Cross-Origin-Embedder-Policy", "credentialless");
-          res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-          next();
-        });
+        // Headers removed to support Google Ads
       },
       configurePreviewServer: (server) => {
-        server.middlewares.use((req, res, next) => {
-          res.setHeader("Cross-Origin-Embedder-Policy", "credentialless");
-          res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-          next();
-        });
+        // Headers removed to support Google Ads
       },
     },
     preact({

@@ -1,72 +1,83 @@
-import { FFmpeg } from "@ffmpeg/ffmpeg";
-import { fetchFile, toBlobURL } from "@ffmpeg/util";
-import { printErr } from "@/utils/print";
+import { toBlobURL } from "@ffmpeg/util";
 import { storeData } from "@/utils/dataHandler";
+import Worker from "./worker.js?worker";
 
-export let /** @type {FFmpeg} */ ffmpeg;
-export const setFfmpeg = (/** @type {FFmpeg} */ f) => (ffmpeg = f);
+let worker;
+let messageQueue = {};
+let onProgressCallback = null;
 
-// Queue system for FFmpeg commands to prevent race conditions
-let commandQueue = Promise.resolve();
-
-export const runFfmpegCommand = async (...args) => {
-  // Create a new promise that waits for the previous one
-  const currentTask = commandQueue.then(async () => {
-    if (!ffmpeg) throw new Error("FFmpeg not initialized");
-    try {
-      // In v0.12, exec returns a promise that resolves with the exit code
-      const ret = await ffmpeg.exec(args);
-      if (ret !== 0) {
-         throw new Error(`FFmpeg exited with code ${ret}`);
-      }
-    } catch (e) {
-      console.error("FFmpeg run error:", e);
-      throw e;
+const postMessageAsync = (type, payload) => {
+  return new Promise((resolve, reject) => {
+    if (!worker) {
+      return reject(new Error("FFmpeg worker not initialized"));
     }
+    const id = Math.random().toString(36).substring(7);
+    messageQueue[id] = { resolve, reject };
+    worker.postMessage({ id, type, payload });
   });
-
-  // Update the queue pointer to the new task, but catch errors so the queue doesn't stall
-  commandQueue = currentTask.catch(() => {});
-  
-  // Return the task promise so the caller can await it (and catch its errors)
-  return currentTask;
 };
 
 export const initFfmpeg = async (onProgress) => {
-  if (ffmpeg) {
-     // If already initialized, just update progress handler
-     ffmpeg.on('progress', ({ progress }) => {
-        if (onProgress) onProgress({ ratio: progress });
-     });
-     return;
+  if (worker) {
+    onProgressCallback = onProgress;
+    return;
   }
 
-  ffmpeg = new FFmpeg();
-  setFfmpeg(ffmpeg);
+  worker = new Worker();
+  
+  worker.onmessage = ({ data }) => {
+    const { id, type, result, error, message, progress } = data;
 
-  ffmpeg.on('log', ({ message }) => {
-    console.log(message);
-  });
-
-  ffmpeg.on('progress', ({ progress }) => {
-    if (onProgress) {
-      onProgress({ ratio: progress });
+    if (type === 'log') {
+      console.log(message);
+      return;
     }
-  });
 
-  // Load FFmpeg with Multi-Threading support
-  const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm';
-  
-  await ffmpeg.load({
-    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-    workerURL: await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript'),
-  });
-  
-  storeData("ffmpeg", ffmpeg);
+    if (type === 'progress') {
+      if (onProgressCallback) onProgressCallback({ ratio: progress });
+      return;
+    }
+
+    if (messageQueue[id]) {
+      if (type === 'success') {
+        messageQueue[id].resolve(result);
+      } else {
+        messageQueue[id].reject(new Error(error));
+      }
+      delete messageQueue[id];
+    }
+  };
+
+  onProgressCallback = onProgress;
+  await postMessageAsync('init');
+  storeData("ffmpeg", ffmpeg); // Store the proxy
+};
+
+// Proxy object to mimic FFmpeg instance
+export const ffmpeg = {
+  writeFile: (path, data) => postMessageAsync('writeFile', { path, data }),
+  readFile: (path) => postMessageAsync('readFile', { path }),
+  deleteFile: (path) => postMessageAsync('deleteFile', { path }),
+  createDir: (path) => postMessageAsync('createDir', { path }),
+  deleteDir: (path) => postMessageAsync('deleteDir', { path }),
+  listDir: (path) => postMessageAsync('listDir', { path }),
+  exec: (args) => postMessageAsync('exec', args),
+};
+
+export const setFfmpeg = () => {}; // No-op for compatibility if needed
+
+export const runFfmpegCommand = async (...args) => {
+  try {
+    await ffmpeg.exec(args);
+  } catch (e) {
+    console.error("FFmpeg run error:", e);
+    throw e;
+  }
 };
 
 export { toBlobURL };
+
+// ... (Keep helper functions: getMimeTypeFromArrayBuffer, getGifDuration, arraybuffer2base64, ffmpegFetchAndConvert)
 
 /**
  * Retrieves the MIME type of an ArrayBuffer or Uint8Array.
@@ -99,14 +110,12 @@ export function getMimeTypeFromArrayBuffer(
       case signature.startsWith("52494646") && signature.includes("57454250"):
         return "image/webp";
       default:
-        printErr(`Unknown file type. Signature: ${signature}`);
+        // printErr(`Unknown file type. Signature: ${signature}`);
         return null;
     }
   }
   return null;
 }
-
-// https://stackoverflow.com/a/74236879
 
 /**
  * Calculates the duration of a GIF file.
@@ -144,6 +153,8 @@ export function arraybuffer2base64(arraybuffer) {
     return "";
   }
 }
+
+import { fetchFile } from "@ffmpeg/util";
 
 /**
  * Fetches and converts an image file to a format that ffmpeg supports.
