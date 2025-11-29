@@ -12,7 +12,7 @@ export const initFfmpeg = async (onProgress) => {
   if (!ffmpeg) {
      ffmpeg = createFFmpeg({
       log: true,
-      corePath: "/ffmpeg/ffmpeg-core.js",
+      corePath: "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js",
       progress: ({ ratio }) => {
         if (onProgress) {
            onProgress({ ratio });
