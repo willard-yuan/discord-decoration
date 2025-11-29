@@ -16,6 +16,10 @@ export const initFfmpeg = async (onProgress) => {
       `${ffmpegBaseUrl}ffmpeg-core.js`,
       "text/javascript"
     ),
+    workerURL: await toBlobURL(
+      `${ffmpegBaseUrl}ffmpeg-core.worker.js`,
+      "text/javascript"
+    ),
     wasmURL: onProgress
       ? URL.createObjectURL(
           new Blob(
