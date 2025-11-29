@@ -18,10 +18,16 @@ export default defineConfig({
       targets: browserslistToTargets(browserslist(">= 0.25% and not ie > 0")),
     },
   },
+  optimizeDeps: {
+    exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
+  },
   build: {
     minify: "terser",
     terserOptions: {
       ecma: 2020,
+    },
+    rollupOptions: {
+      external: [],
     },
   },
   resolve: {
@@ -99,7 +105,4 @@ export default defineConfig({
     },
     cssOptimizationPlugin(),
   ],
-  optimizeDeps: {
-    exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
-  },
 });
