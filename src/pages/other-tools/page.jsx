@@ -5,6 +5,12 @@ import Footer from '@/components/Footer.jsx';
 
 const tools = [
   {
+    name: 'Avatar Cropper - Quickly Crop Avatar for Discord, X, etc.',
+    href: 'https://avatarcropper.app',
+    icon: '/avatarcropper-192x192.png',
+    description: 'Quick and accurate avatar cropper tool. Crop perfect avatar for Discord, X (Twitter), etc. No signup required.',
+  },
+  {
     name: 'Discord Fonts Generator',
     href: '/discord_front',
     emoji: '🔤',
