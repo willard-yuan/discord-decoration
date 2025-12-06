@@ -7,6 +7,7 @@ import Image from "@/components/image.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
+import AdBanner from "@/components/AdBanner.jsx";
 
 import { imagesFromGif } from "@/ffmpeg/extractFrames.js";
 import { addDecoration } from "@/ffmpeg/processImage.js";
@@ -212,6 +213,7 @@ export default function GifExtractor() {
     <div className="min-h-screen bg-background text-text">
       <Navbar />
       <Breadcrumb title="GIF Frame Extractor" />
+      <AdBanner slot="3217563964" />
       
       {loaded ? (
         <>
