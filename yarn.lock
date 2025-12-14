@@ -5646,6 +5646,7 @@ __metadata:
     terser: "npm:^5.44.0"
     vite: "npm:^7.1.4"
     vite-imagetools: "npm:^9.0.0"
+    vite-plugin-compression: "npm:^0.5.1"
     vite-plugin-imagemin: "npm:^0.6.1"
   languageName: unknown
   linkType: soft
@@ -6519,6 +6520,19 @@ __metadata:
     imagetools-core: "npm:^9.1.0"
     sharp: "npm:^0.34.1"
   checksum: 10c0/242f652bf530af3904702c350ac0efce8bb830bd073fd252c046f6e08d9ae8b16bfcd05fd688fd19f1e3f3a996b1975f6fa03894cee41f4c166533b63b85627d
+  languageName: node
+  linkType: hard
+
+"vite-plugin-compression@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "vite-plugin-compression@npm:0.5.1"
+  dependencies:
+    chalk: "npm:^4.1.2"
+    debug: "npm:^4.3.3"
+    fs-extra: "npm:^10.0.0"
+  peerDependencies:
+    vite: ">=2.0.0"
+  checksum: 10c0/39d252b88804dbeae71c7c8cc049a577457b5481f6881b19056c7e6d4068904a5a39e69e3cbed8e09f42f6da5d4bab9a8568566f2535979b753b085e0019f3ed
   languageName: node
   linkType: hard
 

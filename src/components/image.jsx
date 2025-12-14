@@ -10,6 +10,14 @@ export default function Image(props) {
   };
 
   const { onClick, onKeyDown, ...imgProps } = props;
+  const src = props.src || "";
+  const isExternal = src.startsWith("http") || src.startsWith("data:");
+  const finalSrc = isExternal ? src : `${baseImgUrl}${src}`;
+
+  // Check if we should try to load a WebP version
+  // Only for local images that are PNG or JPEG
+  const shouldTryWebP = !isExternal && /\.(png|jpe?g)$/i.test(src);
+  const webpSrc = shouldTryWebP ? finalSrc.replace(/\.(png|jpe?g)$/i, ".webp") : null;
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -19,22 +27,27 @@ export default function Image(props) {
     if (onKeyDown) onKeyDown(e);
   };
 
-  const imageElement = (
+  const imgElement = (
     <img
       {...imgProps}
       alt={props.alt || getDefaultAlt()}
-      src={
-        props.src.startsWith("http") || props.src.startsWith("data:")
-          ? props.src
-          : `${baseImgUrl}${props.src}`
-      }
+      src={finalSrc}
       loading="lazy"
     />
   );
 
+  const imageElement = shouldTryWebP ? (
+    <picture>
+      <source srcSet={webpSrc} type="image/webp" />
+      {imgElement}
+    </picture>
+  ) : (
+    imgElement
+  );
+
   return (
     <>
-      {props.src !== "" && (
+      {src !== "" && (
         onClick ? (
           <button
             onClick={onClick}

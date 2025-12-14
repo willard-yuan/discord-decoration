@@ -7,42 +7,42 @@ const Testimonials = () => {
       name: 'Sheryl Berge',
       role: 'Discord Gamer',
       text: 'This free Discord avatar decoration tool is amazing! I created a unique Profile Picture for my profile in minutes without needing Nitro.',
-      avatar: '/avatars/yellow.png'
+      avatar: '/avatars/yellow.webp'
     },
     {
       id: 2,
       name: 'Emily Wong',
       role: 'Content Creator',
       text: 'Finally, a way to get Discord avatar decorations for free! The designs are creative, and it\'s perfect for customizing my Profile Picture.',
-      avatar: '/avatars/red.png'
+      avatar: '/avatars/red.webp'
     },
     {
       id: 3,
       name: 'Sophia Brown',
       role: 'Student',
       text: 'The best part is that it\'s completely free and super fast. My friends keep asking how I made my profile look so unique!',
-      avatar: '/avatars/color_wave.png'
+      avatar: '/avatars/color_wave.webp'
     },
     {
       id: 4,
       name: 'James Carter',
       role: 'Streamer',
       text: 'I love how easy it is to use! The decorations are high-quality, and I didn\'t have to pay anything. My Discord profile looks so cool now!',
-      avatar: '/avatars/prismatic_waves.png'
+      avatar: '/avatars/prismatic_waves.webp'
     },
     {
       id: 5,
       name: 'Michael Lee',
       role: 'Discord Community Manager',
       text: 'I was tired of expensive Nitro features, but this tool gave me awesome decorations for free. Highly recommend it to everyone!',
-      avatar: '/avatars/midnight_prism.png'
+      avatar: '/avatars/midnight_prism.webp'
     },
     {
       id: 6,
       name: 'Daniel Kim',
       role: 'Tech Enthusiast',
       text: 'This is the easiest way to make cool Discord decorations. I love how customizable it is, and I didn\'t need any design skills!',
-      avatar: '/avatars/pastel.png'
+      avatar: '/avatars/pastel.webp'
     }
   ];
 
