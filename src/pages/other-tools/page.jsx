@@ -7,14 +7,14 @@ const tools = [
   {
     name: 'Avatar Cropper - Quickly Crop Avatar for Discord, X, etc.',
     href: 'https://avatarcropper.app',
-    icon: '/avatarcropper-192x192.png',
+    icon: '/avatar_cropper_logo.png',
     description: 'Quick and accurate avatar cropper tool. Crop perfect avatar for Discord, X (Twitter), etc. No signup required.',
   },
   {
-    name: 'Discord Fonts Generator',
+    name: 'Discord Fonts Generator - 500+ Stylish Text Styles for Discord',
     href: '/discord_front',
     emoji: '🔤',
-    description: 'Generate stylish Discord fonts and text',
+    description: 'Generate stylish Discord fonts and text styles from 500+ unique font styles. Convert your text to fancy fonts for Discord messages, usernames, and profiles.',
   },
   {
     name: 'Discord Markdown Live Previewer',
@@ -23,10 +23,10 @@ const tools = [
     description: 'Discord markdown editor with live preview',
   },
   {
-    name: 'GIF Frame Extractor',
+    name: 'GIF Frame Extractor - Extract Frames from Animated GIFs',
     href: '/gif-extractor',
     emoji: '🖼️',
-    description: 'Extract frames from animated GIFs',
+    description: 'Free online GIF frame extractor tool. Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars, profile pictures, and image editing projects.',
   },
   {
     name: 'EmojiFace - Hide your Face with One Click',
@@ -35,22 +35,22 @@ const tools = [
     description: 'Best Free Tool to Hide Your Face with Emoji, Blur or Pixelation for Privacy, and All You Need is One Click',
   },
   {
-    name: 'Emoji to Image Converter',
+    name: 'Emoji to Image - Convert Emoji to High-Quality PNG Instantly',
     href: 'https://emojitoimage.com',
     emoji: '🖼️',
-    description: 'Convert an emoji to an image with the click of a button',
+    description: 'Free online Emoji to Image converter. Search and download high-quality, transparent background emoji PNGs (64px to 512px). Perfect for design & social media.',
   },
   {
-    name: 'Youtube Playlist Length Calculator',
+    name: 'YTPlaylistLength - Best Youtube Playlist Length Calculator',
     href: 'https://ytplaylistlength.pro',
     emoji: '⏱️',
-    description: 'Easily Calculate The Total Length of Any Playlist',
+    description: 'Calculate the total length of any YouTube playlists quickly! Paste playlist URL to get instant result on how long it takes to watch all the videos in one go.',
   },
 ];
 
 export default function OtherTools() {
   useEffect(() => {
-    document.title = 'Discover Our Other Tools - Discord Decorations';
+    document.title = 'Tools You May Also Like - Discord Decorations';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -69,14 +69,14 @@ export default function OtherTools() {
   return (
     <>
       <Navbar />
-      <Breadcrumb title="Discover our other tools" />
+      <Breadcrumb title="Tools You May Also Like" />
 
       <div className="min-h-screen bg-surface-primary text-text-primary">
         <div className="max-w-7xl mx-auto px-4 py-16">
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-              Discover Our Other Tools
+              Tools You May Also Like
             </h1>
             <p className="text-lg text-text-secondary max-w-3xl mx-auto">
               A curated collection of our tools to enhance your life and work experience.
@@ -108,6 +108,8 @@ export default function OtherTools() {
 
                 <a
                   href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-purple-500 text-white rounded-lg font-semibold hover:from-primary/80 hover:to-purple-500/80 transition-all duration-300 transform group-hover:scale-[1.03]"
                   aria-label={`View ${tool.name}`}
                 >
