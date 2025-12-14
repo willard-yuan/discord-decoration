@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node build/optimize-html.js",
     "preview": "vite preview",
     "remove-build-assets": "node build/removeAssets.js",
     "extract-info": "node utils/extractInfoCli.js",
@@ -30,6 +30,7 @@
     "@babel/core": "^7.26.0",
     "@preact/preset-vite": "^2.10.2",
     "browserslist": "^4.25.4",
+    "critters": "^0.0.25",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^10.0.0",
     "imagemin-webp": "^8.0.0",

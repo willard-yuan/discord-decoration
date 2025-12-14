@@ -5,7 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { generateWebmanifest } from "./build/generateWebmanifest";
 import { generateFavicons } from "./build/generateFavicons";
 import { generateMeta } from "./build/generateMeta";
-import { cssOptimizationPlugin } from "./build/cssOptimizationPlugin.js";
 
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
@@ -87,7 +86,6 @@ export default defineConfig({
         return html.replace(/[\n\t]| {2}/g, "");
       },
     },
-    cssOptimizationPlugin(),
   ],
   optimizeDeps: {
     exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
