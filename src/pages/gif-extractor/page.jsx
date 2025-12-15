@@ -12,10 +12,10 @@ import AdBanner from "@/components/AdBanner.jsx";
 import { imagesFromGif } from "@/ffmpeg/extractFrames.js";
 import { addDecoration } from "@/ffmpeg/processImage.js";
 import {
-  getMimeTypeFromArrayBuffer,
   initFfmpeg,
   setFfmpeg,
 } from "@/ffmpeg/utils.js";
+import { getMimeTypeFromArrayBuffer } from "@/utils/fileType.js";
 
 import { printErr, printMsg } from "@/utils/print.js";
 import { clearData, getData, storeData } from "@/utils/dataHandler.js";

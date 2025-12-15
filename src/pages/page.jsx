@@ -14,12 +14,7 @@ import Modal from "@/components/modal.jsx";
 import { LoadingCubes } from "@/components/spinner.jsx";
 import Twemoji from "@/components/twemoji.jsx";
 
-import { addDecoration, cropToSquare } from "@/ffmpeg/processImage.js";
-import {
-  getMimeTypeFromArrayBuffer,
-  initFfmpeg,
-  setFfmpeg,
-} from "@/ffmpeg/utils.js";
+import { getMimeTypeFromArrayBuffer } from "@/utils/fileType.js";
 
 import { printErr } from "@/utils/print.js";
 import { getData, storeData } from "@/utils/dataHandler.js";
@@ -63,6 +58,7 @@ export default function Home() {
     }
     // Lazily initialize FFmpeg on first demand
     loadingPromise = (async () => {
+      const { initFfmpeg } = await import("@/ffmpeg/utils.js");
       await initFfmpeg();
       setLoaded(true);
     })();
@@ -75,31 +71,6 @@ export default function Home() {
       setUnsupported("Your browser does not support WebAssembly.");
       return;
     }
-    // Optional: idle preloading to improve later interaction without affecting FCP
-    const idle = (cb) =>
-      typeof window.requestIdleCallback === "function"
-        ? window.requestIdleCallback(cb, { timeout: 5000 })
-        : window.setTimeout(cb, 2500);
-    const cancel = idle(async () => {
-      if (!transferredFfmpeg && !loaded && loadingPromise == null) {
-        // Begin preloading very late to avoid impacting initial paint
-        loadingPromise = (async () => {
-          await initFfmpeg();
-          setLoaded(true);
-        })();
-        await loadingPromise;
-      }
-    });
-    return () => {
-      if (typeof window.cancelIdleCallback === "function") {
-        try {
-          window.cancelIdleCallback(cancel);
-        } catch (e) { void e; }
-      } else {
-        window.clearTimeout(cancel);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Removed eager ffmpeg load on mount to reduce FCP/LCP
@@ -331,8 +302,9 @@ const App = ({ ensureLoaded }) => {
   // @ts-ignore
   const previewAvatar = useCallback(async (url) => {
     if (isServer) return;
-    await ensureLoaded();
     setAvUrl("loading");
+    await ensureLoaded();
+    const { cropToSquare } = await import("@/ffmpeg/processImage.js");
     const res = await cropToSquare(url).catch((reason) => printErr(reason));
     if (!res) return setAvUrl(null);
     setAvUrl(res);
@@ -342,6 +314,7 @@ const App = ({ ensureLoaded }) => {
   const createAvatar = useCallback(async (url, deco) => {
     if (isServer) return;
     await ensureLoaded();
+    const { addDecoration } = await import("@/ffmpeg/processImage.js");
     addDecoration(url, deco === "" ? "" : `${baseImgUrl}${deco}`)
       .then((res) => {
         if (!res) {
