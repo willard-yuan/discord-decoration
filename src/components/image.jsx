@@ -9,7 +9,7 @@ export default function Image(props) {
     return props.alt || 'Discord decoration image';
   };
 
-  const { onClick, onKeyDown, ...imgProps } = props;
+  const { onClick, onKeyDown, width, height, ...imgProps } = props;
   const src = props.src || "";
   const isExternal = src.startsWith("http") || src.startsWith("data:");
   const finalSrc = isExternal ? src : `${baseImgUrl}${src}`;
@@ -33,6 +33,8 @@ export default function Image(props) {
       alt={props.alt || getDefaultAlt()}
       src={finalSrc}
       loading="lazy"
+      width={width}
+      height={height}
     />
   );
 

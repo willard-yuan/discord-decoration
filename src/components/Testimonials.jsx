@@ -115,7 +115,7 @@ const Testimonials = () => {
                 <p className="text-text-primary mb-6 min-h-[100px] leading-relaxed transition-all duration-300 group-hover:text-text-primary group-hover:drop-shadow-sm">{testimonial.text}</p>
                 <div className="flex items-center justify-between w-full">
                   <div>
-                    <h4 className="font-semibold transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-sm">{testimonial.name}</h4>
+                    <h3 className="font-semibold transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-sm">{testimonial.name}</h3>
                     <p className="text-text-muted text-sm transition-all duration-300 group-hover:text-text-primary group-hover:drop-shadow-sm">{testimonial.role}</p>
                   </div>
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30 shadow-md shadow-primary/20 transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40 group-hover:border-primary/60">
@@ -125,6 +125,8 @@ const Testimonials = () => {
                       src={testimonial.avatar} 
                       alt={`${testimonial.name}'s avatar`} 
                       className="relative z-10 w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
+                      width="48"
+                      height="48"
                     />
                   </div>
                 </div>

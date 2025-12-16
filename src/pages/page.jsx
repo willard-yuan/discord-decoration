@@ -560,12 +560,16 @@ const App = ({ ensureLoaded }) => {
                           "absolute top-[calc(80px*0.09)] left-[calc(80px*0.09)] w-[calc(80px*0.82)] h-[calc(80px*0.82)] rounded-full"
                         }
                         draggable={false}
+                        width="66"
+                        height="66"
                       />
                       <Image
                         id="decoration"
                         src={decoUrl}
                         className="top-0 left-0 absolute"
                         draggable={false}
+                        width="80"
+                        height="80"
                       />
                     </>
                   )}
@@ -1009,6 +1013,8 @@ const AvatarList = () => {
                 <Image
                   src={`/avatars/${avatar.f}`}
                   className="rounded-full pointer-events-none"
+                  width="128"
+                  height="128"
                 />
               </button>
             );
@@ -1147,8 +1153,6 @@ const DecorationsCategoryBanner = ({ category }) => {
               src={`/banners/${e.url}${e.url.includes(".") ? "" : ".webp"}`}
               alt={""}
               draggable={false}
-              height={0}
-              width={0}
               style={{
                 height: e.height || "auto",
                 width: e.width || (e.height ? "auto" : "100%"),
@@ -1172,8 +1176,6 @@ const DecorationsCategoryBanner = ({ category }) => {
           }`}
           alt={""}
           draggable={false}
-          height={0}
-          width={0}
           style={{
             height: "100%",
             width: "100%",
@@ -1198,8 +1200,6 @@ const DecorationsCategoryBanner = ({ category }) => {
               }`}
               alt={category.n}
               draggable={false}
-              height={0}
-              width={0}
               style={{
                 height: `${category.b.h || 48}px`,
                 width: "auto",
@@ -1210,7 +1210,7 @@ const DecorationsCategoryBanner = ({ category }) => {
           <>
             {!category.hideTitle && (
               <p
-                className="px-4 text-3xl text-center ginto"
+                className="px-4 text-3xl text-center ginto drop-shadow-md"
                 style={{
                   color: category.darkText || false ? "#000" : "#fff",
                 }}
@@ -1225,7 +1225,7 @@ const DecorationsCategoryBanner = ({ category }) => {
           </>
         )}
         <p
-          className="w-[232px] xs:w-full font-medium text-sm text-center [line-height:1]"
+          className="w-[232px] xs:w-full font-medium text-sm text-center [line-height:1] drop-shadow-md"
           style={{
             color: category.darkText || false ? "#000" : "#fff",
             marginTop: category.descTopM || "",
@@ -1265,6 +1265,8 @@ const Decoration = ({ name, fileName, onClick }) => {
       className="button-tile decor"
       draggable={false}
       onClick={onClick}
+      width="80"
+      height="80"
       onMouseOver={() => {
         const intervalId = setInterval(() => {
           setIsHovered(true);
