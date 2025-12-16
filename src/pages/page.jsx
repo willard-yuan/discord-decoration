@@ -994,32 +994,61 @@ const AvatarList = () => {
     }, 100);
   }, []);
 
+  const [displayCount, setDisplayCount] = useState(30);
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    setDisplayCount(30);
+  }, [avatarSearch]);
+
+  const allAvatars = getAvatars();
+  const visibleAvatars = allAvatars.slice(0, displayCount);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && displayCount < allAvatars.length) {
+          setDisplayCount((prev) => prev + 30);
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (observerRef.current) observer.observe(observerRef.current);
+    return () => observer.disconnect();
+  }, [displayCount, allAvatars.length]);
+
   return (
     <>
-      {getAvatars().length === 0 && !isServer ? (
+      {allAvatars.length === 0 && !isServer ? (
         <NoSearchResults thing="avatars" />
       ) : (
-        <div className="gap-3 grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 min-[600px]:grid-cols-6 min-[720px]:grid-cols-7 md:grid-cols-5 translate-z-1">
-          {getAvatars().map((avatar) => {
-            return (
-              <button
-                key={avatar.n}
-                className="avatar-preset button-tile"
-                onClick={(e) => {
-                  onSelectAvatar(e, avatar.n, avatar.f);
-                }}
-                aria-label={avatar.n}
-              >
-                <Image
-                  src={`/avatars/${avatar.f}`}
-                  className="rounded-full pointer-events-none"
-                  width="128"
-                  height="128"
-                />
-              </button>
-            );
-          })}
-        </div>
+        <>
+          <div className="gap-3 grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 min-[600px]:grid-cols-6 min-[720px]:grid-cols-7 md:grid-cols-5 translate-z-1">
+            {visibleAvatars.map((avatar) => {
+              return (
+                <button
+                  key={avatar.n}
+                  className="avatar-preset button-tile"
+                  onClick={(e) => {
+                    onSelectAvatar(e, avatar.n, avatar.f);
+                  }}
+                  aria-label={avatar.n}
+                >
+                  <Image
+                    src={`/avatars/${avatar.f}`}
+                    className="rounded-full pointer-events-none"
+                    width="128"
+                    height="128"
+                  />
+                </button>
+              );
+            })}
+          </div>
+          {displayCount < allAvatars.length && (
+            <div ref={observerRef} className="w-full h-10" />
+          )}
+        </>
       )}
     </>
   );
@@ -1092,44 +1121,73 @@ const DecorationsList = ({ decorationsList, style, className }) => {
     }, 100);
   }, []);
 
+  const [displayCount, setDisplayCount] = useState(3);
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    setDisplayCount(3);
+  }, [decoSearch]);
+
+  const allDecorations = getDecorations();
+  const visibleDecorations = allDecorations.slice(0, displayCount);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && displayCount < allDecorations.length) {
+          setDisplayCount((prev) => prev + 3);
+        }
+      },
+      { root: null, rootMargin: "200px" }
+    );
+
+    if (observerRef.current) observer.observe(observerRef.current);
+    return () => observer.disconnect();
+  }, [displayCount, allDecorations.length]);
+
   return (
     <div
       className={`mt-1 py-1 overflow-auto discord-scrollbar ${className}`}
       style={style}
     >
-      {getDecorations().length === 0 && !isServer ? (
+      {allDecorations.length === 0 && !isServer ? (
         <NoSearchResults thing="decorations" />
       ) : (
-        getDecorations().map((category) => {
-          return (
-            <div
-              key={
-                typeof category.b.i === "string"
-                  ? category.b.i
-                  : category.b.i.length > 0
-                  ? category.b.i[0].url
-                  : category.n
-              }
-              className="mt-8 first:mt-0"
-            >
-              <DecorationsCategoryBanner category={category} />
+        <>
+          {visibleDecorations.map((category) => {
+            return (
+              <div
+                key={
+                  typeof category.b.i === "string"
+                    ? category.b.i
+                    : category.b.i.length > 0
+                    ? category.b.i[0].url
+                    : category.n
+                }
+                className="mt-8 first:mt-0"
+              >
+                <DecorationsCategoryBanner category={category} />
 
-              <div className="gap-3 grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 min-[600px]:grid-cols-6 min-[720px]:grid-cols-7 md:grid-cols-5 w-full">
-                {category.i.map((decor) => {
-                  return (
-                    <Decoration
-                      name={decor.n}
-                      fileName={decor.f}
-                      onClick={(e) =>
-                        onSelectDecor(e, decor.n, decor.d, decor.f)
-                      }
-                    />
-                  );
-                })}
+                <div className="gap-3 grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 min-[600px]:grid-cols-6 min-[720px]:grid-cols-7 md:grid-cols-5 w-full">
+                  {category.i.map((decor) => {
+                    return (
+                      <Decoration
+                        name={decor.n}
+                        fileName={decor.f}
+                        onClick={(e) =>
+                          onSelectDecor(e, decor.n, decor.d, decor.f)
+                        }
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          );
-        })
+            );
+          })}
+          {displayCount < allDecorations.length && (
+            <div ref={observerRef} className="w-full h-10" />
+          )}
+        </>
       )}
     </div>
   );

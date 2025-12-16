@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509" crossorigin="anonymous"></script>
 
@@ -117,12 +120,9 @@
     </script>
 
     <style>
-      #app {
-        visibility: hidden;
-      }
-      html.loaded #app {
-        visibility: visible;
-      }
+      /* Removed visibility: hidden to improve LCP */
+      /* #app { visibility: hidden; } */
+      /* html.loaded #app { visibility: visible; } */
     </style>
   </head>
   <body style="background: #2d2d32">
