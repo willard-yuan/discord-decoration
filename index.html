@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509" crossorigin="anonymous"></script>
+
     <!-- Google tag (gtag.js) -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -11,7 +14,7 @@
       gtag('js', new Date());
       gtag('config', 'G-QJ8PJQ49Y1');
 
-      // Lazy load GTM and AdSense
+      // Lazy load GTM
       function loadThirdPartyScripts() {
         if (window.scriptsLoaded) return;
         window.scriptsLoaded = true;
@@ -21,13 +24,6 @@
         gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QJ8PJQ49Y1';
         gtmScript.async = true;
         document.head.appendChild(gtmScript);
-
-        // Load AdSense
-        const adsScript = document.createElement('script');
-        adsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509';
-        adsScript.async = true;
-        adsScript.crossOrigin = 'anonymous';
-        document.head.appendChild(adsScript);
       }
 
       // Load on user interaction or delay
