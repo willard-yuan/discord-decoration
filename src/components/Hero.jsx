@@ -16,7 +16,7 @@ const Hero = () => {
       case 12:
         return {
           type: 'image',
-          src: `${baseImgUrl}/wallpaper/winter.jpg`,
+          src: `${baseImgUrl}/wallpaper/winter.webp`,
           style: { objectPosition: "center", objectFit: "cover" },
           gradient: null
         };

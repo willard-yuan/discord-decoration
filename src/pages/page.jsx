@@ -397,7 +397,7 @@ const App = ({ ensureLoaded }) => {
       case 2:
         return `url(${baseImgUrl}/banners/hearts.png) right top / contain no-repeat, linear-gradient(78.98deg, rgba(221, 98, 98, 1), rgba(171, 12, 152, 1))`;
       case 12:
-        return `url(${baseImgUrl}/wallpaper/winter.jpg) center / cover no-repeat`;
+        return `url(${baseImgUrl}/wallpaper/winter.webp) center / cover no-repeat`;
       default:
         return "none";
     }
