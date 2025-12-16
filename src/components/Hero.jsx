@@ -4,14 +4,27 @@ const Hero = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
-  const getBannerImage = () => {
+  const getBannerConfig = () => {
     switch (currentMonth) {
       case 2:
-        return `url(${baseImgUrl}/banners/hearts.webp) right top / contain no-repeat, linear-gradient(135deg, rgba(221, 98, 98, 0.8), rgba(171, 12, 152, 0.8))`;
+        return {
+          type: 'image',
+          src: `${baseImgUrl}/banners/hearts.webp`,
+          style: { objectPosition: "right top", objectFit: "contain" },
+          gradient: "linear-gradient(135deg, rgba(221, 98, 98, 0.8), rgba(171, 12, 152, 0.8))"
+        };
       case 12:
-        return `url(${baseImgUrl}/wallpaper/winter.jpg) center / cover no-repeat`;
+        return {
+          type: 'image',
+          src: `${baseImgUrl}/wallpaper/winter.jpg`,
+          style: { objectPosition: "center", objectFit: "cover" },
+          gradient: null
+        };
       default:
-        return "linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(184, 115, 245, 0.1) 100%)";
+        return {
+          type: 'gradient',
+          gradient: "linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(184, 115, 245, 0.1) 100%)"
+        };
     }
   };
 
@@ -19,16 +32,35 @@ const Hero = () => {
     return "linear-gradient(135deg, rgba(88, 101, 242, 0.05) 0%, rgba(184, 115, 245, 0.05) 50%, rgba(226, 146, 170, 0.05) 100%)";
   };
 
+  const bannerConfig = getBannerConfig();
+
   return (
     <section className="relative overflow-hidden">
       {/* Background with gradient and optional seasonal image */}
       <div className="absolute inset-0 bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: getBannerImage(),
-          }}
-        />
+        {bannerConfig.type === 'image' && (
+          <>
+            {bannerConfig.gradient && (
+              <div 
+                className="absolute inset-0 opacity-30"
+                style={{ background: bannerConfig.gradient }}
+              />
+            )}
+            <img
+              src={bannerConfig.src}
+              alt=""
+              fetchpriority="high"
+              className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
+              style={bannerConfig.style}
+            />
+          </>
+        )}
+        {bannerConfig.type === 'gradient' && (
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{ background: bannerConfig.gradient }}
+          />
+        )}
         <div 
           className="absolute inset-0"
           style={{

@@ -9,10 +9,10 @@ const Navbar = () => {
         <div className="flex items-center h-16">
           {/* Logo and Brand */}
           <div className="flex items-center">
-            <a href="/" className="group flex items-center gap-3 cursor-pointer">
+            <a href="/" className="group flex items-center gap-3 cursor-pointer" aria-label="Discord Decorations Home">
               <div className="relative w-9 h-9 flex items-center justify-center bg-gradient-to-br from-violet-600 via-fuchsia-600 to-pink-600 rounded-xl shadow-lg shadow-fuchsia-500/20 group-hover:shadow-fuchsia-500/40 transition-all duration-500 group-hover:scale-105 group-hover:rotate-3 border border-white/10 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white drop-shadow-sm transform transition-transform duration-500 group-hover:rotate-12">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white drop-shadow-sm transform transition-transform duration-500 group-hover:rotate-12" aria-hidden="true">
                   <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
                 </svg>
               </div>
@@ -54,8 +54,9 @@ const Navbar = () => {
             <button 
               className="md:hidden p-2 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
             >
-              <svg className="w-5 h-5 text-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>

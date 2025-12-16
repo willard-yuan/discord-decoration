@@ -5,18 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ8PJQ49Y1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);} 
       gtag('js', new Date());
-    
       gtag('config', 'G-QJ8PJQ49Y1');
+
+      // Lazy load GTM and AdSense
+      function loadThirdPartyScripts() {
+        if (window.scriptsLoaded) return;
+        window.scriptsLoaded = true;
+
+        // Load GTM
+        const gtmScript = document.createElement('script');
+        gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QJ8PJQ49Y1';
+        gtmScript.async = true;
+        document.head.appendChild(gtmScript);
+
+        // Load AdSense
+        const adsScript = document.createElement('script');
+        adsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509';
+        adsScript.async = true;
+        adsScript.crossOrigin = 'anonymous';
+        document.head.appendChild(adsScript);
+      }
+
+      // Load on user interaction or delay
+      const userInteractionEvents = ['mousedown', 'keydown', 'scroll', 'touchstart'];
+      userInteractionEvents.forEach(event => {
+        window.addEventListener(event, loadThirdPartyScripts, { once: true, passive: true });
+      });
+
+      // Fallback delay (e.g., 3.5s)
+      setTimeout(loadThirdPartyScripts, 3500);
     </script>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4184498324686509" crossorigin="anonymous"></script>
-    
     <!-- Ad Blocking Revenue Recovery -->
     <script async src="https://fundingchoicesmessages.google.com/i/pub-4184498324686509?ers=1"></script>
     <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>

@@ -80,6 +80,7 @@ const Breadcrumb = ({ title }) => {
                     className={`group flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200 ${isHome ? 'pl-2' : ''}`}
                     itemProp="item"
                     title={item.keywords}
+                    aria-label={item.name}
                   >
                     {isHome && (
                       <svg className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">

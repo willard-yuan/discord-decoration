@@ -33,8 +33,44 @@ import Hero from "@/components/Hero.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
 const HowToCreate = lazy(() => import("@/components/HowToCreate.jsx"));
-import Testimonials from "@/components/Testimonials.jsx";
-import AdBanner from "@/components/AdBanner.jsx";
+const Testimonials = lazy(() => import("@/components/Testimonials.jsx"));
+const AdBanner = lazy(() => import("@/components/AdBanner.jsx"));
+
+// Lazy load HowToCreate when visible
+const LazyHowToCreate = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className="min-h-[500px]">
+      {isVisible ? (
+        <Suspense fallback={<div className="h-96" />}>
+          <HowToCreate />
+        </Suspense>
+      ) : (
+        <div className="h-96" />
+      )}
+    </div>
+  );
+};
 
 const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
 
@@ -99,6 +135,7 @@ const UnsupportedModal = ({ unsupportedMsg }) =>
           }}
           ariaLabel="Report a bug"
           disabled={false}
+          className=""
         >
           <Icons.bug />
           Report a bug
@@ -156,6 +193,7 @@ const ExtraLinks = () => (
         }}
         ariaLabel="Share on X"
         disabled={false}
+        className=""
       >
         <Icons.x />
         Share on X
@@ -167,6 +205,7 @@ const ExtraLinks = () => (
         }}
         ariaLabel="Share on Facebook"
         disabled={false}
+        className=""
       >
         <Icons.facebook />
         Share on Facebook
@@ -181,6 +220,7 @@ const ExtraLinks = () => (
         }}
         ariaLabel="Share on Reddit"
         disabled={false}
+        className=""
       >
         <Icons.reddit />
         Share on Reddit
@@ -198,6 +238,7 @@ const ExtraLinks = () => (
         }}
         ariaLabel="Share on LinkedIn"
         disabled={false}
+        className=""
       >
         <Icons.linkedin />
         Share on LinkedIn
@@ -388,7 +429,9 @@ const App = ({ ensureLoaded }) => {
     >
       <Navbar />
       <Breadcrumb title="Discord Decorations" />
-      <AdBanner slot="8363014594" />
+      <Suspense fallback={<div className="h-[280px]" />}>
+        <AdBanner slot="8363014594" />
+      </Suspense>
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
@@ -748,6 +791,7 @@ const App = ({ ensureLoaded }) => {
                   }}
                   ariaLabel="Download decorated avatar as animated GIF"
                   disabled={false}
+                  className=""
                 >
                   <Icons.download />
                   Save Animated GIF
@@ -760,6 +804,7 @@ const App = ({ ensureLoaded }) => {
                   }}
                   ariaLabel="Extract still image"
                   disabled={false}
+                  className=""
                 >
                   <Icons.image />
                   Extract still image
@@ -797,9 +842,11 @@ const App = ({ ensureLoaded }) => {
         }}
       />
       <Suspense fallback={<div className="h-96" />}>
-        <HowToCreate />
+        <LazyHowToCreate />
       </Suspense>
-      <Testimonials />
+      <Suspense fallback={<div className="h-96" />}>
+        <Testimonials />
+      </Suspense>
       <Footer />
     </CurrentData.Provider>
   );
