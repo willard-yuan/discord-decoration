@@ -97,6 +97,16 @@
   size-adjust: 100%;
 }
 
+/* Fallback for Roboto (Google Ads/CMP) */
+@font-face {
+  font-family: "Roboto Fallback";
+  src: local("Arial");
+  ascent-override: 92.77%;
+  descent-override: 24.41%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
 @font-face {
   font-family: "gg mono";
   font-style: normal;

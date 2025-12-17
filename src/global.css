@@ -135,10 +135,10 @@
 }
 
 * {
-  font-family: "gg sans", sans-serif;
+  font-family: "gg sans", "gg sans Fallback", sans-serif;
 }
 @utility ginto {
-  font-family: "ABC Ginto Nord", sans-serif;
+  font-family: "ABC Ginto Nord", "ABC Ginto Nord Fallback", sans-serif;
   letter-spacing: 1px;
 }
 .ginto {
@@ -387,8 +387,13 @@ body {
 }
 
 /* 给导航链接之间增加空隙 */
-nav a, .nav-links a, ul li {
-  margin-right: 20px !important;
-  /* 或者使用 gap */
-  gap: 20px;
-}
+  nav a, .nav-links a, ul li {
+    margin-right: 20px !important;
+    /* 或者使用 gap */
+    gap: 20px;
+  }
+
+  /* Google Ads & CMP Optimization */
+  .fc-consent-root, .fc-dialog-container, .google-auto-placed, ins.adsbygoogle {
+    font-family: "Roboto", "Roboto Fallback", sans-serif !important;
+  }
