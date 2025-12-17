@@ -56,7 +56,7 @@ export default {
         'button-secondary-border': 'var(--color-button-secondary-border)',
       },
       fontFamily: {
-        'ginto': ['Ginto', 'sans-serif'],
+        'ginto': ['"ABC Ginto Nord"', '"ABC Ginto Nord Fallback"', 'sans-serif'],
       },
     },
   },

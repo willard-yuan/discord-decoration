@@ -80,10 +80,10 @@ export default function Changelog() {
         {
           category: "⚡ Performance",
           items: [
-            "Achieved world-class mobile LCP scores by removing render-blocking CSS",
+            "Achieved world-class Core Web Vitals (LCP & CLS) on both Desktop and Mobile",
+            "Optimized Hero section with stable layout, preloading, and font metric overrides",
             "Implemented infinite scroll to optimize DOM size and reduce style calculation time",
-            "Added preconnect hints and optimized font display for faster resource loading",
-            "Eliminated layout shifts for a stable and fluid visual experience"
+            "Added preconnect hints and optimized font display for faster resource loading"
           ]
         },
         {
@@ -93,6 +93,12 @@ export default function Changelog() {
             "Added dynamic previews, shimmer effects, and multi-layer animations",
             "Implemented intelligent progress tracking with contextual status updates",
             "Polished UI by removing redundant elements during generation"
+          ]
+        },
+        {
+          category: "🔧 Infrastructure",
+          items: [
+            "Integrated Umami analytics for privacy-focused usage tracking"
           ]
         }
       ]

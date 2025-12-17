@@ -35,7 +35,7 @@ const Hero = () => {
   const bannerConfig = getBannerConfig();
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden min-h-[500px] lg:min-h-[600px] flex items-center">
       {/* Background with gradient and optional seasonal image */}
       <div className="absolute inset-0 bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
         {bannerConfig.type === 'image' && (
@@ -48,8 +48,9 @@ const Hero = () => {
             )}
             <img
               src={bannerConfig.src}
-              alt=""
+              alt="Seasonal Discord Decoration Background"
               fetchpriority="high"
+              decoding="async"
               className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
               style={bannerConfig.style}
             />
