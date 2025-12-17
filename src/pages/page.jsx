@@ -12,6 +12,7 @@ import { Icons } from "@/components/icons.jsx";
 import Image from "@/components/image.jsx";
 import Modal from "@/components/modal.jsx";
 import { LoadingCubes } from "@/components/spinner.jsx";
+import { GeneratingOverlay } from "@/components/GeneratingOverlay.jsx";
 import Twemoji from "@/components/twemoji.jsx";
 
 import { getMimeTypeFromArrayBuffer } from "@/utils/fileType.js";
@@ -755,7 +756,7 @@ const App = ({ ensureLoaded }) => {
         title={"Save Decorated Avatar"}
         subtitle={
           isGeneratingAv
-            ? "Please wait while the image is being generated."
+            ? null
             : "You can save the image below. You may need to extract a still frame from the image if you do not have an active Nitro subscription."
         }
         visible={downloadModalVisible}
@@ -764,10 +765,7 @@ const App = ({ ensureLoaded }) => {
         }}
       >
         {isGeneratingAv ? (
-          <div className="flex flex-col justify-center items-center gap-4 grow">
-            <LoadingCubes />
-            <p>Creating image...</p>
-          </div>
+          <GeneratingOverlay avatarUrl={avUrl} decoUrl={decoUrl} />
         ) : generationFailed ? (
           <div className="flex flex-col justify-center items-center gap-4 grow">
             <p className="text-red-400 text-center">

@@ -73,6 +73,31 @@ export default function Changelog() {
 
   const versions = [
     {
+      version: "1.1.9",
+      date: "December 17th, 2025",
+      type: "minor",
+      changes: [
+        {
+          category: "⚡ Performance",
+          items: [
+            "Achieved world-class mobile LCP scores by removing render-blocking CSS",
+            "Implemented infinite scroll to optimize DOM size and reduce style calculation time",
+            "Added preconnect hints and optimized font display for faster resource loading",
+            "Eliminated layout shifts for a stable and fluid visual experience"
+          ]
+        },
+        {
+          category: "✨ UX Enhancements",
+          items: [
+            "Revamped 'Save Avatar' wait experience with immersive GeneratingOverlay",
+            "Added dynamic previews, shimmer effects, and multi-layer animations",
+            "Implemented intelligent progress tracking with contextual status updates",
+            "Polished UI by removing redundant elements during generation"
+          ]
+        }
+      ]
+    },
+    {
       version: "1.1.8",
       date: "November 29th, 2025",
       type: "minor",

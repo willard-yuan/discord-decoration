@@ -315,6 +315,12 @@ body::-webkit-scrollbar-thumb {
   animation: button-shine 2s ease-in-out infinite;
 }
 
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* HIGHLIGHT */
 .highlight {
   border: #b945c1 solid 1px;
