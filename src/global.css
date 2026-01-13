@@ -397,3 +397,21 @@ body {
   .fc-consent-root, .fc-dialog-container, .google-auto-placed, ins.adsbygoogle {
     font-family: "Roboto", "Roboto Fallback", sans-serif !important;
   }
+
+/* CUSTOM ANIMATIONS */
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 200% 200%;
+  animation: gradient-xy 6s ease infinite;
+}
