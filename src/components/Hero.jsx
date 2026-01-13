@@ -207,7 +207,7 @@ const Hero = () => {
               <div className="relative bg-surface-overlay/90 backdrop-blur-md rounded-2xl sm:rounded-full px-4 sm:px-6 py-3 sm:py-2 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 transition-colors group-hover:bg-surface-overlay/80 text-center sm:text-left">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400 font-bold whitespace-nowrap text-lg">AiRenamify</span>
                 <span className="hidden sm:block w-px h-5 bg-white/10" />
-                <span className="text-gray-300 text-sm sm:text-base font-medium">Organize your Discord assets library instantly with AiRenamify - The smartest AI file renamer.</span>
+                <span className="text-gray-300 text-sm sm:text-base font-medium">Organize your Discord assets with AiRenamify - The smartest AI file renamer.</span>
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors flex-shrink-0 transform group-hover:translate-x-1 duration-300 hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
