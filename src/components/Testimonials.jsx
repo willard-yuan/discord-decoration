@@ -1,49 +1,17 @@
 import React from 'react';
+import { useI18n } from "@/i18n/index.jsx";
 
 const Testimonials = () => {
+  const { t } = useI18n();
+
+  // name/avatar stay as-is; role + quote come from the active dictionary.
   const testimonials = [
-    {
-      id: 1,
-      name: 'Sheryl Berge',
-      role: 'Discord Gamer',
-      text: 'This free Discord avatar decoration tool is amazing! I created a unique Profile Picture for my profile in minutes without needing Nitro.',
-      avatar: '/avatars/yellow.webp'
-    },
-    {
-      id: 2,
-      name: 'Emily Wong',
-      role: 'Content Creator',
-      text: 'Finally, a way to get Discord avatar decorations for free! The designs are creative, and it\'s perfect for customizing my Profile Picture.',
-      avatar: '/avatars/red.webp'
-    },
-    {
-      id: 3,
-      name: 'Sophia Brown',
-      role: 'Student',
-      text: 'The best part is that it\'s completely free and super fast. My friends keep asking how I made my profile look so unique!',
-      avatar: '/avatars/color_wave.webp'
-    },
-    {
-      id: 4,
-      name: 'James Carter',
-      role: 'Streamer',
-      text: 'I love how easy it is to use! The decorations are high-quality, and I didn\'t have to pay anything. My Discord profile looks so cool now!',
-      avatar: '/avatars/prismatic_waves.webp'
-    },
-    {
-      id: 5,
-      name: 'Michael Lee',
-      role: 'Discord Community Manager',
-      text: 'I was tired of expensive Nitro features, but this tool gave me awesome decorations for free. Highly recommend it to everyone!',
-      avatar: '/avatars/midnight_prism.webp'
-    },
-    {
-      id: 6,
-      name: 'Daniel Kim',
-      role: 'Tech Enthusiast',
-      text: 'This is the easiest way to make cool Discord decorations. I love how customizable it is, and I didn\'t need any design skills!',
-      avatar: '/avatars/pastel.webp'
-    }
+    { id: 1, name: 'Sheryl Berge', roleKey: 'testimonials.roleGamer', textKey: 'testimonials.t1', avatar: '/avatars/yellow.webp' },
+    { id: 2, name: 'Emily Wong', roleKey: 'testimonials.roleCreator', textKey: 'testimonials.t2', avatar: '/avatars/red.webp' },
+    { id: 3, name: 'Sophia Brown', roleKey: 'testimonials.roleStudent', textKey: 'testimonials.t3', avatar: '/avatars/color_wave.webp' },
+    { id: 4, name: 'James Carter', roleKey: 'testimonials.roleStreamer', textKey: 'testimonials.t4', avatar: '/avatars/prismatic_waves.webp' },
+    { id: 5, name: 'Michael Lee', roleKey: 'testimonials.roleManager', textKey: 'testimonials.t5', avatar: '/avatars/midnight_prism.webp' },
+    { id: 6, name: 'Daniel Kim', roleKey: 'testimonials.roleTech', textKey: 'testimonials.t6', avatar: '/avatars/pastel.webp' },
   ];
 
   return (
@@ -82,13 +50,11 @@ const Testimonials = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-text-primary ginto mb-4">
             <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              What Our Users Say About Discord Decoration Art
+              {t("testimonials.title")}
             </span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto">
-            Thousands of users love our free Discord avatar decoration maker! See how it
-            helped them create cool Profile Pictures, profile effects, and decorations without spending a
-            dime.
+            {t("testimonials.intro")}
           </p>
         </div>
 
@@ -112,11 +78,11 @@ const Testimonials = () => {
               </div>
               
               <div className="relative z-10">
-                <p className="text-text-primary mb-6 min-h-[100px] leading-relaxed transition-all duration-300 group-hover:text-text-primary group-hover:drop-shadow-sm">{testimonial.text}</p>
+                <p className="text-text-primary mb-6 min-h-[100px] leading-relaxed transition-all duration-300 group-hover:text-text-primary group-hover:drop-shadow-sm">{t(testimonial.textKey)}</p>
                 <div className="flex items-center justify-between w-full">
                   <div>
                     <h3 className="font-semibold transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-sm">{testimonial.name}</h3>
-                    <p className="text-text-muted text-sm transition-all duration-300 group-hover:text-text-primary group-hover:drop-shadow-sm">{testimonial.role}</p>
+                    <p className="text-text-muted text-sm transition-all duration-300 group-hover:text-text-primary group-hover:drop-shadow-sm">{t(testimonial.roleKey)}</p>
                   </div>
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30 shadow-md shadow-primary/20 transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40 group-hover:border-primary/60">
                     {/* 头像光环效果 */}

@@ -1,43 +1,45 @@
 import { useLocation } from "preact-iso";
+import { useI18n } from "@/i18n/index.jsx";
 
 const Breadcrumb = ({ title }) => {
   const location = useLocation();
+  const { t } = useI18n();
   const pathname = location.path || '/';
   
   const getBreadcrumbItems = () => {
-    const items = [{ name: 'Home', path: '/', keywords: 'discord decoration home' }];
+    const items = [{ nameKey: 'breadcrumb.home', path: '/', keywords: 'discord decoration home' }];
     
     if (pathname.includes('/discord_avatar_decoration')) {
-      items.push({ name: 'Avatar Decorations', path: '/discord_avatar_decoration/', keywords: 'discord avatar decorations gallery' });
+      items.push({ nameKey: 'breadcrumb.avatarDecorations', path: '/discord_avatar_decoration/', keywords: 'discord avatar decorations gallery' });
     } else if (pathname.includes('/discord_avatar')) {
-      items.push({ name: 'Avatar Gallery', path: '/discord_avatar/', keywords: 'discord avatar gallery' });
+      items.push({ nameKey: 'breadcrumb.avatarGallery', path: '/discord_avatar/', keywords: 'discord avatar gallery' });
     } else if (pathname.includes('/discord_front')) {
-      items.push({ name: 'Discord Fonts', path: '/discord_front/', keywords: 'discord fonts generator stylish text' });
+      items.push({ nameKey: 'breadcrumb.discordFonts', path: '/discord_front/', keywords: 'discord fonts generator stylish text' });
     } else if (pathname.includes('/other-tools')) {
-      items.push({ name: 'Other Tools', path: '/other-tools/', keywords: 'discover other tools' });
+      items.push({ nameKey: 'breadcrumb.otherTools', path: '/other-tools/', keywords: 'discover other tools' });
     } else if (pathname.includes('/gif-extractor')) {
-      items.push({ name: 'GIF Extractor', path: '/gif-extractor/', keywords: 'discord gif extractor' });
+      items.push({ nameKey: 'breadcrumb.gifExtractor', path: '/gif-extractor/', keywords: 'discord gif extractor' });
     } else if (pathname.includes('/blog')) {
-      items.push({ name: 'Blog', path: '/blog/', keywords: 'discord decoration blog article' });
+      items.push({ nameKey: 'breadcrumb.blog', path: '/blog/', keywords: 'discord decoration blog article' });
       
       // If we have a title prop and we're in a blog detail page, add it as the final breadcrumb
       if (title && pathname !== '/blog' && pathname !== '/blog/') {
         items.push({ name: title, path: pathname, keywords: 'blog article' });
       }
     } else if (pathname.includes('/discuss')) {
-      items.push({ name: 'Discussion', path: '/discuss/', keywords: 'discord decoration discussion' });
+      items.push({ nameKey: 'breadcrumb.discussion', path: '/discuss/', keywords: 'discord decoration discussion' });
     } else if (pathname.includes('/faq')) {
-      items.push({ name: 'FAQ', path: '/faq/', keywords: 'discord decoration faq' });
+      items.push({ nameKey: 'breadcrumb.faq', path: '/faq/', keywords: 'discord decoration faq' });
     } else if (pathname.includes('/how-to-use')) {
-      items.push({ name: 'How to Use', path: '/how-to-use/', keywords: 'discord decoration how to use guide' });
+      items.push({ nameKey: 'breadcrumb.howToUse', path: '/how-to-use/', keywords: 'discord decoration how to use guide' });
     } else if (pathname.includes('/discord-profile-tips')) {
-      items.push({ name: 'Discord Profile Tips', path: '/discord-profile-tips/', keywords: 'discord profile tips enhance avatar' });
+      items.push({ nameKey: 'breadcrumb.profileTips', path: '/discord-profile-tips/', keywords: 'discord profile tips enhance avatar' });
     } else if (pathname.includes('/terms-of-service')) {
-      items.push({ name: 'Terms of Service', path: '/terms-of-service/', keywords: 'terms of service legal conditions' });
+      items.push({ nameKey: 'breadcrumb.tos', path: '/terms-of-service/', keywords: 'terms of service legal conditions' });
     } else if (pathname.includes('/privacy-policy')) {
-      items.push({ name: 'Privacy Policy', path: '/privacy-policy/', keywords: 'privacy policy data protection' });
+      items.push({ nameKey: 'breadcrumb.privacy', path: '/privacy-policy/', keywords: 'privacy policy data protection' });
     } else if (pathname.includes('/changelog')) {
-      items.push({ name: 'Changelog', path: '/changelog/', keywords: 'changelog version history updates' });
+      items.push({ nameKey: 'breadcrumb.changelog', path: '/changelog/', keywords: 'changelog version history updates' });
     }
     
     return items;
@@ -57,6 +59,7 @@ const Breadcrumb = ({ title }) => {
           {breadcrumbItems.map((item, index) => {
             const isLast = index === breadcrumbItems.length - 1;
             const isHome = index === 0;
+            const label = item.nameKey ? t(item.nameKey) : item.name;
 
             return (
               <li key={item.path} className="flex items-center" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
@@ -72,7 +75,7 @@ const Breadcrumb = ({ title }) => {
                     itemProp="name" 
                     aria-current="page"
                   >
-                    {item.name}
+                    {label}
                   </span>
                 ) : (
                   <a 
@@ -80,14 +83,14 @@ const Breadcrumb = ({ title }) => {
                     className={`group flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200 ${isHome ? 'pl-2' : ''}`}
                     itemProp="item"
                     title={item.keywords}
-                    aria-label={item.name}
+                    aria-label={label}
                   >
                     {isHome && (
                       <svg className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                       </svg>
                     )}
-                    <span itemProp="name" className={isHome ? "hidden sm:inline" : ""}>{item.name}</span>
+                    <span itemProp="name" className={isHome ? "hidden sm:inline" : ""}>{label}</span>
                   </a>
                 )}
                 <meta itemProp="position" content={String(index + 1)} />

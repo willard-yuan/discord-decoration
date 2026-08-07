@@ -1,27 +1,30 @@
 import { Icons } from "./icons.jsx";
+import { useI18n } from "@/i18n/index.jsx";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
 
+  // Store hrefs + translation keys; render via t() so the language switch is live.
   const footerSections = {
     "Discord Tools": [
-      { name: "Discord Avatar Gallery", href: "/discord_avatar", description: "Browse Discord avatar collection" },
-      { name: "Discord Avatar Decorations Gallery", href: "/discord_avatar_decoration", description: "Explore avatar decorations" },
-      { name: "Discord Fonts Generator", href: "/discord_front", description: "Generate stylish Discord fonts and text" },
+      { key: "footer.discordTools.avatarGallery", descKey: "footer.discordTools.avatarGalleryDesc", href: "/discord_avatar" },
+      { key: "footer.discordTools.decoGallery", descKey: "footer.discordTools.decoGalleryDesc", href: "/discord_avatar_decoration" },
+      { key: "footer.discordTools.fonts", descKey: "footer.discordTools.fontsDesc", href: "/discord_front" },
     ],
     Resources: [
-      { name: "FAQ", href: "/faq", description: "Frequently asked questions" },
-      { name: "How to Use", href: "/how-to-use", description: "Step-by-step usage guide" },
-      { name: "Discord Profile Tips", href: "/discord-profile-tips", description: "Enhance your Discord profile" },
+      { key: "footer.resources.faq", descKey: "footer.resources.faqDesc", href: "/faq" },
+      { key: "footer.resources.howToUse", descKey: "footer.resources.howToUseDesc", href: "/how-to-use" },
+      { key: "footer.resources.profileTips", descKey: "footer.resources.profileTipsDesc", href: "/discord-profile-tips" },
     ],
     Legal: [
-      { name: "Terms of Service", href: "/terms-of-service", description: "Terms and conditions of use" },
-      { name: "Privacy Policy", href: "/privacy-policy", description: "Privacy policy and data protection" },
-      { name: "Cookies Policy", href: "/cookies-policy", description: "How we use cookies and tracking" },
+      { key: "footer.legal.tos", descKey: "footer.legal.tosDesc", href: "/terms-of-service" },
+      { key: "footer.legal.privacy", descKey: "footer.legal.privacyDesc", href: "/privacy-policy" },
+      { key: "footer.legal.cookies", descKey: "footer.legal.cookiesDesc", href: "/cookies-policy" },
     ],
     "About Us": [
-      { name: "About Us", href: "/about-us", description: "Learn about Discord Decoration's story" },
-      { name: "Contact Support", href: "/contact-support", description: "Get help and support" },
+      { key: "footer.about.about", descKey: "footer.about.aboutDesc", href: "/about-us" },
+      { key: "footer.about.contact", descKey: "footer.about.contactDesc", href: "/contact-support" },
     ],
   };
 
@@ -73,20 +76,17 @@ const Footer = () => {
         <div className="text-center mb-12">
           <h2 className="text-2xl font-bold text-text-primary ginto mb-4">
             <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Free Discord Avatar Decoration Generator
+              {t("footer.seoTitle")}
             </span>
           </h2>
           <p className="text-text-secondary max-w-4xl mx-auto leading-relaxed">
-            Create stunning Discord avatar decorations and custom avatars for free. Browse our extensive gallery of 
-            Discord profile decorations, avatar frames, and design tools. Enhance your Discord profile with unique 
-            avatar decorations, custom borders, and personalized designs. Perfect for Discord users looking to 
-            stand out with creative profile customization.
+            {t("footer.seoDesc")}
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-4 text-sm text-text-muted">
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">Discord Avatar Generator</span>
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">Avatar Decorations</span>
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">Profile Customization</span>
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">Free Discord Tools</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag1")}</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag2")}</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag3")}</span>
+            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag4")}</span>
           </div>
         </div>
 
@@ -96,20 +96,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
-                Discord Tools
+                {t("footer.discordTools")}
               </span>
             </h3>
             <ul className="space-y-3">
               {footerSections["Discord Tools"].map((item) => (
-                <li key={item.name}>
+                <li key={item.key}>
                   <a
                     href={item.href}
                     className="group flex flex-col space-y-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
-                    title={item.description}
+                    title={t(item.descKey)}
                   >
-                    <span className="font-medium group-hover:text-primary transition-colors">{item.name}</span>
+                    <span className="font-medium group-hover:text-primary transition-colors">{t(item.key)}</span>
                     <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                      {item.description}
+                      {t(item.descKey)}
                     </span>
                   </a>
                 </li>
@@ -121,20 +121,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Resources
+                {t("footer.resources")}
               </span>
             </h3>
             <ul className="space-y-3">
               {footerSections.Resources.map((item) => (
-                <li key={item.name}>
+                <li key={item.key}>
                   <a
                     href={item.href}
                     className="group flex flex-col space-y-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
-                    title={item.description}
+                    title={t(item.descKey)}
                   >
-                    <span className="font-medium group-hover:text-purple-400 transition-colors">{item.name}</span>
+                    <span className="font-medium group-hover:text-purple-400 transition-colors">{t(item.key)}</span>
                     <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                      {item.description}
+                      {t(item.descKey)}
                     </span>
                   </a>
                 </li>
@@ -146,20 +146,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent">
-                Legal
+                {t("footer.legal")}
               </span>
             </h3>
             <ul className="space-y-3">
               {footerSections.Legal.map((item) => (
-                <li key={item.name}>
+                <li key={item.key}>
                   <a
                     href={item.href}
                     className="group flex flex-col space-y-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
-                    title={item.description}
+                    title={t(item.descKey)}
                   >
-                    <span className="font-medium group-hover:text-pink-400 transition-colors">{item.name}</span>
+                    <span className="font-medium group-hover:text-pink-400 transition-colors">{t(item.key)}</span>
                     <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                      {item.description}
+                      {t(item.descKey)}
                     </span>
                   </a>
                 </li>
@@ -171,20 +171,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text-primary ginto mb-6">
               <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                About Us
+                {t("footer.about")}
               </span>
             </h3>
             <ul className="space-y-3">
               {footerSections["About Us"].map((item) => (
-                <li key={item.name}>
+                <li key={item.key}>
                   <a
                     href={item.href}
                     className="group flex flex-col space-y-1 text-text-secondary hover:text-text-primary transition-colors duration-200"
-                    title={item.description}
+                    title={t(item.descKey)}
                   >
-                    <span className="font-medium group-hover:text-orange-400 transition-colors">{item.name}</span>
+                    <span className="font-medium group-hover:text-orange-400 transition-colors">{t(item.key)}</span>
                     <span className="text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                      {item.description}
+                      {t(item.descKey)}
                     </span>
                   </a>
                 </li>
@@ -206,20 +206,18 @@ const Footer = () => {
               </div>
               <div className="hidden md:block w-px h-6 bg-border-faint/30" />
               <p className="text-sm text-text-muted text-center md:text-left">
-                Free Discord Avatar Decoration Generator & Profile Customization Tools
+                {t("footer.tagline")}
               </p>
             </div>
 
             {/* Copyright */}
             <div className="text-sm text-text-muted text-center md:text-right">
-              <p>© {currentYear} Discord Avatar Decoration Generator. All rights reserved.</p>
+              <p>{t("footer.copyright", { year: currentYear })}</p>
               <p className="mt-1">
-                Made with{" "}
-                <span className="text-red-400 animate-pulse">♥</span>{" "}
-                for Discord users worldwide
+                {t("footer.madeWith")}
               </p>
               <p className="mt-1 text-xs">
-                Not affiliated with Discord Inc. • Open Source Project
+                {t("footer.notAffiliated")}
               </p>
             </div>
           </div>

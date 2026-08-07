@@ -1,8 +1,10 @@
 import { useState } from "preact/hooks";
+import { useI18n } from "@/i18n/index.jsx";
 
 const Hero = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
+  const { t } = useI18n();
 
   const getBannerConfig = () => {
     switch (currentMonth) {
@@ -139,17 +141,17 @@ const Hero = () => {
                 Discord Decorations
               </span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mt-2">
-                Free Avatar Decorations for Discord
+                {t("hero.titleFree")}
               </span>
             </h1>
           </div>
 
           {/* Subtitle */}
           <h2 className="text-lg sm:text-xl lg:text-2xl text-text-secondary max-w-4xl mx-auto mb-12 leading-relaxed font-normal">
-            Create stunning profile pictures with custom Discord avatar decorations.
+            {t("hero.subtitle1")}
             <br className="hidden sm:block" />
             <span className="text-text-muted">
-              Use Discord decorations for free without spending money.
+              {t("hero.subtitle2")}
             </span>
           </h2>
 
@@ -164,7 +166,7 @@ const Hero = () => {
               }}
               className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              <span className="relative z-10">Get Started</span>
+              <span className="relative z-10">{t("hero.getStarted")}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity" />
             </button>
             
@@ -172,7 +174,7 @@ const Hero = () => {
               href="/blog"
               className="inline-block px-8 py-4 button-secondary font-semibold rounded-xl transition-all duration-300 text-center"
             >
-              Learn More →
+              {t("hero.learnMore")}
             </a>
           </div>
 
@@ -180,15 +182,15 @@ const Hero = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-primary ginto mb-2">300+</div>
-              <h3 className="text-text-muted">Avatar Presets</h3>
+              <h3 className="text-text-muted">{t("hero.avatarPresets")}</h3>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-purple-400 ginto mb-2">600+</div>
-              <h3 className="text-text-muted">Decorations</h3>
+              <h3 className="text-text-muted">{t("hero.decorations")}</h3>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-pink-400 ginto mb-2">Free</div>
-              <h3 className="text-text-muted">Forever</h3>
+              <h3 className="text-text-muted">{t("hero.forever")}</h3>
             </div>
           </div>
 
@@ -207,7 +209,7 @@ const Hero = () => {
               <div className="relative bg-surface-overlay/90 backdrop-blur-md rounded-2xl sm:rounded-full px-4 sm:px-6 py-3 sm:py-2 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 transition-colors group-hover:bg-surface-overlay/80 text-center sm:text-left">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400 font-bold whitespace-nowrap text-lg">ScrollShot</span>
                 <span className="hidden sm:block w-px h-5 bg-white/10" />
-                <span className="text-gray-300 text-sm sm:text-base font-medium">Maximize your efficiency. Stop stitching. Start scrolling. The ultimate iOS scrolling screenshot tool.</span>
+                <span className="text-gray-300 text-sm sm:text-base font-medium">{t("hero.scrollshotDesc")}</span>
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors flex-shrink-0 transform group-hover:translate-x-1 duration-300 hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>

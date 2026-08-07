@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useI18n } from '@/i18n/index.jsx';
 import Navbar from '@/components/Navbar.jsx';
 import AdBanner from '@/components/AdBanner.jsx';
 import Footer from '../../components/Footer.jsx';
@@ -6,6 +7,7 @@ import Breadcrumb from '../../components/Breadcrumb.jsx';
 import { allFontStyles, fontCategories } from '../../data/optimizedFontStyles';
 
 const DiscordFonts = () => {
+  const { t, lang } = useI18n();
   const [inputText, setInputText] = useState('');
   const [copiedFont, setCopiedFont] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -14,12 +16,12 @@ const DiscordFonts = () => {
   const inputStickyRef = useRef(null);
 
   useEffect(() => {
-    document.title = "Discord Fonts Generator - 500+ Stylish Text Styles for Discord";
+    document.title = t('fonts.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Generate stylish Discord fonts and text styles from 500+ unique font styles. Convert your text to fancy fonts for Discord messages, usernames, and profiles.');
+      metaDescription.setAttribute('content', t('fonts.metaDesc'));
     }
     
     // Set meta robots
@@ -43,7 +45,7 @@ const DiscordFonts = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [lang]);
 
   // 获取过滤后的字体样式
   const getFilteredFonts = () => {
@@ -86,7 +88,7 @@ const DiscordFonts = () => {
   return (
     <>
       <Navbar />
-      <Breadcrumb title="Discord Fonts" />
+      <Breadcrumb />
       <AdBanner />
       
       <div className="min-h-screen bg-surface-primary text-text-primary">
@@ -96,13 +98,11 @@ const DiscordFonts = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] -z-10" />
             <h1 className="text-5xl md:text-7xl font-black ginto tracking-tight mb-6 animate-slide-in-up">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-white drop-shadow-[0_0_30px_rgba(129,140,248,0.5)]">
-                Discord Fonts Generator
+                {t('fonts.h1')}
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium animate-slide-in-up delay-100">
-              Generate stylish <span className="text-white font-bold">Discord fonts</span> and text styles.
-              <br className="hidden md:block" />
-              Copy and paste cool fonts to stand out in your messages and profile.
+              {t('fonts.subtitle')}
             </p>
             
             {/* Input Section */}
@@ -113,7 +113,7 @@ const DiscordFonts = () => {
                 <textarea
                   value={inputText}
                   onChange={(e) => setInputText(e.currentTarget.value)}
-                  placeholder="Enter your text ＨＥＲＥ & 𝑐𝑙𝑖𝑐𝑘 𝑜𝑛 【Copy】 𝑡𝑜 𝕔𝕠𝕡𝕪 💚"
+                  placeholder={t('fonts.inputPlaceholder')}
                   className="relative w-full p-4 text-lg border-2 border-border-normal rounded-xl bg-surface-overlay text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none resize-none transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary/25 hover:border-border-strong hover:shadow-md hover:shadow-primary/15 focus:bg-surface-high"
                   rows={3}
                   id="discord-fonts-input-main"
@@ -136,7 +136,7 @@ const DiscordFonts = () => {
                   <textarea
                     value={inputText}
                     onChange={(e) => setInputText(e.currentTarget.value)}
-                    placeholder="Enter your text ＨＥＲＥ & 𝑐𝑙𝑖𝑐𝑘 𝑜𝑛 【Copy】 𝑡𝑜 𝕔𝕠𝕡𝕪 💚"
+                    placeholder={t('fonts.inputPlaceholder')}
                     className="relative w-full p-4 text-lg border-2 border-border-normal rounded-xl bg-surface-overlay text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none resize-none transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary/25 hover:border-border-strong hover:shadow-md hover:shadow-primary/15 focus:bg-surface-high"
                     rows={2}
                     id="discord-fonts-input-sticky"
@@ -163,7 +163,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Mathematical
+                    {t('fonts.cat.mathematical')}
                   </button>
                   <button
                     onClick={() => {
@@ -175,7 +175,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Decorative
+                    {t('fonts.cat.decorative')}
                   </button>
                   <button
                     onClick={() => {
@@ -187,7 +187,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Special
+                    {t('fonts.cat.special')}
                   </button>
                   <button
                     onClick={() => {
@@ -199,7 +199,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Accented
+                    {t('fonts.cat.accented')}
                   </button>
                   <button
                     onClick={() => {
@@ -211,7 +211,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Symbols
+                    {t('fonts.cat.symbols')}
                   </button>
                   <button
                     onClick={() => {
@@ -223,7 +223,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Asian
+                    {t('fonts.cat.asian')}
                   </button>
                   <button
                     onClick={() => {
@@ -235,7 +235,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Retro
+                    {t('fonts.cat.retro')}
                   </button>
                   <button
                     onClick={() => {
@@ -247,7 +247,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Alternative Fonts
+                    {t('fonts.cat.alternative')}
                   </button>
                   <button
                     onClick={() => {
@@ -259,7 +259,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Italic
+                    {t('fonts.cat.italic')}
                   </button>
                   <button
                     onClick={() => {
@@ -271,7 +271,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Bold
+                    {t('fonts.cat.bold')}
                   </button>
                   <button
                     onClick={() => {
@@ -283,7 +283,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    UPPERCASE
+                    {t('fonts.cat.uppercase')}
                   </button>
                   <button
                     onClick={() => {
@@ -295,7 +295,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Fancy letters
+                    {t('fonts.cat.fancy-letters')}
                   </button>
                   <button
                     onClick={() => {
@@ -307,7 +307,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Accents
+                    {t('fonts.cat.accents')}
                   </button>
                   <button
                     onClick={() => {
@@ -319,7 +319,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Strike
+                    {t('fonts.cat.strike')}
                   </button>
                   <button
                     onClick={() => {
@@ -331,7 +331,7 @@ const DiscordFonts = () => {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-lg border border-gray-200'
                     }`}
                   >
-                    Underline
+                    {t('fonts.cat.underline')}
                   </button>
                 </div>
               </div>
@@ -345,7 +345,7 @@ const DiscordFonts = () => {
             {/* Font Showcase */}
             <div>
               <h2 className="text-xl font-semibold text-text-primary mb-6 text-center">
-                {inputText ? `"${inputText}" in Different Styles` : 'Discord Font Styles Preview'}
+                {inputText ? t('fonts.previewWithText', { text: inputText }) : t('fonts.previewDefault')}
               </h2>
               
               {getFilteredFonts().length > 0 ? (
@@ -365,13 +365,13 @@ const DiscordFonts = () => {
                               {style.name}
                             </h3>
                             <span className="text-xs text-text-tertiary capitalize">
-                              {style.category}
+                              {t(`fonts.cat.${style.category}`)}
                             </span>
                           </div>
                           <div className="flex items-center space-x-2">
                             {copiedFont === style.id && (
                               <span className="text-xs text-green-500 font-medium">
-                                Copied!
+                                {t('fonts.copied')}
                               </span>
                             )}
                             <button
@@ -381,7 +381,7 @@ const DiscordFonts = () => {
                               }}
                               className="text-xs bg-primary text-white px-3 py-1 rounded hover:bg-primary-dark transition-colors"
                             >
-                              Copy
+                              {t('fonts.copy')}
                             </button>
                           </div>
                         </div>
@@ -395,7 +395,7 @@ const DiscordFonts = () => {
               ) : (
                 <div className="text-center py-12">
                   <p className="text-text-secondary text-lg">
-                    No font styles found matching your criteria.
+                    {t('fonts.noResults')}
                   </p>
                   <button
                     onClick={() => {
@@ -403,7 +403,7 @@ const DiscordFonts = () => {
                     }}
                     className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors"
                   >
-                    Show All Categories
+                    {t('fonts.showAll')}
                   </button>
                 </div>
               )}

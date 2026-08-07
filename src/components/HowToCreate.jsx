@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaDiscord, FaImage, FaDownload, FaUserCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useI18n } from "@/i18n/index.jsx";
 
 // 添加动画样式
 const fadeInUp = {
@@ -9,6 +10,8 @@ const fadeInUp = {
 };
 
 const HowToCreate = () => {
+  const { t } = useI18n();
+
   return (
     <section className="relative overflow-hidden py-20 bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
       {/* Background with gradient overlay - 多层次渐变 */}
@@ -59,7 +62,7 @@ const HowToCreate = () => {
             className="text-4xl sm:text-5xl font-bold text-text-primary ginto mb-4"
           >
             <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              How to Create Free Discord Avatar Decorations
+              {t("howto.title")}
             </span>
           </motion.h2>
           <motion.p 
@@ -69,8 +72,7 @@ const HowToCreate = () => {
             transition={{ delay: 0.2 }}
             className="text-lg text-text-secondary max-w-3xl mx-auto"
           >
-            It's easy to make your Discord profile stand out! Follow these simple steps to create free
-            Discord avatar decorations and customize your Profile Picture in minutes.
+            {t("howto.intro")}
           </motion.p>
         </div>
 
@@ -86,10 +88,9 @@ const HowToCreate = () => {
                 <span className="text-2xl font-bold text-primary transition-all duration-300 group-hover:text-white">1</span>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-primary">Choose or Upload Your Avatar</h3>
+            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-primary">{t("howto.step1Title")}</h3>
             <p className="text-text-muted transition-colors duration-300 group-hover:text-text-primary">
-              Start by selecting one of our avatar templates or upload your own photo. Make sure it's the
-              perfect base for your Discord Profile Picture.
+              {t("howto.step1Desc")}
             </p>
             </div>
           </div>
@@ -115,9 +116,9 @@ const HowToCreate = () => {
                 <span className="text-2xl font-bold text-purple-400 transition-all duration-300 group-hover:text-white">2</span>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-purple-400">Pick Your Favorite Decorations</h3>
+            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-purple-400">{t("howto.step2Title")}</h3>
             <p className="text-text-muted transition-colors duration-300 group-hover:text-text-primary">
-              Browse through our collection of cool decorations and effects. Choose the ones that match your style to make your avatar unique.
+              {t("howto.step2Desc")}
             </p>
             </div>
           </div>
@@ -143,9 +144,9 @@ const HowToCreate = () => {
                 <span className="text-2xl font-bold text-blue-400 transition-all duration-300 group-hover:text-white">3</span>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-blue-400">Preview Your Customized Avatar</h3>
+            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-blue-400">{t("howto.step3Title")}</h3>
             <p className="text-text-muted transition-colors duration-300 group-hover:text-text-primary">
-              See how your avatar looks with the decorations you've added. Adjust and tweak the design until it's just right for your Discord profile.
+              {t("howto.step3Desc")}
             </p>
             </div>
           </div>
@@ -171,9 +172,9 @@ const HowToCreate = () => {
                 <span className="text-2xl font-bold text-pink-400 transition-all duration-300 group-hover:text-white">4</span>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-pink-400">Download and Upload to Discord</h3>
+            <h3 className="text-xl font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-pink-400">{t("howto.step4Title")}</h3>
             <p className="text-text-muted transition-colors duration-300 group-hover:text-text-primary">
-              Once you're happy with your design, download your new avatar decoration for free. Upload it to Discord and show off your amazing Profile Picture!
+              {t("howto.step4Desc")}
             </p>
             </div>
           </div>
@@ -189,7 +190,7 @@ const HowToCreate = () => {
             }}
             className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            <span className="relative z-10">Start Decorating Now</span>
+            <span className="relative z-10">{t("howto.cta")}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity" />
           </button>
         </div>

@@ -33,6 +33,7 @@ import Navbar from "@/components/Navbar.jsx";
 import Hero from "@/components/Hero.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
+import { useI18n } from "@/i18n/index.jsx";
 const HowToCreate = lazy(() => import("@/components/HowToCreate.jsx"));
 const Testimonials = lazy(() => import("@/components/Testimonials.jsx"));
 const AdBanner = lazy(() => import("@/components/AdBanner.jsx"));
@@ -80,6 +81,7 @@ const isServer = typeof window === "undefined";
 let loadingPromise = null;
 
 export default function Home() {
+  const { t } = useI18n();
   const [loaded, setLoaded] = useState(false);
 
   const [unsupported, setUnsupported] = useState("");
@@ -105,7 +107,7 @@ export default function Home() {
   useEffect(() => {
     if (isServer) return;
     if (typeof WebAssembly === "undefined") {
-      setUnsupported("Your browser does not support WebAssembly.");
+      setUnsupported(t("unsupported.msg"));
       return;
     }
   }, []);
@@ -120,32 +122,37 @@ export default function Home() {
   );
 }
 
-const UnsupportedModal = ({ unsupportedMsg }) =>
-  unsupportedMsg && (
-    <Modal visible={true} hideActions={true}>
-      <div className="flex flex-col justify-between items-stretch bg-critical/20 p-4 border-2 border-critical border-dashed rounded-xl grow">
-        <div>
-          <p className="text-2xl text-center ginto">Error</p>
-          <p className="text-center">{unsupportedMsg}</p>
+const UnsupportedModal = ({ unsupportedMsg }) => {
+  const { t } = useI18n();
+  return (
+    unsupportedMsg && (
+      <Modal visible={true} hideActions={true}>
+        <div className="flex flex-col justify-between items-stretch bg-critical/20 p-4 border-2 border-critical border-dashed rounded-xl grow">
+          <div>
+            <p className="text-2xl text-center ginto">{t("unsupported.error")}</p>
+            <p className="text-center">{unsupportedMsg}</p>
+          </div>
+          <NeutralButton
+            onClick={() => {
+              window.open(
+                "https://github.com/ItsPi3141/discord-fake-avatar-decorations/issues"
+              );
+            }}
+            ariaLabel={t("unsupported.report")}
+            disabled={false}
+            className=""
+          >
+            <Icons.bug />
+            {t("unsupported.report")}
+          </NeutralButton>
         </div>
-        <NeutralButton
-          onClick={() => {
-            window.open(
-              "https://github.com/ItsPi3141/discord-fake-avatar-decorations/issues"
-            );
-          }}
-          ariaLabel="Report a bug"
-          disabled={false}
-          className=""
-        >
-          <Icons.bug />
-          Report a bug
-        </NeutralButton>
-      </div>
-    </Modal>
+      </Modal>
+    )
   );
+};
 
 const BuyMeCoffeeButton = () => {
+  const { t } = useI18n();
   return (
     <a
       href="https://www.buymeacoffee.com/yong1024"
@@ -162,14 +169,16 @@ const BuyMeCoffeeButton = () => {
       }}
     >
       <span className="mr-2" style={{ fontSize: '16px' }}>☕</span>
-      Buy me a coffee
+      {t("buyCoffee")}
     </a>
   );
 };
 
 const CurrentData = createContext(null);
 
-const ExtraLinks = () => (
+const ExtraLinks = () => {
+  const { t } = useI18n();
+  return (
   <>
     {/* share with friends */}
     <div className="flex flex-col justify-start items-stretch p-4 rounded-lg w-full text-center select-none highlight">
@@ -177,7 +186,7 @@ const ExtraLinks = () => (
         <span className="text-primary opacity-80">
           <Icons.megaphone size="1.1em" />
         </span>
-        <p className="text-lg font-medium">Share with your friends</p>
+        <p className="text-lg font-medium">{t("share.title")}</p>
         <span className="text-primary opacity-80">
           <Icons.megaphone size="1.1em" />
         </span>
@@ -185,70 +194,66 @@ const ExtraLinks = () => (
       <NeutralButton
         onClick={() => {
           const url = encodeURIComponent(window.location.href);
-          const text = encodeURIComponent(
-            "Check out this awesome Discord Avatar Decorations tool!"
-          );
+          const text = encodeURIComponent(t("share.text"));
           window.open(
             `https://twitter.com/intent/tweet?url=${url}&text=${text}`
           );
         }}
-        ariaLabel="Share on X"
+        ariaLabel={t("share.x")}
         disabled={false}
         className=""
       >
         <Icons.x />
-        Share on X
+        {t("share.x")}
       </NeutralButton>
       <NeutralButton
         onClick={() => {
           const url = encodeURIComponent(window.location.href);
           window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
         }}
-        ariaLabel="Share on Facebook"
+        ariaLabel={t("share.facebook")}
         disabled={false}
         className=""
       >
         <Icons.facebook />
-        Share on Facebook
+        {t("share.facebook")}
       </NeutralButton>
       <NeutralButton
         onClick={() => {
           const url = encodeURIComponent(window.location.href);
-          const title = encodeURIComponent("Discord Avatar Decorations Tool");
+          const title = encodeURIComponent(t("share.shareTitle"));
           window.open(
             `https://www.reddit.com/submit?url=${url}&title=${title}`
           );
         }}
-        ariaLabel="Share on Reddit"
+        ariaLabel={t("share.reddit")}
         disabled={false}
         className=""
       >
         <Icons.reddit />
-        Share on Reddit
+        {t("share.reddit")}
       </NeutralButton>
       <NeutralButton
         onClick={() => {
           const url = encodeURIComponent(window.location.href);
-          const title = encodeURIComponent("Discord Avatar Decorations Tool");
-          const summary = encodeURIComponent(
-            "Check out this awesome tool for Discord avatar decorations!"
-          );
+          const title = encodeURIComponent(t("share.shareTitle"));
+          const summary = encodeURIComponent(t("share.shareSummary"));
           window.open(
             `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`
           );
         }}
-        ariaLabel="Share on LinkedIn"
+        ariaLabel={t("share.linkedin")}
         disabled={false}
         className=""
       >
         <Icons.linkedin />
-        Share on LinkedIn
+        {t("share.linkedin")}
       </NeutralButton>
     </div>
 
     {/* Links */}
     <div className="flex flex-col justify-start items-stretch rounded-lg w-full font-medium select-none">
-      <p className="font-bold">Links</p>
+      <p className="font-bold">{t("links.title")}</p>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
         href="/other-tools"
@@ -256,7 +261,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <Icons.lootbox size="18px" />
         </span>
-        Other Tools
+        {t("links.otherTools")}
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -269,7 +274,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <Icons.gif size="18px" />
         </span>
-        GIF Frame Extractor
+        {t("links.gifExtractor")}
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -282,7 +287,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <Icons.image size="18px" />
         </span>
-        Discord Avatar Gallery
+        {t("links.avatarGallery")}
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -295,7 +300,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <Icons.star size="18px" />
         </span>
-        Discord Decorations Gallery
+        {t("links.decoGallery")}
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -310,7 +315,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <Icons.emojitoimage size="18px" />
         </span>
-        Emoji to Image Converter
+        {t("links.emojiToImage")}
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -325,7 +330,7 @@ const ExtraLinks = () => (
         <span className="place-items-center w-6">
           <img src="/emojiface-192x192.png" alt="EmojiFace" className="w-[18px] h-[18px] rounded" />
         </span>
-        Hide your Face with One Click
+        {t("links.hideFace")}
         <span className="grow" />
         <span className="rotate-45">
           <Icons.up size="16px" />
@@ -333,13 +338,16 @@ const ExtraLinks = () => (
       </a>
     </div>
   </>
-);
+  );
+};
 
 const App = ({ ensureLoaded }) => {
+  const { t } = useI18n();
+
   // Set page title for homepage
   useEffect(() => {
-    document.title = "Discord Decorations - Free Avatar Decorations for Discord.";
-  }, []);
+    document.title = t("meta.title");
+  }, [t]);
 
   // @ts-ignore
   const previewAvatar = useCallback(async (url) => {
@@ -443,7 +451,7 @@ const App = ({ ensureLoaded }) => {
           >
             {/* UPLOAD AVATAR */}
             <h3 className="my-2 font-semibold text-gray-300 text-lg scale-y-90 [letter-spacing:.05em]">
-              DISCORD AVATAR UPLOAD
+              {t("home.uploadHeading")}
             </h3>
             <div className="flex sm:flex-row flex-col sm:items-center gap-3">
               <button
@@ -472,13 +480,13 @@ const App = ({ ensureLoaded }) => {
                     }
                   }}
                 />
-                Upload image
+                {t("home.uploadBtn")}
               </button>
-              <p className="sm:text-left text-center">or</p>
+              <p className="sm:text-left text-center">{t("home.or")}</p>
               <input
                 type="text"
                 className="text-input grow"
-                placeholder="Enter image URL..."
+                placeholder={t("home.urlPlaceholder")}
                 aria-label="Enter avatar image URL"
                 id="avatar-url-input"
                 name="avatar-url"
@@ -508,10 +516,10 @@ const App = ({ ensureLoaded }) => {
               />
             </div>
             <p className="mt-4 mb-2">
-              You can also pick from one of these avatars below
+              {t("home.pickAvatars")}
             </p>
             <SearchBar
-              placeholder={"Search avatars..."}
+              placeholder={t("home.searchAvatars")}
               onValueChanged={setAvatarSearch}
               id="avatar-search-bar"
               name="avatar-search"
@@ -524,13 +532,13 @@ const App = ({ ensureLoaded }) => {
 
             {/* SELECT DECORATION */}
             <h3 className="my-2 font-semibold text-gray-300 text-lg scale-y-90 [letter-spacing:.05em]">
-              DISCORD AVATAR DECORATION
+              {t("home.decoHeading")}
             </h3>
             <p className="mb-3 text-white text-sm">
-              You can pick from one of these discord avatar decorations below
+              {t("home.decoDesc")}
             </p>
             <SearchBar
-              placeholder={"Search decorations..."}
+              placeholder={t("home.searchDeco")}
               onValueChanged={setDecoSearch}
               id="decoration-search-bar"
               name="decoration-search"
@@ -579,12 +587,12 @@ const App = ({ ensureLoaded }) => {
               </div>
               <div className="bg-surface-overlay mt-[35px] p-4 rounded-lg w-[calc(100%)] *:w-full">
                 <p className="font-semibold text-xl [letter-spacing:.02em]">
-                  {name || "Display Name"}
+                  {name || t("home.displayName")}
                 </p>
-                <p className="mb-3 text-sm">{avatarName || "username"}</p>
+                <p className="mb-3 text-sm">{avatarName || t("home.username")}</p>
                 <p className="text-sm mb-6">
                   {description ||
-                    "This is an example profile so that you can see what the profile picture would actually look like on Discord."}
+                    t("home.exampleProfile")}
                 </p>
                 <button
                   onClick={() => {
@@ -610,7 +618,7 @@ const App = ({ ensureLoaded }) => {
                     <div className="p-1 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors duration-300">
                       <Icons.image />
                     </div>
-                    <span className="font-bold">Save Avatar</span>
+                    <span className="font-bold">{t("home.saveAvatar")}</span>
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -624,27 +632,27 @@ const App = ({ ensureLoaded }) => {
                 {
                   styled: false,
                   groupStart: true,
-                  text: "Look at me I'm a beautiful butterfly",
+                  text: t("msg.butterfly"),
                 },
-                {
-                  styled: false,
-                  groupStart: false,
-                  text: (
-                    <>
-                      Fluttering in the moonlight <Twemoji emoji={"1f31d"} />
-                    </>
-                  ),
-                },
-                {
-                  styled: false,
-                  groupStart: false,
-                  text: "Waiting for the day when",
-                },
-                {
-                  styled: false,
-                  groupStart: false,
-                  text: "I get an avatar decoration",
-                },
+              {
+                styled: false,
+                groupStart: false,
+                text: (
+                  <>
+                    {t("msg.moonlight")} <Twemoji emoji={"1f31d"} />
+                  </>
+                ),
+              },
+              {
+                styled: false,
+                groupStart: false,
+                text: t("msg.waiting"),
+              },
+              {
+                styled: false,
+                groupStart: false,
+                text: t("msg.getDeco"),
+              },
                 {
                   styled: true,
                   groupStart: true,
@@ -652,11 +660,11 @@ const App = ({ ensureLoaded }) => {
                     <>
                       {decoUrl ? (
                         <>
-                          Yay! Here it is! <Twemoji emoji={"1f389"} />
+                          {t("msg.yay")} <Twemoji emoji={"1f389"} />
                         </>
                       ) : (
                         <>
-                          Hmm... I still don't see it{" "}
+                          {t("msg.hmm")}{" "}
                           <Twemoji emoji={"1f914"} />
                         </>
                       )}
@@ -715,7 +723,7 @@ const App = ({ ensureLoaded }) => {
                           </span>
                           <span className="h-4 text-text-muted text-xs text-nowrap">
                             {!isServer &&
-                              `Today at ${
+                              `${t("home.todayAt")} ${
                                 [
                                   (new Date().getHours() % 12).toString(),
                                   new Date()
@@ -753,11 +761,11 @@ const App = ({ ensureLoaded }) => {
         </div>
       </main>
       <Modal
-        title={"Save Decorated Avatar"}
+        title={t("modal.saveTitle")}
         subtitle={
           isGeneratingAv
             ? null
-            : "You can save the image below. You may need to extract a still frame from the image if you do not have an active Nitro subscription."
+            : t("modal.saveSubtitle")
         }
         visible={downloadModalVisible}
         onClose={() => {
@@ -769,9 +777,9 @@ const App = ({ ensureLoaded }) => {
         ) : generationFailed ? (
           <div className="flex flex-col justify-center items-center gap-4 grow">
             <p className="text-red-400 text-center">
-              Failed to generate image
+              {t("modal.failed")}
               <br />
-              Please try again.
+              {t("modal.tryAgain")}
             </p>
           </div>
         ) : (
@@ -791,12 +799,12 @@ const App = ({ ensureLoaded }) => {
                     a.download = `discord_avatar_decoration_animated_${Date.now()}.gif`;
                     a.click();
                   }}
-                  ariaLabel="Download decorated avatar as animated GIF"
+                  ariaLabel={t("modal.saveGif")}
                   disabled={false}
                   className=""
                 >
                   <Icons.download />
-                  Save Animated GIF
+                  {t("modal.saveGif")}
                 </NeutralButton>
                 <NeutralButton
                   onClick={() => {
@@ -804,12 +812,12 @@ const App = ({ ensureLoaded }) => {
                     storeData("image", finishedAv);
                     router.route("/gif-extractor");
                   }}
-                  ariaLabel="Extract still image"
+                  ariaLabel={t("modal.extractStill")}
                   disabled={false}
                   className=""
                 >
                   <Icons.image />
-                  Extract still image
+                  {t("modal.extractStill")}
                 </NeutralButton>
                 {/* Buy me a coffee button */}
                 <BuyMeCoffeeButton />
@@ -855,10 +863,11 @@ const App = ({ ensureLoaded }) => {
 };
 
 export const NoSearchResults = ({ thing }) => {
+  const { t } = useI18n();
   return (
     <div className="flex flex-col justify-center items-center gap-4 text-text-muted grow">
       <Svg.NoSearchResults size="140" />
-      <p className="text-center">No {thing} found</p>
+      <p className="text-center">{t("noResults", { thing })}</p>
     </div>
   );
 };

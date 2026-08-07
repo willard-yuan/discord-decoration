@@ -1,16 +1,18 @@
 import { useEffect } from "preact/hooks";
+import { useI18n } from "@/i18n/index.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function Changelog() {
+  const { t, lang, dict } = useI18n();
   useEffect(() => {
-    document.title = "Changelog - Discord Avatar Decorations";
+    document.title = t('changelog.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Discord Avatar Decorations change log. Track all updates, new features, and improvements to our free Discord decoration generator.');
+      metaDescription.setAttribute('content', t('changelog.metaDesc'));
     }
     
     // Set meta robots
@@ -26,13 +28,13 @@ export default function Changelog() {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Change Log",
-      "description": "Discord Avatar Decorations change log and version history",
+      "name": t('changelog.schemaName'),
+      "description": t('changelog.schemaDesc'),
       "url": "https://discord-decoration.art/changelog",
       "mainEntity": {
         "@type": "Article",
-        "headline": "Change Log",
-        "description": "Track all updates, new features, and improvements to Discord Avatar Decorations",
+        "headline": t('changelog.schemaHeadline'),
+        "description": t('changelog.schemaDesc2'),
         "author": {
           "@type": "Organization",
           "name": "Discord Decoration"
@@ -69,441 +71,9 @@ export default function Changelog() {
         scriptToRemove.remove();
       }
     };
-  }, []);
+  }, [lang]);
 
-  const versions = [
-    {
-      version: "1.1.9",
-      date: "December 17th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "⚡ Performance",
-          items: [
-            "Achieved world-class Core Web Vitals (LCP & CLS) on both Desktop and Mobile",
-            "Optimized Hero section with stable layout, preloading, and font metric overrides",
-            "Implemented infinite scroll to optimize DOM size and reduce style calculation time",
-            "Added preconnect hints and optimized font display for faster resource loading"
-          ]
-        },
-        {
-          category: "✨ UX Enhancements",
-          items: [
-            "Revamped 'Save Avatar' wait experience with immersive GeneratingOverlay",
-            "Added dynamic previews, shimmer effects, and multi-layer animations",
-            "Implemented intelligent progress tracking with contextual status updates",
-            "Polished UI by removing redundant elements during generation"
-          ]
-        },
-        {
-          category: "🔧 Infrastructure",
-          items: [
-            "Integrated Umami analytics for privacy-focused usage tracking"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.8",
-      date: "November 29th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "🌑 Theme Enforcement",
-          items: [
-            "Removed light/dark mode toggle from navigation bar",
-            "Enforced exclusive dark mode for the entire project",
-            "Eliminated all theme-related state logic from Navbar component"
-          ]
-        },
-        {
-          category: "🎨 UI Consistency",
-          items: [
-            "Enhanced SearchBar component with dynamic gradient support via gradientClass prop",
-            "Optimized search bar and hero section consistency on discord_avatar page (blue-violet theme)",
-            "Optimized search bar and hero section consistency on discord_avatar_decoration page (purple-pink theme)",
-            "Implemented glassmorphism design pattern for search bar containers"
-          ]
-        },
-        {
-          category: "🧹 Code Cleanup",
-          items: [
-            "Deleted all unused light mode theme variables from global.css"
-          ]
-        },
-        {
-          category: "🏷️ Categorization Updates",
-          items: [
-            "Refined categorization logic to completely eliminate the 'Other' category on both Avatar and Decoration galleries",
-            "Redistributed previously uncategorized items into granular categories (e.g., Characters & Mascots, Aesthetic & Vibe)",
-            "Expanded keyword matching for more accurate automatic classification",
-            "Ensured strict single-category assignment for all items to prevent duplicates"
-          ]
-        },
-        {
-          category: "🔗 Navigation",
-          items: [
-            "Optimized the logo and text in the navigation bar logo area",
-            "Refined the overall UI of the navigation bar"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.7",
-      date: "November 22th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "🎯 Preview Modal Actions",
-          items: [
-            [
-              "Moved preview modal action buttons on ",
-              { text: "Discord Avatar Gallery", href: "/discord_avatar" },
-              " and ",
-              { text: "Discord Decorations Gallery", href: "/discord_avatar_decoration" },
-              " for clearer layout"
-            ],
-            "Unified action button widths to w-72 across Discord Avatar Gallery and Discord Decorations Gallery",
-            "Added 'Use This Avatar → Pick Decoration' in Discord Avatar Gallery preview",
-            "Added 'Use This Decoration → Pick Avatar' in Discord Decorations Gallery preview",
-            "Unified CTA icons across Discord Avatar Gallery and Discord Decorations Gallery",
-            "Added 'Buy me a coffee' button in preview actions on Discord Avatar Gallery and Discord Decorations Gallery",
-            "Removed 'Copy Avatar Name' button and related code in Discord Avatar Gallery"
-          ]
-        },
-        {
-          category: "🎞️ GIF Generation",
-          items: [
-            "'Save Animated GIF' now generates directly within the preview window on both pages using lazy‑loaded FFmpeg",
-            "Added generation progress indicator and failure feedback on Discord Avatar Gallery and Discord Decorations Gallery",
-            "GIF generation respects the currently selected decoration overlay on Discord Avatar Gallery and Discord Decorations Gallery",
-            [
-              "Integrated 'Extract still image' workflow and routing to ",
-              { text: "GIF Frame Extractor", href: "/gif-extractor" }
-            ]
-          ]
-        },
-        {
-          category: "🎨 Overlay & UX",
-          items: [
-            "Enhanced hover overlay with gradient + light blur and shiny hint pill on both pages",
-            "Mobile copy adapts on Discord Avatar Gallery and Discord Decorations Gallery: Tap to preview (mobile), Click to preview (desktop)",
-            "Aligned overlay size and rounded corners to match avatar container on Discord Avatar Gallery and Discord Decorations Gallery",
-            "Applied default decoration (treat_ghost) in Discord Avatar Gallery preview and supported cross‑page decoration transfer from Discord Decorations Gallery"
-          ]
-        },
-        {
-          category: "🏠 Homepage",
-          items: [
-            [
-              "Renamed 'Mask Face with Emoji' to 'Hide your Face with One Click' on ",
-              { text: "Homepage", href: "/" },
-              " and switched icon to /emojiface-192x192.png"
-            ],
-            "Renamed 'Discord Avatar Decorations Gallery' to 'Discord Decorations Gallery'"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.6",
-      date: "November 16th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "🔗 Navigation Updates",
-          items: [
-            "Replaced 'Discuss' navbar item with 'Other Tools' linking to /other-tools",
-            "Synced change in mobile menu for consistent navigation"
-          ]
-        },
-        {
-          category: "📱 Mobile Menu Enhancement",
-          items: [
-            "Converted mobile menu to right-aligned, narrow floating panel",
-            "Added fade-in backdrop and slide-in up animation to menu panel",
-            "Enabled click-outside to close via semi-transparent overlay",
-            "Added mouse-follow highlight in panel for visual feedback",
-            "Enhanced menu item hover with subtle translate-x motion"
-          ]
-        },
-        {
-          category: "🛠 Other Tools Page",
-          items: [
-            "Updated 'Mask Face with Emoji' to 'EmojiFace - Hide your Face with One Click'",
-            "Refreshed description to privacy-focused capabilities",
-            "Switched to icon /emojiface-192x192.png with w-10 h-10 and rounded-lg",
-            "Added rendering support for tool.icon with fallback to emoji"
-          ]
-        },
-        {
-          category: "🖼 Homepage Updates",
-          items: [
-            "Changed default profile preview decoration to treat_ghost",
-            "Updated 'Other Tools' link icon to lootbox and placed first in Links"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.5",
-      date: "November 7th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "✨ Feature Updates",
-          items: [
-            [
-              { text: "The discord avatar gallery page", href: "/discord_avatar" },
-              { text: " supports real-time avatar preview with immediate updates" }
-            ],
-            [
-              { text: "The discord avatar decorations gallery page", href: "/discord_avatar_decoration" },
-              { text: " supports live preview when selecting decorations" }
-            ],
-            [
-              { text: "The gif-extractor page", href: "/gif-extractor" },
-              { text: " adds one-click 'Download All Frames (.zip)' bulk download" }
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.4",
-      date: "November 2nd, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "📝 Content Updates",
-          items: [
-            "Added new blog post: 'New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!'",
-            "Featured new Discord avatar decorations including The Final Peel, Warframe Clem, Dart Monkey, and Infinite Swirl",
-            "Enhanced blog content with detailed descriptions of new decoration features",
-            "Added comprehensive SEO optimization for the new blog post"
-          ]
-        },
-        {
-          category: "🔧 Technical Improvements",
-          items: [
-            "Fixed client-side routing configuration for new blog post URL",
-            "Added proper route mapping in src/index.jsx for /blog/new-free-discord-avatar-decorations",
-            "Updated sitemap.xml with new blog post entry",
-            "Enhanced sitemap-images.xml with featured decoration images from the new blog post"
-          ]
-        },
-        {
-          category: "🎨 New Decorations Showcase",
-          items: [
-            "Showcased The Final Peel decoration with detailed preview",
-            "Featured Warframe Clem decoration for gaming enthusiasts",
-            "Highlighted Dart Monkey decoration with unique design elements",
-            "Presented Infinite Swirl decoration with dynamic visual effects"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.3",
-      date: "October 29th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "📱 Mobile Navigation Enhancement",
-          items: [
-            "Enhanced mobile navigation by displaying 'Discord Avatar Decorations' brand text on mobile devices",
-            "Improved brand visibility and recognition on smaller screens",
-            "Adjusted font sizing for optimal mobile display (text-lg on mobile, text-xl on desktop)",
-            "Maintained subtitle visibility only on desktop for cleaner mobile interface",
-            "Enhanced mobile user experience with better brand identification"
-          ]
-        },
-        {
-          category: "🎯 User Interaction Improvements",
-          items: [
-            "Implemented automatic scrolling to profile preview area when selecting avatars",
-            "Added smooth scroll animation to profile preview when choosing decorations",
-            "Enhanced user workflow by automatically focusing on preview after selection",
-            "Improved user experience with seamless navigation to preview area",
-            "Added 100ms delay to ensure DOM updates complete before scrolling",
-            "Configured smooth scrolling behavior with center block positioning"
-          ]
-        },
-        {
-          category: "☕ Buy Me a Coffee Integration",
-          items: [
-            "Updated 'Buy me a coffee' button font styling to match original design specifications",
-            "Applied Cookie font family with 18px font size for consistent branding",
-            "Adjusted emoji sizing to 16px for better visual balance",
-            "Maintained yellow background (#FFDD00) and black text styling",
-            "Ensured button styling matches official Buy Me a Coffee design guidelines"
-          ]
-        },
-        {
-          category: "🎨 UI/UX Polish",
-          items: [
-            "Unified button widths across Save Animated GIF, Extract still image, and Buy me a coffee buttons",
-            "Improved vertical spacing between action buttons for better visual hierarchy",
-            "Enhanced button layout consistency with w-72 width standard",
-            "Optimized button container spacing from gap-2 to gap-3 for better visual balance",
-            "Streamlined button styling for more professional appearance"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.2",
-      date: "October 24th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "🔍 Search Bar Improvements",
-          items: [
-            "Removed gradient border background effects from search boxes for cleaner appearance",
-            "Eliminated fuzzy gradient glow effects while maintaining original color scheme",
-            "Simplified search box styling with solid borders for better readability",
-            "Improved visual clarity and reduced visual noise in search interface",
-            "Enhanced focus and hover states for better user interaction feedback"
-          ]
-        },
-        {
-          category: "🎨 UI/UX Enhancements",
-          items: [
-            "Streamlined search component design for more professional appearance",
-            "Maintained pink, purple, and blue color scheme while removing blur effects",
-            "Improved search box accessibility with clearer visual boundaries",
-            "Enhanced overall visual consistency across search interfaces"
-          ]
-        },
-        {
-          category: "🎞️ GIF Frame Extractor Improvements",
-          items: [
-            "Added navigation bar (Navbar) component to GIF Frame Extractor page for consistent site navigation",
-            "Integrated footer component to maintain uniform page structure across the site",
-            "Updated SEO meta keywords to 'Free Animated GIF Frame Extractor, GIF Frame Extractor, Split GIF Image into Frames'",
-            "Reorganized page structure to ensure navigation and footer display correctly in all states",
-            "Enhanced page consistency with other site pages through proper component integration"
-          ]
-        },
-        {
-          category: "🔗 Navigation & Homepage Updates",
-          items: [
-            "Added 'GIF Frame Extractor' link to homepage Links section with dedicated GIF icon",
-            "Positioned GIF Frame Extractor link as the first item in the Links section for better visibility",
-            "Implemented consistent styling and hover effects matching other homepage links",
-            "Enhanced site navigation by providing direct access to GIF extraction tool from homepage",
-            "Improved user discovery of GIF Frame Extractor functionality"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.1",
-      date: "October 17th, 2025",
-      type: "minor",
-      changes: [
-        {
-          category: "📄 New Pages",
-          items: [
-            "Added comprehensive About Us page with company information and mission statement",
-            "Created detailed Cookies Policy page with complete cookie usage information",
-            "Implemented Contact Support page with multiple support channels and response times",
-            "All new pages feature consistent design language and SEO optimization"
-          ]
-        },
-        {
-          category: "🎨 Footer Enhancement",
-          items: [
-            "Reorganized footer layout from 3-column to 4-column grid for better balance",
-            "Created new 'About Us' section in footer alongside existing sections",
-            "Moved 'About Us' and 'Contact Support' links from 'Legal' to new 'About Us' section",
-            "Improved footer visual hierarchy and link organization",
-            "Enhanced responsive design for better mobile experience"
-          ]
-        },
-        {
-          category: "🔗 Navigation & Routing",
-          items: [
-            "Added proper routing configuration for all new pages",
-            "Updated prerender routes to include new pages for better SEO",
-            "Fixed 404 errors for newly created pages",
-            "Ensured all footer links are properly functional"
-          ]
-        },
-        {
-          category: "🎯 User Experience",
-          items: [
-            "Improved site navigation with clear legal and support information",
-            "Enhanced transparency with detailed cookies and privacy information",
-            "Streamlined support process with dedicated contact page",
-            "Better organized footer sections for easier information discovery"
-          ]
-        }
-      ]
-    },
-    {
-      version: "1.1.0",
-      date: "October 5th, 2025",
-      type: "major",
-      changes: [
-        {
-          category: "🎨 Visual Enhancements",
-          items: [
-            "Completely redesigned background gradient system for the testimonials section",
-            "Added multi-layered cosmic gradient with deep space aesthetics",
-            "Implemented dynamic color overlays with warm and cool tone transitions",
-            "Enhanced central focus effect with radial gradient spotlight",
-            "Added animated grid background with subtle geometric patterns",
-            "Introduced twinkling star effects for enhanced visual depth"
-          ]
-        },
-        {
-          category: "✨ Dynamic Effects",
-          items: [
-            "Redesigned dynamic light effects system with multiple light sources",
-            "Added flowing light animations with smooth transitions",
-            "Implemented particle light effects for enhanced atmosphere",
-            "Created new animated light elements with varying intensities",
-            "Added smooth gradient transitions between different sections",
-            "Enhanced visual focus with improved lighting distribution"
-          ]
-        },
-        {
-          category: "🎭 Avatar System",
-          items: [
-            "Updated user review avatars with new colorful designs",
-            "Added Yellow avatar with bright and energetic theme",
-            "Added Red avatar with classic and passionate design",
-            "Added Color Wave avatar with dynamic rainbow effects",
-            "Added Prismatic Waves avatar with stunning light refraction",
-            "Added Midnight Prism avatar with mysterious dark elegance",
-            "Added Pastel avatar with soft and gentle color palette"
-          ]
-        },
-        {
-          category: "🚀 Performance Improvements",
-          items: [
-            "Optimized background rendering for better performance",
-            "Removed redundant gradient transition code",
-            "Streamlined dynamic light effects for smoother animations",
-            "Improved code structure and maintainability",
-            "Enhanced visual consistency across different components"
-          ]
-        },
-        {
-          category: "🎯 User Experience",
-          items: [
-            "Enhanced visual hierarchy in testimonials section",
-            "Improved readability with better contrast ratios",
-            "Added more engaging visual elements for user retention",
-            "Created more immersive and modern design aesthetic",
-            "Improved overall visual appeal and professional appearance"
-          ]
-        }
-      ]
-    }
-  ];
+  const versions = dict['changelog.versions'] || [];
 
   const getVersionBadgeColor = (type) => {
     switch (type) {
@@ -530,7 +100,7 @@ export default function Changelog() {
       <Navbar />
       
       <div className="relative z-10">
-        <Breadcrumb title="Changelog" />
+        <Breadcrumb />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
@@ -541,10 +111,10 @@ export default function Changelog() {
               </svg>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 ginto">
-              Changelog
+              {t('changelog.h1')}
             </h1>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Track all updates, new features, and improvements to Discord Avatar Decorations
+              {t('changelog.subtitle')}
             </p>
           </div>
 
@@ -559,11 +129,11 @@ export default function Changelog() {
                       v{version.version}
                     </span>
                     <h2 className="text-2xl font-bold text-text-primary">
-                      Version {version.version}
+                      {t('changelog.version', { version: version.version })}
                     </h2>
                   </div>
                   <div className="text-text-muted">
-                    <time dateTime={version.date}>{version.date}</time>
+                    <time dateTime={version.iso || version.date}>{version.date}</time>
                   </div>
                 </div>
 
@@ -631,10 +201,10 @@ export default function Changelog() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-text-primary mb-2">
-                More Updates Coming Soon
+                {t('changelog.comingSoonTitle')}
               </h3>
               <p className="text-text-secondary">
-                We're constantly working on new features and improvements. Stay tuned for more exciting updates!
+                {t('changelog.comingSoonDesc')}
               </p>
             </div>
           </div>

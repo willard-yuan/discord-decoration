@@ -29,39 +29,42 @@ const DiscordFonts = lazy(() => import("@/pages/discord_front/page.jsx"));
 const OtherTools = lazy(() => import("@/pages/other-tools/page.jsx"));
 const Changelog = lazy(() => import("@/pages/changelog/page.jsx"));
 import { NotFound } from "@/pages/_404.jsx";
+import { I18nProvider } from "@/i18n/index.jsx";
 
 import "@/global.css";
 
 export function App() {
   return (
-    <LocationProvider>
-      <div className="bg-base-lower w-screen overflow-x-hidden">
-        <Router>
-          <Route path="/" component={Home} />
-          <Route path="/discuss" component={Discussion} />
-          <Route path="/gif-extractor" component={GifExtractor} />
-          <Route path="/faq" component={FAQ} />
-          <Route path="/how-to-use" component={HowToUse} />
-          <Route path="/blog" component={BlogArticle} />
-          <Route path="/blog/discord-font" component={DiscordFontBlog} />
-          <Route path="/blog/discord-avatar-decorations" component={DiscordAvatarDecorationsArticle} />
-          <Route path="/blog/how-to-split-gif-into-frames" component={HowToSplitGifIntoFramesBlog} />
-          <Route path="/blog/new-free-discord-avatar-decorations" component={NewFreeDiscordAvatarDecorationsArticle} />
-          <Route path="/discord-profile-tips" component={DiscordProfileTips} />
-          <Route path="/terms-of-service" component={TermsOfService} />
-          <Route path="/privacy-policy" component={PrivacyPolicy} />
-          <Route path="/about-us" component={AboutUs} />
-          <Route path="/cookies-policy" component={CookiesPolicy} />
-          <Route path="/contact-support" component={ContactSupport} />
-          <Route path="/discord_avatar" component={DiscordAvatar} />
-          <Route path="/discord_avatar_decoration" component={DiscordAvatarDecoration} />
-          <Route path="/discord_front" component={DiscordFonts} />
-          <Route path="/other-tools" component={OtherTools} />
-          <Route path="/changelog" component={Changelog} />
-          <Route default component={NotFound} />
-        </Router>
-      </div>
-    </LocationProvider>
+    <I18nProvider>
+      <LocationProvider>
+        <div className="bg-base-lower w-screen overflow-x-hidden">
+          <Router>
+            <Route path="/" component={Home} />
+            <Route path="/discuss" component={Discussion} />
+            <Route path="/gif-extractor" component={GifExtractor} />
+            <Route path="/faq" component={FAQ} />
+            <Route path="/how-to-use" component={HowToUse} />
+            <Route path="/blog" component={BlogArticle} />
+            <Route path="/blog/discord-font" component={DiscordFontBlog} />
+            <Route path="/blog/discord-avatar-decorations" component={DiscordAvatarDecorationsArticle} />
+            <Route path="/blog/how-to-split-gif-into-frames" component={HowToSplitGifIntoFramesBlog} />
+            <Route path="/blog/new-free-discord-avatar-decorations" component={NewFreeDiscordAvatarDecorationsArticle} />
+            <Route path="/discord-profile-tips" component={DiscordProfileTips} />
+            <Route path="/terms-of-service" component={TermsOfService} />
+            <Route path="/privacy-policy" component={PrivacyPolicy} />
+            <Route path="/about-us" component={AboutUs} />
+            <Route path="/cookies-policy" component={CookiesPolicy} />
+            <Route path="/contact-support" component={ContactSupport} />
+            <Route path="/discord_avatar" component={DiscordAvatar} />
+            <Route path="/discord_avatar_decoration" component={DiscordAvatarDecoration} />
+            <Route path="/discord_front" component={DiscordFonts} />
+            <Route path="/other-tools" component={OtherTools} />
+            <Route path="/changelog" component={Changelog} />
+            <Route default component={NotFound} />
+          </Router>
+        </div>
+      </LocationProvider>
+    </I18nProvider>
   );
 }
 

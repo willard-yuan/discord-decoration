@@ -1,18 +1,20 @@
 import { useEffect, useState } from "preact/hooks";
+import { useI18n } from "@/i18n/index.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
 import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function FAQ() {
+  const { t, lang, dict } = useI18n();
   const [openIndex, setOpenIndex] = useState(null);
   
   useEffect(() => {
-    document.title = "FAQ - Discord Avatar Decorations";
+    document.title = t('faq.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Frequently asked questions about Discord avatar decorations. Learn how to create, customize, and use free Discord decorations.');
+      metaDescription.setAttribute('content', t('faq.metaDesc'));
     }
     
     // Set meta robots
@@ -24,36 +26,19 @@ export default function FAQ() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
+    // Add structured data for SEO (use the active locale's translated Q&A)
+    const faqItems = dict['faq.items'] || [];
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What are Discord avatar decorations?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Discord avatar decorations are visual enhancements that appear around your profile picture. They add frames, effects, or animated elements to make your avatar stand out in servers and direct messages."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are these decorations really free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Our Discord decoration generator is completely free to use. You don't need Discord Nitro or any paid subscription to create and download custom decorations for your profile."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need Discord Nitro to use these decorations?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, you don't need Discord Nitro! Our tool creates decorations that are embedded directly into your avatar image, so they work with any Discord account type."
-          }
+      "mainEntity": faqItems.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
         }
-      ]
+      }))
     };
     
     // Remove existing structured data script if any
@@ -75,54 +60,13 @@ export default function FAQ() {
         scriptToRemove.remove();
       }
     };
-  }, []);
+  }, [lang]);
   
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const faqs = [
-    {
-      question: "What are Discord avatar decorations?",
-      answer: "Discord avatar decorations are visual enhancements that appear around your profile picture. They add frames, effects, or animated elements to make your avatar stand out in servers and direct messages."
-    },
-    {
-      question: "Are these decorations really free?",
-      answer: "Yes! Our Discord decoration generator is completely free to use. You don't need Discord Nitro or any paid subscription to create and download custom decorations for your profile."
-    },
-    {
-      question: "How do I apply decorations to my Discord avatar?",
-      answer: "After creating your decoration, download the generated image and set it as your Discord profile picture. The decoration will be embedded directly into your avatar image."
-    },
-    {
-      question: "Do I need Discord Nitro to use these decorations?",
-      answer: "No, you don't need Discord Nitro! Our tool creates decorations that are embedded directly into your avatar image, so they work with any Discord account type."
-    },
-    {
-      question: "Can I customize the decoration colors and styles?",
-      answer: "Absolutely! Our decoration generator offers various customization options including different frames, colors, effects, and animation styles to match your personal preference."
-    },
-    {
-      question: "Will the decorations work on mobile Discord?",
-      answer: "Yes, since the decorations are embedded into your avatar image, they will display correctly on all Discord platforms including mobile apps, desktop, and web versions."
-    },
-    {
-      question: "How many decorations can I create?",
-      answer: "There's no limit! You can create as many different decorations as you want. Feel free to experiment with different styles and change your decorated avatar whenever you like."
-    },
-    {
-      question: "Are the decorations animated?",
-      answer: "We offer both static and animated decoration options. Animated decorations will loop continuously and add dynamic visual effects to your Discord profile."
-    },
-    {
-      question: "Can I use my own images for decorations?",
-      answer: "Currently, our tool provides a curated selection of high-quality decoration templates. We're working on adding custom image upload functionality in future updates."
-    },
-    {
-      question: "Is there a size limit for avatar images?",
-      answer: "Discord requires profile pictures to be under 8MB and at least 128x128 pixels. Our tool automatically optimizes your decorated avatar to meet Discord's requirements while maintaining quality."
-    }
-  ];
+  const faqs = dict['faq.items'] || [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-base-lower via-base-lower to-accent-primary/5">
@@ -142,21 +86,19 @@ export default function FAQ() {
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
               </svg>
-              Help Center
+              {t('faq.helpCenter')}
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-text-primary via-accent-primary to-text-primary bg-clip-text text-transparent animate-pulse">
-                Frequently Asked
+                {t('faq.title1')}
               </span>
               <br />
-              <span className="text-text-primary">Questions</span>
+              <span className="text-text-primary">{t('faq.title2')}</span>
             </h1>
             
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              Everything you need to know about creating and using Discord avatar decorations.
-              <br className="hidden md:block" />
-              <span className="text-accent-primary font-medium">Get answers to common questions instantly.</span>
+              {t('faq.subtitle')}
             </p>
           </div>
 
@@ -176,7 +118,7 @@ export default function FAQ() {
                   className="w-full p-6 text-left flex items-center justify-between hover:bg-base-upper/50 rounded-xl transition-colors duration-200"
                 >
                   <h3 className="text-lg md:text-xl font-semibold text-text-primary group-hover:text-accent-primary transition-colors duration-200 pr-4">
-                    {faq.question}
+                    {faq.q}
                   </h3>
                   <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-accent-primary/10 flex items-center justify-center transition-all duration-300 ${
                     openIndex === index ? 'rotate-180 bg-accent-primary/20' : 'group-hover:bg-accent-primary/20'
@@ -193,7 +135,7 @@ export default function FAQ() {
                   <div className="px-6 pb-6">
                     <div className="h-px bg-gradient-to-r from-transparent via-border-primary to-transparent mb-4" />
                     <p className="text-text-secondary leading-relaxed text-base md:text-lg">
-                      {faq.answer}
+                      {faq.a}
                     </p>
                   </div>
                 </div>
@@ -212,11 +154,11 @@ export default function FAQ() {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-                  Still have questions?
+                  {t('faq.stillQuestion')}
                 </h2>
                 
                 <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                  Can't find what you're looking for? Return to our homepage to explore more features and create your custom Discord decorations.
+                  {t('faq.ctaDesc')}
                 </p>
                 
                 <div className="flex justify-center">
@@ -227,7 +169,7 @@ export default function FAQ() {
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    Back to Home
+                    {t('faq.backHome')}
                   </a>
                 </div>
               </div>

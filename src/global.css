@@ -363,6 +363,15 @@ a.link {
   animation: slideInUp 160ms ease-out both;
 }
 
+/* DROPDOWN: opens downward from the button (top edge) */
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-dropdown {
+  animation: dropdownIn 150ms ease-out both;
+}
+
 /* INTERACTIVE PANEL HIGHLIGHT FOLLOWING MOUSE */
 .interactive-panel {
   position: relative;

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { useI18n } from '@/i18n/index.jsx';
 import { decorationsData } from '../../data/decorations';
 import Navbar from '@/components/Navbar.jsx';
 import AdBanner from '@/components/AdBanner.jsx';
@@ -16,7 +17,25 @@ import { LoadingCubes } from '@/components/spinner.jsx';
 import { addDecoration } from '@/ffmpeg/processImage.js';
 import { initFfmpeg, setFfmpeg } from '@/ffmpeg/utils.js';
 
+// Map internal (English) category identifiers to i18n keys
+const CATEGORY_KEYS = {
+  'All': 'cat.all',
+  'Seasonal & Holidays': 'cat.seasonal',
+  'Gaming': 'cat.gaming',
+  'Anime & TV': 'cat.anime',
+  'Characters & Mascots': 'cat.characters',
+  'Fantasy & Magic': 'cat.fantasy',
+  'Sci-Fi & Tech': 'cat.scifi',
+  'Animals & Creatures': 'cat.animals',
+  'Nature & Floral': 'cat.nature',
+  'Food & Drink': 'cat.food',
+  'Aesthetic & Vibe': 'cat.aesthetic',
+  'Shop Collections': 'cat.shop',
+  'Other': 'cat.other',
+};
+
 const DiscordAvatarDecoration = () => {
+  const { t, lang } = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -32,12 +51,12 @@ const DiscordAvatarDecoration = () => {
   const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
   
   useEffect(() => {
-    document.title = "Discord Avatar Decorations - Free Decoration Collection";
+    document.title = t('deco.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Explore our vast collection of free Discord avatar decorations. Add stunning frames and effects to your Discord profile picture.');
+      metaDescription.setAttribute('content', t('deco.metaDesc'));
     }
     
     // Set meta robots
@@ -53,8 +72,8 @@ const DiscordAvatarDecoration = () => {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "ImageGallery",
-      "name": "Discord Avatar Decorations Gallery",
-      "description": "Free collection of Discord avatar decorations and frames",
+      "name": t('deco.schemaName'),
+      "description": t('deco.schemaDesc'),
       "url": "https://discord-decoration.art/discord_avatar_decoration",
       "author": {
         "@type": "Organization",
@@ -89,7 +108,7 @@ const DiscordAvatarDecoration = () => {
         scriptToRemove.remove();
       }
     };
-  }, []);
+  }, [lang]);
 
   const ensureLoaded = async () => {
     if (ffmpegLoaded) return;
@@ -420,20 +439,18 @@ const DiscordAvatarDecoration = () => {
   return (
     <div className="min-h-screen bg-surface-primary">
       <Navbar />
-      <Breadcrumb title="Avatar Decorations" />
+      <Breadcrumb />
       <AdBanner slot="8693653904" />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center mb-10 relative z-10">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] -z-10" />
             <h1 className="text-5xl md:text-7xl font-black ginto tracking-tight mb-6 animate-slide-in-up">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-white drop-shadow-[0_0_30px_rgba(192,132,252,0.5)]">
-                Discord Avatar Decorations Gallery
+                {t('deco.h1')}
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium animate-slide-in-up delay-100">
-              Discover our extensive collection of <span className="text-white font-bold">Discord avatar decorations</span> organized by themes.
-              <br className="hidden md:block" />
-              Add some flair to your Discord profile with these amazing decorations.
+              {t('deco.subtitle')}
             </p>
             
             {/* Search Bar */}
@@ -446,15 +463,15 @@ const DiscordAvatarDecoration = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-white">Find Your Perfect Decoration</h2>
+                    <h2 className="text-2xl font-bold text-white">{t('deco.searchTitle')}</h2>
                   </div>
                   <p className="text-gray-400 text-sm font-medium">
-                    Search through <span className="text-purple-400 font-bold">{Object.values(allCategories).flat().length}+</span> unique Discord decorations
+                    {t('deco.searchCount', { count: Object.values(allCategories).flat().length })}
                   </p>
                 </div>
                 <SearchBar 
                   onValueChanged={setSearchQuery}
-                  placeholder="Search decorations..."
+                  placeholder={t('deco.searchPlaceholder')}
                   gradientClass="from-purple-500 via-pink-500 to-fuchsia-500"
                 />
               </div>
@@ -475,10 +492,10 @@ const DiscordAvatarDecoration = () => {
                   `}
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    {selectedCategory === cat && (
-                      <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    )}
-                    {cat}
+                      {selectedCategory === cat && (
+                        <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                      )}
+                      {t(CATEGORY_KEYS[cat] || cat)}
                   </span>
                   {selectedCategory !== cat && (
                     <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -495,8 +512,8 @@ const DiscordAvatarDecoration = () => {
           return (
             <div key={categoryName} className="mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-6 border-b border-border-primary pb-2">
-                {categoryName}
-                <span className="text-sm font-normal text-text-secondary ml-2">({decorations.length} decorations)</span>
+                {t(CATEGORY_KEYS[categoryName] || categoryName)}
+                <span className="text-sm font-normal text-text-secondary ml-2">{t('deco.countLabel', { count: decorations.length })}</span>
               </h2>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -519,8 +536,8 @@ const DiscordAvatarDecoration = () => {
                             <span className="place-items-center w-4 h-4 text-white/90">
                               <Icons.search size="16px" />
                             </span>
-                            <span className="ginto hidden sm:inline">Click to preview</span>
-                            <span className="ginto inline sm:hidden">Tap to preview</span>
+                            <span className="ginto hidden sm:inline">{t('deco.clickPreview')}</span>
+                            <span className="ginto inline sm:hidden">{t('deco.tapPreview')}</span>
                           </div>
                         </div>
                       </div>
@@ -552,37 +569,36 @@ const DiscordAvatarDecoration = () => {
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold text-text-primary mb-2">
-              No decorations found
+              {t('deco.noResultsTitle')}
             </h3>
             <p className="text-text-secondary">
-              Try searching with different keywords or browse all categories above.
+              {t('deco.noResultsDesc')}
             </p>
           </div>
         )}
 
         <div className="text-center mt-16 p-8 bg-surface-secondary rounded-lg">
-          <h2 className="text-2xl font-bold text-text-primary mb-4">Create Your Custom Avatar</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-4">{t('deco.ctaTitle')}</h2>
           <p className="text-text-secondary mb-6">
-            Use our Discord Avatar Decoration Generator to combine these decorations with avatars 
-            and create the perfect profile picture for your Discord account.
+            {t('deco.ctaDesc')}
           </p>
           <a 
             href="/" 
             className="inline-block bg-accent-primary hover:bg-accent-secondary text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
           >
-            Try Decoration Generator
+            {t('deco.ctaBtn')}
           </a>
         </div>
       </div>
       <Footer />
       
       {/* Profile Preview Modal */}
-      <Modal
-        visible={isPreviewOpen}
-        onClose={() => setIsPreviewOpen(false)}
-        title={"Profile Preview"}
-        subtitle={"This is how your avatar looks on Discord"}
-      >
+        <Modal
+          visible={isPreviewOpen}
+          onClose={() => setIsPreviewOpen(false)}
+          title={t('deco.previewTitle')}
+          subtitle={t('deco.previewSubtitle')}
+        >
         <div className="flex justify-center py-2 sm:py-4">
           <div
             id="profile-preview"
@@ -614,10 +630,10 @@ const DiscordAvatarDecoration = () => {
               <div className="right-[-3px] bottom-[-3px] sm:right-[-4px] sm:bottom-[-4px] absolute bg-[#229f56] border-[4px] sm:border-[5px] border-surface-overlay rounded-full w-6 h-6 sm:w-7 sm:h-7" />
             </div>
               <div className="bg-surface-overlay mt-[30px] sm:mt-[35px] p-3 sm:p-4 rounded-lg w-[calc(100%)] *:w-full">
-                <p className="font-semibold text-lg sm:text-xl [letter-spacing:.02em] mb-1 sm:mb-0">Display Name</p>
-                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">username</p>
+                <p className="font-semibold text-lg sm:text-xl [letter-spacing:.02em] mb-1 sm:mb-0">{t('deco.displayName')}</p>
+                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">{t('deco.username')}</p>
                 <p className="text-xs sm:text-sm mb-2">
-                  This is an example profile so that you can see what the decorated avatar would actually look like on Discord.
+                  {t('deco.exampleProfile')}
                 </p>
               {/* actions moved outside */}
               </div>
@@ -630,12 +646,12 @@ const DiscordAvatarDecoration = () => {
                 storeData('decoration', previewDecorationUrl);
                 router.route('/discord_avatar');
               }}
-              ariaLabel="Use This Decoration → Pick Avatar"
+              ariaLabel={t('deco.useDeco')}
               disabled={false}
               className="w-72"
             >
               <Icons.image />
-              Use This Decoration → Pick Avatar
+              {t('deco.useDeco')}
             </NeutralButton>
             <NeutralButton
               onClick={async () => {
@@ -657,12 +673,12 @@ const DiscordAvatarDecoration = () => {
                   setIsGeneratingAv(false);
                 }
               }}
-              ariaLabel="Save Animated GIF"
+              ariaLabel={t('deco.saveGif')}
               disabled={false}
               className="w-72"
             >
               <Icons.download />
-              Save Animated GIF
+              {t('deco.saveGif')}
             </NeutralButton>
             <NeutralButton
               onClick={async () => {
@@ -682,12 +698,12 @@ const DiscordAvatarDecoration = () => {
                   setIsGeneratingAv(false);
                 }
               }}
-              ariaLabel="Extract still image"
+              ariaLabel={t('deco.extractStill')}
               disabled={false}
               className="w-72"
             >
               <Icons.image />
-              Extract still image
+              {t('deco.extractStill')}
             </NeutralButton>
             <a
               href="https://www.buymeacoffee.com/yong1024"
@@ -704,19 +720,19 @@ const DiscordAvatarDecoration = () => {
               }}
             >
               <span className="mr-2" style={{ fontSize: '16px' }}>☕</span>
-              Buy me a coffee
+              {t('buyCoffee')}
             </a>
             {copied && (
-              <span className="text-green-400 text-xs">Copied!</span>
+              <span className="text-green-400 text-xs">{t('deco.copied')}</span>
             )}
             {isGeneratingAv && (
               <div className="flex items-center gap-2 mt-2 text-text-secondary text-sm">
                 <LoadingCubes />
-                <span>Creating image...</span>
+                <span>{t('deco.creating')}</span>
               </div>
             )}
             {generationFailed && (
-              <p className="text-red-400 text-xs mt-2">Failed to generate image</p>
+              <p className="text-red-400 text-xs mt-2">{t('deco.failed')}</p>
             )}
           </div>
         </Modal>

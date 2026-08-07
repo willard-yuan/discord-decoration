@@ -1,7 +1,10 @@
 import { useState, useEffect } from "preact/hooks";
+import { useI18n } from "@/i18n/index.jsx";
+import LanguageSelector from "@/components/LanguageSelector.jsx";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <nav className="sticky top-0 z-50 relative bg-surface-overlay/80 backdrop-blur-xl border-b border-white/5 shadow-lg">
@@ -21,7 +24,7 @@ const Navbar = () => {
                   Discord Decorations
                 </h2>
                 <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 shadow-sm backdrop-blur-sm">
-                  FREE
+                  {t("nav.free")}
                 </span>
               </div>
             </a>
@@ -30,26 +33,27 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-1 ml-8">
             {[
-              { name: 'Avatars', href: '/discord_avatar' },
-              { name: 'Decorations', href: '/discord_avatar_decoration' },
-              { name: 'Fonts', href: '/discord_front' },
-              { name: 'FAQs', href: '/faq' },
-              { name: 'Blog', href: '/blog' },
-              { name: 'Tools', href: '/other-tools' },
-              { name: 'Changelog', href: '/changelog' },
+              { key: 'nav.avatars', href: '/discord_avatar' },
+              { key: 'nav.decorations', href: '/discord_avatar_decoration' },
+              { key: 'nav.fonts', href: '/discord_front' },
+              { key: 'nav.faqs', href: '/faq' },
+              { key: 'nav.blog', href: '/blog' },
+              { key: 'nav.tools', href: '/other-tools' },
+              { key: 'nav.changelog', href: '/changelog' },
             ].map((link) => (
-              <a 
-                key={link.name}
-                href={link.href} 
+              <a
+                key={link.key}
+                href={link.href}
                 className="relative px-3.5 py-1.5 rounded-lg text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:bg-white/5 group"
               >
-                {link.name}
+                {t(link.key)}
               </a>
             ))}
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex items-center space-x-4 ml-auto">
+          <div className="flex items-center space-x-2 ml-auto">
+            <LanguageSelector />
             {/* Mobile Menu Button */}
             <button 
               className="md:hidden p-2 rounded-lg bg-surface-high hover:bg-surface-higher transition-colors"
@@ -87,26 +91,26 @@ const Navbar = () => {
               }}
             >
               <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                Avatars
+                {t("nav.avatars")}
               </a>
               <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                Decorations
+                {t("nav.decorations")}
               </a>
               <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                Fonts
+                {t("nav.fonts")}
               </a>
               <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                FAQs
+                {t("nav.faqs")}
               </a>
               <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                Blog
+                {t("nav.blog")}
               </a>
               <a href="/other-tools" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                Tools
+                {t("nav.tools")}
               </a>
               <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
-                  Changelog
-                </a>
+                {t("nav.changelog")}
+              </a>
             </div>
           </div>
         </>

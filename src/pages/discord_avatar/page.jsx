@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { useI18n } from '@/i18n/index.jsx';
 import { avatarsData } from '../../data/avatars';
 import Navbar from '@/components/Navbar.jsx';
 import AdBanner from '@/components/AdBanner.jsx';
@@ -16,7 +17,25 @@ import { initFfmpeg, setFfmpeg } from '@/ffmpeg/utils.js';
 import { NeutralButton } from '../../components/button';
 import { useLocation } from 'preact-iso';
 
+// Map internal (English) category identifiers to i18n keys
+const CATEGORY_KEYS = {
+  'All': 'cat.all',
+  'Seasonal & Holidays': 'cat.seasonal',
+  'Gaming': 'cat.gaming',
+  'Anime & TV': 'cat.anime',
+  'Characters & Mascots': 'cat.characters',
+  'Fantasy & Magic': 'cat.fantasy',
+  'Sci-Fi & Tech': 'cat.scifi',
+  'Animals & Creatures': 'cat.animals',
+  'Nature & Floral': 'cat.nature',
+  'Food & Drink': 'cat.food',
+  'Aesthetic & Vibe': 'cat.aesthetic',
+  'Solid Colors': 'cat.solid',
+  'Other': 'cat.other',
+};
+
 const DiscordAvatar = () => {
+  const { t, lang } = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [previewAvatarUrl, setPreviewAvatarUrl] = useState('');
@@ -55,12 +74,12 @@ const DiscordAvatar = () => {
   }, []);
   
   useEffect(() => {
-    document.title = "Discord Avatar Gallery - Free Avatar Collection";
+    document.title = t('avatar.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Browse our extensive collection of free Discord avatars. Find the perfect profile picture from gaming, anime, fantasy, and more categories.');
+      metaDescription.setAttribute('content', t('avatar.metaDesc'));
     }
     
     // Set meta robots
@@ -76,8 +95,8 @@ const DiscordAvatar = () => {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "ImageGallery",
-      "name": "Discord Avatar Gallery",
-      "description": "Free collection of Discord avatars and profile pictures",
+      "name": t('avatar.schemaName'),
+      "description": t('avatar.schemaDesc'),
       "url": "https://discord-decoration.art/discord_avatar",
       "numberOfItems": avatarsData.length,
       "author": {
@@ -113,7 +132,7 @@ const DiscordAvatar = () => {
         scriptToRemove.remove();
       }
     };
-  }, []);
+  }, [lang]);
 
   // Handle avatar click to open profile preview modal
   const handleAvatarClick = (avatarFile) => {
@@ -361,20 +380,18 @@ const DiscordAvatar = () => {
   return (
       <div className="min-h-screen bg-surface-primary">
         <Navbar />
-        <Breadcrumb title="Avatar Gallery" />
+        <Breadcrumb />
         <AdBanner slot="4291390379" />
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center mb-10 relative z-10">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] -z-10" />
             <h1 className="text-5xl md:text-7xl font-black ginto tracking-tight mb-6 animate-slide-in-up">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-white drop-shadow-[0_0_30px_rgba(96,165,250,0.5)]">
-                Discord Avatar Gallery
+                {t('avatar.h1')}
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium animate-slide-in-up delay-100">
-              Explore our collection of <span className="text-white font-bold">Discord avatars</span> organized by categories.
-              <br className="hidden md:block" />
-              Find the perfect avatar to express your personality on Discord.
+              {t('avatar.subtitle')}
             </p>
             
             {/* Search Bar */}
@@ -387,15 +404,15 @@ const DiscordAvatar = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-white">Find Your Perfect Avatar</h2>
+                    <h2 className="text-2xl font-bold text-white">{t('avatar.searchTitle')}</h2>
                   </div>
                   <p className="text-gray-400 text-sm font-medium">
-                    Search through <span className="text-blue-400 font-bold">{Object.values(allCategories).flat().length}+</span> unique Discord avatars
+                    {t('avatar.searchCount', { count: Object.values(allCategories).flat().length })}
                   </p>
                 </div>
                 <SearchBar 
                   onValueChanged={setSearchQuery}
-                  placeholder="Search avatars..."
+                  placeholder={t('avatar.searchPlaceholder')}
                   gradientClass="from-blue-500 via-violet-500 to-indigo-500"
                 />
               </div>
@@ -419,7 +436,7 @@ const DiscordAvatar = () => {
                       {selectedCategory === cat && (
                         <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                       )}
-                      {cat}
+                      {t(CATEGORY_KEYS[cat] || cat)}
                     </span>
                     {selectedCategory !== cat && (
                       <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -436,8 +453,8 @@ const DiscordAvatar = () => {
             return (
               <div key={categoryName} className="mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-6 border-b border-border-primary pb-2">
-                  {categoryName}
-                  <span className="text-sm font-normal text-text-secondary ml-2">({avatars.length} avatars)</span>
+                  {t(CATEGORY_KEYS[categoryName] || categoryName)}
+                  <span className="text-sm font-normal text-text-secondary ml-2">{t('avatar.countLabel', { count: avatars.length })}</span>
                 </h2>
                 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
@@ -460,8 +477,8 @@ const DiscordAvatar = () => {
                               <span className="place-items-center w-4 h-4 text-white/90">
                                 <Icons.search size="16px" />
                               </span>
-                              <span className="ginto hidden sm:inline">Click to preview</span>
-                              <span className="ginto inline sm:hidden">Tap to preview</span>
+                              <span className="ginto hidden sm:inline">{t('avatar.clickPreview')}</span>
+                              <span className="ginto inline sm:hidden">{t('avatar.tapPreview')}</span>
                             </div>
                           </div>
                         </div>
@@ -483,24 +500,24 @@ const DiscordAvatar = () => {
             <div className="text-center py-16">
               <div className="text-6xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-text-primary mb-2">
-                No avatars found
+                {t('avatar.noResultsTitle')}
               </h3>
               <p className="text-text-secondary">
-                Try searching with different keywords or browse all categories above.
+                {t('avatar.noResultsDesc')}
               </p>
             </div>
           )}
 
           <div className="text-center mt-16 p-8 bg-surface-secondary rounded-lg">
-            <h2 className="text-2xl font-bold text-text-primary mb-4">Want to Create Your Own Avatar?</h2>
+            <h2 className="text-2xl font-bold text-text-primary mb-4">{t('avatar.ctaTitle')}</h2>
             <p className="text-text-secondary mb-6">
-              Use our Discord Avatar Decoration Generator to create custom profile pictures with these avatars and decorations.
+              {t('avatar.ctaDesc')}
             </p>
             <a 
               href="/" 
               className="inline-block bg-accent-primary hover:bg-accent-secondary text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
             >
-              Try Avatar Generator
+              {t('avatar.ctaBtn')}
             </a>
           </div>
         </div>
@@ -510,8 +527,8 @@ const DiscordAvatar = () => {
         <Modal
           visible={isPreviewOpen}
           onClose={() => setIsPreviewOpen(false)}
-          title={"Profile Preview"}
-          subtitle={"This is how your avatar looks on Discord"}
+          title={t('avatar.previewTitle')}
+          subtitle={t('avatar.previewSubtitle')}
           hideActions={false}
         >
           <div className="flex justify-center py-2">
@@ -540,10 +557,10 @@ const DiscordAvatar = () => {
                 <div className="right-[-3px] bottom-[-3px] sm:right-[-4px] sm:bottom-[-4px] absolute bg-[#229f56] border-[4px] sm:border-[5px] border-surface-overlay rounded-full w-5 h-5 sm:w-7 sm:h-7" />
               </div>
               <div className="bg-surface-overlay mt-[28px] sm:mt-[35px] p-3 sm:p-4 rounded-lg w-[calc(100%)] *:w-full">
-                <p className="font-semibold text-lg sm:text-xl [letter-spacing:.02em]">Display Name</p>
-                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">username</p>
+                <p className="font-semibold text-lg sm:text-xl [letter-spacing:.02em]">{t('avatar.displayName')}</p>
+                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">{t('avatar.username')}</p>
                 <p className="text-xs sm:text-sm mb-2">
-                  This is an example profile so that you can see what the profile picture would actually look like on Discord.
+                  {t('avatar.exampleProfile')}
                 </p>
                 {/* actions moved outside */}
               </div>
@@ -556,12 +573,12 @@ const DiscordAvatar = () => {
                 storeData('avatar', url);
                 router.route('/discord_avatar_decoration');
               }}
-              ariaLabel="Use This Avatar → Pick Decoration"
+              ariaLabel={t('avatar.useAvatar')}
               disabled={false}
               className="w-72"
             >
               <Icons.image />
-              Use This Avatar → Pick Decoration
+              {t('avatar.useAvatar')}
             </NeutralButton>
             
             <NeutralButton
@@ -584,12 +601,12 @@ const DiscordAvatar = () => {
                   setIsGeneratingAv(false);
                 }
               }}
-              ariaLabel="Save Animated GIF"
+              ariaLabel={t('avatar.saveGif')}
               disabled={false}
               className="w-72"
             >
               <Icons.download />
-              Save Animated GIF
+              {t('avatar.saveGif')}
             </NeutralButton>
             <NeutralButton
               onClick={() => {
@@ -598,12 +615,12 @@ const DiscordAvatar = () => {
                 storeData('image', JSON.stringify({ avatar: avatarUrl, decoration: decoUrl }));
                 router.route('/gif-extractor');
               }}
-              ariaLabel="Extract still image"
+              ariaLabel={t('avatar.extractStill')}
               disabled={false}
               className="w-72"
             >
               <Icons.image />
-              Extract still image
+              {t('avatar.extractStill')}
             </NeutralButton>
             <a
               href="https://www.buymeacoffee.com/yong1024"
@@ -620,16 +637,16 @@ const DiscordAvatar = () => {
               }}
             >
               <span className="mr-2" style={{ fontSize: '16px' }}>☕</span>
-              Buy me a coffee
+              {t('buyCoffee')}
             </a>
             {isGeneratingAv && (
               <div className="flex items-center gap-2 mt-2 text-text-secondary text-sm">
                 <LoadingCubes />
-                <span>Creating image...</span>
+                <span>{t('avatar.creating')}</span>
               </div>
             )}
             {generationFailed && (
-              <p className="text-red-400 text-xs mt-2">Failed to generate image</p>
+              <p className="text-red-400 text-xs mt-2">{t('avatar.failed')}</p>
             )}
           </div>
         </Modal>
