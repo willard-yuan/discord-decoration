@@ -10,6 +10,16 @@ import it from "./locales/it";
 import ja from "./locales/ja";
 import ko from "./locales/ko";
 import ar from "./locales/ar";
+import zhCN from "./locales/zh-CN";
+import zhTW from "./locales/zh-TW";
+import hi from "./locales/hi";
+import ru from "./locales/ru";
+import pl from "./locales/pl";
+import id from "./locales/id";
+import fil from "./locales/fil";
+import vi from "./locales/vi";
+import th from "./locales/th";
+import tr from "./locales/tr";
 
 const DICTS = {
   en,
@@ -21,6 +31,16 @@ const DICTS = {
   ja,
   ko,
   ar,
+  "zh-CN": zhCN,
+  "zh-TW": zhTW,
+  hi,
+  ru,
+  pl,
+  id,
+  fil,
+  vi,
+  th,
+  tr,
 };
 
 const STORAGE_KEY = "lang";

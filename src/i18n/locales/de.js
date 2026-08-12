@@ -328,6 +328,21 @@ export default {
   "changelog.comingSoonDesc": "Wir arbeiten ständig an neuen Funktionen und Verbesserungen. Bleib dran für weitere spannende Updates!",
   "changelog.versions": [
     {
+      "version": "1.2.1",
+      "date": "6. August 2026",
+      "iso": "2026-08-06",
+      "type": "minor",
+      "changes": [
+        { "category": "🌍 Lokalisierung", "items": [
+          "10 neue Sprachen hinzugefügt: Chinesisch (vereinfacht), Chinesisch (traditionell, Taiwan), Hindi, Russisch, Polnisch, Indonesisch, Filipino, Vietnamesisch, Thai und Türkisch",
+          "Alle 5 Hauptseiten (Avatar, Avatar-Dekorationen, FAQ und Änderungsprotokoll) in alle neuen Sprachen übersetzt",
+          "SEO-Metadaten, strukturierte JSON-LD-Daten und UI-Texte für jede neue Sprache lokalisiert",
+          "Übersetzungen an die lokale Suchintention angepasst, um die internationale Auffindbarkeit zu verbessern"
+        ]}
+      ]
+    },
+
+    {
       "version": "1.2.0",
       "date": "6. August 2026",
       "iso": "2026-08-06",

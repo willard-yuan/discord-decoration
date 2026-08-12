@@ -12,6 +12,16 @@ export const LANGUAGES = [
   { code: "ko", native: "한국어", flag: "🇰🇷", available: true },
   { code: "pt-BR", native: "Português", flag: "🇧🇷", available: true },
   { code: "ar", native: "العربية", flag: "🇸🇦", available: true, dir: "rtl" },
+  { code: "zh-CN", native: "简体中文", flag: "🇨🇳", available: true },
+  { code: "zh-TW", native: "繁體中文", flag: "🇹🇼", available: true },
+  { code: "hi", native: "हिन्दी", flag: "🇮🇳", available: true },
+  { code: "ru", native: "Русский", flag: "🇷🇺", available: true },
+  { code: "pl", native: "Polski", flag: "🇵🇱", available: true },
+  { code: "id", native: "Bahasa Indonesia", flag: "🇮🇩", available: true },
+  { code: "fil", native: "Filipino", flag: "🇵🇭", available: true },
+  { code: "vi", native: "Tiếng Việt", flag: "🇻🇳", available: true },
+  { code: "th", native: "ไทย", flag: "🇹🇭", available: true },
+  { code: "tr", native: "Türkçe", flag: "🇹🇷", available: true },
 ];
 
 export const DEFAULT_LANG = "en";

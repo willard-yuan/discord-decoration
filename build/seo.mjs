@@ -31,6 +31,16 @@ import jaDict from "../src/i18n/locales/ja.js";
 import koDict from "../src/i18n/locales/ko.js";
 import ptBRDict from "../src/i18n/locales/pt-BR.js";
 import arDict from "../src/i18n/locales/ar.js";
+import zhCNDict from "../src/i18n/locales/zh-CN.js";
+import zhTWDict from "../src/i18n/locales/zh-TW.js";
+import hiDict from "../src/i18n/locales/hi.js";
+import ruDict from "../src/i18n/locales/ru.js";
+import plDict from "../src/i18n/locales/pl.js";
+import idDict from "../src/i18n/locales/id.js";
+import filDict from "../src/i18n/locales/fil.js";
+import viDict from "../src/i18n/locales/vi.js";
+import thDict from "../src/i18n/locales/th.js";
+import trDict from "../src/i18n/locales/tr.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -39,6 +49,8 @@ const DIST = path.join(ROOT, "dist");
 const DICTS = {
   en: enDict, fr: frDict, es: esDict, de: deDict, it: itDict,
   ja: jaDict, ko: koDict, "pt-BR": ptBRDict, ar: arDict,
+  "zh-CN": zhCNDict, "zh-TW": zhTWDict, hi: hiDict, ru: ruDict, pl: plDict,
+  id: idDict, fil: filDict, vi: viDict, th: thDict, tr: trDict,
 };
 
 const SITE_URL = process.env.VITE_SITE_URL || "https://discord-decoration.art";
@@ -71,6 +83,16 @@ const HOME_DESCRIPTIONS = {
   ko: "무료로 멋진 Discord 아바타 장식을 만드세요. Discord Nitro에 돈을 쓰지 않고 프로필 사진에 맞춤 장식을 추가하세요.",
   "pt-BR": "Crie decorações de avatar do Discord impressionantes grátis. Adicione decorações personalizadas à sua foto de perfil sem gastar dinheiro com Discord Nitro.",
   ar: "أنشئ زخارف أفاتار ديسكورد مذهلة مجانًا. أضف زخارف مخصصة إلى صورتك الشخصية دون إنفاق المال على Discord Nitro.",
+  "zh-CN": "免费制作精美的 Discord 头像装饰。无需花钱开通 Discord Nitro，即可为个人资料头像添加自定义装饰。",
+  "zh-TW": "免費製作精美的 Discord 頭像裝飾。無需花錢開通 Discord Nitro，即可為個人檔案頭像添加自訂裝飾。",
+  hi: "मुफ़्त में शानदार Discord अवतार डेकोरेशन बनाएँ। Discord Nitro पर पैसे खर्च किए बिना अपनी प्रोफ़ाइल तस्वीर में कस्टम डेकोरेशन जोड़ें।",
+  ru: "Создавайте потрясающие украшения аватара Discord бесплатно. Добавляйте кастомные украшения к своей аватарке без подписки Discord Nitro.",
+  pl: "Twórz niesamowite dekoracje awatara Discord za darmo. Dodawaj niestandardowe dekoracje do swojego zdjęcia profilowego bez płacenia za Discord Nitro.",
+  id: "Buat dekorasi avatar Discord yang menakjubkan secara gratis. Tambahkan dekorasi kustom ke foto profil Anda tanpa mengeluarkan uang untuk Discord Nitro.",
+  fil: "Gumawa ng mga napakagandang Discord avatar decorations nang libre. Magdagdag ng mga custom na decoration sa iyong profile picture nang hindi gumagastos para sa Discord Nitro.",
+  vi: "Tạo các trang trí avatar Discord tuyệt đẹp hoàn toàn miễn phí. Thêm trang trí tùy chỉnh vào ảnh đại diện mà không cần trả tiền cho Discord Nitro.",
+  th: "สร้างเครื่องประดับอวาตาร์ Discord สวยงามได้ฟรี เพิ่มเครื่องประดับแบบกำหนดเองให้รูปโปรไฟล์โดยไม่ต้องจ่ายเงินสำหรับ Discord Nitro",
+  tr: "Discord avatar dekorasyonlarını ücretsiz olarak oluşturun. Discord Nitro'ya para ödemeden profil resminize özel dekorasyonlar ekleyin.",
 };
 
 // EN-only routes: hardcoded English SEO (no translations published).
@@ -131,6 +153,8 @@ const SITEMAP_META = {
 const OG_LOCALE = {
   en: "en_US", fr: "fr_FR", es: "es_ES", de: "de_DE", it: "it_IT",
   ja: "ja_JP", ko: "ko_KR", "pt-BR": "pt_BR", ar: "ar_SA",
+  "zh-CN": "zh_CN", "zh-TW": "zh_TW", hi: "hi_IN", ru: "ru_RU", pl: "pl_PL",
+  id: "id_ID", fil: "fil_PH", vi: "vi_VN", th: "th_TH", tr: "tr_TR",
 };
 
 // ── helpers ──────────────────────────────────────────────────────────────
