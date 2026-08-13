@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node build/seo.mjs && node build/indexnow.mjs && node build/optimize-html.js",
+    "indexnow": "INDEXNOW_PING=1 node build/indexnow.mjs",
     "preview": "vite preview",
     "remove-build-assets": "node build/removeAssets.js",
     "extract-info": "node utils/extractInfoCli.js",

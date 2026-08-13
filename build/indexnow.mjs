@@ -22,7 +22,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
 
-const INDEXNOW_KEY = "3a24db90cf8d4ce7935f322d855295f9";
+const INDEXNOW_KEY = "6858a5da1c793cd709ad99d80046011f";
 const HOST = "discord-decoration.art";
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 const ENDPOINT = "https://api.indexnow.org/indexnow";
