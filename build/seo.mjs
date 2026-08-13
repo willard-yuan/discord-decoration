@@ -333,28 +333,61 @@ async function main() {
     await server.close();
   }
 
-  // ── multilingual sitemap ──
+  // ── multilingual sitemap (combined + per-language + index) ──
   const today = new Date().toISOString().slice(0, 10);
-  const urls = [];
+  const URLSET_OPEN = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
+  const URLSET_CLOSE = `</urlset>`;
+
+  function urlBlock(lang, route) {
+    const loc = langUrl(lang, route);
+    const isTranslated = TRANSLATED_ROUTES.includes(route);
+    const altLangs = isTranslated ? LANGUAGES.map((l) => l.code) : ["en"];
+    const alts = altLangs
+      .map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${langUrl(l, route)}"/>`)
+      .join("\n");
+    const xd = `    <xhtml:link rel="alternate" hreflang="x-default" href="${langUrl("en", route)}"/>`;
+    const meta = SITEMAP_META[route] || { changefreq: "monthly", priority: "0.5" };
+    return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${meta.changefreq}</changefreq>\n    <priority>${meta.priority}</priority>\n${alts}\n${xd}\n  </url>`;
+  }
+
+  const allUrls = [];
+  const perLang = {};
+  for (const l of LANGUAGES) perLang[l.code] = [];
   for (const route of ALL_ROUTES) {
     if (route === "/404") continue; // 404 pages should not appear in sitemaps
-    const isTranslated = TRANSLATED_ROUTES.includes(route);
-    const langs = isTranslated ? LANGUAGES.map((l) => l.code) : ["en"];
+    const langs = TRANSLATED_ROUTES.includes(route) ? LANGUAGES.map((l) => l.code) : ["en"];
     for (const lang of langs) {
-      const loc = langUrl(lang, route);
-      const altLangs = isTranslated ? LANGUAGES.map((l) => l.code) : ["en"];
-      const alts = altLangs.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${langUrl(l, route)}"/>`).join("\n");
-      const xd = `    <xhtml:link rel="alternate" hreflang="x-default" href="${langUrl("en", route)}"/>`;
-      const meta = SITEMAP_META[route] || { changefreq: "monthly", priority: "0.5" };
-      urls.push(`  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${meta.changefreq}</changefreq>\n    <priority>${meta.priority}</priority>\n${alts}\n${xd}\n  </url>`);
+      const block = urlBlock(lang, route);
+      allUrls.push(block);
+      perLang[lang].push(block);
     }
   }
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`;
-  fs.writeFileSync(path.join(DIST, "sitemap.xml"), xml);
-  console.log(`[seo] sitemap.xml generated (${urls.length} URLs)`);
 
-  // also copy sitemap to public/ so it's tracked in source
-  fs.writeFileSync(path.join(ROOT, "public", "sitemap.xml"), xml);
+  // write a sitemap to both dist/ (deployed) and public/ (tracked in source)
+  const writeSitemap = (rel, content) => {
+    fs.writeFileSync(path.join(DIST, rel), content);
+    fs.writeFileSync(path.join(ROOT, "public", rel), content);
+  };
+
+  // combined sitemap (all languages + hreflang) — canonical all-in-one
+  const combinedXml = `${URLSET_OPEN}\n${allUrls.join("\n")}\n${URLSET_CLOSE}\n`;
+  writeSitemap("sitemap.xml", combinedXml);
+  console.log(`[seo] sitemap.xml generated (${allUrls.length} URLs)`);
+
+  // per-language sitemaps — explicit multilingual declaration for Baidu/Naver/Yandex
+  for (const l of LANGUAGES) {
+    const langXml = `${URLSET_OPEN}\n${perLang[l.code].join("\n")}\n${URLSET_CLOSE}\n`;
+    writeSitemap(`sitemap-${l.code}.xml`, langXml);
+  }
+  console.log(`[seo] ${LANGUAGES.length} per-language sitemaps generated`);
+
+  // sitemap index referencing every per-language sitemap
+  const indexEntries = LANGUAGES
+    .map((l) => `  <sitemap>\n    <loc>${SITE_URL}/sitemap-${l.code}.xml</loc>\n    <lastmod>${today}</lastmod>\n  </sitemap>`)
+    .join("\n");
+  const indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexEntries}\n</sitemapindex>\n`;
+  writeSitemap("sitemap-index.xml", indexXml);
+  console.log("[seo] sitemap-index.xml generated");
 
   // Cloudflare Pages custom 404: copy 404/index.html → 404.html
   const src404 = path.join(DIST, "404", "index.html");

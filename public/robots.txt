@@ -20,6 +20,10 @@ Allow: /*.webp$
 # Crawl-delay for polite crawling
 Crawl-delay: 1
 
-# Sitemap locations
+# Sitemap locations (multilingual)
+# sitemap-index.xml enumerates one per-language sitemap (en, fr, es, de, it, ja,
+# ko, pt-BR, ar, zh-CN, zh-TW, hi, ru, pl, id, fil, vi, th, tr) — the explicit
+# multilingual declaration consumed by Baidu / Naver / Yandex / Bing.
+Sitemap: https://discord-decoration.art/sitemap-index.xml
 Sitemap: https://discord-decoration.art/sitemap.xml
 Sitemap: https://discord-decoration.art/sitemap-images.xml
