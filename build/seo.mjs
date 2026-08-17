@@ -294,7 +294,7 @@ function replaceAppBody(shell, newBody) {
  */
 function setLocation(path) {
   const u = new URL(path, "http://localhost");
-  globalThis.location = {
+  const loc = {
     href: u.href,
     origin: u.origin,
     protocol: u.protocol,
@@ -309,6 +309,13 @@ function setLocation(path) {
     reload: () => {},
     toString: () => u.href,
   };
+  // Some sandboxes expose a read-only global `location`; fall back to
+  // redefining it so the assignment always takes effect.
+  try {
+    globalThis.location = loc;
+  } catch {
+    Object.defineProperty(globalThis, "location", { value: loc, configurable: true, writable: true });
+  }
   return globalThis.location;
 }
 
