@@ -16,7 +16,6 @@
  * Usage:  node build/seo.mjs   (invoked automatically by `npm run build`)
  */
 import { createServer } from "vite";
-import { locationStub } from "preact-iso/prerender";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -282,6 +281,37 @@ function replaceAppBody(shell, newBody) {
   return shell.slice(0, appOpenEnd) + newBody + shell.slice(closeMarker);
 }
 
+/**
+ * Robustly stub `globalThis.location` for SSR prerendering.
+ *
+ * preact-iso's built-in `locationStub` copies URL properties via
+ * `for (const i in new URL(...))`. In some build sandboxes (e.g. Cloudflare
+ * Pages) the URL prototype properties are NOT enumerable, so that loop yields
+ * nothing and `location.pathname` stays `undefined` → the router matches the
+ * `default` (NotFound) route for every non-EN page, producing a 404 body while
+ * the <head> (set independently) stays correct. We set every property the
+ * router reads explicitly so the behavior is identical across runtimes.
+ */
+function setLocation(path) {
+  const u = new URL(path, "http://localhost");
+  globalThis.location = {
+    href: u.href,
+    origin: u.origin,
+    protocol: u.protocol,
+    host: u.host,
+    hostname: u.hostname,
+    port: u.port,
+    pathname: u.pathname,
+    search: u.search,
+    hash: u.hash,
+    assign: () => {},
+    replace: () => {},
+    reload: () => {},
+    toString: () => u.href,
+  };
+  return globalThis.location;
+}
+
 const routeFilePath = (route) => route === "/" ? path.join(DIST, "index.html") : path.join(DIST, ...route.split("/"), "index.html");
 const langRouteFilePath = (lang, route) => route === "/" ? path.join(DIST, lang, "index.html") : path.join(DIST, lang, ...route.split("/"), "index.html");
 
@@ -311,9 +341,16 @@ async function main() {
       let ok = 0, fail = 0;
       for (const route of TRANSLATED_ROUTES) {
         try {
-          locationStub(route);
+          setLocation(route);
           const out = await mod.prerender({});
           const bodyHtml = (out && out.html ? out.html : "").replace('<script type="isodata"></script>', "");
+          // Self-check: a correctly prerendered page must contain real content,
+          // not the 404 fallback. Without this, a broken `location` stub produces
+          // a 404 body that the build "succeeds" (0 exceptions) but Google flags
+          // as a soft 404. Throwing here surfaces the problem in the build log.
+          if (!bodyHtml || /Page not found|Not Found/i.test(bodyHtml)) {
+            throw new Error("prerender returned 404/empty body (location stub likely failed)");
+          }
           let shell = fs.readFileSync(routeFilePath(route), "utf8");
           shell = replaceAppBody(shell, bodyHtml);
           const seo = resolveSeo(route, lang);
