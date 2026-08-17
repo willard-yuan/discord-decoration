@@ -245,7 +245,8 @@ function rewriteHead(shell, { seo, lang, route, canonicalUrl }) {
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(seo.title)}</title>`);
   // core meta
   html = upsertMeta(html, 'name="description"', `<meta name="description" content="${esc(seo.description)}">`);
-  html = upsertMeta(html, 'name="robots"', `<meta name="robots" content="index, follow">`);
+  const is404 = route === "/404";
+  html = upsertMeta(html, 'name="robots"', `<meta name="robots" content="${is404 ? "noindex, nofollow" : "index, follow"}">`);
   // OG
   html = upsertMeta(html, 'property="og:title"', `<meta property="og:title" content="${esc(seo.title)}">`);
   html = upsertMeta(html, 'property="og:description"', `<meta property="og:description" content="${esc(seo.description)}">`);

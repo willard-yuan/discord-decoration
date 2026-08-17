@@ -1,2 +1,12 @@
 /*
   # No COEP headers to allow Google Ads
+
+# Verification files should never be indexed (avoid soft-404 reports)
+/google4d75ea4aee2ce066.html
+  X-Robots-Tag: noindex
+/naver8306be30da0a0cac9f5400d9ec58f53f.html
+  X-Robots-Tag: noindex
+/yandex_d5f9aa8a6a0d03ba.html
+  X-Robots-Tag: noindex
+/.well-known/discord
+  X-Robots-Tag: noindex
