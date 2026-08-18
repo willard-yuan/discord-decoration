@@ -1,10 +1,23 @@
 import { useState, useEffect, useRef } from "preact/hooks";
 import { useI18n } from "@/i18n/index.jsx";
+import { DEFAULT_LANG } from "@/i18n/languages.js";
 
 const LanguageSelector = () => {
   const { lang, setLang, languages, t } = useI18n();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+
+  // Navigate to the locale-prefixed URL so the address bar and the rendered
+  // route stay in sync with the chosen language (e.g. / -> /ja/).
+  const go = (code) => {
+    const path = code === DEFAULT_LANG ? "/" : "/" + code + "/";
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", path);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+    setLang(code);
+    setOpen(false);
+  };
 
   const current = languages.find((l) => l.code === lang) || languages[0];
 
@@ -59,8 +72,7 @@ const LanguageSelector = () => {
                 disabled={disabled}
                 onClick={() => {
                   if (disabled) return;
-                  setLang(l.code);
-                  setOpen(false);
+                  go(l.code);
                 }}
                 className={`flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm transition-colors ${
                   disabled
