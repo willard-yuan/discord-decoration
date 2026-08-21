@@ -94,7 +94,14 @@ export function LangDetectBanner() {
   return (
     <div
       role="status"
-      className="bg-[#8bc34a] text-white text-sm px-4 py-2.5 shadow-sm"
+      // On-brand Blurple gradient built from existing theme tokens
+      // (--color-primary → --color-button-primary-hover), so it auto-adapts to
+      // light/dark and never introduces a new hue that clashes with the site.
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, var(--color-primary), var(--color-button-primary-hover))",
+      }}
+      className="text-white text-sm px-4 py-2.5 shadow-sm"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <span className="font-medium">
@@ -104,7 +111,8 @@ export function LangDetectBanner() {
           <button
             type="button"
             onClick={switchLanguage}
-            className="bg-white text-[#689f38] hover:bg-gray-50 font-semibold text-sm px-3 py-1.5 rounded-md transition-colors"
+            style={{ color: "var(--color-button-primary-hover)" }}
+            className="bg-white hover:bg-[#f2f3f5] font-semibold text-sm px-3 py-1.5 rounded-md transition-colors"
           >
             {tr("banner.switch", { lang: suggested.native })}
           </button>
