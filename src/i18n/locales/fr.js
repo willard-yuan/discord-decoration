@@ -668,5 +668,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Langue du navigateur détectée : {lang}. Changer ?",
+  "banner.switch": "Passer à {lang}",
+  "banner.dismiss": "Fermer",
 };

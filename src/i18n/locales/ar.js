@@ -667,5 +667,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "تم اكتشاف لغة المتصفح: {lang}. هل تريد التبديل؟",
+  "banner.switch": "التبديل إلى {lang}",
+  "banner.dismiss": "إغلاق",
 };

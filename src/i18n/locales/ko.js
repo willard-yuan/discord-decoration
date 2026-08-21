@@ -667,5 +667,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "브라우저 언어 감지: {lang}. 전환하시겠습니까?",
+  "banner.switch": "{lang}로 전환",
+  "banner.dismiss": "닫기",
 };

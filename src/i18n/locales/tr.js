@@ -663,5 +663,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Tarayıcı dili algılandı: {lang}. Değiştirilsin mi?",
+  "banner.switch": "{lang}'ye geç",
+  "banner.dismiss": "Kapat",
 };

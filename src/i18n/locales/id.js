@@ -665,5 +665,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Bahasa browser terdeteksi: {lang}. Ganti?",
+  "banner.switch": "Beralih ke {lang}",
+  "banner.dismiss": "Tutup",
 };

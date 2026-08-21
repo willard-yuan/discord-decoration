@@ -663,5 +663,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "ब्राउज़र भाषा का पता चला: {lang}। क्या स्विच करें?",
+  "banner.switch": "{lang} पर स्विच करें",
+  "banner.dismiss": "बंद करें",
 };

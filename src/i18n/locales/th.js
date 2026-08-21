@@ -664,5 +664,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "ตรวจพบภาษาเบราว์เซอร์: {lang} ต้องการสลับหรือไม่?",
+  "banner.switch": "สลับเป็น {lang}",
+  "banner.dismiss": "ปิด",
 };

@@ -668,5 +668,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "ブラウザの言語を検出：{lang}。切り替えますか？",
+  "banner.switch": "{lang}に切り替え",
+  "banner.dismiss": "閉じる",
 };

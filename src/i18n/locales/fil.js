@@ -664,5 +664,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Nakita ang wika ng browser: {lang}. Lumipat?",
+  "banner.switch": "Lumipat sa {lang}",
+  "banner.dismiss": "Isara",
 };

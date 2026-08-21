@@ -21,7 +21,7 @@ import vi from "./locales/vi";
 import th from "./locales/th";
 import tr from "./locales/tr";
 
-const DICTS = {
+export const DICTS = {
   en,
   "pt-BR": ptBR,
   fr,

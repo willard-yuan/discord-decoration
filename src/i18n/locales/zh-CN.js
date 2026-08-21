@@ -665,5 +665,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "检测到浏览器语言是：{lang}，是否切换？",
+  "banner.switch": "切换到 {lang}",
+  "banner.dismiss": "关闭",
 };

@@ -665,5 +665,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Обнаружен язык браузера: {lang}. Переключить?",
+  "banner.switch": "Переключить на {lang}",
+  "banner.dismiss": "Закрыть",
 };

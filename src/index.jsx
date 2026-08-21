@@ -32,6 +32,7 @@ const Changelog = lazy(() => import("@/pages/changelog/page.jsx"));
 import { NotFound } from "@/pages/_404.jsx";
 import { I18nProvider, useI18n } from "@/i18n/index.jsx";
 import { LANGUAGES, DEFAULT_LANG } from "@/i18n/languages.js";
+import { LangDetectBanner } from "@/components/LangDetectBanner.jsx";
 
 import "@/global.css";
 
@@ -133,6 +134,7 @@ export function App() {
 
   return (
     <I18nProvider>
+      <LangDetectBanner />
       <LocationProvider>
         <div className="bg-base-lower w-screen overflow-x-hidden">
           <Router>{allRoutes}</Router>

@@ -665,5 +665,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Wykryto język przeglądarki: {lang}. Przełączyć?",
+  "banner.switch": "Przełącz na {lang}",
+  "banner.dismiss": "Zamknij",
 };

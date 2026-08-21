@@ -665,5 +665,9 @@ export default {
         ]}
       ]
     }
-  ]
+  ],
+  // ---- Language detection banner ----
+  "banner.detected": "Đã phát hiện ngôn ngữ trình duyệt: {lang}. Có chuyển không?",
+  "banner.switch": "Chuyển sang {lang}",
+  "banner.dismiss": "Đóng",
 };
