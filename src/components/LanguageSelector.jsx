@@ -34,14 +34,13 @@ const LanguageSelector = () => {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+        className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors shrink-0"
         aria-label={t("nav.language")}
         aria-haspopup="true"
         aria-expanded={open}
         title={t("nav.language")}
       >
         <span className="text-lg leading-none">{current.flag}</span>
-        <span className="hidden sm:inline">{current.native}</span>
         <svg
           className={`w-3 h-3 transition-transform duration-200 ${
             open ? "rotate-180" : ""

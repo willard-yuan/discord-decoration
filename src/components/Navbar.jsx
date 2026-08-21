@@ -23,7 +23,7 @@ const Navbar = () => {
                 <h2 className="text-lg font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-100 to-white/90 group-hover:to-white transition-all duration-300 ginto">
                   Discord Decorations
                 </h2>
-                <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 shadow-sm backdrop-blur-sm">
+                <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 shadow-sm backdrop-blur-sm whitespace-nowrap">
                   {t("nav.free")}
                 </span>
               </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
               <a
                 key={link.key}
                 href={link.href}
-                className="relative px-3.5 py-1.5 rounded-lg text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:bg-white/5 group"
+                className="relative px-3.5 py-1.5 rounded-lg text-sm font-medium text-white/70 hover:text-white transition-all duration-200 hover:bg-white/5 group whitespace-nowrap shrink-0"
               >
                 {t(link.key)}
               </a>
