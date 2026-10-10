@@ -22,6 +22,18 @@
   --color-surface-higher: hsl(240, 5.691%, 24.118%);
   --color-surface-highest: hsl(240, 5.263%, 26.078%);
 
+  /* 补全被引用但未定义的 surface 派生层级（与现有色阶一致，避免卡片/按钮渲染为透明） */
+  --color-surface-primary: hsl(240, 5.263%, 7.451%);   /* = surface-overlay，作页面基底 */
+  --color-surface-secondary: hsl(240, 5.263%, 22.353%); /* = surface-high，作抬升卡片 */
+  --color-surface-tertiary: hsl(240, 5.263%, 26.078%);  /* = surface-highest，作更高抬升/悬停 */
+
+  /* 品牌强调色（之前缺失，导致 faq / avatar CTA 按钮与文字透明） */
+  --color-accent-primary: hsl(234.935, 85.556%, 64.706%);   /* = primary 靛蓝 */
+  --color-accent-secondary: hsl(233.445, 47.791%, 51.176%); /* = button-primary-hover */
+
+  /* 更亮的基底（faq 卡片用，之前缺失） */
+  --color-base-upper: hsl(240, 5.263%, 22.353%);
+
   --color-border-normal: hsla(240, 4%, 60.784%, 0.2);
   --color-border-light: hsla(240, 4%, 60.784%, 0.1);
   --color-border-faint: hsla(240, 4%, 60.784%, 0.0392156862745098);

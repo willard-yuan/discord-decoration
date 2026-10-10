@@ -705,23 +705,6 @@ const DiscordAvatarDecoration = () => {
               <Icons.image />
               {t('deco.extractStill')}
             </NeutralButton>
-            <a
-              href="https://www.buymeacoffee.com/yong1024"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 w-72 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
-              style={{
-                backgroundColor: '#FFDD00',
-                color: '#000000',
-                border: '1px solid #000000',
-                fontFamily: 'Cookie, cursive',
-                fontSize: '18px',
-                fontWeight: 'normal'
-              }}
-            >
-              <span className="mr-2" style={{ fontSize: '16px' }}>☕</span>
-              {t('buyCoffee')}
-            </a>
             {copied && (
               <span className="text-green-400 text-xs">{t('deco.copied')}</span>
             )}

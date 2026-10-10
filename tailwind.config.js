@@ -24,6 +24,16 @@ export default {
         'surface-high': 'var(--color-surface-high)',
         'surface-higher': 'var(--color-surface-higher)',
         'surface-highest': 'var(--color-surface-highest)',
+        'surface-primary': 'var(--color-surface-primary)',
+        'surface-secondary': 'var(--color-surface-secondary)',
+        'surface-tertiary': 'var(--color-surface-tertiary)',
+
+        // Accent colors
+        'accent-primary': 'var(--color-accent-primary)',
+        'accent-secondary': 'var(--color-accent-secondary)',
+
+        // Base colors (extended)
+        'base-upper': 'var(--color-base-upper)',
         
         // Border colors
         'border-normal': 'var(--color-border-normal)',
