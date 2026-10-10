@@ -326,6 +326,22 @@ export default {
   "changelog.comingSoonDesc": "Kami ay palaging nagtatrabaho sa mga new features at improvements. Manatiling nakatutok para sa mas maraming exciting updates!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "Oktubre 10, 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 May Kulay na Teksto", "items": [
+          "Idinagdag ang Discord Colored Text Generator: i-type ang mensahe, piliin ang mga salitang kokulayan, pumili ng ANSI na kulay o estilo, at kopyahin ang code block na direktang maipapaste",
+          "Idinagdag ang reference ng Discord ANSI Color Codes: lahat ng 8 code para sa teksto at background, bold, italic, underline, strikethrough, 24-bit truecolor, at mga halimbawang puwedeng kopyahin",
+          "Idinagdag ang gabay na Paano Gumawa ng Kulay na Teksto sa Discord: desktop, web at mobile, rainbow gradient, highlight sa background, at troubleshooting"
+        ]},
+        { "category": "🐛 Mga Pag-aayos", "items": [
+          "Hindi na nagpapakita ng breadcrumb ng tool ang mga blog article kapag ang URL ng artikulo ay kapareho ng pangalan ng isa sa aming mga tool"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "Agosto 6, 2026",
       "iso": "2026-08-06",

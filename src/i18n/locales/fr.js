@@ -328,6 +328,22 @@ export default {
   "changelog.comingSoonDesc": "Nous travaillons constamment sur de nouvelles fonctionnalités et améliorations. Restez à l'écoute pour de prochaines nouveautés !",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "10 octobre 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Texte coloré", "items": [
+          "Ajout du Générateur de texte coloré pour Discord : saisissez votre message, sélectionnez les mots à colorer, choisissez des couleurs ou des styles ANSI, puis copiez un bloc de code prêt à coller",
+          "Ajout de la référence des codes couleur ANSI de Discord : les 8 codes de texte et de fond, gras, italique, souligné, barré, truecolor 24 bits et des exemples prêts à copier-coller",
+          "Ajout du guide Comment créer du texte coloré sur Discord : ordinateur, web et mobile, dégradés arc-en-ciel, surlignages et dépannage"
+        ]},
+        { "category": "🐛 Corrections", "items": [
+          "Les articles du blog n’affichent plus le fil d’Ariane d’un outil lorsque l’URL de l’article porte le même nom que l’un de nos outils"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "6 août 2026",
       "iso": "2026-08-06",

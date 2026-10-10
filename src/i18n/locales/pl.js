@@ -326,6 +326,22 @@ export default {
   "changelog.comingSoonDesc": "Stale pracujemy nad nowymi funkcjami i ulepszeniami. Bądź na bieżąco!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "10 października 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Kolorowy tekst", "items": [
+          "Dodano generator kolorowego tekstu dla Discorda: wpisz wiadomość, zaznacz słowa do pokolorowania, wybierz kolory lub style ANSI i skopiuj gotowy do wklejenia blok kodu",
+          "Dodano ściągę z kodami kolorów ANSI w Discordzie: wszystkie 8 kodów tekstu i tła, pogrubienie, kursywa, podkreślenie, przekreślenie, 24-bitowy truecolor i przykłady do skopiowania",
+          "Dodano poradnik „Jak zrobić kolorowy tekst na Discordzie”: komputer, przeglądarka i telefon, gradienty tęczy, wyróżnienia tła i rozwiązywanie problemów"
+        ]},
+        { "category": "🐛 Poprawki", "items": [
+          "Wpisy na blogu nie pokazują już okruszków narzędzia, gdy adres URL artykułu pokrywa się z nazwą jednego z naszych narzędzi"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "6 sierpnia 2026",
       "iso": "2026-08-06",

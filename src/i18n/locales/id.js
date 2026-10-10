@@ -326,6 +326,22 @@ export default {
   "changelog.comingSoonDesc": "Kami terus mengerjakan fitur dan peningkatan baru. Nantikan pembaruan menarik lainnya!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "10 Oktober 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Teks Berwarna", "items": [
+          "Menambahkan Generator Teks Berwarna Discord: tulis pesan Anda, pilih kata yang ingin diwarnai, pilih warna atau gaya ANSI, lalu salin blok kode yang siap ditempel",
+          "Menambahkan referensi Kode Warna ANSI Discord: 8 kode teks dan latar belakang, tebal, miring, garis bawah, coret, truecolor 24-bit, serta contoh siap salin-tempel",
+          "Menambahkan panduan Cara Membuat Teks Berwarna di Discord: desktop, web, dan seluler, gradien pelangi, sorotan latar belakang, dan pemecahan masalah"
+        ]},
+        { "category": "🐛 Perbaikan", "items": [
+          "Artikel blog tidak lagi menampilkan remah roti alat ketika URL artikel sama dengan nama salah satu alat kami"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "6 Agustus 2026",
       "iso": "2026-08-06",

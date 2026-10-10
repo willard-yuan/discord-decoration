@@ -326,6 +326,22 @@ export default {
   "changelog.comingSoonDesc": "Sürekli olarak yeni özellikler ve iyileştirmeler üzerinde çalışıyoruz. Daha heyecan verici güncellemeler için bizi takip edin!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "10 Ekim 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Renkli metin", "items": [
+          "Discord Renkli Metin Oluşturucu eklendi: mesajınızı yazın, renklendirmek istediğiniz kelimeleri seçin, ANSI renk veya stilini seçin ve yapıştırmaya hazır kod bloğunu kopyalayın",
+          "Discord ANSI Renk Kodları referansı eklendi: 8 metin ve arka plan kodu, kalın, italik, altı çizili, üstü çizili, 24 bit truecolor ve kopyalanabilir örnekler",
+          "Discord’da Renkli Metin Nasıl Yapılır rehberi eklendi: masaüstü, web ve mobil, gökkuşağı geçişleri, arka plan vurguları ve sorun giderme"
+        ]},
+        { "category": "🐛 Düzeltmeler", "items": [
+          "Makale URL’si araçlarımızdan biriyle aynı adı taşıdığında blog yazıları artık aracın breadcrumb’ını göstermiyor"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "6 Ağustos 2026",
       "iso": "2026-08-06",

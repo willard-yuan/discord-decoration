@@ -332,6 +332,22 @@ export default {
   "changelog.comingSoonDesc": "We're constantly working on new features and improvements. Stay tuned for more exciting updates!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "October 10th, 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Colored Text", "items": [
+          "Added the Discord Colored Text Generator: type your message, select the words you want to color, pick ANSI colors or styles, then copy one ready-to-paste code block",
+          "Added the Discord ANSI Color Codes reference with all 8 text and background codes, bold, italic, underline, strikethrough, 24-bit truecolor and copy-and-paste examples",
+          "Added the guide How to Make Colored Text in Discord, covering desktop, web and mobile, rainbow gradients, background highlights and troubleshooting"
+        ]},
+        { "category": "🐛 Fixes", "items": [
+          "Blog articles no longer show a tool breadcrumb when the article URL shares a name with one of our tools"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "August 6th, 2026",
       "iso": "2026-08-06",

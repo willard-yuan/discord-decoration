@@ -326,6 +326,22 @@ export default {
   "changelog.comingSoonDesc": "Chúng tôi liên tục làm việc trên các tính năng và cải tiến mới. Hãy theo dõi để nhận thêm các bản cập nhật thú vị!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "10 Tháng Mười, 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Văn bản màu", "items": [
+          "Đã thêm Trình tạo văn bản màu cho Discord: nhập tin nhắn, chọn những từ muốn tô màu, chọn màu hoặc kiểu ANSI rồi sao chép khối mã dán được ngay",
+          "Đã thêm bảng tra cứu mã màu ANSI của Discord: đủ 8 mã màu chữ và màu nền, in đậm, in nghiêng, gạch chân, gạch ngang, truecolor 24-bit và ví dụ sao chép sẵn",
+          "Đã thêm hướng dẫn Cách tạo văn bản màu trong Discord: máy tính, web và di động, dải màu cầu vồng, làm nổi bật nền và xử lý sự cố"
+        ]},
+        { "category": "🐛 Sửa lỗi", "items": [
+          "Bài viết trên blog không còn hiển thị breadcrumb của công cụ khi URL bài viết trùng tên với một trong các công cụ của chúng tôi"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "6 Tháng Tám, 2026",
       "iso": "2026-08-06",

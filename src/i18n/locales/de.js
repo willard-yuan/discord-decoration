@@ -328,6 +328,22 @@ export default {
   "changelog.comingSoonDesc": "Wir arbeiten ständig an neuen Funktionen und Verbesserungen. Bleib dran für weitere spannende Updates!",
   "changelog.versions": [
     {
+      "version": "1.2.2",
+      "date": "10. Oktober 2026",
+      "iso": "2026-10-10",
+      "type": "minor",
+      "changes": [
+        { "category": "🌈 Farbiger Text", "items": [
+          "Neuer Discord-Generator für farbigen Text: Nachricht eingeben, Wörter zum Einfärben markieren, ANSI-Farben oder -Stile wählen und einen fertigen Codeblock zum Einfügen kopieren",
+          "Neue Referenz der Discord-ANSI-Farbcodes: alle 8 Text- und Hintergrundfarben, Fett, Kursiv, Unterstrichen, Durchgestrichen, 24-Bit-Truecolor und Beispiele zum Kopieren",
+          "Neue Anleitung „Farbigen Text in Discord erstellen“: Desktop, Web und Mobil, Regenbogen-Verläufe, Hintergrund-Hervorhebungen und Fehlerbehebung"
+        ]},
+        { "category": "🐛 Fehlerbehebungen", "items": [
+          "Blog-Beiträge zeigen nicht mehr die Breadcrumb einer Tool-Seite, wenn die Artikel-URL denselben Namen wie eines unserer Tools trägt"
+        ]}
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "6. August 2026",
       "iso": "2026-08-06",

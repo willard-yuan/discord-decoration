@@ -395,10 +395,13 @@ async function main() {
   // build tells crawlers that ~130 unchanged pages were modified, which wastes
   // crawl budget and erodes trust in the sitemap signal.
   //
-  // Add a route here only when its content genuinely changed and you want
-  // crawlers to re-fetch it (otherwise leave the set empty).
-  const FORCE_LASTMOD = new Set([
-    // e.g. "/discord_front": "2026-10-10",
+  // Explicit lastmod overrides for pages whose content changed in a release.
+  // Key is either "route" (all languages) or "lang:route" (one language) —
+  // use the latter for translated routes when only one locale changed, so the
+  // other locales keep their published date. Drop an entry once crawlers have
+  // re-fetched the page, otherwise its lastmod stays pinned to that date.
+  const FORCE_LASTMOD = new Map([
+    ["/changelog", "2026-10-10"], // 1.2.2 entry added to all 19 locales
   ]);
 
   /** Read loc → lastmod out of an already-published sitemap in public/. */
@@ -433,7 +436,8 @@ async function main() {
     const xd = `    <xhtml:link rel="alternate" hreflang="x-default" href="${langUrl("en", route)}"/>`;
     const meta = SITEMAP_META[route] || { changefreq: "monthly", priority: "0.5" };
     // New URLs (absent from the published sitemap) fall back to today.
-    const lastmod = FORCE_LASTMOD.has(route) ? today : prevMap.get(loc) || today;
+    const lastmod =
+      FORCE_LASTMOD.get(route) || FORCE_LASTMOD.get(`${lang}:${route}`) || prevMap.get(loc) || today;
     return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${meta.changefreq}</changefreq>\n    <priority>${meta.priority}</priority>\n${alts}\n${xd}\n  </url>`;
   }
 
