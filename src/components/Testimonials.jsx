@@ -21,12 +21,38 @@ const Testimonials = () => {
         {/* 主背景渐变 */}
         <div className="absolute inset-0 bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher" />
         
-        {/* 动态光效层 */}
+        {/* 动态光效层（环境光统一放在上半区，下半区留给与 Footer 的衔接光晕） */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* 主要动态光源 */}
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-radial from-primary/8 via-primary/4 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0s', animationDuration: '8s' }} />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-radial from-purple-500/6 via-purple-500/3 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '10s' }} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-radial from-pink-500/4 via-pink-500/2 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }} />
+          {/* 主要动态光源 - 右上 */}
+          <div
+            className="absolute -top-40 -right-40 w-[26rem] h-[26rem] rounded-full animate-pulse"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(88,101,242,0.10) 0%, rgba(88,101,242,0.045) 38%, rgba(88,101,242,0) 72%)",
+              animationDelay: "0s",
+              animationDuration: "8s",
+            }}
+          />
+          {/* 次要光源 - 左上 */}
+          <div
+            className="absolute -top-32 -left-40 w-[24rem] h-[24rem] rounded-full animate-pulse"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(168,85,247,0.08) 0%, rgba(168,85,247,0.035) 38%, rgba(168,85,247,0) 72%)",
+              animationDelay: "4s",
+              animationDuration: "10s",
+            }}
+          />
+          {/* 中心柔光 - 托住标题与卡片 */}
+          <div
+            className="absolute top-24 left-1/2 -translate-x-1/2 w-[30rem] h-[22rem] rounded-full animate-pulse"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(236,72,153,0.055) 0%, rgba(236,72,153,0.022) 42%, rgba(236,72,153,0) 74%)",
+              animationDelay: "2s",
+              animationDuration: "12s",
+            }}
+          />
         </div>
         
         {/* 网格背景 */}
@@ -43,6 +69,18 @@ const Testimonials = () => {
       
       {/* 顶部渐变遮罩 */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface-overlay/95 via-surface-overlay/80 to-transparent z-[2]" />
+
+      {/* 底部色调收拢层 - 把下边缘统一成 surface-high，与 Footer 顶边取同一个色值，消除硬边 */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-surface-high/70 to-surface-high z-[1] pointer-events-none" />
+
+      {/* 衔接光晕（上半）- 与 Footer 顶部的光晕拼合为一整个椭圆光晕，让两段在此处"相遇" */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-80 z-[2] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 56% 100% at 50% 100%, rgba(88,101,242,0.16) 0%, rgba(139,92,246,0.09) 26%, rgba(88,101,242,0.025) 52%, rgba(88,101,242,0) 100%)",
+        }}
+      />
 
 
       

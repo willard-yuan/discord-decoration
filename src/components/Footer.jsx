@@ -38,11 +38,17 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher overflow-hidden">
-      {/* 顶部渐变过渡区域 - 连接Testimonials */}
-      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-surface-overlay via-surface-overlay/95 via-surface-overlay/80 via-surface-overlay/60 to-transparent z-[1]" />
-      
-      {/* 额外的平滑过渡层 */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface-overlay/98 via-surface-overlay/70 to-transparent z-[2]" />
+      {/* 顶部色调衔接层 - 从 surface-high 起手，与 Testimonials 底边同色；不再用深色压边遮盖 */}
+      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-surface-high via-surface-high/70 to-transparent z-[1] pointer-events-none" />
+
+      {/* 衔接光晕（下半）- Testimonials 底部光晕的镜像，两者拼合成完整光晕 */}
+      <div
+        className="absolute top-0 left-0 right-0 h-80 z-[2] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 56% 100% at 50% 0%, rgba(88,101,242,0.16) 0%, rgba(139,92,246,0.09) 26%, rgba(88,101,242,0.025) 52%, rgba(88,101,242,0) 100%)",
+        }}
+      />
       
       {/* 顶部动态光效 - 增强过渡效果 */}
       <div className="absolute top-0 left-0 right-0 h-40 z-[0] opacity-25">
@@ -85,10 +91,10 @@ const Footer = () => {
             {t("footer.seoDesc")}
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-4 text-sm text-text-muted">
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag1")}</span>
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag2")}</span>
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag3")}</span>
-            <span className="px-3 py-1 bg-surface-secondary rounded-full">{t("footer.tag4")}</span>
+            <span className="px-3 py-1 rounded-full bg-surface-highest/50 border border-border-light">{t("footer.tag1")}</span>
+            <span className="px-3 py-1 rounded-full bg-surface-highest/50 border border-border-light">{t("footer.tag2")}</span>
+            <span className="px-3 py-1 rounded-full bg-surface-highest/50 border border-border-light">{t("footer.tag3")}</span>
+            <span className="px-3 py-1 rounded-full bg-surface-highest/50 border border-border-light">{t("footer.tag4")}</span>
           </div>
         </div>
 
