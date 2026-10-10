@@ -9,7 +9,15 @@ const Breadcrumb = ({ title }) => {
   const getBreadcrumbItems = () => {
     const items = [{ nameKey: 'breadcrumb.home', path: '/', keywords: 'discord decoration home' }];
     
-    if (pathname.includes('/discord_avatar_decoration')) {
+    // Blog first: /blog/discord-colored-text would otherwise match the tool branch.
+    if (pathname.startsWith('/blog')) {
+      items.push({ nameKey: 'breadcrumb.blog', path: '/blog/', keywords: 'discord decoration blog article' });
+
+      // If we have a title prop and we're in a blog detail page, add it as the final breadcrumb
+      if (title && pathname !== '/blog' && pathname !== '/blog/') {
+        items.push({ name: title, path: pathname, keywords: 'blog article' });
+      }
+    } else if (pathname.includes('/discord_avatar_decoration')) {
       items.push({ nameKey: 'breadcrumb.avatarDecorations', path: '/discord_avatar_decoration/', keywords: 'discord avatar decorations gallery' });
     } else if (pathname.includes('/discord_avatar')) {
       items.push({ nameKey: 'breadcrumb.avatarGallery', path: '/discord_avatar/', keywords: 'discord avatar gallery' });
@@ -19,13 +27,10 @@ const Breadcrumb = ({ title }) => {
       items.push({ nameKey: 'breadcrumb.otherTools', path: '/other-tools/', keywords: 'discover other tools' });
     } else if (pathname.includes('/gif-extractor')) {
       items.push({ nameKey: 'breadcrumb.gifExtractor', path: '/gif-extractor/', keywords: 'discord gif extractor' });
-    } else if (pathname.includes('/blog')) {
-      items.push({ nameKey: 'breadcrumb.blog', path: '/blog/', keywords: 'discord decoration blog article' });
-      
-      // If we have a title prop and we're in a blog detail page, add it as the final breadcrumb
-      if (title && pathname !== '/blog' && pathname !== '/blog/') {
-        items.push({ name: title, path: pathname, keywords: 'blog article' });
-      }
+    } else if (pathname.startsWith('/discord-colored-text')) {
+      items.push({ nameKey: 'breadcrumb.coloredText', path: '/discord-colored-text/', keywords: 'discord colored text generator' });
+    } else if (pathname.startsWith('/discord-ansi-color-codes')) {
+      items.push({ nameKey: 'breadcrumb.ansiCodes', path: '/discord-ansi-color-codes/', keywords: 'discord ansi color codes reference' });
     } else if (pathname.includes('/discuss')) {
       items.push({ nameKey: 'breadcrumb.discussion', path: '/discuss/', keywords: 'discord decoration discussion' });
     } else if (pathname.includes('/faq')) {

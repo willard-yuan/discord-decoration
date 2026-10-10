@@ -414,6 +414,32 @@ const DiscordFonts = () => {
         </div>
       </div>
       
+      {/* Related tools - cross-link into the colored-text cluster */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="rounded-2xl border border-border-faint bg-surface-overlay/50 p-8 text-center">
+          <h2 className="text-2xl font-bold text-text-primary mb-3">
+            {t('fonts.related.title')}
+          </h2>
+          <p className="text-text-secondary max-w-2xl mx-auto mb-6">
+            {t('fonts.related.desc')}
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href="/discord-colored-text"
+              className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all"
+            >
+              {t('fonts.related.cta')}
+            </a>
+            <a
+              href="/discord-ansi-color-codes"
+              className="bg-surface-higher border border-border-faint text-text-primary px-6 py-3 rounded-lg font-semibold hover:bg-surface-highest transition-all"
+            >
+              {t('fonts.related.codes')}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </>
   );

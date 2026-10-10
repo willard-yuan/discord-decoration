@@ -106,6 +106,9 @@ const EN_ONLY_SEO = {
   "/discuss": { title: "Community Discussion - Discord Avatar Decorations", desc: "Join our community discussion about Discord avatar decorations, share your creations, get help, and connect with other Discord users." },
   "/gif-extractor": { title: "Free GIF Frame Extractor - Discord Decoration", desc: "Free online GIF frame extractor tool. Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars, profile pictures, and image editing projects." },
   "/other-tools": { title: "Other Free Discord Tools - Discord Decoration", desc: "Discover our suite of free tools including discord fonts generator, GIF frame extractor and others you may also like." },
+  "/discord-colored-text": { title: "Free Discord Colored Text Generator - ANSI Codes, Copy & Paste", desc: "Free Discord colored text generator. Pick ANSI colors, add bold or underline, then copy and paste a ready code block into Discord. Desktop and mobile, no Nitro." },
+  "/discord-ansi-color-codes": { title: "Discord ANSI Color Codes - Full Reference Table (Copy & Paste)", desc: "Discord ANSI color codes reference: all 8 text and background codes, bold, italic, underline, strikethrough, 24-bit truecolor and copy-and-paste examples." },
+  "/blog/discord-colored-text": { title: "How to Make Colored Text in Discord (Copy and Paste)", desc: "Learn how to make colored text in Discord with ANSI codes. Step-by-step guide for desktop and mobile, plus rainbow text and a free copy-and-paste generator." },
   "/discord-profile-tips": { title: "Discord Profile Tips - Discord Decoration", desc: "Discover expert tips and tricks to enhance your Discord profile with custom avatar decorations. Learn how to stand out and express your personality on Discord." },
   "/blog": { title: "Blog - Discord Decoration", desc: "Discover the latest tips and guides for Discord customization. Learn how to get free avatar decorations and custom fonts for your Discord profile." },
   "/blog/discord-font": { title: "Custom Discord Fonts Guide - Discord Decoration", desc: "Learn how to get custom Discord fonts and transform your messages with stylish text. Discover the best Discord font generators, Unicode text styles, and formatting tricks to make your Discord messages stand out." },
@@ -117,9 +120,10 @@ const EN_ONLY_SEO = {
 // All routes for the sitemap (mirrors the existing sitemap.xml).
 const ALL_ROUTES = [
   "/", "/discord_avatar", "/discord_avatar_decoration", "/discord_front",
-  "/gif-extractor", "/other-tools", "/how-to-use", "/blog",
+  "/gif-extractor", "/discord-colored-text", "/discord-ansi-color-codes", "/other-tools", "/how-to-use", "/blog",
   "/blog/discord-avatar-decorations", "/blog/discord-font",
   "/blog/how-to-split-gif-into-frames", "/blog/new-free-discord-avatar-decorations",
+  "/blog/discord-colored-text",
   "/changelog", "/discord-profile-tips", "/faq", "/discuss",
   "/about-us", "/cookies-policy", "/contact-support",
   "/terms-of-service", "/privacy-policy", "/404",
@@ -131,11 +135,14 @@ const SITEMAP_META = {
   "/discord_avatar_decoration": { changefreq: "monthly", priority: "0.9" },
   "/discord_front": { changefreq: "monthly", priority: "0.9" },
   "/gif-extractor": { changefreq: "monthly", priority: "0.8" },
+  "/discord-colored-text": { changefreq: "monthly", priority: "0.8" },
+  "/discord-ansi-color-codes": { changefreq: "monthly", priority: "0.8" },
   "/other-tools": { changefreq: "monthly", priority: "0.8" },
   "/blog": { changefreq: "monthly", priority: "0.8" },
   "/how-to-use": { changefreq: "monthly", priority: "0.7" },
   "/blog/discord-avatar-decorations": { changefreq: "monthly", priority: "0.7" },
   "/blog/discord-font": { changefreq: "monthly", priority: "0.7" },
+  "/blog/discord-colored-text": { changefreq: "monthly", priority: "0.7" },
   "/blog/how-to-split-gif-into-frames": { changefreq: "monthly", priority: "0.7" },
   "/blog/new-free-discord-avatar-decorations": { changefreq: "monthly", priority: "0.7" },
   "/changelog": { changefreq: "monthly", priority: "0.7" },
@@ -383,7 +390,40 @@ async function main() {
   const URLSET_OPEN = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
   const URLSET_CLOSE = `</urlset>`;
 
-  function urlBlock(lang, route) {
+  // lastmod is *incremental*: a URL keeps the date it already published with,
+  // and only brand-new URLs get today's date. Rewriting every lastmod on each
+  // build tells crawlers that ~130 unchanged pages were modified, which wastes
+  // crawl budget and erodes trust in the sitemap signal.
+  //
+  // Add a route here only when its content genuinely changed and you want
+  // crawlers to re-fetch it (otherwise leave the set empty).
+  const FORCE_LASTMOD = new Set([
+    // e.g. "/discord_front": "2026-10-10",
+  ]);
+
+  /** Read loc → lastmod out of an already-published sitemap in public/. */
+  const readLastmodMap = (rel) => {
+    const fp = path.join(ROOT, "public", rel);
+    if (!fs.existsSync(fp)) return new Map();
+    const xml = fs.readFileSync(fp, "utf8");
+    const map = new Map();
+    const re = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
+    let m;
+    while ((m = re.exec(xml))) map.set(m[1], m[2]);
+    return map;
+  };
+
+  const prevCombined = readLastmodMap("sitemap.xml");
+  const prevLang = {};
+  const prevLangRaw = {};
+  for (const l of LANGUAGES) {
+    prevLang[l.code] = readLastmodMap(`sitemap-${l.code}.xml`);
+    const fp = path.join(ROOT, "public", `sitemap-${l.code}.xml`);
+    prevLangRaw[l.code] = fs.existsSync(fp) ? fs.readFileSync(fp, "utf8") : null;
+  }
+  const prevIndex = readLastmodMap("sitemap-index.xml");
+
+  function urlBlock(lang, route, prevMap) {
     const loc = langUrl(lang, route);
     const isTranslated = TRANSLATED_ROUTES.includes(route);
     const altLangs = isTranslated ? LANGUAGES.map((l) => l.code) : ["en"];
@@ -392,7 +432,9 @@ async function main() {
       .join("\n");
     const xd = `    <xhtml:link rel="alternate" hreflang="x-default" href="${langUrl("en", route)}"/>`;
     const meta = SITEMAP_META[route] || { changefreq: "monthly", priority: "0.5" };
-    return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${meta.changefreq}</changefreq>\n    <priority>${meta.priority}</priority>\n${alts}\n${xd}\n  </url>`;
+    // New URLs (absent from the published sitemap) fall back to today.
+    const lastmod = FORCE_LASTMOD.has(route) ? today : prevMap.get(loc) || today;
+    return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${meta.changefreq}</changefreq>\n    <priority>${meta.priority}</priority>\n${alts}\n${xd}\n  </url>`;
   }
 
   const allUrls = [];
@@ -402,9 +444,8 @@ async function main() {
     if (route === "/404") continue; // 404 pages should not appear in sitemaps
     const langs = TRANSLATED_ROUTES.includes(route) ? LANGUAGES.map((l) => l.code) : ["en"];
     for (const lang of langs) {
-      const block = urlBlock(lang, route);
-      allUrls.push(block);
-      perLang[lang].push(block);
+      allUrls.push(urlBlock(lang, route, prevCombined));
+      perLang[lang].push(urlBlock(lang, route, prevLang[lang]));
     }
   }
 
@@ -420,15 +461,22 @@ async function main() {
   console.log(`[seo] sitemap.xml generated (${allUrls.length} URLs)`);
 
   // per-language sitemaps — explicit multilingual declaration for Baidu/Naver/Yandex
+  const langChanged = {};
   for (const l of LANGUAGES) {
     const langXml = `${URLSET_OPEN}\n${perLang[l.code].join("\n")}\n${URLSET_CLOSE}\n`;
+    langChanged[l.code] = prevLangRaw[l.code] !== langXml;
     writeSitemap(`sitemap-${l.code}.xml`, langXml);
   }
   console.log(`[seo] ${LANGUAGES.length} per-language sitemaps generated`);
 
-  // sitemap index referencing every per-language sitemap
+  // sitemap index referencing every per-language sitemap; a child sitemap's
+  // lastmod only moves when that sitemap actually changed.
   const indexEntries = LANGUAGES
-    .map((l) => `  <sitemap>\n    <loc>${SITE_URL}/sitemap-${l.code}.xml</loc>\n    <lastmod>${today}</lastmod>\n  </sitemap>`)
+    .map((l) => {
+      const loc = `${SITE_URL}/sitemap-${l.code}.xml`;
+      const lastmod = langChanged[l.code] ? today : prevIndex.get(loc) || today;
+      return `  <sitemap>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`;
+    })
     .join("\n");
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexEntries}\n</sitemapindex>\n`;
   writeSitemap("sitemap-index.xml", indexXml);

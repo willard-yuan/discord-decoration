@@ -105,6 +105,10 @@ export default {
   "footer.discordTools.decoGalleryDesc": "Explore avatar decorations",
   "footer.discordTools.fonts": "Discord Fonts Generator",
   "footer.discordTools.fontsDesc": "Generate stylish Discord fonts and text",
+  "footer.discordTools.coloredText": "Discord Colored Text Generator",
+  "footer.discordTools.coloredTextDesc": "Make colored Discord text with ANSI codes",
+  "footer.discordTools.ansiCodes": "Discord ANSI Color Codes",
+  "footer.discordTools.ansiCodesDesc": "Full ANSI code reference table",
   "footer.resources": "Resources",
   "footer.resources.faq": "FAQ",
   "footer.resources.faqDesc": "Frequently asked questions",
@@ -668,6 +672,162 @@ export default {
       ]
     }
   ],
+  // ---- Discord colored text generator ----
+  "fonts.related.title": "Want color instead of fancy letters?",
+  "fonts.related.desc":
+    "Discord has no colour picker, but it does render ANSI escape codes. Type your message, select the words to colour, then copy one ready-to-paste block - it sends in colour on desktop and mobile, with no Nitro.",
+  "fonts.related.cta": "Open the Colored Text Generator",
+  "fonts.related.codes": "Browse the ANSI color codes",
+  "breadcrumb.coloredText": "Colored Text",
+  "breadcrumb.ansiCodes": "ANSI Color Codes",
+  "coloredText.metaTitle": "Free Discord Colored Text Generator - ANSI Codes, Copy & Paste",
+  "coloredText.metaDesc":
+    "Free Discord colored text generator. Pick ANSI colors, add bold or underline, then copy and paste a ready code block into Discord. Desktop and mobile, no Nitro.",
+  "coloredText.metaKeywords":
+    "discord colored text generator, discord colored text codes, discord ansi color codes, colored text discord mobile, discord text color copy and paste, free discord colored text generator, discord ansi text generator",
+  "coloredText.hero.title": "Discord Colored Text Generator",
+  "coloredText.hero.subtitle":
+    "A free tool that turns plain text into colored Discord messages. Type your message, select the words you want to color, then copy and paste one ANSI code block into any Discord channel - desktop or mobile. No Nitro required.",
+  "coloredText.editor.heading": "Create your text",
+  "coloredText.style.clear": "Clear",
+  "coloredText.style.bold": "Bold",
+  "coloredText.style.italic": "Italic",
+  "coloredText.style.line": "Line",
+  "coloredText.style.strike": "Strike",
+  "coloredText.palette.classic": "Classic",
+  "coloredText.palette.custom": "Custom",
+  "coloredText.palette.effects": "Effects",
+  "coloredText.palette.pick": "Pick any color",
+  "coloredText.mode.fg": "Foreground",
+  "coloredText.mode.bg": "Background",
+  "coloredText.hint.selectFirst": "Select some text first, then choose a color.",
+  "coloredText.effects.rainbow": "Rainbow gradient",
+  "coloredText.effects.sunset": "Sunset gradient",
+  "coloredText.effects.candy": "Candy stripes",
+  "coloredText.copy": "Copy text as Discord formatted",
+  "coloredText.copied": "Copied to clipboard",
+  "coloredText.limit": "{used} / {limit}",
+  "coloredText.limit.over": "{used} / {limit} - over Discord's message limit",
+  "coloredText.how.title": "How to use it",
+  "coloredText.how.steps": [
+    { "label": "Type or paste your message",
+      "text": "Start from the sample text or replace it with the message you want to send in Discord." },
+    { "label": "Select the words to color",
+      "text": "Highlight a word, a phrase, or the whole message. Nothing selected? The tool asks you to select something first, so nothing changes by accident." },
+    { "label": "Pick a color or style",
+      "text": "Choose Foreground or Background and click a swatch. Bold, Italic, Line and Strike stack on the same selection, and the Effects row paints a gradient across it." },
+    { "label": "Copy the block",
+      "text": "Press Copy text as Discord formatted. You get a complete ansi code block with the invisible ESC characters already in place, ready to paste." },
+    { "label": "Paste it into Discord",
+      "text": "Paste into any Discord message box and send. The colors render for everyone on desktop, in the web app and on mobile." }
+  ],
+
+  // ---- ANSI code reference table ----
+  "coloredText.codes.title": "Discord ANSI color codes",
+  "coloredText.codes.intro":
+    "These are the codes this generator writes for you, so you never have to type them by hand. ESC stands for the invisible escape character (0x1B) - it tells Discord that what follows is formatting rather than text. Every color code needs the 2; prefix to render in Discord.",
+  "coloredText.codes.colColor": "Color",
+  "coloredText.codes.colText": "Text color",
+  "coloredText.codes.colBg": "Background color",
+  "coloredText.codes.colCopy": "Copy",
+  "coloredText.codes.copyHint": "Copy a ready-to-paste {name} block",
+  "coloredText.codes.copied": "Copied",
+  "coloredText.codes.more": "See the full ANSI code reference with combination examples",
+  "coloredText.codes.rows": [
+    { "name": "Black" },
+    { "name": "Red" },
+    { "name": "Green" },
+    { "name": "Yellow" },
+    { "name": "Blue" },
+    { "name": "Pink" },
+    { "name": "Teal" },
+    { "name": "White" }
+  ],
+  "coloredText.codes.stylesTitle": "Text style codes",
+  "coloredText.codes.styles": [
+    { "name": "Reset all formatting", "code": "0" },
+    { "name": "Bold", "code": "1" },
+    { "name": "Italic", "code": "3" },
+    { "name": "Underline", "code": "4" },
+    { "name": "Strikethrough", "code": "9" }
+  ],
+  "coloredText.codes.trueTitle": "Any color (24-bit truecolor)",
+  "coloredText.codes.note":
+    "Every sequence ends with ESC[0m so the formatting does not leak into the rest of your message. Because these codes are ordinary characters, they also count toward Discord's 2000-character limit.",
+
+  // ---- How to make rainbow text ----
+  "coloredText.rainbow.title": "How to make rainbow text in Discord",
+  "coloredText.rainbow.intro":
+    "Rainbow text is the most requested Discord color effect, and it is just a gradient of 24-bit truecolor codes - one per character. You never have to write them by hand: the Effects row paints them for you.",
+  "coloredText.rainbow.steps": [
+    { "label": "Select the phrase",
+      "text": "Highlight the words you want to paint. Gradients spend roughly 20 characters of your message budget per letter, so a short phrase renders better than a whole sentence." },
+    { "label": "Click the rainbow swatch",
+      "text": "It is the first swatch in the Effects row. Switch to Background first if you would rather paint the highlight behind the text than the letters themselves." },
+    { "label": "Copy and send",
+      "text": "The generator samples the gradient across the selection and writes ESC[38;2;r;g;bm before every character, so the hue shifts smoothly from red through violet." }
+  ],
+  "coloredText.rainbow.outro":
+    "Sunset and Candy stripes work the same way - Sunset blends warm peach into rose, while Candy alternates two pinks for a striped look. All three are plain ANSI sequences, so they render anywhere Discord renders colors.",
+
+  // ---- How to copy and paste colored text ----
+  "coloredText.paste.title": "How to copy and paste colored text into Discord",
+  "coloredText.paste.intro":
+    "Colored text travels as ordinary characters, which means you can copy it out of Discord, keep it in a note, or paste the same block into several channels - the colors come along every time.",
+  "coloredText.paste.steps": [
+    { "label": "Copy the whole block",
+      "text": "Use the Copy text as Discord formatted button rather than selecting the text by hand. It includes the ```ansi opening fence, and without that fence Discord prints the raw escape characters." },
+    { "label": "Paste into the message box",
+      "text": "Click into any Discord channel or DM and press Ctrl+V (Cmd+V on macOS). The block keeps its monospaced look while you are still editing it." },
+    { "label": "Send it",
+      "text": "Press Enter. Discord swaps the raw block for rendered colors - you will see the styling applied the moment the message lands in the channel." },
+    { "label": "Reuse it anywhere",
+      "text": "Anyone who copies your message also copies the escape characters, so reposting a colored message from another server keeps the formatting intact." }
+  ],
+  "coloredText.paste.note":
+    "On mobile, long-press the message box and choose Paste. Current Android and iOS clients render the same colors as desktop; if you only see odd characters, update the app first.",
+
+  "coloredText.about.title": "What are ANSI color codes?",
+  "coloredText.about.p1":
+    "Discord understands a small subset of ANSI escape sequences - the same control codes terminals have used for decades to colorize output. When you wrap text in a code block tagged with the language ansi, the Discord client interprets those sequences instead of printing them.",
+  "coloredText.about.p2":
+    "A color sequence looks like ESC[2;31m, where ESC is the escape character, 2 selects the color set Discord expects and 31 means red. Everything after it stays red until a reset sequence (ESC[0m) or a new color appears, which is why generated code always ends with a reset.",
+  "coloredText.about.p3":
+    "Because the colors are just characters, they travel with your text and anyone who copies the message gets the same colors. No Nitro subscription, no bot and no third-party app is involved.",
+  "coloredText.tips.title": "Tips for better looking colored text",
+  "coloredText.tips.i1":
+    "Keep it short. Every escape sequence adds invisible characters, so a short punchy line renders more reliably than a long paragraph.",
+  "coloredText.tips.i2":
+    "The Classic row uses Discord's own eight-color palette and has the widest client support. Custom colors are written as 24-bit values, and recent clients render those too.",
+  "coloredText.tips.i3": "Use background colors sparingly. One highlighted word stands out far more than a full block of colored text.",
+  "coloredText.tips.i4":
+    "Gradients are painted one character at a time, so they look best on short phrases rather than whole paragraphs.",
+  "coloredText.faq.title": "Frequently asked questions",
+  "coloredText.faq.items": [
+    { "q": "Can I do colored text in Discord?",
+      "a": "Yes. Discord renders ANSI escape codes inside a code block that is tagged with the language ansi. Open the block with three backticks followed by ansi, put the escape sequences and your text inside, close it with three more backticks, and the colors appear the moment you send the message. No Nitro, bot or third-party app is involved, and the colors are visible to everyone in the channel." },
+    { "q": "Is there a text color generator for Discord?",
+      "a": "Yes - this page is one. A Discord text color generator writes the escape sequences for you so you never have to type invisible control characters by hand. Type your message, select the words you want to color, pick a swatch, and copy the finished ansi code block. If you would rather write the codes by hand, the Discord ANSI color codes reference lists every one of them." },
+    { "q": "What are the Discord colored text codes?",
+      "a": "Discord reads ANSI escape sequences inside a code block tagged ansi. Text colors use ESC[2;30m through ESC[2;37m, background colors use ESC[2;40m through ESC[2;47m, and ESC[0m resets the formatting. Styles are ESC[1m bold, ESC[3m italic, ESC[4m underline and ESC[9m strikethrough. The full list is in the reference table above." },
+    { "q": "What is ``` in Discord?",
+      "a": "Three backticks open and close a code block in Discord, and they stop Discord from applying markdown to whatever sits between them. Adding a language name straight after the opening fence turns on syntax highlighting - and ansi is the special one: it makes Discord interpret ANSI escape sequences instead of printing them, which is how colored Discord text is produced. So ```ansi is the fence you need for colored text, and ``` on its own just gives you a plain monospaced block." },
+    { "q": "How do you make rainbow text in Discord?",
+      "a": "Select the phrase you want to paint, click the rainbow swatch in the Effects row, then press Copy text as Discord formatted. The tool samples a gradient and writes one 24-bit truecolor escape sequence per character, so the colors flow smoothly from red through to violet. Because every character carries its own code, rainbow text uses noticeably more of Discord's 2000-character limit than a single flat color - keep it to a short phrase." },
+    { "q": "Can I copy and paste colored text into Discord?",
+      "a": "Yes, that is exactly what the tool is for. Press Copy text as Discord formatted and paste the whole block - including the ansi code fences - into any Discord message box. The colors appear the moment you send it, and anyone who copies your message keeps them. If a message you received looks colored, copying it and pasting it elsewhere in Discord preserves the colors too." },
+    { "q": "Does colored text work on Discord mobile?",
+      "a": "Yes. Current Android and iOS clients render ANSI colors, so text colored here looks the same on a phone as it does on the desktop app. If an older client shows raw characters instead, updating the app usually fixes it." },
+    { "q": "Is it free, and do I need Discord Nitro?",
+      "a": "It is completely free and no account is required. Nitro is never needed either - the colors come from ANSI escape codes inside a code block, which Discord renders for every account on every platform." },
+    { "q": "Why do I see strange characters instead of colors?",
+      "a": "The block you paste has to be a code block tagged ansi. If you copy only the inner text without the fence, Discord prints the raw escape characters instead of rendering them. Use the copy button so the fence is included. The same thing happens if the message was forwarded through a client that stripped the escape characters." },
+    { "q": "Do the color codes count toward the message limit?",
+      "a": "They do. Every escape sequence is a real character, so a heavily styled message uses part of Discord's 2000-character budget - a rainbow phrase spends roughly 20 characters per letter. The counter inside the editor shows the exact total before you copy." },
+    { "q": "Is my text uploaded anywhere?",
+      "a": "No. The editor and the escape-sequence generator both run locally in your browser and nothing is sent to a server, so private drafts never leave your device." }
+  ],
+
   // ---- Language detection banner ----
   "banner.detected": "Browser language detected: {lang}. Switch?",
   "banner.switch": "Switch to {lang}",

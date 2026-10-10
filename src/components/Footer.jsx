@@ -11,6 +11,8 @@ const Footer = () => {
       { key: "footer.discordTools.avatarGallery", descKey: "footer.discordTools.avatarGalleryDesc", href: "/discord_avatar" },
       { key: "footer.discordTools.decoGallery", descKey: "footer.discordTools.decoGalleryDesc", href: "/discord_avatar_decoration" },
       { key: "footer.discordTools.fonts", descKey: "footer.discordTools.fontsDesc", href: "/discord_front" },
+      { key: "footer.discordTools.coloredText", descKey: "footer.discordTools.coloredTextDesc", href: "/discord-colored-text" },
+      { key: "footer.discordTools.ansiCodes", descKey: "footer.discordTools.ansiCodesDesc", href: "/discord-ansi-color-codes" },
     ],
     Resources: [
       { key: "footer.resources.faq", descKey: "footer.resources.faqDesc", href: "/faq" },

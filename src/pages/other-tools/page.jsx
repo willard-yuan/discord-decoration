@@ -17,6 +17,24 @@ const tools = [
     description: 'Generate stylish Discord fonts and text styles from 500+ unique font styles. Convert your text to fancy fonts for Discord messages, usernames, and profiles.',
   },
   {
+    name: 'Discord Colored Text Generator - Color Your Messages with ANSI',
+    href: '/discord-colored-text',
+    emoji: '🌈',
+    description: 'Create colored Discord text with ANSI escape codes. Pick colors, bold and underline, preview it live and copy a ready-to-paste ansi code block.',
+  },
+  {
+    name: 'Discord ANSI Color Codes - Full Reference Table',
+    href: '/discord-ansi-color-codes',
+    emoji: '🎨',
+    description: 'Every ANSI color code Discord understands in one table: 8 text and background colors, bold, italic, underline, strikethrough, 24-bit truecolor and copy-and-paste examples.',
+  },
+  {
+    name: 'How to Make Colored Text in Discord (Copy and Paste)',
+    href: '/blog/discord-colored-text',
+    emoji: '📖',
+    description: 'Step-by-step guide to colored Discord text with ANSI escape codes - desktop, web and mobile, rainbow gradients, background highlights and troubleshooting.',
+  },
+  {
     name: 'Discord Markdown Live Previewer',
     href: 'https://discord-markdown-previewer.pro',
     emoji: '📝',

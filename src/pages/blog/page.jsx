@@ -62,6 +62,17 @@ export default function BlogList() {
 
   const blogPosts = [
     {
+      id: 5,
+      title: "How to Make Colored Text in Discord (Copy and Paste)",
+      description: "Learn how to make colored text in Discord with ANSI escape codes. Step-by-step walkthrough for desktop, web and mobile, plus rainbow gradients, background highlights and a free copy-and-paste generator.",
+      publishDate: "2026-10-09",
+      readTime: "6 min read",
+      category: "Text Formatting",
+      image: "/discord-colored-text-generateor-1.webp",
+      link: "/blog/discord-colored-text",
+      tags: ["Discord", "Colored Text", "ANSI", "Copy and Paste"]
+    },
+    {
       id: 4,
       title: "New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!",
       description: "Discover 30+ brand new free Discord avatar decorations! Get exclusive access to The Final Peel, Warframe Clem, Dart Monkey, Infinite Swirl and many more stunning decorations.",

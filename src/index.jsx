@@ -11,6 +11,9 @@ import { useEffect, useLayoutEffect } from "preact/hooks";
 import Home from "@/pages/page.jsx";
 const Discussion = lazy(() => import("@/pages/discuss/page.jsx"));
 const GifExtractor = lazy(() => import("@/pages/gif-extractor/page.jsx"));
+const DiscordColoredText = lazy(() => import("@/pages/discord-colored-text/page.jsx"));
+const DiscordAnsiColorCodes = lazy(() => import("@/pages/discord-ansi-color-codes/page.jsx"));
+const DiscordColoredTextBlog = lazy(() => import("@/pages/blog/discord-colored-text/page.jsx"));
 const FAQ = lazy(() => import("@/pages/faq/page.jsx"));
 const HowToUse = lazy(() => import("@/pages/how-to-use/page.jsx"));
 const BlogArticle = lazy(() => import("@/pages/blog/page.jsx"));
@@ -84,9 +87,12 @@ for (const l of LANGUAGES) {
 allRoutes.push(
   <Route path="/discuss" component={Discussion} />,
   <Route path="/gif-extractor" component={GifExtractor} />,
+  <Route path="/discord-colored-text" component={DiscordColoredText} />,
+  <Route path="/discord-ansi-color-codes" component={DiscordAnsiColorCodes} />,
   <Route path="/how-to-use" component={HowToUse} />,
   <Route path="/blog" component={BlogArticle} />,
   <Route path="/blog/discord-font" component={DiscordFontBlog} />,
+  <Route path="/blog/discord-colored-text" component={DiscordColoredTextBlog} />,
   <Route path="/blog/discord-avatar-decorations" component={DiscordAvatarDecorationsArticle} />,
   <Route path="/blog/how-to-split-gif-into-frames" component={HowToSplitGifIntoFramesBlog} />,
   <Route path="/blog/new-free-discord-avatar-decorations" component={NewFreeDiscordAvatarDecorationsArticle} />,

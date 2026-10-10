@@ -113,6 +113,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://discord-decoration.art/gif-extractor"/>
   </url>
   <url>
+    <loc>https://discord-decoration.art/discord-colored-text</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discord-decoration.art/discord-colored-text"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discord-decoration.art/discord-colored-text"/>
+  </url>
+  <url>
+    <loc>https://discord-decoration.art/discord-ansi-color-codes</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discord-decoration.art/discord-ansi-color-codes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discord-decoration.art/discord-ansi-color-codes"/>
+  </url>
+  <url>
     <loc>https://discord-decoration.art/other-tools</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -167,6 +183,14 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://discord-decoration.art/blog/new-free-discord-avatar-decorations"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://discord-decoration.art/blog/new-free-discord-avatar-decorations"/>
+  </url>
+  <url>
+    <loc>https://discord-decoration.art/blog/discord-colored-text</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discord-decoration.art/blog/discord-colored-text"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discord-decoration.art/blog/discord-colored-text"/>
   </url>
   <url>
     <loc>https://discord-decoration.art/changelog</loc>

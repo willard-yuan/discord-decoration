@@ -46,7 +46,7 @@ export default defineConfig({
       prerender: {
         enabled: true,
         renderTarget: "#app",
-        additionalPrerenderRoutes: ["/404", "/faq", "/discuss", "/discord_avatar", "/discord_avatar_decoration", "/discord_front", "/gif-extractor", "/other-tools", "/changelog", "/blog", "/blog/discord-font", "/blog/discord-avatar-decorations", "/blog/how-to-split-gif-into-frames", "/blog/new-free-discord-avatar-decorations", "/about-us", "/cookies-policy", "/contact-support"],
+        additionalPrerenderRoutes: ["/404", "/faq", "/discuss", "/discord_avatar", "/discord_avatar_decoration", "/discord_front", "/gif-extractor", "/discord-colored-text", "/discord-ansi-color-codes", "/other-tools", "/changelog", "/blog", "/blog/discord-font", "/blog/discord-avatar-decorations", "/blog/how-to-split-gif-into-frames", "/blog/new-free-discord-avatar-decorations", "/blog/discord-colored-text", "/about-us", "/cookies-policy", "/contact-support"],
         previewMiddlewareEnabled: true,
         previewMiddlewareFallback: "/404",
       },

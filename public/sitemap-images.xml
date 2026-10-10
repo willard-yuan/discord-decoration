@@ -4643,4 +4643,35 @@
     </image:image>
   </url>
 
+  <!-- Discord Colored Text Generator (tool) -->
+  <url>
+    <loc>https://discord-decoration.art/discord-colored-text</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://discord-decoration.art/discord-colored-text-generateor.webp</image:loc>
+      <image:caption>Discord Colored Text Generator - pick ANSI colors, bold or underline and copy a ready-to-paste ANSI code block</image:caption>
+      <image:title>Discord Colored Text Generator</image:title>
+    </image:image>
+  </url>
+
+  <!-- How to Make Colored Text in Discord (guide) -->
+  <url>
+    <loc>https://discord-decoration.art/blog/discord-colored-text</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://discord-decoration.art/discord-colored-text-generateor.webp</image:loc>
+      <image:caption>Discord Colored Text Generator interface - style buttons, Classic, Custom and Effects color rows, Foreground/Background toggle and the live editor</image:caption>
+      <image:title>Discord Colored Text Generator Screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://discord-decoration.art/discord-colored-text-generateor-1.webp</image:loc>
+      <image:caption>Colored Discord text made with ANSI escape codes - rainbow gradient, background highlight and bold styles</image:caption>
+      <image:title>Colored Discord Text Example</image:title>
+    </image:image>
+  </url>
+
 </urlset>
