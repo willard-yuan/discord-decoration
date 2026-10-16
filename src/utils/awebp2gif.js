@@ -1,51 +1,35 @@
-import {
-  decodeAnimated as decodeAnimatedWebp,
-  init as initDecodeWebp,
-} from "@jsquash/webp/decode";
-import { encode as encodeGif, init as initGif } from "gifski-wasm";
-import { printMsg } from "./print";
-import { fetchFile } from "@ffmpeg/util";
+import ConversionWorker from './awebp2gif.worker.js?worker';
+let worker;
+let nextId = 0;
+const pending = new Map();
 
-/**
- * Converts a WebP file to a GIF file.
- *
- * @param {ArrayBuffer} arraybuf - The WebP file as an ArrayBuffer.
- * @return {Promise<{arrayBuffer: ArrayBuffer, data: Uint8Array, type: string}>} A promise that resolves with an ffmpeg-compatible file.
- */
-export async function awebp2gif(arraybuf) {
-  printMsg("Decoding animated WebP");
-  await initDecodeWebp(null, {
-    locateFile: (path) =>
-      `https://cdn.jsdelivr.net/npm/@jsquash/webp@1.5.0-animated-webp-support-beta.2/codec/dec/${path}`,
-  });
-
-  const [frames] = await Promise.all([
-    new Promise(async (resolve) => {
-      const frames = await decodeAnimatedWebp(arraybuf);
-      resolve(frames);
-    }),
-    new Promise(async (resolve) => {
-      await initGif(
-        "https://cdn.jsdelivr.net/npm/gifski-wasm@2.2.0/pkg/gifski_wasm_bg.wasm"
-      );
-      resolve();
-    }),
-  ]);
-
-  printMsg("Converting to GIF");
-  const res = await encodeGif({
-    frames: frames.map((frame) => frame.imageData),
-    width: frames[0].imageData.width,
-    height: frames[0].imageData.height,
-    frameDurations: frames.map((frame) => frame.duration),
-  });
-  printMsg("Done");
-  const gif = res.buffer;
-  return {
-    // @ts-ignore
-    arrayBuffer: gif,
-    // @ts-ignore
-    data: await fetchFile(new Blob([gif], { type: "image/gif" })),
-    type: "image/gif",
+function getWorker() {
+  if (worker) return worker;
+  worker = new ConversionWorker();
+  worker.onmessage = ({ data }) => {
+    const task = pending.get(data.id);
+    if (!task) return;
+    pending.delete(data.id);
+    if (data.error) task.reject(new Error(data.error));
+    else task.resolve(data.result);
   };
+  worker.onerror = () => {
+    for (const task of pending.values()) task.reject(new Error('Image conversion worker failed'));
+    pending.clear();
+    worker.terminate();
+    worker = null;
+  };
+  return worker;
+}
+
+// Preserve the caller's buffer; only the copy is transferred to the worker.
+export function awebp2gif(arraybuf) {
+  return new Promise((resolve, reject) => {
+    const target = getWorker();
+    const id = ++nextId;
+    const buffer = arraybuf.slice(0);
+    pending.set(id, { resolve, reject });
+    try { target.postMessage({ id, buffer }, [buffer]); }
+    catch (error) { pending.delete(id); reject(error); }
+  });
 }

@@ -1,47 +1,25 @@
 import { createContext } from "preact";
-import { useContext, useState, useEffect, useCallback } from "preact/hooks";
+import { useContext, useState, useEffect, useCallback, useRef, useMemo } from "preact/hooks";
 import { LANGUAGES, DEFAULT_LANG } from "./languages";
 import en from "./locales/en";
-import ptBR from "./locales/pt-BR";
-import fr from "./locales/fr";
-import es from "./locales/es";
-import de from "./locales/de";
-import it from "./locales/it";
-import ja from "./locales/ja";
-import ko from "./locales/ko";
-import ar from "./locales/ar";
-import zhCN from "./locales/zh-CN";
-import zhTW from "./locales/zh-TW";
-import hi from "./locales/hi";
-import ru from "./locales/ru";
-import pl from "./locales/pl";
-import id from "./locales/id";
-import fil from "./locales/fil";
-import vi from "./locales/vi";
-import th from "./locales/th";
-import tr from "./locales/tr";
+// Only the active dictionary is fetched; English remains the exact fallback.
+const loaders = import.meta.glob("./locales/*.js");
+const DICTS = { en };
+const pending = new Map();
+const validLanguage = code => LANGUAGES.some(l => l.code === code);
 
-export const DICTS = {
-  en,
-  "pt-BR": ptBR,
-  fr,
-  es,
-  de,
-  it,
-  ja,
-  ko,
-  ar,
-  "zh-CN": zhCN,
-  "zh-TW": zhTW,
-  hi,
-  ru,
-  pl,
-  id,
-  fil,
-  vi,
-  th,
-  tr,
-};
+export function loadLanguage(code) {
+  if (!validLanguage(code)) return Promise.resolve();
+  if (DICTS[code]) return Promise.resolve(DICTS[code]);
+  if (!pending.has(code)) {
+    const promise = loaders[`./locales/${code}.js`]().then(module => {
+      DICTS[code] = module.default;
+      return module.default;
+    }).finally(() => pending.delete(code));
+    pending.set(code, promise);
+  }
+  return pending.get(code);
+}
 
 const STORAGE_KEY = "lang";
 const isServer = typeof window === "undefined";
@@ -56,40 +34,21 @@ const interpolate = (str, params) => {
 
 const I18nContext = createContext(null);
 
-// Determine the initial language.
-// - During SSR/prerender we honor `PRERENDER_LANG` so each language renders
-//   its own body content into the static HTML (required for indexable,
-//   correctly-translated multilingual pages).
-// - On the client we prefer the language the server already rendered
-//   (`window.__SSR_LANG__`, injected by the build) so hydration matches the
-//   server HTML exactly (no mismatch / flash), then fall back to localStorage.
-const getInitialLang = () => {
+// Preload this locale before hydration and before each SSR render.
+export const getInitialLang = () => {
   if (isServer) {
-    return (typeof process !== "undefined" && process.env && process.env.PRERENDER_LANG) || DEFAULT_LANG;
+    return (typeof process !== "undefined" && process.env?.PRERENDER_LANG) || DEFAULT_LANG;
   }
-  const ssrLang = window.__SSR_LANG__;
-  let stored = null;
-  try {
-    stored = localStorage.getItem(STORAGE_KEY);
-  } catch {
-    stored = null;
-  }
-  return ssrLang || (stored && DICTS[stored] ? stored : null) || DEFAULT_LANG;
+  // URL is authoritative: a stored preference must not rewrite rendered copy
+  // after paint or override an explicitly opened localized URL.
+  const segment = window.location.pathname.split("/")[1];
+  if (validLanguage(segment)) return segment;
+  return window.__SSR_LANG__ || DEFAULT_LANG;
 };
 
 export function I18nProvider({ children }) {
-  // Start from the default language so server-rendered HTML and the first
-  // client render match (no hydration mismatch). The real preference is
-  // loaded from localStorage inside an effect, after mount.
   const [lang, setLangState] = useState(getInitialLang);
-
-  useEffect(() => {
-    if (isServer) return;
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && DICTS[stored]) {
-      setLangState(stored);
-    }
-  }, []);
+  const requestVersion = useRef(0);
 
   useEffect(() => {
     if (isServer) return;
@@ -99,10 +58,16 @@ export function I18nProvider({ children }) {
     document.documentElement.dir = dir || "ltr";
   }, [lang]);
 
-  const setLang = useCallback((code) => {
-    if (!DICTS[code]) return;
+  const setLang = useCallback(async (code) => {
+    if (!validLanguage(code)) return false;
+    const version = ++requestVersion.current;
+    if (!DICTS[code]) await loadLanguage(code);
+    if (version !== requestVersion.current) return false;
     setLangState(code);
-    if (!isServer) localStorage.setItem(STORAGE_KEY, code);
+    if (!isServer) {
+      try { localStorage.setItem(STORAGE_KEY, code); } catch {}
+    }
+    return true;
   }, []);
 
   const t = useCallback(
@@ -121,10 +86,9 @@ export function I18nProvider({ children }) {
     [lang]
   );
 
+  const value = useMemo(() => ({ lang, setLang, t, dict: DICTS[lang] || en, languages: LANGUAGES }), [lang, setLang, t]);
   return (
-    <I18nContext.Provider
-      value={{ lang, setLang, t, dict: DICTS[lang] || DICTS[DEFAULT_LANG], languages: LANGUAGES }}
-    >
+    <I18nContext.Provider value={value}>
       {children}
     </I18nContext.Provider>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "preact/hooks";
-import { useI18n } from "@/i18n/index.jsx";
+import { useI18n, loadLanguage } from "@/i18n/index.jsx";
 import { DEFAULT_LANG } from "@/i18n/languages.js";
 
 const LanguageSelector = () => {
@@ -9,13 +9,18 @@ const LanguageSelector = () => {
 
   // Navigate to the locale-prefixed URL so the address bar and the rendered
   // route stay in sync with the chosen language (e.g. / -> /ja/).
-  const go = (code) => {
+  const go = async (code) => {
+    try {
+      if (!await setLang(code)) return;
+    } catch {
+      // Keep the current language and URL if a chunk request fails.
+      return;
+    }
     const path = code === DEFAULT_LANG ? "/" : "/" + code + "/";
     if (typeof window !== "undefined") {
       window.history.pushState(null, "", path);
       window.dispatchEvent(new PopStateEvent("popstate"));
     }
-    setLang(code);
     setOpen(false);
   };
 
@@ -69,6 +74,8 @@ const LanguageSelector = () => {
                 type="button"
                 key={l.code}
                 disabled={disabled}
+                onPointerEnter={() => loadLanguage(l.code).catch(() => {})}
+                onFocus={() => loadLanguage(l.code).catch(() => {})}
                 onClick={() => {
                   if (disabled) return;
                   go(l.code);

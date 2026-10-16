@@ -1,3 +1,4 @@
+import { memo } from "preact/compat";
 import { useState, useEffect } from "preact/hooks";
 import { useI18n } from "@/i18n/index.jsx";
 import LanguageSelector from "@/components/LanguageSelector.jsx";
@@ -119,4 +120,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

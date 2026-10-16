@@ -1,3 +1,4 @@
+import { memo } from "preact/compat";
 import { Icons } from "./icons.jsx";
 import { useI18n } from "@/i18n/index.jsx";
 
@@ -238,4 +239,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

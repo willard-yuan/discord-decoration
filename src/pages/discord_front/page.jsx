@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { memo } from "preact/compat";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useI18n } from '@/i18n/index.jsx';
 import Navbar from '@/components/Navbar.jsx';
 import AdBanner from '@/components/AdBanner.jsx';
@@ -33,41 +34,40 @@ const DiscordFonts = () => {
     }
     metaRobots.setAttribute('content', 'index, follow');
 
-    // 添加滚动监听
-    const handleScroll = () => {
-      if (inputContainerRef.current) {
-        const containerRect = inputContainerRef.current.getBoundingClientRect();
-        setIsInputSticky(containerRect.top <= 0);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, [lang]);
 
-  // 获取过滤后的字体样式
-  const getFilteredFonts = () => {
-    // 如果选择了'all'类目，显示所有字体
-    if (selectedCategory === 'all') {
-      return allFontStyles;
-    }
-    
-    // 按类别过滤
-    if (selectedCategory && fontCategories[selectedCategory]) {
-      return fontCategories[selectedCategory];
-    }
-    
-    return allFontStyles;
-  };
+  useEffect(() => {
+    let scheduled = 0;
+    const update = () => {
+      scheduled = 0;
+      if (inputContainerRef.current) {
+        const sticky = inputContainerRef.current.getBoundingClientRect().top <= 0;
+        setIsInputSticky(previous => previous === sticky ? previous : sticky);
+      }
+    };
+    const handleScroll = () => {
+      if (!scheduled) scheduled = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(scheduled);
+    };
+  }, []);
 
 
+  const fontResults = useMemo(() => {
+    const styles = selectedCategory === 'all'
+      ? allFontStyles : fontCategories[selectedCategory] || allFontStyles;
+    const demoText = inputText || 'I Love You';
+    return styles.map(style => ({ style, convertedText: style.convert(demoText) }));
+  }, [selectedCategory, inputText]);
 
   // Copy to clipboard function
 
   // Copy to clipboard function
-  const handleCopyText = async (text, fontKey) => {
+  const handleCopyText = useCallback(async (text, fontKey) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedFont(fontKey);
@@ -83,7 +83,7 @@ const DiscordFonts = () => {
       setCopiedFont(fontKey);
       setTimeout(() => setCopiedFont(null), 2000);
     }
-  };
+  }, []);
 
   return (
     <>
@@ -348,49 +348,12 @@ const DiscordFonts = () => {
                 {inputText ? t('fonts.previewWithText', { text: inputText }) : t('fonts.previewDefault')}
               </h2>
               
-              {getFilteredFonts().length > 0 ? (
+              {fontResults.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  {getFilteredFonts().map((style) => {
-                    const demoText = inputText || 'I Love You';
-                    const convertedText = style.convert(demoText);
-                    return (
-                      <div
-                        key={style.id}
-                        className="bg-surface-primary border border-surface-secondary rounded-xl p-6 shadow-sm hover:shadow-md hover:border-primary hover:scale-[1.02] transition-all duration-300 cursor-pointer"
-                        onClick={() => handleCopyText(convertedText, style.id)}
-                      >
-                        <div className="flex justify-between items-start mb-3">
-                          <div>
-                            <h3 className="text-sm font-medium text-text-secondary">
-                              {style.name}
-                            </h3>
-                            <span className="text-xs text-text-tertiary capitalize">
-                              {t(`fonts.cat.${style.category}`)}
-                            </span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            {copiedFont === style.id && (
-                              <span className="text-xs text-green-500 font-medium">
-                                {t('fonts.copied')}
-                              </span>
-                            )}
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleCopyText(convertedText, style.id);
-                              }}
-                              className="text-xs bg-primary text-white px-3 py-1 rounded hover:bg-primary-dark transition-colors"
-                            >
-                              {t('fonts.copy')}
-                            </button>
-                          </div>
-                        </div>
-                        <div className="text-lg text-text-primary break-all mt-4">
-                          {convertedText}
-                        </div>
-                      </div>
-                    );
-                  })}
+                  {fontResults.map(({ style, convertedText }) => (
+                    <FontCard key={style.id} style={style} convertedText={convertedText}
+                      copied={copiedFont === style.id} handleCopyText={handleCopyText} t={t} />
+                  ))}
                 </div>
               ) : (
                 <div className="text-center py-12">
@@ -446,3 +409,40 @@ const DiscordFonts = () => {
 };
 
 export default DiscordFonts;
+
+const FontCard = memo(({ style, convertedText, copied, handleCopyText, t }) => (
+                      <div
+                        className="bg-surface-primary border border-surface-secondary rounded-xl p-6 shadow-sm hover:shadow-md hover:border-primary hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+                        onClick={() => handleCopyText(convertedText, style.id)}
+                      >
+                        <div className="flex justify-between items-start mb-3">
+                          <div>
+                            <h3 className="text-sm font-medium text-text-secondary">
+                              {style.name}
+                            </h3>
+                            <span className="text-xs text-text-tertiary capitalize">
+                              {t(`fonts.cat.${style.category}`)}
+                            </span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            {copied && (
+                              <span className="text-xs text-green-500 font-medium">
+                                {t('fonts.copied')}
+                              </span>
+                            )}
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleCopyText(convertedText, style.id);
+                              }}
+                              className="text-xs bg-primary text-white px-3 py-1 rounded hover:bg-primary-dark transition-colors"
+                            >
+                              {t('fonts.copy')}
+                            </button>
+                          </div>
+                        </div>
+                        <div className="text-lg text-text-primary break-all mt-4">
+                          {convertedText}
+                        </div>
+                      </div>
+));

@@ -1,0 +1,3231 @@
+{
+  "conditions": {
+    "browser": "155.0.8059.80",
+    "viewport": "390x844",
+    "cpu": 4,
+    "downloadMbps": 1.6,
+    "latencyMs": 150,
+    "thirdParties": "blocked; explicit 250px ad fixture where stated",
+    "metric": "scripted lab session, not field P75"
+  },
+  "results": [
+    {
+      "route": "/",
+      "locale": "en-US",
+      "run": 1,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 4136,
+            "rating": "poor",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 4024.699999988079
+          },
+          "CLS": {
+            "value": 0.00010885096574995725,
+            "rating": "good",
+            "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+          }
+        },
+        "h1": "Discord DecorationsFree Avatar Decorations for Discord",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1081
+      },
+      "final": {
+        "LCP": {
+          "value": 4136,
+          "rating": "poor",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 4024.699999988079
+        },
+        "CLS": {
+          "value": 0.00010885096574995725,
+          "rating": "good",
+          "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+        },
+        "INP": {
+          "value": 168,
+          "rating": "good",
+          "element": "#decoration-search-bar",
+          "inputDelay": 0.10000002384185791,
+          "processingDuration": 151.69999998807907,
+          "presentationDelay": 16.19999998807907,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 15018.800000011921,
+              "duration": 36.89999997615814,
+              "navigationId": 6075,
+              "invoker": "INPUT#decoration-search-bar.oninput",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 15018.800000011921,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 36.89999997615814
+          },
+          "totalScriptDuration": 36.89999997615814,
+          "totalStyleAndLayoutDuration": 3
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/discord_front",
+      "locale": "en-US",
+      "ad": 250,
+      "run": 1,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 1876,
+            "rating": "good",
+            "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 1870.5
+          },
+          "CLS": {
+            "value": 0.2561993216684261,
+            "rating": "poor",
+            "element": "div.bg-base-lower.overflow-x-hidden.w-screen>div.bg-surface-primary.min-h-screen.text-text-primary"
+          }
+        },
+        "h1": "Discord Fonts Generator",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-800.woff2",
+            "bytes": 21880,
+            "type": "css"
+          },
+          {
+            "name": "/assets/page-D0drnBmr.js",
+            "bytes": 15110,
+            "type": "script"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 2964
+      },
+      "final": {
+        "LCP": {
+          "value": 1876,
+          "rating": "good",
+          "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 1870.5
+        },
+        "CLS": {
+          "value": 0.2561993216684261,
+          "rating": "poor",
+          "element": "div.bg-base-lower.overflow-x-hidden.w-screen>div.bg-surface-primary.min-h-screen.text-text-primary"
+        },
+        "INP": {
+          "value": 144,
+          "rating": "good",
+          "element": "#discord-fonts-input-main",
+          "inputDelay": 0.3999999761581421,
+          "processingDuration": 81.80000001192093,
+          "presentationDelay": 61.80000001192093,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 7560.800000011921,
+              "duration": 18.19999998807907,
+              "navigationId": 1802,
+              "invoker": "TEXTAREA#discord-fonts-input-main.oninput",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 7560.800000011921,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 18.19999998807907
+          },
+          "totalScriptDuration": 18.19999998807907,
+          "totalStyleAndLayoutDuration": 11.799999952316284
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is"
+      ]
+    },
+    {
+      "route": "/discord_avatar_decoration",
+      "locale": "en-US",
+      "ad": 250,
+      "run": 1,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 1224,
+            "rating": "good",
+            "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 1208.8999999761581
+          },
+          "CLS": {
+            "value": 0.2561993216684261,
+            "rating": "poor",
+            "element": "div.bg-surface-primary.min-h-screen>div.max-w-7xl.mx-auto.px-4.py-8"
+          }
+        },
+        "h1": "Discord Avatar Decorations Gallery",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-800.woff2",
+            "bytes": 21880,
+            "type": "css"
+          },
+          {
+            "name": "/decorations/trick_pumpkin.png",
+            "bytes": 1062155,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_pumpkin.png",
+            "bytes": 1079820,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/assets/page-CK0BT8ok.js",
+            "bytes": 6364,
+            "type": "script"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/processImage-DE9ZvWGR.js",
+            "bytes": 1611,
+            "type": "script"
+          },
+          {
+            "name": "/assets/utils-CSVjsbq_.js",
+            "bytes": 1422,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 10759
+      },
+      "final": {
+        "LCP": {
+          "value": 1224,
+          "rating": "good",
+          "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 1208.8999999761581
+        },
+        "CLS": {
+          "value": 0.2561993216684261,
+          "rating": "poor",
+          "element": "div.bg-surface-primary.min-h-screen>div.max-w-7xl.mx-auto.px-4.py-8"
+        },
+        "INP": {
+          "value": 336,
+          "rating": "needs-improvement",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 249.89999997615814,
+          "processingDuration": 11.700000047683716,
+          "presentationDelay": 74.39999997615814,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 20508.399999976158,
+              "duration": 5.600000023841858,
+              "navigationId": 7387,
+              "invoker": "BUTTON.onclick",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 20508.399999976158,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 5.600000023841858
+          },
+          "totalScriptDuration": 5.600000023841858,
+          "totalStyleAndLayoutDuration": 20.30000001192093
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is"
+      ]
+    },
+    {
+      "route": "/",
+      "locale": "zh-CN",
+      "run": 1,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 4028,
+            "rating": "poor",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 3968.5
+          },
+          "CLS": {
+            "value": 0.07109004739336493,
+            "rating": "good",
+            "element": "#app>div.bg-base-lower.overflow-x-hidden.w-screen"
+          }
+        },
+        "h1": "Discord DecorationsFree Avatar Decorations for Discord",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1087
+      },
+      "final": {
+        "LCP": {
+          "value": 4028,
+          "rating": "poor",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 3968.5
+        },
+        "CLS": {
+          "value": 0.07109004739336493,
+          "rating": "good",
+          "element": "#app>div.bg-base-lower.overflow-x-hidden.w-screen"
+        },
+        "INP": {
+          "value": 72,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 25.899999976158142,
+          "processingDuration": 8.900000035762787,
+          "presentationDelay": 37.19999998807907
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/zh-CN/",
+      "locale": "zh-CN",
+      "run": 1,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 588,
+            "rating": "good",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 533.3999999761581
+          },
+          "CLS": {
+            "value": 0.03733853199732451,
+            "rating": "good",
+            "element": "div.-translate-x-1/2.-translate-y-1/2.absolute.animate-pulse.bg-blue-500/5.blur-3xl.h-96.left-1/2.rounded-full.top-1/2.transform.w-96"
+          }
+        },
+        "h1": "Discord Decorations免费 Discord 头像装饰",
+        "lang": "zh-CN",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/avatars/blue.webp",
+            "bytes": 1722,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/gray.webp",
+            "bytes": 1210,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/green.webp",
+            "bytes": 1562,
+            "type": "img"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1081
+      },
+      "final": {
+        "LCP": {
+          "value": 588,
+          "rating": "good",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 533.3999999761581
+        },
+        "CLS": {
+          "value": 0.03733853199732451,
+          "rating": "good",
+          "element": "div.-translate-x-1/2.-translate-y-1/2.absolute.animate-pulse.bg-blue-500/5.blur-3xl.h-96.left-1/2.rounded-full.top-1/2.transform.w-96"
+        },
+        "INP": {
+          "value": 88,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 25.30000001192093,
+          "processingDuration": 23.19999998807907,
+          "presentationDelay": 39.5
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/blog",
+      "locale": "en-US",
+      "run": 1,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 2020,
+            "rating": "good",
+            "element": "img.h-full.object-cover.w-full",
+            "resourceLoadDelay": 968.3000000119209,
+            "elementRenderDelay": 19.100000023841858
+          },
+          "CLS": {
+            "value": 0.0008862056696882889,
+            "rating": "good",
+            "element": "span.bg-clip-text.bg-gradient-to-r.block.from-primary.text-transparent.to-purple-400>TEXT"
+          }
+        },
+        "h1": "Discord CustomizationBlog & Guides",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/discord-colored-text-generateor-1.webp",
+            "bytes": 30290,
+            "type": "img"
+          },
+          {
+            "name": "/free_discord_avatar_decorations.webp",
+            "bytes": 80402,
+            "type": "img"
+          },
+          {
+            "name": "/gif_frames_extractor_2.webp",
+            "bytes": 57354,
+            "type": "img"
+          },
+          {
+            "name": "/discord-decoration-art.webp",
+            "bytes": 102540,
+            "type": "img"
+          },
+          {
+            "name": "/discord-fonts-generator.webp",
+            "bytes": 62812,
+            "type": "img"
+          },
+          {
+            "name": "/assets/page-iWv1bucJ.js",
+            "bytes": 2551,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 341
+      },
+      "final": {
+        "LCP": {
+          "value": 2020,
+          "rating": "good",
+          "element": "img.h-full.object-cover.w-full",
+          "resourceLoadDelay": 968.3000000119209,
+          "elementRenderDelay": 19.100000023841858
+        },
+        "CLS": {
+          "value": 0.0008862056696882889,
+          "rating": "good",
+          "element": "span.bg-clip-text.bg-gradient-to-r.block.from-primary.text-transparent.to-purple-400>TEXT"
+        },
+        "INP": {
+          "value": 112,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 43.39999997615814,
+          "processingDuration": 20.5,
+          "presentationDelay": 48.10000002384186
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is"
+      ]
+    },
+    {
+      "route": "/",
+      "locale": "en-US",
+      "run": 2,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 4148,
+            "rating": "poor",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 4127.5
+          },
+          "CLS": {
+            "value": 0.00010885096574995725,
+            "rating": "good",
+            "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+          }
+        },
+        "h1": "Discord DecorationsFree Avatar Decorations for Discord",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1081
+      },
+      "final": {
+        "LCP": {
+          "value": 4148,
+          "rating": "poor",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 4127.5
+        },
+        "CLS": {
+          "value": 0.00010885096574995725,
+          "rating": "good",
+          "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+        },
+        "INP": {
+          "value": 288,
+          "rating": "needs-improvement",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 180.60000002384186,
+          "processingDuration": 35.30000001192093,
+          "presentationDelay": 72.09999996423721,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 13708.800000011921,
+              "duration": 9.199999988079071,
+              "navigationId": 4138,
+              "invoker": "BUTTON.onclick",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 13708.800000011921,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 9.199999988079071
+          },
+          "totalScriptDuration": 9.199999988079071,
+          "totalStyleAndLayoutDuration": 0.30000001192092896
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/discord_front",
+      "locale": "en-US",
+      "ad": 250,
+      "run": 2,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 2092,
+            "rating": "good",
+            "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 2078.900000035763
+          },
+          "CLS": {
+            "value": 0.2561993216684261,
+            "rating": "poor",
+            "element": "div.bg-base-lower.overflow-x-hidden.w-screen>div.bg-surface-primary.min-h-screen.text-text-primary"
+          }
+        },
+        "h1": "Discord Fonts Generator",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-800.woff2",
+            "bytes": 21880,
+            "type": "css"
+          },
+          {
+            "name": "/assets/page-D0drnBmr.js",
+            "bytes": 15110,
+            "type": "script"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 2964
+      },
+      "final": {
+        "LCP": {
+          "value": 2092,
+          "rating": "good",
+          "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 2078.900000035763
+        },
+        "CLS": {
+          "value": 0.2561993216684261,
+          "rating": "poor",
+          "element": "div.bg-base-lower.overflow-x-hidden.w-screen>div.bg-surface-primary.min-h-screen.text-text-primary"
+        },
+        "INP": {
+          "value": 304,
+          "rating": "needs-improvement",
+          "element": "#discord-fonts-input-main",
+          "inputDelay": 1.699999988079071,
+          "processingDuration": 219.10000002384186,
+          "presentationDelay": 83.19999998807907,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 8056.5,
+              "duration": 30.599999964237213,
+              "navigationId": 7502,
+              "invoker": "TEXTAREA#discord-fonts-input-main.oninput",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 8056.5,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 30.599999964237213
+          },
+          "totalScriptDuration": 30.599999964237213,
+          "totalStyleAndLayoutDuration": 28.19999998807907
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com"
+      ]
+    },
+    {
+      "route": "/discord_avatar_decoration",
+      "locale": "en-US",
+      "ad": 250,
+      "run": 2,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 1640,
+            "rating": "good",
+            "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 1629
+          },
+          "CLS": {
+            "value": 0.2561993216684261,
+            "rating": "poor",
+            "element": "div.bg-surface-primary.min-h-screen>div.max-w-7xl.mx-auto.px-4.py-8"
+          }
+        },
+        "h1": "Discord Avatar Decorations Gallery",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-800.woff2",
+            "bytes": 21880,
+            "type": "css"
+          },
+          {
+            "name": "/decorations/trick_pumpkin.png",
+            "bytes": 1062155,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_pumpkin.png",
+            "bytes": 1079820,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/assets/page-CK0BT8ok.js",
+            "bytes": 6364,
+            "type": "script"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/processImage-DE9ZvWGR.js",
+            "bytes": 1611,
+            "type": "script"
+          },
+          {
+            "name": "/assets/utils-CSVjsbq_.js",
+            "bytes": 1422,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 10759
+      },
+      "final": {
+        "LCP": {
+          "value": 1640,
+          "rating": "good",
+          "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 1629
+        },
+        "CLS": {
+          "value": 0.2561993216684261,
+          "rating": "poor",
+          "element": "div.bg-surface-primary.min-h-screen>div.max-w-7xl.mx-auto.px-4.py-8"
+        },
+        "INP": {
+          "value": 304,
+          "rating": "needs-improvement",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 264.5999999642372,
+          "processingDuration": 10.699999988079071,
+          "presentationDelay": 28.700000047683716,
+          "totalScriptDuration": 0,
+          "totalStyleAndLayoutDuration": 32.500000059604645
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com"
+      ]
+    },
+    {
+      "route": "/",
+      "locale": "zh-CN",
+      "run": 2,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 4568,
+            "rating": "poor",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 4560.800000011921
+          },
+          "CLS": {
+            "value": 0.07109004739336493,
+            "rating": "good",
+            "element": "#app>div.bg-base-lower.overflow-x-hidden.w-screen"
+          }
+        },
+        "h1": "Discord DecorationsFree Avatar Decorations for Discord",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1087
+      },
+      "final": {
+        "LCP": {
+          "value": 4568,
+          "rating": "poor",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 4560.800000011921
+        },
+        "CLS": {
+          "value": 0.07109004739336493,
+          "rating": "good",
+          "element": "#app>div.bg-base-lower.overflow-x-hidden.w-screen"
+        },
+        "INP": {
+          "value": 72,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 32.19999998807907,
+          "processingDuration": 18.30000001192093,
+          "presentationDelay": 21.5
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/zh-CN/",
+      "locale": "zh-CN",
+      "run": 2,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 576,
+            "rating": "good",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 570.5
+          },
+          "CLS": {
+            "value": 0.03481675890202204,
+            "rating": "good",
+            "element": "div.-translate-x-1/2.-translate-y-1/2.absolute.animate-pulse.bg-blue-500/5.blur-3xl.h-96.left-1/2.rounded-full.top-1/2.transform.w-96"
+          }
+        },
+        "h1": "Discord Decorations免费 Discord 头像装饰",
+        "lang": "zh-CN",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/avatars/blue.webp",
+            "bytes": 1722,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/gray.webp",
+            "bytes": 1210,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/green.webp",
+            "bytes": 1562,
+            "type": "img"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1081
+      },
+      "final": {
+        "LCP": {
+          "value": 576,
+          "rating": "good",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 570.5
+        },
+        "CLS": {
+          "value": 0.03481675890202204,
+          "rating": "good",
+          "element": "div.-translate-x-1/2.-translate-y-1/2.absolute.animate-pulse.bg-blue-500/5.blur-3xl.h-96.left-1/2.rounded-full.top-1/2.transform.w-96"
+        },
+        "INP": {
+          "value": 88,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 28.30000001192093,
+          "processingDuration": 21.900000035762787,
+          "presentationDelay": 37.799999952316284
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/blog",
+      "locale": "en-US",
+      "run": 2,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 2060,
+            "rating": "good",
+            "element": "img.h-full.object-cover.w-full",
+            "resourceLoadDelay": 958.6000000238419,
+            "elementRenderDelay": 44.5
+          },
+          "CLS": {
+            "value": 0.01867912707410764,
+            "rating": "good",
+            "element": "div.bg-surface-overlay.min-h-screen>div.lg:px-8.max-w-6xl.mx-auto.px-4.py-16.sm:px-6"
+          }
+        },
+        "h1": "Discord CustomizationBlog & Guides",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/discord-colored-text-generateor-1.webp",
+            "bytes": 30290,
+            "type": "img"
+          },
+          {
+            "name": "/free_discord_avatar_decorations.webp",
+            "bytes": 80402,
+            "type": "img"
+          },
+          {
+            "name": "/gif_frames_extractor_2.webp",
+            "bytes": 57354,
+            "type": "img"
+          },
+          {
+            "name": "/discord-fonts-generator.webp",
+            "bytes": 62812,
+            "type": "img"
+          },
+          {
+            "name": "/discord-decoration-art.webp",
+            "bytes": 102540,
+            "type": "img"
+          },
+          {
+            "name": "/assets/page-iWv1bucJ.js",
+            "bytes": 2551,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 341
+      },
+      "final": {
+        "LCP": {
+          "value": 2060,
+          "rating": "good",
+          "element": "img.h-full.object-cover.w-full",
+          "resourceLoadDelay": 958.6000000238419,
+          "elementRenderDelay": 44.5
+        },
+        "CLS": {
+          "value": 0.01867912707410764,
+          "rating": "good",
+          "element": "div.bg-surface-overlay.min-h-screen>div.lg:px-8.max-w-6xl.mx-auto.px-4.py-16.sm:px-6"
+        },
+        "INP": {
+          "value": 16,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 11.300000011920929,
+          "processingDuration": 1.199999988079071,
+          "presentationDelay": 3.5
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is"
+      ]
+    },
+    {
+      "route": "/",
+      "locale": "en-US",
+      "run": 3,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 4072,
+            "rating": "poor",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 4066.599999964237
+          },
+          "CLS": {
+            "value": 0.00010885096574995725,
+            "rating": "good",
+            "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+          }
+        },
+        "h1": "Discord DecorationsFree Avatar Decorations for Discord",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1081
+      },
+      "final": {
+        "LCP": {
+          "value": 4072,
+          "rating": "poor",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 4066.599999964237
+        },
+        "CLS": {
+          "value": 0.00010885096574995725,
+          "rating": "good",
+          "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+        },
+        "INP": {
+          "value": 96,
+          "rating": "good",
+          "element": "#decoration-search-bar",
+          "inputDelay": 0.30000001192092896,
+          "processingDuration": 81.30000001192093,
+          "presentationDelay": 14.399999976158142,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 14040.5,
+              "duration": 21.80000001192093,
+              "navigationId": 4082,
+              "invoker": "INPUT#decoration-search-bar.oninput",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 14040.5,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 21.80000001192093
+          },
+          "totalScriptDuration": 21.80000001192093,
+          "totalStyleAndLayoutDuration": 3
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/discord_front",
+      "locale": "en-US",
+      "ad": 250,
+      "run": 3,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 1768,
+            "rating": "good",
+            "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 1763.699999988079
+          },
+          "CLS": {
+            "value": 0.2561993216684261,
+            "rating": "poor",
+            "element": "div.bg-base-lower.overflow-x-hidden.w-screen>div.bg-surface-primary.min-h-screen.text-text-primary"
+          }
+        },
+        "h1": "Discord Fonts Generator",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-800.woff2",
+            "bytes": 21880,
+            "type": "css"
+          },
+          {
+            "name": "/assets/page-D0drnBmr.js",
+            "bytes": 15110,
+            "type": "script"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 2964
+      },
+      "final": {
+        "LCP": {
+          "value": 1768,
+          "rating": "good",
+          "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 1763.699999988079
+        },
+        "CLS": {
+          "value": 0.2561993216684261,
+          "rating": "poor",
+          "element": "div.bg-base-lower.overflow-x-hidden.w-screen>div.bg-surface-primary.min-h-screen.text-text-primary"
+        },
+        "INP": {
+          "value": 120,
+          "rating": "good",
+          "element": "#discord-fonts-input-main",
+          "inputDelay": 1.5,
+          "processingDuration": 93.19999998807907,
+          "presentationDelay": 25.30000001192093,
+          "longestScript": {
+            "entry": {
+              "name": "script",
+              "entryType": "script",
+              "startTime": 7516.100000023842,
+              "duration": 25.69999998807907,
+              "navigationId": 1747,
+              "invoker": "TEXTAREA#discord-fonts-input-main.oninput",
+              "invokerType": "event-listener",
+              "windowAttribution": "self",
+              "executionStart": 7516.100000023842,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "sourceURL": "http://127.0.0.1:4173/assets/index-QZMHCp5n.js",
+              "sourceFunctionName": "",
+              "sourceCharPosition": 6632
+            },
+            "subpart": "processing-duration",
+            "intersectingDuration": 25.69999998807907
+          },
+          "totalScriptDuration": 25.69999998807907,
+          "totalStyleAndLayoutDuration": 12.800000011920929
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is"
+      ]
+    },
+    {
+      "route": "/discord_avatar_decoration",
+      "locale": "en-US",
+      "ad": 250,
+      "run": 3,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 1304,
+            "rating": "good",
+            "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 1272
+          },
+          "CLS": {
+            "value": 0.2561993216684261,
+            "rating": "poor",
+            "element": "div.bg-surface-primary.min-h-screen>div.max-w-7xl.mx-auto.px-4.py-8"
+          }
+        },
+        "h1": "Discord Avatar Decorations Gallery",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-800.woff2",
+            "bytes": 21880,
+            "type": "css"
+          },
+          {
+            "name": "/decorations/trick_pumpkin.png",
+            "bytes": 1062155,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_pumpkin.png",
+            "bytes": 1079820,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/assets/page-CK0BT8ok.js",
+            "bytes": 6364,
+            "type": "script"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/processImage-DE9ZvWGR.js",
+            "bytes": 1611,
+            "type": "script"
+          },
+          {
+            "name": "/assets/utils-CSVjsbq_.js",
+            "bytes": 1422,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 10759
+      },
+      "final": {
+        "LCP": {
+          "value": 1304,
+          "rating": "good",
+          "element": "p.animate-slide-in-up.delay-100.font-medium.leading-relaxed.max-w-3xl.md:text-2xl.mx-auto.text-gray-300.text-lg",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 1272
+        },
+        "CLS": {
+          "value": 0.2561993216684261,
+          "rating": "poor",
+          "element": "div.bg-surface-primary.min-h-screen>div.max-w-7xl.mx-auto.px-4.py-8"
+        },
+        "INP": {
+          "value": 448,
+          "rating": "needs-improvement",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 393.30000001192093,
+          "processingDuration": 6.699999988079071,
+          "presentationDelay": 48,
+          "totalScriptDuration": 0,
+          "totalStyleAndLayoutDuration": 138.5999999642372
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "fonts.googleapis.com",
+        "cloud.umami.is"
+      ]
+    },
+    {
+      "route": "/",
+      "locale": "zh-CN",
+      "run": 3,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 4068,
+            "rating": "poor",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 4033.600000023842
+          },
+          "CLS": {
+            "value": 0.07109004739336493,
+            "rating": "good",
+            "element": "#app>div.bg-base-lower.overflow-x-hidden.w-screen"
+          }
+        },
+        "h1": "Discord DecorationsFree Avatar Decorations for Discord",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1087
+      },
+      "final": {
+        "LCP": {
+          "value": 4068,
+          "rating": "poor",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 4033.600000023842
+        },
+        "CLS": {
+          "value": 0.07109004739336493,
+          "rating": "good",
+          "element": "#app>div.bg-base-lower.overflow-x-hidden.w-screen"
+        },
+        "INP": {
+          "value": 72,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 30.69999998807907,
+          "processingDuration": 6.199999988079071,
+          "presentationDelay": 35.10000002384186
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/zh-CN/",
+      "locale": "zh-CN",
+      "run": 3,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 572,
+            "rating": "good",
+            "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+            "resourceLoadDelay": 0,
+            "elementRenderDelay": 564.5
+          },
+          "CLS": {
+            "value": 0.00010885096574995725,
+            "rating": "good",
+            "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+          }
+        },
+        "h1": "Discord Decorations免费 Discord 头像装饰",
+        "lang": "zh-CN",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/emojiface-192x192.png",
+            "bytes": 13054,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/yellow.webp",
+            "bytes": 1686,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/red.webp",
+            "bytes": 1810,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/color_wave.webp",
+            "bytes": 714,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/prismatic_waves.webp",
+            "bytes": 2960,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/midnight_prism.webp",
+            "bytes": 692,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/pastel.webp",
+            "bytes": 708,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/in_rainbows.webp",
+            "bytes": 930,
+            "type": "img"
+          },
+          {
+            "name": "/decorations/treat_ghost.webp",
+            "bytes": 1247116,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f31d.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/gh/jdecked/twemoji@16.0.1/assets/svg/1f389.svg",
+            "bytes": 0,
+            "type": "img"
+          },
+          {
+            "name": "/assets/AdBanner-B1WugjoX.js",
+            "bytes": 422,
+            "type": "script"
+          },
+          {
+            "name": "/assets/Testimonials-CyikIzy_.js",
+            "bytes": 1532,
+            "type": "script"
+          },
+          {
+            "name": "/avatars/gray.webp",
+            "bytes": 1210,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/blue.webp",
+            "bytes": 1722,
+            "type": "img"
+          },
+          {
+            "name": "/avatars/green.webp",
+            "bytes": 1562,
+            "type": "img"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 1081
+      },
+      "final": {
+        "LCP": {
+          "value": 572,
+          "rating": "good",
+          "element": "h2.font-normal.leading-relaxed.lg:text-2xl.max-w-4xl.mb-12.mx-auto.sm:text-xl.text-lg.text-text-secondary",
+          "resourceLoadDelay": 0,
+          "elementRenderDelay": 564.5
+        },
+        "CLS": {
+          "value": 0.00010885096574995725,
+          "rating": "good",
+          "element": "div.flex.h-16.items-center>div.flex.items-center.ml-auto.space-x-2"
+        },
+        "INP": {
+          "value": 88,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 26.5,
+          "processingDuration": 14.799999952316284,
+          "presentationDelay": 46.700000047683716
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com",
+        "cdn.jsdelivr.net"
+      ]
+    },
+    {
+      "route": "/blog",
+      "locale": "en-US",
+      "run": 3,
+      "initial": {
+        "metrics": {
+          "LCP": {
+            "value": 2036,
+            "rating": "good",
+            "element": "img.h-full.object-cover.w-full",
+            "resourceLoadDelay": 965,
+            "elementRenderDelay": 22
+          },
+          "CLS": {
+            "value": 0.0008862056696882889,
+            "rating": "good",
+            "element": "span.bg-clip-text.bg-gradient-to-r.block.from-primary.text-transparent.to-purple-400>TEXT"
+          }
+        },
+        "h1": "Discord CustomizationBlog & Guides",
+        "lang": "en",
+        "resources": [
+          {
+            "name": "/pagead/js/adsbygoogle.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/i/pub-4184498324686509",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/css2",
+            "bytes": 0,
+            "type": "link"
+          },
+          {
+            "name": "/script.js",
+            "bytes": 0,
+            "type": "script"
+          },
+          {
+            "name": "/banners/hearts.webp",
+            "bytes": 3580,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/ABC-Ginto-Nord-normal-800.woff2",
+            "bytes": 22492,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-400.woff2",
+            "bytes": 21272,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-500.woff2",
+            "bytes": 21992,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-600.woff2",
+            "bytes": 22008,
+            "type": "link"
+          },
+          {
+            "name": "/fonts/gg-sans-normal-700.woff2",
+            "bytes": 21516,
+            "type": "link"
+          },
+          {
+            "name": "/assets/index-QZMHCp5n.js",
+            "bytes": 283543,
+            "type": "script"
+          },
+          {
+            "name": "/assets/index-oeZ-ALYk.css",
+            "bytes": 29820,
+            "type": "link"
+          },
+          {
+            "name": "/discord-colored-text-generateor-1.webp",
+            "bytes": 30290,
+            "type": "img"
+          },
+          {
+            "name": "/free_discord_avatar_decorations.webp",
+            "bytes": 80402,
+            "type": "img"
+          },
+          {
+            "name": "/gif_frames_extractor_2.webp",
+            "bytes": 57354,
+            "type": "img"
+          },
+          {
+            "name": "/discord-fonts-generator.webp",
+            "bytes": 62812,
+            "type": "img"
+          },
+          {
+            "name": "/discord-decoration-art.webp",
+            "bytes": 102540,
+            "type": "img"
+          },
+          {
+            "name": "/assets/page-iWv1bucJ.js",
+            "bytes": 2551,
+            "type": "script"
+          },
+          {
+            "name": "/favicon-32x32.png",
+            "bytes": 1654,
+            "type": "other"
+          }
+        ],
+        "dom": 341
+      },
+      "final": {
+        "LCP": {
+          "value": 2036,
+          "rating": "good",
+          "element": "img.h-full.object-cover.w-full",
+          "resourceLoadDelay": 965,
+          "elementRenderDelay": 22
+        },
+        "CLS": {
+          "value": 0.0008862056696882889,
+          "rating": "good",
+          "element": "span.bg-clip-text.bg-gradient-to-r.block.from-primary.text-transparent.to-purple-400>TEXT"
+        },
+        "INP": {
+          "value": 16,
+          "rating": "good",
+          "element": "svg.h-5.text-icon.w-5>path",
+          "inputDelay": 12.199999988079071,
+          "processingDuration": 0.5,
+          "presentationDelay": 3.300000011920929
+        }
+      },
+      "errors": [],
+      "blocked": [
+        "pagead2.googlesyndication.com",
+        "fundingchoicesmessages.google.com",
+        "cloud.umami.is",
+        "fonts.googleapis.com"
+      ]
+    }
+  ]
+}

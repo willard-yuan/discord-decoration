@@ -530,6 +530,7 @@ const DiscordAvatarDecoration = () => {
                           alt={decoration.n}
                           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-200"
                           loading="lazy"
+                          decoding="async"
                         />
                         <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-br from-black/40 via-primary/20 to-pink-600/20 backdrop-blur-[2px] flex items-center justify-center pointer-events-none">
                           <div className="shiny-button relative inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm font-medium shadow-md ring-0 group-hover:ring-1 group-hover:ring-primary/30 group-hover:scale-105 transition-transform duration-300">

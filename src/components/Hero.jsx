@@ -1,3 +1,4 @@
+import { memo } from "preact/compat";
 import { useState } from "preact/hooks";
 import { useI18n } from "@/i18n/index.jsx";
 
@@ -225,4 +226,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default memo(Hero);

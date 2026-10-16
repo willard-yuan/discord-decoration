@@ -4,8 +4,9 @@ import {
   useEffect,
   useRef,
   useState,
+  useMemo,
 } from "preact/hooks";
-import { lazy, Suspense } from "preact/compat";
+import { lazy, Suspense, memo } from "preact/compat";
 
 import FileUpload from "@/components/fileupload.jsx";
 import { Icons } from "@/components/icons.jsx";
@@ -36,7 +37,7 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 import { useI18n } from "@/i18n/index.jsx";
 const HowToCreate = lazy(() => import("@/components/HowToCreate.jsx"));
 const Testimonials = lazy(() => import("@/components/Testimonials.jsx"));
-const AdBanner = lazy(() => import("@/components/AdBanner.jsx"));
+import AdBanner from "@/components/AdBanner.jsx";
 
 // Lazy load HowToCreate when visible
 const LazyHowToCreate = () => {
@@ -151,7 +152,8 @@ const UnsupportedModal = ({ unsupportedMsg }) => {
   );
 };
 
-const CurrentData = createContext(null);
+const AvatarData = createContext(null);
+const DecorationData = createContext(null);
 
 const ExtraLinks = () => {
   const { t } = useI18n();
@@ -397,27 +399,14 @@ const App = ({ ensureLoaded }) => {
     }
   }, []);
 
+  const avatarContext = useMemo(() => ({ avatarsData, avatarSearch, setAvatarName, setAvUrl }), [avatarSearch]);
+  const decorationContext = useMemo(() => ({ decoSearch, setName, setDescription, setDecoUrl }), [decoSearch]);
   return (
-    <CurrentData.Provider
-      value={{
-        avatarsData,
-        avatarSearch,
-        setAvatarName,
-        setAvUrl,
-
-        decorationsData,
-        decoSearch,
-        setName,
-        setDescription,
-        setDecoUrl,
-        name,
-      }}
-    >
+    <AvatarData.Provider value={avatarContext}>
+    <DecorationData.Provider value={decorationContext}>
       <Navbar />
       <Breadcrumb title="Discord Decorations" />
-      <Suspense fallback={<div className="h-[280px]" />}>
-        <AdBanner slot="8363014594" />
-      </Suspense>
+      <AdBanner slot="8363014594" />
       <Hero />
       <main className="flex flex-col items-center w-screen min-h-screen overflow-auto text-text-primary discord-scrollbar bg-surface-overlay">
         <div className="flex md:flex-row flex-col items-center md:items-start gap-8 px-8 py-12 w-full max-w-[900px] relative z-10">
@@ -833,7 +822,8 @@ const App = ({ ensureLoaded }) => {
         <Testimonials />
       </Suspense>
       <Footer />
-    </CurrentData.Provider>
+    </DecorationData.Provider>
+    </AvatarData.Provider>
   );
 };
 
@@ -847,12 +837,12 @@ export const NoSearchResults = ({ thing }) => {
   );
 };
 
-const AvatarList = () => {
+const AvatarList = memo(() => {
   const { avatarsData, avatarSearch, setAvatarName, setAvUrl } =
-    useContext(CurrentData);
+    useContext(AvatarData);
 
   // Categorize avatars based on their names and themes
-  const categorizeAvatars = useCallback(() => {
+  const categories = useMemo(() => {
     const categories = {
       'Colors & Themes': [],
       'Gaming & Entertainment': [],
@@ -927,17 +917,17 @@ const AvatarList = () => {
     return categories;
   }, [avatarsData]);
 
-  const getAvatars = useCallback(() => {
+  const allAvatars = useMemo(() => {
     if (isServer) return [];
     
-    const categories = categorizeAvatars();
     let filteredAvatars = [];
+    const query = avatarSearch.toLowerCase();
     
     // If there's a search query, filter across all categories
     if (avatarSearch.trim()) {
       Object.values(categories).forEach(categoryAvatars => {
         const filtered = categoryAvatars.filter((avatar) =>
-          avatar.n.toLowerCase().includes(avatarSearch.toLowerCase())
+          avatar.n.toLowerCase().includes(query)
         );
         filteredAvatars.push(...filtered);
       });
@@ -949,7 +939,7 @@ const AvatarList = () => {
     }
     
     return filteredAvatars;
-  }, [avatarsData, avatarSearch, categorizeAvatars]);
+  }, [categories, avatarSearch]);
 
   const onSelectAvatar = useCallback((event, name, file) => {
     setAvatarName(name.toLowerCase());
@@ -983,7 +973,6 @@ const AvatarList = () => {
     setDisplayCount(30);
   }, [avatarSearch]);
 
-  const allAvatars = getAvatars();
   const visibleAvatars = allAvatars.slice(0, displayCount);
 
   useEffect(() => {
@@ -1034,10 +1023,9 @@ const AvatarList = () => {
       )}
     </>
   );
-};
+});
 
-const DecorationsTabs = () => {
-  const { decorationsData } = useContext(CurrentData);
+const DecorationsTabs = memo(() => {
 
   // Since we only have one category now, we don't need tabs
   return (
@@ -1057,23 +1045,24 @@ const DecorationsTabs = () => {
       ))}
     </div>
   );
-};
+});
 
 const DecorationsList = ({ decorationsList, style, className }) => {
   const { decoSearch, setName, setDescription, setDecoUrl } =
-    useContext(CurrentData);
+    useContext(DecorationData);
 
-  const getDecorations = useCallback(() => {
+  const allDecorations = useMemo(() => {
     if (isServer) return [];
+    const query = decoSearch.toLowerCase();
     return decorationsList
       .map((c) => ({
         ...c,
         i: c.i.filter(
           (e) =>
-            e.n.toLowerCase().includes(decoSearch.toLowerCase()) ||
-            e.d.toLowerCase().includes(decoSearch.toLowerCase()) ||
-            c.n.toLowerCase().includes(decoSearch.toLowerCase()) ||
-            c.d.toLowerCase().includes(decoSearch.toLowerCase())
+            e.n.toLowerCase().includes(query) ||
+            e.d.toLowerCase().includes(query) ||
+            c.n.toLowerCase().includes(query) ||
+            c.d.toLowerCase().includes(query)
         ),
       }))
       .filter((category) => category.i.length > 0);
@@ -1110,7 +1099,6 @@ const DecorationsList = ({ decorationsList, style, className }) => {
     setDisplayCount(3);
   }, [decoSearch]);
 
-  const allDecorations = getDecorations();
   const visibleDecorations = allDecorations.slice(0, displayCount);
 
   useEffect(() => {
@@ -1154,6 +1142,7 @@ const DecorationsList = ({ decorationsList, style, className }) => {
                   {category.i.map((decor) => {
                     return (
                       <Decoration
+                        key={decor.f}
                         name={decor.n}
                         fileName={decor.f}
                         onClick={(e) =>
@@ -1292,7 +1281,8 @@ const DecorationsCategoryBanner = ({ category }) => {
 
 const Decoration = ({ name, fileName, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [timer, setTimer] = useState(null);
+  const timer = useRef(null);
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   return (
     <Image
@@ -1308,19 +1298,12 @@ const Decoration = ({ name, fileName, onClick }) => {
       width="80"
       height="80"
       onMouseOver={() => {
-        const intervalId = setInterval(() => {
-          setIsHovered(true);
-          try {
-            clearTimeout(timer);
-          } catch (e) { void e; }
-        }, 100);
-        setTimer(intervalId);
+        clearTimeout(timer.current);
+        timer.current = setTimeout(() => setIsHovered(true), 100);
       }}
       onMouseOut={() => {
+        clearTimeout(timer.current);
         setIsHovered(false);
-        try {
-          clearTimeout(timer);
-        } catch (e) { void e; }
       }}
     />
   );

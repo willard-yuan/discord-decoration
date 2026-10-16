@@ -15,8 +15,10 @@ export default function AdBanner({ slot = "9996208852" }) {
     }
   }, []);
 
+  // Match the existing homepage placeholder and keep space on no-fill.
+  // minHeight deliberately permits larger inventory rather than clipping ads.
   return (
-    <div className="w-full flex justify-center items-center px-4">
+    <div className="ad-slot w-full flex justify-center items-center px-4" style={{ minHeight: "280px" }}>
       <div className="w-full max-w-[900px]">
         <ins
           ref={slotRef}

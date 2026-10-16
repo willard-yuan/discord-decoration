@@ -17,6 +17,9 @@ async function optimize() {
     compress: true,
     preload: 'media', // Use media="print" onload="..." strategy
     inlineFonts: true,
+    // These selectors depend on the pre-paint browser language bootstrap.
+    // Keep them even though the static HTML has no suggested-language attribute.
+    allowRules: [/language-banner/],
     pruneSource: false, // Don't remove the original CSS file
     mergeStylesheets: false,
     additionalStylesheets: [], // Can specify if needed, but it should auto-discover

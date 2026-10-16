@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-16",
+  "baselineCommit": "72907787956cbc66137687026792621ed2ad4c06",
+  "build": "passed",
+  "prerenderedPagesCompared": 134,
+  "functionalChecks": "passed",
+  "delayedHydration": "passed: 3-second route delay retains SSR heading and becomes interactive",
+  "browserErrors": [],
+  "entryBundles": {
+    "before": {
+      "file": "index-QZMHCp5n.js",
+      "bytes": 1012736,
+      "gzipBytes": 283543
+    },
+    "after": {
+      "file": "index-CrZansj5.js",
+      "bytes": 82276,
+      "gzipBytes": 29166
+    }
+  },
+  "initialHomepageJSBytes": {
+    "before": 285497,
+    "after": 83058
+  },
+  "gifConversion": [
+    {
+      "sha256": "b2b98b1b75e1af874b576cd5d7bb35e61bca9129280e650bc8d4eeff76a29571",
+      "bytes": 39667,
+      "type": "image/gif",
+      "inputPreserved": true,
+      "signature": "GIF89a"
+    },
+    {
+      "sha256": "b2b98b1b75e1af874b576cd5d7bb35e61bca9129280e650bc8d4eeff76a29571",
+      "bytes": 39667,
+      "type": "image/gif",
+      "inputPreserved": true,
+      "signature": "GIF89a"
+    }
+  ],
+  "deliberateBehaviorChanges": [
+    "Ads reserve a minimum of 280px, including no-fill, to prevent content jumps. Larger inventory is not clipped.",
+    "URL locale takes precedence over stale localStorage; manual language selection still persists and changes the URL."
+  ],
+  "scopeLimitations": [
+    "Chrome-only browser regression, not every FFmpeg export combination or external ad/CMP state.",
+    "Production monitoring requires an endpoint; no deployment or field-P75 claim."
+  ],
+  "heroVisualComparison": {
+    "beforeSize": [
+      1440,
+      799
+    ],
+    "afterSize": [
+      1440,
+      799
+    ],
+    "channelTolerance": 12,
+    "pixelsExceedingTolerance": 0,
+    "totalPixels": 1150560
+  }
+}

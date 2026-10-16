@@ -1,0 +1,428 @@
+{
+  "type": "Controlled lab sessions; not CrUX or field P75",
+  "conditions": {
+    "browser": "155.0.8059.80",
+    "viewport": "390x844",
+    "cpu": 4,
+    "downloadMbps": 1.6,
+    "latencyMs": 150,
+    "thirdParties": "blocked; explicit 250px ad fixture where stated",
+    "metric": "scripted lab session, not field P75"
+  },
+  "thresholds": {
+    "CLS": 0.1,
+    "LCP": 2500,
+    "INP": 200
+  },
+  "rows": [
+    {
+      "scenario": "/|en-US",
+      "before": {
+        "CLS": {
+          "samples": [
+            0.00010885096574995725,
+            0.00010885096574995725,
+            0.00010885096574995725
+          ],
+          "median": 0.00010885096574995725,
+          "max": 0.00010885096574995725,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            4136,
+            4148,
+            4072
+          ],
+          "median": 4136,
+          "max": 4148,
+          "allRunsWithinGoodThreshold": false
+        },
+        "INP": {
+          "samples": [
+            168,
+            288,
+            96
+          ],
+          "median": 168,
+          "max": 288,
+          "allRunsWithinGoodThreshold": false
+        }
+      },
+      "after": {
+        "CLS": {
+          "samples": [
+            0.00047601150047888667,
+            0.02067708054366738,
+            0.02205646597053882
+          ],
+          "median": 0.02067708054366738,
+          "max": 0.02205646597053882,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            544,
+            744,
+            788
+          ],
+          "median": 744,
+          "max": 788,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            88,
+            176,
+            88
+          ],
+          "median": 88,
+          "max": 176,
+          "allRunsWithinGoodThreshold": true
+        }
+      }
+    },
+    {
+      "scenario": "/discord_front|en-US",
+      "before": {
+        "CLS": {
+          "samples": [
+            0.2561993216684261,
+            0.2561993216684261,
+            0.2561993216684261
+          ],
+          "median": 0.2561993216684261,
+          "max": 0.2561993216684261,
+          "allRunsWithinGoodThreshold": false
+        },
+        "LCP": {
+          "samples": [
+            1876,
+            2092,
+            1768
+          ],
+          "median": 1876,
+          "max": 2092,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            144,
+            304,
+            120
+          ],
+          "median": 144,
+          "max": 304,
+          "allRunsWithinGoodThreshold": false
+        }
+      },
+      "after": {
+        "CLS": {
+          "samples": [
+            0.002845934416429239,
+            0.0029286093166059923,
+            0.002845934416429239
+          ],
+          "median": 0.002845934416429239,
+          "max": 0.0029286093166059923,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            1444,
+            1584,
+            1728
+          ],
+          "median": 1584,
+          "max": 1728,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            184,
+            152,
+            112
+          ],
+          "median": 152,
+          "max": 184,
+          "allRunsWithinGoodThreshold": true
+        }
+      }
+    },
+    {
+      "scenario": "/discord_avatar_decoration|en-US",
+      "before": {
+        "CLS": {
+          "samples": [
+            0.2561993216684261,
+            0.2561993216684261,
+            0.2561993216684261
+          ],
+          "median": 0.2561993216684261,
+          "max": 0.2561993216684261,
+          "allRunsWithinGoodThreshold": false
+        },
+        "LCP": {
+          "samples": [
+            1224,
+            1640,
+            1304
+          ],
+          "median": 1304,
+          "max": 1640,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            336,
+            304,
+            448
+          ],
+          "median": 336,
+          "max": 448,
+          "allRunsWithinGoodThreshold": false
+        }
+      },
+      "after": {
+        "CLS": {
+          "samples": [
+            0.01703580583946556,
+            0.01703580583946556,
+            0.016528522408612703
+          ],
+          "median": 0.01703580583946556,
+          "max": 0.01703580583946556,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            1212,
+            1196,
+            1156
+          ],
+          "median": 1196,
+          "max": 1212,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            368,
+            272,
+            208
+          ],
+          "median": 272,
+          "max": 368,
+          "allRunsWithinGoodThreshold": false
+        }
+      }
+    },
+    {
+      "scenario": "/|zh-CN",
+      "before": {
+        "CLS": {
+          "samples": [
+            0.07109004739336493,
+            0.07109004739336493,
+            0.07109004739336493
+          ],
+          "median": 0.07109004739336493,
+          "max": 0.07109004739336493,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            4028,
+            4568,
+            4068
+          ],
+          "median": 4068,
+          "max": 4568,
+          "allRunsWithinGoodThreshold": false
+        },
+        "INP": {
+          "samples": [
+            72,
+            72,
+            72
+          ],
+          "median": 72,
+          "max": 72,
+          "allRunsWithinGoodThreshold": true
+        }
+      },
+      "after": {
+        "CLS": {
+          "samples": [
+            0.018224821536969874,
+            0.017249364442104245,
+            0.018199766287185705
+          ],
+          "median": 0.018199766287185705,
+          "max": 0.018224821536969874,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            708,
+            604,
+            560
+          ],
+          "median": 604,
+          "max": 708,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            72,
+            88,
+            72
+          ],
+          "median": 72,
+          "max": 88,
+          "allRunsWithinGoodThreshold": true
+        }
+      }
+    },
+    {
+      "scenario": "/zh-CN/|zh-CN",
+      "before": {
+        "CLS": {
+          "samples": [
+            0.03733853199732451,
+            0.03481675890202204,
+            0.00010885096574995725
+          ],
+          "median": 0.03481675890202204,
+          "max": 0.03733853199732451,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            588,
+            576,
+            572
+          ],
+          "median": 576,
+          "max": 588,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            88,
+            88,
+            88
+          ],
+          "median": 88,
+          "max": 88,
+          "allRunsWithinGoodThreshold": true
+        }
+      },
+      "after": {
+        "CLS": {
+          "samples": [
+            0.021406864131461444,
+            0.021288358221833087,
+            0.019727517848102796
+          ],
+          "median": 0.021288358221833087,
+          "max": 0.021406864131461444,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            624,
+            784,
+            568
+          ],
+          "median": 624,
+          "max": 784,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            72,
+            72,
+            128
+          ],
+          "median": 72,
+          "max": 128,
+          "allRunsWithinGoodThreshold": true
+        }
+      }
+    },
+    {
+      "scenario": "/blog|en-US",
+      "before": {
+        "CLS": {
+          "samples": [
+            0.0008862056696882889,
+            0.01867912707410764,
+            0.0008862056696882889
+          ],
+          "median": 0.0008862056696882889,
+          "max": 0.01867912707410764,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            2020,
+            2060,
+            2036
+          ],
+          "median": 2036,
+          "max": 2060,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            112,
+            16,
+            16
+          ],
+          "median": 16,
+          "max": 112,
+          "allRunsWithinGoodThreshold": true
+        }
+      },
+      "after": {
+        "CLS": {
+          "samples": [
+            0.01868556130364726,
+            0.01868556130364726,
+            0.018787978039857597
+          ],
+          "median": 0.01868556130364726,
+          "max": 0.018787978039857597,
+          "allRunsWithinGoodThreshold": true
+        },
+        "LCP": {
+          "samples": [
+            1472,
+            1448,
+            1636
+          ],
+          "median": 1472,
+          "max": 1636,
+          "allRunsWithinGoodThreshold": true
+        },
+        "INP": {
+          "samples": [
+            16,
+            16,
+            40
+          ],
+          "median": 16,
+          "max": 40,
+          "allRunsWithinGoodThreshold": true
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Third-party scripts blocked; explicit 250px ad fixture on font and decoration gallery pages.",
+    "Fresh browser contexts; Playwright routing disables HTTP cache in both builds; same gzip server, CPU x4, configured 1.6 Mbps and 150ms latency.",
+    "Three repetitions per scenario are not a representative real-user percentile.",
+    "Ads larger than the reserved 280px and auto-placed ads require production verification.",
+    "No deployment performed. Real-user monitoring is opt-in via VITE_VITALS_ENDPOINT."
+  ]
+}

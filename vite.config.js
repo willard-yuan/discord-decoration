@@ -7,6 +7,7 @@ import { generateFavicons } from "./build/generateFavicons";
 import { generateMeta } from "./build/generateMeta";
 
 import browserslist from "browserslist";
+import { performancePlugin } from "./build/performance.js";
 import { browserslistToTargets } from "lightningcss";
 
 // https://vitejs.dev/config/
@@ -18,6 +19,7 @@ export default defineConfig({
     },
   },
   build: {
+    manifest: true,
     minify: "terser",
     terserOptions: {
       ecma: 2020,
@@ -33,6 +35,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    performancePlugin(),
     {
       name: "custom-server-headers",
       configureServer: (server) => {

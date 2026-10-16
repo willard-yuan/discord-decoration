@@ -274,6 +274,32 @@ function rewriteHead(shell, { seo, lang, route, canonicalUrl }) {
   // page navigations.
   // Remove any pre-existing __SSR_LANG__ bootstrap (shell may have one from EN prerender)
   html = html.replace(/<script>window\.__SSR_LANG__[^<]*<\/script>/g, "");
+  const manifestPath = path.join(DIST, '.vite', 'manifest.json');
+  const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : {};
+  // Discover the current route and its static dependencies from Vite's
+  // manifest. This removes the entry → route → CSS/dictionary waterfall
+  // without fetching unrelated routes or deferred codecs.
+  html = html.replace(/<link[^>]*data-route-resource[^>]*>/g, '');
+  const resources = new Set();
+  const hints = [];
+  const addChunk = key => {
+    if (resources.has(key) || !manifest[key]) return;
+    resources.add(key);
+    const chunk = manifest[key];
+    for (const dependency of chunk.imports || []) addChunk(dependency);
+    if (key !== 'src/index.jsx') {
+      hints.push(`<link rel="modulepreload" data-route-resource href="/${chunk.file}">`);
+      for (const css of chunk.css || []) {
+        if (!resources.has(css)) {
+          resources.add(css);
+          hints.push(`<link rel="stylesheet" data-route-resource href="/${css}">`);
+        }
+      }
+    }
+  };
+  addChunk(route === '/' ? 'src/pages/page.jsx' : `src/pages${route}/page.jsx`);
+  addChunk(`src/i18n/locales/${lang}.js`);
+  html = html.replace('</head>', hints.join('') + '</head>');
   const bootstrap = `<script>window.__SSR_LANG__=${JSON.stringify(lang)};</script>`;
   html = html.replace(/<head>/, "<head>" + bootstrap);
   return html;

@@ -8,7 +8,7 @@ import {
 } from "preact-iso";
 import { useEffect, useLayoutEffect } from "preact/hooks";
 
-import Home from "@/pages/page.jsx";
+const Home = lazy(() => import("@/pages/page.jsx"));
 const Discussion = lazy(() => import("@/pages/discuss/page.jsx"));
 const GifExtractor = lazy(() => import("@/pages/gif-extractor/page.jsx"));
 const DiscordColoredText = lazy(() => import("@/pages/discord-colored-text/page.jsx"));
@@ -33,7 +33,7 @@ const DiscordFonts = lazy(() => import("@/pages/discord_front/page.jsx"));
 const OtherTools = lazy(() => import("@/pages/other-tools/page.jsx"));
 const Changelog = lazy(() => import("@/pages/changelog/page.jsx"));
 import { NotFound } from "@/pages/_404.jsx";
-import { I18nProvider, useI18n } from "@/i18n/index.jsx";
+import { I18nProvider, useI18n, loadLanguage, getInitialLang } from "@/i18n/index.jsx";
 import { LANGUAGES, DEFAULT_LANG } from "@/i18n/languages.js";
 import { LangDetectBanner } from "@/components/LangDetectBanner.jsx";
 
@@ -62,18 +62,19 @@ const ROUTE_COMPONENT = {
  * instead — so it is safe to keep it client-only.
  */
 function withLang(code, Comp) {
-  return function LangScoped() {
+  function LangScoped() {
     const { setLang } = useI18n();
-    useLayoutEffect(() => { setLang(code); }, []);
+    useLayoutEffect(() => { setLang(code).catch(error => console.error("Unable to change language", error)); }, []);
     return <Comp />;
-  };
+  }
+  return LangScoped;
 }
 
 // Build the full route list: English routes (unprefixed) + every translated
 // route duplicated under /<lang>/ for all 18 non-EN languages.
 const allRoutes = [];
 for (const [route, Comp] of Object.entries(ROUTE_COMPONENT)) {
-  allRoutes.push(<Route path={route} component={Comp} />);
+  allRoutes.push(<Route path={route} component={withLang(DEFAULT_LANG, Comp)} />);
 }
 for (const l of LANGUAGES) {
   if (l.code === DEFAULT_LANG) continue;
@@ -151,12 +152,26 @@ export function App() {
 }
 
 if (typeof window !== "undefined") {
+  if (import.meta.env.VITE_VITALS_ENDPOINT) {
+    import("@/utils/vitals.js").then(({ startVitals }) => startVitals(import.meta.env.VITE_VITALS_ENDPOINT));
+  }
   if (navigator.storage && typeof navigator.storage.persist === "function") {
     navigator.storage.persist().catch(() => void 0);
   }
-  hydrate(<App />, document.getElementById("app"));
+  const initialPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const initialIsHome = initialPath === "/" ||
+    (initialPath !== `/${DEFAULT_LANG}` && LANG_SET.has(initialPath.slice(1)));
+  // Home was split out of the entry. Populate its lazy() cache before
+  // hydration so the existing prerendered Hero stays visible while it loads.
+  Promise.all([
+    loadLanguage(getInitialLang()),
+    initialIsHome ? Home.preload() : undefined,
+  ]).then(() => {
+    hydrate(<App />, document.getElementById("app"));
+  }).catch(error => console.error("Unable to load page language", error));
 }
 
 export async function prerender(data) {
+  await loadLanguage(getInitialLang());
   return await ssr(<App {...data} />);
 }
