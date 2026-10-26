@@ -38,6 +38,7 @@ import { useI18n } from "@/i18n/index.jsx";
 const HowToCreate = lazy(() => import("@/components/HowToCreate.jsx"));
 const Testimonials = lazy(() => import("@/components/Testimonials.jsx"));
 import AdBanner from "@/components/AdBanner.jsx";
+import ToolFacts from "@/components/ToolFacts.jsx";
 
 // Lazy load HowToCreate when visible
 const LazyHowToCreate = () => {
@@ -325,7 +326,6 @@ const App = ({ ensureLoaded }) => {
 
   // Set page title for homepage
   useEffect(() => {
-    document.title = t("meta.title");
   }, [t]);
 
   // @ts-ignore
@@ -821,6 +821,7 @@ const App = ({ ensureLoaded }) => {
       <Suspense fallback={<div className="h-96" />}>
         <Testimonials />
       </Suspense>
+      <ToolFacts />
       <Footer />
     </DecorationData.Provider>
     </AvatarData.Provider>

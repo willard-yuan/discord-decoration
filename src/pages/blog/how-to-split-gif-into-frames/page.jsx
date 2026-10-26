@@ -1,3 +1,4 @@
+import ArticleByline from "@/components/ArticleByline.jsx";
 import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
@@ -5,7 +6,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function HowToSplitGifIntoFramesArticle() {
   useEffect(() => {
-    document.title = "How to Split a GIF into Frames? - Discord Decoration Art";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -22,52 +22,7 @@ export default function HowToSplitGifIntoFramesArticle() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "How to Split a GIF into Frames?",
-      "description": "Learn how to split animated GIFs into individual frames using our free online GIF frame extractor tool",
-      "image": "https://discord-decoration.art/gif_frames_extractor_1.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "Discord Decoration Art"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration Art",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/banner.svg"
-        }
-      },
-      "datePublished": "2025-10-25",
-      "dateModified": "2025-10-25",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://discord-decoration.art/blog/how-to-split-gif-into-frames"
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (
@@ -77,6 +32,7 @@ export default function HowToSplitGifIntoFramesArticle() {
       {/* Breadcrumb */}
       <Breadcrumb title="How to Split a GIF into Frames?" />
       
+      <ArticleByline route="/blog/how-to-split-gif-into-frames" />
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
         <div className="absolute inset-0 bg-gradient-to-br from-surface-high via-surface-higher to-surface-overlay">

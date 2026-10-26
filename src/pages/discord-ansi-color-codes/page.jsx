@@ -64,8 +64,6 @@ export default function DiscordAnsiColorCodes() {
 
   // ── SEO ────────────────────────────────────────────────────────────────
   useEffect(() => {
-    document.title =
-      "Discord ANSI Color Codes - Full Reference Table (Copy & Paste)";
     const DESC =
       "Discord ANSI color codes reference: all 8 text and background codes, bold, italic, underline, strikethrough, 24-bit truecolor and copy-and-paste examples.";
 
@@ -86,27 +84,7 @@ export default function DiscordAnsiColorCodes() {
     );
     setMeta("name", "robots", "index, follow");
 
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      headline: "Discord ANSI Color Codes - Full Reference Table",
-      description:
-        "All eight Discord ANSI colour codes, the five SGR style codes, 24-bit truecolor syntax and copy-and-paste combination examples.",
-      url: "https://discord-decoration.art/discord-ansi-color-codes",
-      inLanguage: "en",
-      isAccessibleForFree: true,
-      publisher: {
-        "@type": "Organization",
-        name: "Discord Decoration Art",
-        url: "https://discord-decoration.art/",
-      },
-    });
-    document.head.appendChild(script);
-    return () => {
-      if (script.parentNode) script.parentNode.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   const writeClipboard = useCallback(async (text) => {

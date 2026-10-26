@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function HowToUse() {
   useEffect(() => {
-    document.title = "How to Use - Discord Avatar Decorations Guide";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -22,88 +21,7 @@ export default function HowToUse() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Create Discord Avatar Decorations",
-      "description": "Step-by-step guide to create and apply fake Discord avatar decorations",
-      "image": "https://discord-decoration.art/banner.svg",
-      "totalTime": "PT5M",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "0"
-      },
-      "supply": [
-        {
-          "@type": "HowToSupply",
-          "name": "Discord Account"
-        },
-        {
-          "@type": "HowToSupply",
-          "name": "Avatar Image"
-        }
-      ],
-      "tool": [
-        {
-          "@type": "HowToTool",
-          "name": "Discord Decoration Generator"
-        }
-      ],
-      "step": [
-        {
-          "@type": "HowToStep",
-          "name": "Choose Your Avatar",
-          "text": "Select or upload your desired avatar image",
-          "url": "https://discord-decoration.art/how-to-use#step1"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Select Decoration",
-          "text": "Browse and choose from available decoration styles",
-          "url": "https://discord-decoration.art/how-to-use#step2"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Customize Settings",
-          "text": "Adjust colors, effects, and animation preferences",
-          "url": "https://discord-decoration.art/how-to-use#step3"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Generate & Download",
-          "text": "Create your decorated avatar and download the result",
-          "url": "https://discord-decoration.art/how-to-use#step4"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Apply to Discord",
-          "text": "Set the generated image as your Discord profile picture",
-          "url": "https://discord-decoration.art/how-to-use#step5"
-        }
-      ]
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (

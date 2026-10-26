@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function TermsOfService() {
   useEffect(() => {
-    document.title = "Terms of Service - Discord Avatar Decoration Generator";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -22,45 +21,7 @@ export default function TermsOfService() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Terms of Service",
-      "description": "Terms of Service for Discord Avatar Decoration Generator",
-      "url": "https://discord-decoration.art/terms-of-service",
-      "mainEntity": {
-        "@type": "Article",
-        "headline": "Terms of Service",
-        "description": "Terms and conditions for using Discord Avatar Decoration Generator",
-        "author": {
-          "@type": "Organization",
-          "name": "Discord Decoration"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Discord Decoration",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://discord-decoration.art/banner.svg"
-          }
-        },
-        "datePublished": "2024-01-01",
-        "dateModified": "2024-01-01"
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (

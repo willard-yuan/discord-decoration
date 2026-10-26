@@ -51,7 +51,6 @@ const DiscordAvatarDecoration = () => {
   const baseImgUrl = import.meta.env.VITE_BASE_IMAGE_URL || "";
   
   useEffect(() => {
-    document.title = t('deco.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -68,46 +67,7 @@ const DiscordAvatarDecoration = () => {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "ImageGallery",
-      "name": t('deco.schemaName'),
-      "description": t('deco.schemaDesc'),
-      "url": "https://discord-decoration.art/discord_avatar_decoration",
-      "author": {
-        "@type": "Organization",
-        "name": "Discord Decoration"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/banner.svg"
-        }
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, [lang]);
 
   const ensureLoaded = async () => {

@@ -6,7 +6,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 export default function CookiesPolicy() {
   useEffect(() => {
     // Set document title
-    document.title = "Cookies Policy - Discord Decoration";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -20,28 +19,7 @@ export default function CookiesPolicy() {
       metaRobots.setAttribute("content", "index, follow");
     }
 
-    // Add structured data
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Cookies Policy",
-      "description": "Discord Decoration's cookie policy explaining how we use cookies and similar technologies.",
-      "url": "https://discord-decoration.art/cookies-policy",
-      "dateModified": new Date().toISOString().split('T')[0],
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (

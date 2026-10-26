@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function DiscordProfileTips() {
   useEffect(() => {
-    document.title = "Discord Profile Tips - Enhance Your Discord Profile";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -22,52 +21,7 @@ export default function DiscordProfileTips() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Discord Profile Tips: Enhance Your Discord Profile",
-      "description": "Expert tips and tricks to enhance your Discord profile with custom avatar decorations",
-      "image": "https://discord-decoration.art/banner.svg",
-      "author": {
-        "@type": "Organization",
-        "name": "Discord Decoration"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/banner.svg"
-        }
-      },
-      "datePublished": "2024-01-01",
-      "dateModified": "2024-01-01",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://discord-decoration.art/discord-profile-tips"
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (

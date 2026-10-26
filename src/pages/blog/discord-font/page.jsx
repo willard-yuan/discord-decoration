@@ -1,3 +1,4 @@
+import ArticleByline from "@/components/ArticleByline.jsx";
 import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
@@ -5,7 +6,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function DiscordFontBlog() {
   useEffect(() => {
-    document.title = "How to Get Custom Discord Font: Transform Your Messages with Stylish Text - Discord Decoration";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -17,40 +17,7 @@ export default function DiscordFontBlog() {
       metaRobots.setAttribute("content", "index, follow");
     }
 
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "How to Get Custom Discord Font: Transform Your Messages with Stylish Text",
-      "description": "Learn how to get custom Discord fonts and transform your messages with stylish text. Discover the best Discord font generators, Unicode text styles, and formatting tricks.",
-      "author": {
-        "@type": "Organization",
-        "name": "Discord Decoration"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/logo.png"
-        }
-      },
-      "datePublished": "2024-01-15",
-      "dateModified": "2024-01-15",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://discord-decoration.art/blog/discord-font"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (
@@ -59,7 +26,8 @@ export default function DiscordFontBlog() {
       <Breadcrumb title="How to Get Custom Discord Font: Transform Your Messages with Stylish Text" />
       
       <main className="min-h-screen bg-base-lower">
-        {/* Hero Section */}
+        <ArticleByline route="/blog/discord-font" />
+      {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">

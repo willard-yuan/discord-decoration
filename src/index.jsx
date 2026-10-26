@@ -36,6 +36,7 @@ import { NotFound } from "@/pages/_404.jsx";
 import { I18nProvider, useI18n, loadLanguage, getInitialLang } from "@/i18n/index.jsx";
 import { LANGUAGES, DEFAULT_LANG } from "@/i18n/languages.js";
 import { LangDetectBanner } from "@/components/LangDetectBanner.jsx";
+import RouteMetadata from "@/components/RouteMetadata.jsx";
 
 import "@/global.css";
 
@@ -145,6 +146,7 @@ export function App() {
       <LocationProvider>
         <div className="bg-base-lower w-screen overflow-x-hidden">
           <Router>{allRoutes}</Router>
+          <RouteMetadata />
         </div>
       </LocationProvider>
     </I18nProvider>

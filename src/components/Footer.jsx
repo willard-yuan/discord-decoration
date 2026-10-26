@@ -1,3 +1,4 @@
+import { SITE_NAME } from "@/seo/schema.js";
 import { memo } from "preact/compat";
 import { Icons } from "./icons.jsx";
 import { useI18n } from "@/i18n/index.jsx";
@@ -32,9 +33,7 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: "GitHub", href: "https://github.com/ItsPi3141/discord-fake-avatar-decorations", icon: "github", color: "text-text-secondary hover:text-text-primary" },
-    { name: "Discord Community", href: "#discord", icon: "discord", color: "text-[#5865F2] hover:text-[#4752C4]" },
-    { name: "Twitter", href: "#twitter", icon: "twitter", color: "text-[#1DA1F2] hover:text-[#0d8bd9]" },
+    { name: "GitHub", href: "https://github.com/willard-yuan/discord-decoration", icon: "github", color: "text-text-secondary hover:text-text-primary" },
   ];
 
   return (
@@ -210,7 +209,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
               <div className="text-xl font-bold ginto">
                 <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Discord Decoration
+                  {SITE_NAME}
                 </span>
               </div>
               <div className="hidden md:block w-px h-6 bg-border-faint/30" />

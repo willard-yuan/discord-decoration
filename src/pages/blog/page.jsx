@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function BlogList() {
   useEffect(() => {
-    document.title = "Blog - Discord Decoration Art";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -22,42 +21,7 @@ export default function BlogList() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Discord Decoration Art Blog",
-      "description": "Tips and guides for Discord customization",
-      "url": "https://discord-decoration.art/blog",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration Art",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/banner.svg"
-        }
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   const blogPosts = [
@@ -97,7 +61,7 @@ export default function BlogList() {
     {
       id: 2,
       title: "How to Get Free Discord Avatar Decorations",
-      description: "Transform your Discord profile with stunning avatar decorations without spending a dime on Nitro. Learn how to get free Discord decorations with Discord Decoration Art.",
+      description: "Transform your Discord profile with stunning avatar decorations without spending a dime on Nitro. Learn how to get free Discord decorations with Discord Decoration.",
       publishDate: "2025-10-17",
       readTime: "5 min read",
       category: "Avatar Decorations",

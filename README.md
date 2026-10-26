@@ -106,3 +106,12 @@ page paths, locale, element selectors and timing attribution, but no input text,
 uploaded files or query strings. Deduplicate reports by metric `id` and evaluate
 mobile P75 by page/template and release. Verify real ad fill/no-fill, CMP and auto
 ads in production before starting Search Console validation.
+
+
+### Search and GEO metadata
+
+`src/seo/schema.js` owns the site identity and typed content graph. The prerender build and client route metadata use the same graph so canonical URLs and entity IDs stay aligned during navigation. `src/seo/articles.js` preserves existing publication dates; change modification dates only when editorial content changes, never on every build. Article bylines use the existing organization author rather than an unverified person.
+
+`public/llms.txt` is an optional discovery index, not an access-control file or a ranking guarantee. Homepage catalog counts are calculated from the actual data; the source quotation links to Discord's official documentation. About and Contact links already existed and are retained. Placeholder social/support links have been removed or replaced with the project repository/community page.
+
+After `npm run build`, run `node scripts/verify-geo.mjs` to verify canonical URLs, JSON-LD graphs, identity links, article dates and the discovery file across all prerendered routes. Existing publication dates were migrated from the repository, not independently verified against original publication records. No live GEO score or AI citation uplift is implied by these checks.

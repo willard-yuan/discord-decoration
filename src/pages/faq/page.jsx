@@ -9,7 +9,6 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
   
   useEffect(() => {
-    document.title = t('faq.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -26,40 +25,7 @@ export default function FAQ() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO (use the active locale's translated Q&A)
-    const faqItems = dict['faq.items'] || [];
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqItems.map(item => ({
-        "@type": "Question",
-        "name": item.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": item.a
-        }
-      }))
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, [lang]);
   
   const toggleFAQ = (index) => {

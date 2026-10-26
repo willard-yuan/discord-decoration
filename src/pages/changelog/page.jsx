@@ -7,7 +7,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 export default function Changelog() {
   const { t, lang, dict } = useI18n();
   useEffect(() => {
-    document.title = t('changelog.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -24,53 +23,7 @@ export default function Changelog() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": t('changelog.schemaName'),
-      "description": t('changelog.schemaDesc'),
-      "url": "https://discord-decoration.art/changelog",
-      "mainEntity": {
-        "@type": "Article",
-        "headline": t('changelog.schemaHeadline'),
-        "description": t('changelog.schemaDesc2'),
-        "author": {
-          "@type": "Organization",
-          "name": "Discord Decoration"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Discord Decoration",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://discord-decoration.art/banner.svg"
-          }
-        },
-        "datePublished": "2024-01-01",
-        "dateModified": new Date().toISOString().split('T')[0]
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, [lang]);
 
   const versions = dict['changelog.versions'] || [];

@@ -1,3 +1,4 @@
+import ArticleByline from "@/components/ArticleByline.jsx";
 import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
@@ -9,7 +10,6 @@ const DESCRIPTION =
 
 export default function DiscordColoredTextBlog() {
   useEffect(() => {
-    document.title = TITLE;
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute("content", DESCRIPTION);
@@ -28,34 +28,7 @@ export default function DiscordColoredTextBlog() {
     const metaRobots = document.querySelector('meta[name="robots"]');
     if (metaRobots) metaRobots.setAttribute("content", "index, follow");
 
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: TITLE,
-      description: DESCRIPTION,
-      image: "https://discord-decoration.art/discord-colored-text-generateor.webp",
-      author: { "@type": "Organization", name: "Discord Decoration" },
-      publisher: {
-        "@type": "Organization",
-        name: "Discord Decoration",
-        logo: { "@type": "ImageObject", url: "https://discord-decoration.art/logo.png" },
-      },
-      datePublished: "2026-10-09",
-      dateModified: "2026-10-09",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://discord-decoration.art/blog/discord-colored-text",
-      },
-    };
-
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      if (script.parentNode) script.parentNode.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (
@@ -65,6 +38,7 @@ export default function DiscordColoredTextBlog() {
       {/* Breadcrumb */}
       <Breadcrumb title={TITLE} />
 
+      <ArticleByline route="/blog/discord-colored-text" />
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
         <div className="absolute inset-0 bg-gradient-to-br from-surface-high via-surface-higher to-surface-overlay">

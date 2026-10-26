@@ -16,6 +16,8 @@
  * Usage:  node build/seo.mjs   (invoked automatically by `npm run build`)
  */
 import { createServer } from "vite";
+import { ROUTE_I18N, HOME_DESCRIPTIONS, EN_ONLY_SEO } from "../src/seo/routes.js";
+import { buildSchemas, SITE_NAME } from "../src/seo/schema.js";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -53,7 +55,7 @@ const DICTS = {
 };
 
 const SITE_URL = process.env.VITE_SITE_URL || "https://discord-decoration.art";
-const SITE_NAME = "Discord Decoration";
+
 
 // Routes that have full translations → get per-language variants at /<lang>/<route>
 const TRANSLATED_ROUTES = [
@@ -61,61 +63,14 @@ const TRANSLATED_ROUTES = [
 ];
 
 // i18n keys per translated route
-const ROUTE_I18N = {
-  "/": { titleKey: "meta.title", descSource: "home" },
-  "/faq": { titleKey: "faq.metaTitle", descKey: "faq.metaDesc" },
-  "/changelog": { titleKey: "changelog.metaTitle", descKey: "changelog.metaDesc" },
-  "/discord_avatar": { titleKey: "avatar.metaTitle", descKey: "avatar.metaDesc" },
-  "/discord_avatar_decoration": { titleKey: "deco.metaTitle", descKey: "deco.metaDesc" },
-  "/discord_front": { titleKey: "fonts.metaTitle", descKey: "fonts.metaDesc" },
-};
+
 
 // Translated home descriptions (no i18n key exists for this; client relies on
 // the static generateMeta injection which is EN-only).
-const HOME_DESCRIPTIONS = {
-  en: "Create stunning Discord avatar decorations for free. Add custom decorations to your profile picture without spending money on Discord Nitro.",
-  fr: "Créez de superbes décorations d'avatar Discord gratuitement. Ajoutez des décorations personnalisées à votre photo de profil sans dépenser d'argent pour Discord Nitro.",
-  es: "Crea impresionantes decoraciones de avatar de Discord gratis. Añade decoraciones personalizadas a tu foto de perfil sin gastar dinero en Discord Nitro.",
-  de: "Erstelle umwerfende Discord-Avatar-Dekorationen kostenlos. Füge deinem Profilbild benutzerdefinierte Dekorationen hinzu, ohne Geld für Discord Nitro auszugeben.",
-  it: "Crea stupende decorazioni per avatar Discord gratis. Aggiungi decorazioni personalizzate alla tua foto del profilo senza spendere soldi per Discord Nitro.",
-  ja: "無料で素晴らしいDiscordアバター装飾を作成しましょう。Discord Nitroにお金を使わずに、プロフィール画像にカスタム装飾を追加できます。",
-  ko: "무료로 멋진 Discord 아바타 장식을 만드세요. Discord Nitro에 돈을 쓰지 않고 프로필 사진에 맞춤 장식을 추가하세요.",
-  "pt-BR": "Crie decorações de avatar do Discord impressionantes grátis. Adicione decorações personalizadas à sua foto de perfil sem gastar dinheiro com Discord Nitro.",
-  ar: "أنشئ زخارف أفاتار ديسكورد مذهلة مجانًا. أضف زخارف مخصصة إلى صورتك الشخصية دون إنفاق المال على Discord Nitro.",
-  "zh-CN": "免费制作精美的 Discord 头像装饰。无需花钱开通 Discord Nitro，即可为个人资料头像添加自定义装饰。",
-  "zh-TW": "免費製作精美的 Discord 頭像裝飾。無需花錢開通 Discord Nitro，即可為個人檔案頭像添加自訂裝飾。",
-  hi: "मुफ़्त में शानदार Discord अवतार डेकोरेशन बनाएँ। Discord Nitro पर पैसे खर्च किए बिना अपनी प्रोफ़ाइल तस्वीर में कस्टम डेकोरेशन जोड़ें।",
-  ru: "Создавайте потрясающие украшения аватара Discord бесплатно. Добавляйте кастомные украшения к своей аватарке без подписки Discord Nitro.",
-  pl: "Twórz niesamowite dekoracje awatara Discord za darmo. Dodawaj niestandardowe dekoracje do swojego zdjęcia profilowego bez płacenia za Discord Nitro.",
-  id: "Buat dekorasi avatar Discord yang menakjubkan secara gratis. Tambahkan dekorasi kustom ke foto profil Anda tanpa mengeluarkan uang untuk Discord Nitro.",
-  fil: "Gumawa ng mga napakagandang Discord avatar decorations nang libre. Magdagdag ng mga custom na decoration sa iyong profile picture nang hindi gumagastos para sa Discord Nitro.",
-  vi: "Tạo các trang trí avatar Discord tuyệt đẹp hoàn toàn miễn phí. Thêm trang trí tùy chỉnh vào ảnh đại diện mà không cần trả tiền cho Discord Nitro.",
-  th: "สร้างเครื่องประดับอวาตาร์ Discord สวยงามได้ฟรี เพิ่มเครื่องประดับแบบกำหนดเองให้รูปโปรไฟล์โดยไม่ต้องจ่ายเงินสำหรับ Discord Nitro",
-  tr: "Discord avatar dekorasyonlarını ücretsiz olarak oluşturun. Discord Nitro'ya para ödemeden profil resminize özel dekorasyonlar ekleyin.",
-};
+
 
 // EN-only routes: hardcoded English SEO (no translations published).
-const EN_ONLY_SEO = {
-  "/how-to-use": { title: "How to Use - Discord Avatar Decorations Guide", desc: "Complete step-by-step guide on how to create and apply fake Discord avatar decorations. Learn to customize your Discord profile for free." },
-  "/privacy-policy": { title: "Privacy Policy - Discord Avatar Decoration Generator", desc: "Privacy Policy for Discord Avatar Decoration Generator. Learn how we protect your privacy and handle your data when using our free Discord tools." },
-  "/404": { title: "Page Not Found - Discord Decoration", desc: "The page you are looking for does not exist. Try our free Discord avatar decoration tools instead." },
-  "/terms-of-service": { title: "Terms of Service - Discord Avatar Decoration Generator", desc: "Terms of Service for Discord Avatar Decoration Generator. Read our terms and conditions for using our free Discord avatar decoration tools." },
-  "/about-us": { title: "About Us - Discord Decoration", desc: "Learn about the story behind Discord Decoration - how we started creating free avatar decorations and profile customization tools for the Discord community." },
-  "/cookies-policy": { title: "Cookies Policy - Discord Decoration", desc: "Learn about how Discord Decoration uses cookies to improve your experience. Understand what data we collect and how you can manage your cookie preferences." },
-  "/contact-support": { title: "Contact Support - Discord Decoration", desc: "Get help with Discord Decoration. Contact our support team for assistance with Discord avatars, decorations, and other Discord customization tools." },
-  "/discuss": { title: "Community Discussion - Discord Avatar Decorations", desc: "Join our community discussion about Discord avatar decorations, share your creations, get help, and connect with other Discord users." },
-  "/gif-extractor": { title: "Free GIF Frame Extractor - Discord Decoration", desc: "Free online GIF frame extractor tool. Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars, profile pictures, and image editing projects." },
-  "/other-tools": { title: "Other Free Discord Tools - Discord Decoration", desc: "Discover our suite of free tools including discord fonts generator, GIF frame extractor and others you may also like." },
-  "/discord-colored-text": { title: "Free Discord Colored Text Generator - ANSI Codes, Copy & Paste", desc: "Free Discord colored text generator. Pick ANSI colors, add bold or underline, then copy and paste a ready code block into Discord. Desktop and mobile, no Nitro." },
-  "/discord-ansi-color-codes": { title: "Discord ANSI Color Codes - Full Reference Table (Copy & Paste)", desc: "Discord ANSI color codes reference: all 8 text and background codes, bold, italic, underline, strikethrough, 24-bit truecolor and copy-and-paste examples." },
-  "/blog/discord-colored-text": { title: "How to Make Colored Text in Discord (Copy and Paste)", desc: "Learn how to make colored text in Discord with ANSI codes. Step-by-step guide for desktop and mobile, plus rainbow text and a free copy-and-paste generator." },
-  "/discord-profile-tips": { title: "Discord Profile Tips - Discord Decoration", desc: "Discover expert tips and tricks to enhance your Discord profile with custom avatar decorations. Learn how to stand out and express your personality on Discord." },
-  "/blog": { title: "Blog - Discord Decoration", desc: "Discover the latest tips and guides for Discord customization. Learn how to get free avatar decorations and custom fonts for your Discord profile." },
-  "/blog/discord-font": { title: "Custom Discord Fonts Guide - Discord Decoration", desc: "Learn how to get custom Discord fonts and transform your messages with stylish text. Discover the best Discord font generators, Unicode text styles, and formatting tricks to make your Discord messages stand out." },
-  "/blog/discord-avatar-decorations": { title: "Free Discord Avatar Decorations Guide - Discord Decoration", desc: "Transform your Discord profile with stunning avatar decorations without spending a dime on Nitro. Learn how to get free Discord decorations with Discord Decoration Art." },
-  "/blog/how-to-split-gif-into-frames": { title: "How to Split GIF into Frames - Discord Decoration", desc: "Learn how to split animated GIFs into individual frames using our free online GIF frame extractor tool. Perfect for creating Discord avatars and profile pictures." },
-  "/blog/new-free-discord-avatar-decorations": { title: "New Free Discord Avatar Decorations - Discord Decoration", desc: "Discover 30+ brand new free Discord avatar decorations! Get exclusive access to The Final Peel, Warframe Clem, Dart Monkey, Infinite Swirl and many more stunning decorations." },
-};
+
 
 // All routes for the sitemap (mirrors the existing sitemap.xml).
 const ALL_ROUTES = [
@@ -195,26 +150,7 @@ function buildHreflang(route) {
 
 function buildJsonLd(route, lang, seo, canonicalUrl) {
   const dict = DICTS[lang] || DICTS[DEFAULT_LANG];
-  const blocks = [{
-    "@context": "https://schema.org",
-    "@type": route === "/" ? "WebSite" : "WebPage",
-    name: seo.title,
-    description: seo.description,
-    url: canonicalUrl,
-    inLanguage: lang,
-  }];
-  if (route === "/") {
-    blocks.push({ "@context": "https://schema.org", "@type": "Organization", name: SITE_NAME, url: SITE_URL + "/" });
-  }
-  if (route === "/faq") {
-    const items = dict["faq.items"] || DICTS[DEFAULT_LANG]["faq.items"] || [];
-    blocks.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: items.map((it) => ({ "@type": "Question", name: it.q, acceptedAnswer: { "@type": "Answer", text: it.a } })),
-    });
-  }
-  return blocks;
+  return [buildSchemas(route, lang, seo, canonicalUrl, dict[route === "/discord-colored-text" ? "coloredText.faq.items" : "faq.items"] || [])];
 }
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -245,7 +181,7 @@ function rewriteHead(shell, { seo, lang, route, canonicalUrl }) {
   const dir = getDir(lang);
   let html = setHtmlLang(shell, lang, dir);
   // remove existing JSON-LD + hreflang (avoid duplicates)
-  html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "");
+  html = html.replace(/<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g, "");
   html = html.replace(/<link[^>]*hreflang[^>]*>/gi, "");
   // title
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(seo.title)}</title>`);
@@ -254,9 +190,10 @@ function rewriteHead(shell, { seo, lang, route, canonicalUrl }) {
   const is404 = route === "/404";
   html = upsertMeta(html, 'name="robots"', `<meta name="robots" content="${is404 ? "noindex, nofollow" : "index, follow"}">`);
   // OG
+  html = upsertMeta(html, 'property="og:site_name"', `<meta property="og:site_name" content="${SITE_NAME}">`);
   html = upsertMeta(html, 'property="og:title"', `<meta property="og:title" content="${esc(seo.title)}">`);
   html = upsertMeta(html, 'property="og:description"', `<meta property="og:description" content="${esc(seo.description)}">`);
-  html = upsertMeta(html, 'property="og:type"', `<meta property="og:type" content="website">`);
+  html = upsertMeta(html, 'property="og:type"', `<meta property="og:type" content="${route.startsWith("/blog/") ? "article" : "website"}">`);
   html = upsertMeta(html, 'property="og:url"', `<meta property="og:url" content="${canonicalUrl}">`);
   html = upsertMeta(html, 'property="og:locale"', `<meta property="og:locale" content="${OG_LOCALE[lang] || "en_US"}">`);
   // Twitter
@@ -266,7 +203,7 @@ function rewriteHead(shell, { seo, lang, route, canonicalUrl }) {
   html = upsertLink(html, 'rel="canonical"', `<link rel="canonical" href="${canonicalUrl}">`);
   // hreflang + JSON-LD before </head>
   const altTags = buildHreflang(route).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join("");
-  const jsonLdTags = buildJsonLd(route, lang, seo, canonicalUrl).map((b) => `<script type="application/ld+json">${JSON.stringify(b)}</script>`).join("");
+  const jsonLdTags = buildJsonLd(route, lang, seo, canonicalUrl).map((b) => `<script type="application/ld+json" data-site-schema>${JSON.stringify(b).replace(/</g, "\\u003c")}</script>`).join("");
   html = html.replace(/<\/head>/, altTags + jsonLdTags + "</head>");
   // inline bootstrap: set __SSR_LANG__ so client hydration matches the SSR
   // language exactly (no flash / mismatch). We intentionally do NOT overwrite
@@ -427,7 +364,11 @@ async function main() {
   // other locales keep their published date. Drop an entry once crawlers have
   // re-fetched the page, otherwise its lastmod stays pinned to that date.
   const FORCE_LASTMOD = new Map([
-    ["/changelog", "2026-10-10"], // 1.2.2 entry added to all 19 locales
+    ["/changelog", "2026-10-10"],
+    ["en:/", "2026-10-26"],
+    ["/about-us", "2026-10-26"],
+    ["/contact-support", "2026-10-26"],
+    ["/other-tools", "2026-10-26"], // 1.2.2 entry added to all 19 locales
   ]);
 
   /** Read loc → lastmod out of an already-published sitemap in public/. */

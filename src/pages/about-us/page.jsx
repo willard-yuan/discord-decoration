@@ -6,7 +6,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 export default function AboutUs() {
   useEffect(() => {
     // Set document title
-    document.title = "About Us - Discord Decoration";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -20,31 +19,7 @@ export default function AboutUs() {
       metaRobots.setAttribute("content", "index, follow");
     }
 
-    // Add structured data for About page
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "AboutPage",
-      "name": "About Discord Decoration",
-      "description": "Learn about the story behind Discord Decoration and our mission to provide free avatar decorations for Discord users.",
-      "url": "https://discord-decoration.art/about-us",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "Discord Decoration",
-        "url": "https://discord-decoration.art",
-        "description": "Free Discord Avatar Decoration Generator & Profile Customization Tools",
-        "foundingDate": "2023",
-        "mission": "To democratize Discord profile customization by providing free alternatives to premium features"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (
@@ -62,6 +37,19 @@ export default function AboutUs() {
           </h1>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
             The story of how a simple idea became a community-driven platform serving thousands of Discord users worldwide.
+          </p>
+        </section>
+
+        <section className="mb-12 rounded-2xl border border-border-faint bg-surface-overlay/50 p-8">
+          <h2 className="text-2xl font-bold text-text-primary mb-4">Project identity and sources</h2>
+          <p className="text-text-secondary leading-relaxed">
+            Discord Decoration is an independent avatar image and text-tool project, not affiliated with Discord.
+            The avatar composer exports an image; it does not unlock native Discord decorations or Nitro features.
+            Guides are published under the Discord Decoration editorial name.
+          </p>
+          <p className="text-text-secondary mt-4">
+            Review the <a className="text-primary underline" href="https://github.com/willard-yuan/discord-decoration">source repository and change history</a>
+            {' or '}<a className="text-primary underline" href="/contact-support">contact support</a> to report a bug or request a correction.
           </p>
         </section>
 

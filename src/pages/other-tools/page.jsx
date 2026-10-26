@@ -5,12 +5,6 @@ import Footer from '@/components/Footer.jsx';
 
 const tools = [
   {
-    name: 'Avatar Cropper - Quickly Crop Avatar for Discord, X, etc.',
-    href: 'https://avatarcropper.app',
-    icon: '/avatar_cropper_logo.png',
-    description: 'Quick and accurate avatar cropper tool. Crop perfect avatar for Discord, X (Twitter), etc. No signup required.',
-  },
-  {
     name: 'Discord Fonts Generator - 500+ Stylish Text Styles for Discord',
     href: '/discord_front',
     emoji: '🔤',
@@ -35,12 +29,6 @@ const tools = [
     description: 'Step-by-step guide to colored Discord text with ANSI escape codes - desktop, web and mobile, rainbow gradients, background highlights and troubleshooting.',
   },
   {
-    name: 'Discord Markdown Live Previewer',
-    href: 'https://discord-markdown-previewer.pro',
-    emoji: '📝',
-    description: 'Discord markdown editor with live preview',
-  },
-  {
     name: 'GIF Frame Extractor - Extract Frames from Animated GIFs',
     href: '/gif-extractor',
     emoji: '🖼️',
@@ -53,12 +41,6 @@ const tools = [
     description: 'Best Free Tool to Hide Your Face with Emoji, Blur or Pixelation for Privacy, and All You Need is One Click',
   },
   {
-    name: 'Emoji to Image - Convert Emoji to High-Quality PNG Instantly',
-    href: 'https://emojitoimage.com',
-    emoji: '🖼️',
-    description: 'Free online Emoji to Image converter. Search and download high-quality, transparent background emoji PNGs (64px to 512px). Perfect for design & social media.',
-  },
-  {
     name: 'YTPlaylistLength - Best Youtube Playlist Length Calculator',
     href: 'https://ytplaylistlength.pro',
     emoji: '⏱️',
@@ -68,7 +50,6 @@ const tools = [
 
 export default function OtherTools() {
   useEffect(() => {
-    document.title = 'Tools You May Also Like - Discord Decorations';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -101,7 +82,7 @@ export default function OtherTools() {
             </p>
           </div>
 
-          {/* Tools Grid - 3x3 style layout */}
+          {/* Tools Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {tools.map((tool) => (
               <div

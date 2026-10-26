@@ -1,0 +1,30 @@
+# Discord Decoration
+
+> Free browser tools for composing decorated avatar images, browsing avatar presets, styling text, and extracting GIF frames.
+
+Discord Decoration is an independent project, not affiliated with Discord. The avatar composer produces an image; it does not grant or unlock Discord's native avatar-decoration inventory or Nitro features. The canonical production origin is https://discord-decoration.art. Translated pages declare their own canonical URLs and language alternatives.
+
+## Tools
+
+- [Avatar composer](https://discord-decoration.art/): Combine an avatar image with a decoration and export the result.
+- [Avatar gallery](https://discord-decoration.art/discord_avatar): Browse avatar presets.
+- [Decoration gallery](https://discord-decoration.art/discord_avatar_decoration): Browse decoration assets.
+- [Fonts generator](https://discord-decoration.art/discord_front): Convert text to Unicode styles.
+- [Colored text generator](https://discord-decoration.art/discord-colored-text): Create ANSI-formatted text for Discord.
+- [GIF frame extractor](https://discord-decoration.art/gif-extractor): Extract still frames from animated GIFs.
+
+## Guides
+
+- [How to use](https://discord-decoration.art/how-to-use): Avatar composition workflow.
+- [FAQ](https://discord-decoration.art/faq): Frequently asked questions.
+- [Blog](https://discord-decoration.art/blog): Guides to avatars, fonts, GIFs and colored text.
+- [ANSI reference](https://discord-decoration.art/discord-ansi-color-codes): Text formatting reference.
+
+## Project and support
+
+- [About](https://discord-decoration.art/about-us): Project information and source repository.
+- [Contact](https://discord-decoration.art/contact-support): Support channels and issue reporting.
+- [Source repository](https://github.com/willard-yuan/discord-decoration): Implementation and change history.
+- [Privacy](https://discord-decoration.art/privacy-policy): Privacy policy.
+- [Terms](https://discord-decoration.art/terms-of-service): Terms of service.
+- [Sitemap](https://discord-decoration.art/sitemap.xml): Published URLs and language alternatives.

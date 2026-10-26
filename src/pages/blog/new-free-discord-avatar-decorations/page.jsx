@@ -1,3 +1,4 @@
+import ArticleByline from "@/components/ArticleByline.jsx";
 import { useEffect } from "preact/hooks";
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.jsx";
@@ -5,7 +6,6 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 
 export default function NewFreeDiscordAvatarDecorationsArticle() {
   useEffect(() => {
-    document.title = "New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery! - Discord Decoration Art";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -22,52 +22,7 @@ export default function NewFreeDiscordAvatarDecorationsArticle() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!",
-      "description": "Discover 30+ brand new free Discord avatar decorations! Get exclusive access to The Final Peel, Warframe Clem, Dart Monkey, Infinite Swirl and many more stunning decorations.",
-      "image": "https://discord-decoration.art/free_discord_avatar_decorations.webp",
-      "author": {
-        "@type": "Organization",
-        "name": "Discord Decoration Art"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration Art",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/banner.svg"
-        }
-      },
-      "datePublished": "2025-11-02",
-      "dateModified": "2025-11-02",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://discord-decoration.art/blog/new-free-discord-avatar-decorations"
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (
@@ -77,6 +32,7 @@ export default function NewFreeDiscordAvatarDecorationsArticle() {
       {/* Breadcrumb */}
       <Breadcrumb title="New FREE! 30+ New Free Discord Avatar Decorations are Added to the Decorations Gallery!" />
       
+      <ArticleByline route="/blog/new-free-discord-avatar-decorations" />
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
         <div className="absolute inset-0 bg-gradient-to-br from-surface-high via-surface-higher to-surface-overlay">

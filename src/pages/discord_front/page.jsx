@@ -17,7 +17,6 @@ const DiscordFonts = () => {
   const inputStickyRef = useRef(null);
 
   useEffect(() => {
-    document.title = t('fonts.metaTitle');
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');

@@ -6,8 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb.jsx";
 export default function ContactSupport() {
   useEffect(() => {
     // Set document title
-    document.title = "Contact Support - Discord Decoration";
-    
+
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -20,35 +19,14 @@ export default function ContactSupport() {
       metaRobots.setAttribute("content", "index, follow");
     }
 
-    // Add structured data
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "name": "Contact Support",
-      "description": "Contact Discord Decoration support team for help with Discord customization tools and services.",
-      "url": "https://discord-decoration.art/contact-support",
-      "dateModified": new Date().toISOString().split('T')[0],
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-surface-overlay via-surface-high to-surface-higher">
       <Navbar />
       <Breadcrumb title="Contact Support" />
-      
+
       <main className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Header */}
         <section className="text-center mb-12">
@@ -69,7 +47,7 @@ export default function ContactSupport() {
               <span className="text-3xl mr-3">⚡</span>
               Quick Help
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-surface-high/30 rounded-xl p-6 hover:bg-surface-high/40 transition-all duration-300">
                 <div className="flex items-center mb-4">
@@ -79,8 +57,8 @@ export default function ContactSupport() {
                 <p className="text-text-secondary mb-4">
                   Check our frequently asked questions for quick answers to common issues.
                 </p>
-                <a 
-                  href="/faq" 
+                <a
+                  href="/faq"
                   className="inline-flex items-center text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
                   Visit FAQ
@@ -96,8 +74,8 @@ export default function ContactSupport() {
                 <p className="text-text-secondary mb-4">
                   Learn how to use our Discord decoration tools with step-by-step guides.
                 </p>
-                <a 
-                  href="/how-to-use" 
+                <a
+                  href="/how-to-use"
                   className="inline-flex items-center text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
                   View Guides
@@ -113,7 +91,7 @@ export default function ContactSupport() {
               <span className="text-3xl mr-3">📞</span>
               Get in Touch
             </h2>
-            
+
             <div className="space-y-6">
               {/* Discord Support */}
               <div className="bg-[#5865F2]/10 border border-[#5865F2]/20 rounded-xl p-6">
@@ -125,21 +103,21 @@ export default function ContactSupport() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-text-primary">Discord Community</h3>
-                    <p className="text-text-secondary">Join our Discord server for real-time support and community help</p>
+                    <p className="text-text-secondary">Visit the community discussion page for questions and shared tips</p>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a 
-                    href="https://discord.gg/your-server" 
-                    target="_blank" 
+                  <a
+                    href="/discuss"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
                   >
-                    Join Discord Server
+                    Open Community Discussion
                   </a>
                   <div className="text-sm text-text-muted flex items-center">
                     <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                    Usually responds within minutes
+                    Community questions and feedback
                   </div>
                 </div>
               </div>
@@ -158,15 +136,15 @@ export default function ContactSupport() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a 
-                    href="mailto:support@discord-decoration.art" 
+                  <a
+                    href="mailto:support@discord-decoration.art"
                     className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
                   >
                     support@discord-decoration.art
                   </a>
                   <div className="text-sm text-text-muted flex items-center">
                     <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
-                    Usually responds within 24 hours
+                    Response times may vary
                   </div>
                 </div>
               </div>
@@ -185,9 +163,9 @@ export default function ContactSupport() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a 
-                    href="https://github.com/your-repo/issues" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/willard-yuan/discord-decoration/issues"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
                   >
@@ -208,12 +186,12 @@ export default function ContactSupport() {
               <span className="text-3xl mr-3">📋</span>
               Before You Contact Us
             </h2>
-            
+
             <div className="space-y-4 text-text-secondary">
               <p className="text-lg font-medium text-text-primary mb-4">
                 To help us assist you better, please include the following information:
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <h3 className="font-semibold text-text-primary flex items-center">
@@ -243,7 +221,7 @@ export default function ContactSupport() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="space-y-3">
                   <h3 className="font-semibold text-text-primary flex items-center">
                     <span className="text-red-500 mr-2">✗</span>
@@ -282,7 +260,7 @@ export default function ContactSupport() {
               <span className="text-3xl mr-3">⏰</span>
               Response Times
             </h2>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center bg-surface-high/30 rounded-xl p-6">
                 <div className="text-3xl mb-3">🚀</div>
@@ -290,14 +268,14 @@ export default function ContactSupport() {
                 <p className="text-2xl font-bold text-green-500 mb-1">&lt; 1 hour</p>
                 <p className="text-sm text-text-muted">During active hours</p>
               </div>
-              
+
               <div className="text-center bg-surface-high/30 rounded-xl p-6">
                 <div className="text-3xl mb-3">📧</div>
                 <h3 className="font-semibold text-text-primary mb-2">Email</h3>
                 <p className="text-2xl font-bold text-blue-500 mb-1">&lt; 24 hours</p>
                 <p className="text-sm text-text-muted">Business days</p>
               </div>
-              
+
               <div className="text-center bg-surface-high/30 rounded-xl p-6">
                 <div className="text-3xl mb-3">🐛</div>
                 <h3 className="font-semibold text-text-primary mb-2">GitHub</h3>
@@ -326,7 +304,7 @@ export default function ContactSupport() {
           </section>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

@@ -24,7 +24,6 @@ const isServer = typeof window === "undefined";
 
 export default function GifExtractor() {
   useEffect(() => {
-    document.title = "GIF Frame Extractor - Extract Frames from Animated GIFs";
     
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -50,53 +49,6 @@ export default function GifExtractor() {
     }
     metaRobots.setAttribute('content', 'index, follow');
     
-    // Add structured data for SEO
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "GIF Frame Extractor",
-      "description": "Free online tool to extract individual frames from animated GIFs",
-      "url": "https://discord-decoration.art/gif-extractor",
-      "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Discord Decoration"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Discord Decoration",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://discord-decoration.art/banner.svg"
-        }
-      }
-    };
-    
-    // Remove existing structured data script if any
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Add new structured data
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup structured data on unmount
-      const scriptToRemove = document.querySelector('script[type="application/ld+json"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
   }, []);
 
   const [loaded, setLoaded] = useState(true);

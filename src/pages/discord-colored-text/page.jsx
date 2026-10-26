@@ -330,7 +330,6 @@ export default function DiscordColoredText() {
 
   // ── SEO: title, meta, structured data ───────────────────────────────────
   useEffect(() => {
-    document.title = t("coloredText.metaTitle");
 
     const setMeta = (attr, name, content) => {
       let el = document.querySelector(`meta[${attr}="${name}"]`);
@@ -345,35 +344,7 @@ export default function DiscordColoredText() {
     setMeta("name", "keywords", t("coloredText.metaKeywords"));
     setMeta("name", "robots", "index, follow");
 
-    const faq = t("coloredText.faq.items");
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Discord Colored Text Generator",
-        description: t("coloredText.metaDesc"),
-        url: "https://discord-decoration.art/discord-colored-text",
-        applicationCategory: "UtilityApplication",
-        operatingSystem: "Any",
-        isAccessibleForFree: true,
-        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: (Array.isArray(faq) ? faq : []).map((item) => ({
-          "@type": "Question",
-          name: item.q,
-          acceptedAnswer: { "@type": "Answer", text: item.a },
-        })),
-      },
-    ]);
-    document.head.appendChild(script);
-    return () => {
-      if (script.parentNode) script.parentNode.removeChild(script);
-    };
+    // Route metadata and structured data are managed centrally.
   }, [t]);
 
   // ── live character count ────────────────────────────────────────────────
