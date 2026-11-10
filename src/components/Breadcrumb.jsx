@@ -8,14 +8,19 @@ const Breadcrumb = ({ title }) => {
   
   const getBreadcrumbItems = () => {
     const items = [{ nameKey: 'breadcrumb.home', path: '/', keywords: 'discord decoration home' }];
-    
+
+    // Cloudflare Pages serves prerendered pages as /<route>/ and 308s the
+    // slashless form, so canonical URLs, sitemap locs and every internal href
+    // use the trailing-slash form. Keeping breadcrumbs slashless would split
+    // the same page across two URLs again.
     // Blog first: /blog/discord-colored-text would otherwise match the tool branch.
     if (pathname.startsWith('/blog')) {
       items.push({ nameKey: 'breadcrumb.blog', path: '/blog/', keywords: 'discord decoration blog article' });
 
       // If we have a title prop and we're in a blog detail page, add it as the final breadcrumb
       if (title && pathname !== '/blog' && pathname !== '/blog/') {
-        items.push({ name: title, path: pathname, keywords: 'blog article' });
+        const articlePath = pathname.replace(/\/+$/, '') || '/';
+        items.push({ name: title, path: articlePath === '/' ? '/' : articlePath + '/', keywords: 'blog article' });
       }
     } else if (pathname.includes('/discord_avatar_decoration')) {
       items.push({ nameKey: 'breadcrumb.avatarDecorations', path: '/discord_avatar_decoration/', keywords: 'discord avatar decorations gallery' });

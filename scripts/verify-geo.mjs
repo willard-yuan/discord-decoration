@@ -10,9 +10,7 @@ const files = fs.readdirSync(root, {recursive:true}).filter(f=>f.endsWith('index
 for (const file of files) {
   const html = fs.readFileSync(path.join(root,file),'utf8');
   const pathname = '/' + file.replace(/index\.html$/, '').replace(/\/$/, '');
-  const segments = pathname.split('/').filter(Boolean);
-  const localizedHome = segments.length === 1 && LANGUAGES.some(l=>l.code===segments[0]);
-  const expected = origin + pathname + (localizedHome ? '/' : '');
+  const expected = origin + pathname + (pathname.endsWith('/') ? '' : '/');
   const canonical = [...html.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"[^>]*>/g)];
   assert.equal(canonical.length,1,`${file}: canonical count`);
   assert.equal(canonical[0][1], expected,`${file}: canonical URL`);
@@ -23,8 +21,8 @@ for (const file of files) {
   assert.equal(org.name, SITE_NAME);
   assert.ok(org.sameAs.includes(PROJECT_URL));
   assert.ok(html.includes(`property="og:site_name" content="${SITE_NAME}"`));
-  if (pathname !== '/404') assert.ok(html.includes('href="/about-us"'),`${file}: About link`);
-  if (pathname !== '/404') assert.ok(html.includes('href="/contact-support"'),`${file}: Contact link`);
+  if (pathname !== '/404') assert.ok(html.includes('href="/about-us/"'),`${file}: About link`);
+  if (pathname !== '/404') assert.ok(html.includes('href="/contact-support/"'),`${file}: Contact link`);
   const ids = new Set(graph.map(n=>n['@id']));
   assert.equal(ids.size,graph.length,`${file}: duplicate entity IDs`);
   const checkRefs = obj => {

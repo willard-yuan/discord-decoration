@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Hành động cửa sổ xem trước", "items": [
-          ["Di chuyển các nút hành động cửa sổ xem trước trên ", { "text": "Bộ sưu tập Avatar Discord", "href": "/discord_avatar" }, " và ", { "text": "Bộ sưu tập Trang Trí Discord", "href": "/discord_avatar_decoration" }, " để có bố cục rõ ràng hơn"],
+          ["Di chuyển các nút hành động cửa sổ xem trước trên ", { "text": "Bộ sưu tập Avatar Discord", "href": "/discord_avatar/" }, " và ", { "text": "Bộ sưu tập Trang Trí Discord", "href": "/discord_avatar_decoration/" }, " để có bố cục rõ ràng hơn"],
           "Thống nhất chiều rộng nút hành động thành w-72 trên Bộ sưu tập Avatar Discord và Bộ sưu tập Trang Trí Discord",
           "Thêm 'Sử Dụng Avatar Này → Chọn Trang Trí' trong xem trước Bộ sưu tập Avatar Discord",
           "Thêm 'Sử Dụng Trang Trí Này → Chọn Avatar' trong xem trước Bộ sưu tập Trang Trí Discord",
@@ -447,7 +447,7 @@ export default {
           "'Lưu GIF động' giờ tạo trực tiếp trong cửa sổ xem trước trên cả hai trang bằng FFmpeg được tải lười",
           "Thêm chỉ báo tiến trình tạo và phản hồi lỗi trên Bộ sưu tập Avatar Discord và Bộ sưu tập Trang Trí Discord",
           "Tạo GIF tôn trọng lớp trang trí đang được chọn trên Bộ sưu tập Avatar Discord và Bộ sưu tập Trang Trí Discord",
-          ["Tích hợp quy trình 'Trích xuất hình ảnh tĩnh' và định tuyến đến ", { "text": "Trình trích xuất khung GIF", "href": "/gif-extractor" }]
+          ["Tích hợp quy trình 'Trích xuất hình ảnh tĩnh' và định tuyến đến ", { "text": "Trình trích xuất khung GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Lớp phủ & UX", "items": [
           "Nâng cấp lớp phủ hover với gradient + làm mờ nhẹ và viên thuốc gợi ý sáng trên cả hai trang",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Cập nhật tính năng", "items": [
-          [{ "text": "trang bộ sưu tập avatar discord", "href": "/discord_avatar" }, { "text": " hỗ trợ xem trước avatar theo thời gian thực với cập nhật ngay lập tức" }],
-          [{ "text": "trang bộ sưu tập trang trí avatar discord", "href": "/discord_avatar_decoration" }, { "text": " hỗ trợ xem trước trực tiếp khi chọn trang trí" }],
-          [{ "text": "trang gif-extractor", "href": "/gif-extractor" }, { "text": " thêm tải xuống hàng loạt một cú nhấp 'Tải Tất Cả Khung (.zip)'" }]
+          [{ "text": "trang bộ sưu tập avatar discord", "href": "/discord_avatar/" }, { "text": " hỗ trợ xem trước avatar theo thời gian thực với cập nhật ngay lập tức" }],
+          [{ "text": "trang bộ sưu tập trang trí avatar discord", "href": "/discord_avatar_decoration/" }, { "text": " hỗ trợ xem trước trực tiếp khi chọn trang trí" }],
+          [{ "text": "trang gif-extractor", "href": "/gif-extractor/" }, { "text": " thêm tải xuống hàng loạt một cú nhấp 'Tải Tất Cả Khung (.zip)'" }]
         ]}
       ]
     },

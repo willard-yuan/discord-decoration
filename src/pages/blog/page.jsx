@@ -33,7 +33,7 @@ export default function BlogList() {
       readTime: "6 min read",
       category: "Text Formatting",
       image: "/discord-colored-text-generateor-1.webp",
-      link: "/blog/discord-colored-text",
+      link: "/blog/discord-colored-text/",
       tags: ["Discord", "Colored Text", "ANSI", "Copy and Paste"]
     },
     {
@@ -44,7 +44,7 @@ export default function BlogList() {
       readTime: "6 min read",
       category: "New Release",
       image: "/free_discord_avatar_decorations.webp",
-      link: "/blog/new-free-discord-avatar-decorations",
+      link: "/blog/new-free-discord-avatar-decorations/",
       tags: ["Discord", "Avatar", "Decorations", "Free", "New Release"]
     },
     {
@@ -55,7 +55,7 @@ export default function BlogList() {
       readTime: "5 min read",
       category: "GIF Frame Extractor",
       image: "/gif_frames_extractor_2.webp",
-      link: "/blog/how-to-split-gif-into-frames",
+      link: "/blog/how-to-split-gif-into-frames/",
       tags: ["GIF Frame Extractor", "Discord Avatar Tool"]
     },
     {
@@ -66,7 +66,7 @@ export default function BlogList() {
       readTime: "5 min read",
       category: "Avatar Decorations",
       image: "/discord-decoration-art.webp",
-      link: "/blog/discord-avatar-decorations",
+      link: "/blog/discord-avatar-decorations/",
       tags: ["Discord", "Avatar", "Free", "Decorations"]
     },
     {
@@ -77,7 +77,7 @@ export default function BlogList() {
       readTime: "7 min read",
       category: "Text Formatting",
       image: "/discord-fonts-generator.webp",
-      link: "/blog/discord-font",
+      link: "/blog/discord-font/",
       tags: ["Discord", "Font", "Text", "Formatting"]
     }
   ];
@@ -179,7 +179,7 @@ export default function BlogList() {
             <p className="text-text-secondary mb-6">
               Browse our extensive collection of free Discord avatar decorations
             </p>
-            <a href="/discord_avatar_decoration" className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-blue-600 transition-all duration-200 inline-block">
+            <a href="/discord_avatar_decoration/" className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-blue-600 transition-all duration-200 inline-block">
               Explore Decorations
             </a>
           </div>
@@ -190,7 +190,7 @@ export default function BlogList() {
             <p className="text-text-secondary mb-6">
               Create custom Discord avatars with our easy-to-use generator
             </p>
-            <a href="/discord_avatar" className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-200 inline-block">
+            <a href="/discord_avatar/" className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-200 inline-block">
               Create Avatar
             </a>
           </div>

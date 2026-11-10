@@ -243,10 +243,10 @@ export default function DiscordAvatarDecorationsArticle() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/discord_avatar" className="bg-gradient-to-r from-primary to-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-primary/80 hover:to-purple-600 transition-all duration-200 transform hover:scale-105">
+              <a href="/discord_avatar/" className="bg-gradient-to-r from-primary to-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-primary/80 hover:to-purple-600 transition-all duration-200 transform hover:scale-105">
                 Browse Avatars 🎨
               </a>
-              <a href="/discord_avatar_decoration" className="bg-gradient-to-r from-purple-500 to-primary text-white px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-primary/80 transition-all duration-200 transform hover:scale-105">
+              <a href="/discord_avatar_decoration/" className="bg-gradient-to-r from-purple-500 to-primary text-white px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-primary/80 transition-all duration-200 transform hover:scale-105">
                 Explore Decorations ✨
               </a>
             </div>

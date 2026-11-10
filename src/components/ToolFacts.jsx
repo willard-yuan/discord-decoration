@@ -25,7 +25,7 @@ export default function ToolFacts() {
         <cite className="block mt-2 not-italic">— <a className="text-primary underline" href="https://support.discord.com/hc/en-us/articles/13410113109911-Avatar-Decorations-FAQ">Discord Support, Avatar Decorations FAQ</a></cite>
       </blockquote>
       <p>That documentation explains native account decorations. This site provides image composition instead.
-        For project details or corrections, visit <a className="text-primary underline" href="/about-us">About</a> or <a className="text-primary underline" href="/contact-support">Contact</a>.</p>
+        For project details or corrections, visit <a className="text-primary underline" href="/about-us/">About</a> or <a className="text-primary underline" href="/contact-support/">Contact</a>.</p>
     </section>
   );
 }

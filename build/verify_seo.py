@@ -72,7 +72,7 @@ for route, rel_path in en_routes:
         continue
     s = extract_seo(path)
     # Check canonical matches route
-    expected_canon = f"https://discord-decoration.art{route.rstrip('/')}"
+    expected_canon = f"https://discord-decoration.art{route.rstrip('/')}/"
     if route == "/":
         expected_canon = "https://discord-decoration.art/"
     # Remove trailing slash for comparison
@@ -122,7 +122,7 @@ for lang in spot_langs:
             print(f"  [{rte}] MISSING FILE!")
             continue
         s = extract_seo(path)
-        expected_canon = f"https://discord-decoration.art/{lang}/{rte}"
+        expected_canon = f"https://discord-decoration.art/{lang}/{rte}/"
         actual_canon = s["canon"].rstrip("/")
         expected_canon_clean = expected_canon.rstrip("/")
         

@@ -172,7 +172,7 @@ const Hero = () => {
             </button>
             
             <a 
-              href="/blog"
+              href="/blog/"
               className="inline-block px-8 py-4 button-secondary font-semibold rounded-xl transition-all duration-300 text-center"
             >
               {t("hero.learnMore")}

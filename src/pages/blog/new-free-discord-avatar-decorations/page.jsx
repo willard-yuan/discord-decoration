@@ -211,7 +211,7 @@ export default function NewFreeDiscordAvatarDecorationsArticle() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="/discord_avatar_decoration" 
+                href="/discord_avatar_decoration/" 
                 className="inline-flex items-center bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-200 transform hover:scale-105"
               >
                 Browse All Decorations
@@ -220,7 +220,7 @@ export default function NewFreeDiscordAvatarDecorationsArticle() {
                 </svg>
               </a>
               <a 
-                href="/discord_avatar" 
+                href="/discord_avatar/" 
                 className="inline-flex items-center bg-surface-overlay border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-200"
               >
                 Create Avatar Now

@@ -357,10 +357,10 @@ export default function DiscordFontBlog() {
               Start experimenting with these font techniques and make your Discord presence more engaging and memorable.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/discord_front" className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              <a href="/discord_front/" className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Try Our Font Generator
               </a>
-              <a href="/blog" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+              <a href="/blog/" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
                 Read More Articles
               </a>
             </div>

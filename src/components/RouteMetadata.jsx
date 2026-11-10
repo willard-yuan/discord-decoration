@@ -43,16 +43,20 @@ export default function RouteMetadata() {
     canonical.href = url;
     document.head.querySelectorAll('link[hreflang]').forEach(el => el.remove());
     const languages = config ? LANGUAGES.map(l => l.code) : ['en'];
+    const base = origin.replace(/\/+$/, '');
+    // Cloudflare Pages serves /<route>/ ; hreflang alternates must match the
+    // canonical form, otherwise the client rebuild disagrees with the SSR head.
+    const suffix = route === '/' ? '/' : route + '/';
     for (const code of [...languages, 'x-default']) {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = code;
-      link.href = origin.replace(/\/+$/, '') + (code === 'en' || code === 'x-default' ? route : '/' + code + (route === '/' ? '/' : route));
+      link.href = base + (code === 'en' || code === 'x-default' ? suffix : '/' + code + suffix);
       document.head.append(link);
     }
     let script = document.head.querySelector('script[data-site-schema]');
     if (!script) { script = document.createElement('script'); script.type = 'application/ld+json'; script.dataset.siteSchema = ''; document.head.append(script); }
-    script.textContent = JSON.stringify(buildSchemas(route, pageLang, seo, url, dict[route === '/discord-colored-text' ? 'coloredText.faq.items' : 'faq.items'] || []));
+    script.textContent = JSON.stringify(buildSchemas(route, pageLang, seo, url, dict[route === '/discord-colored-text' ? 'coloredText.faq.items' : 'faq.items'] || [], dict));
   }, [path, lang, dict]);
   return null;
 }

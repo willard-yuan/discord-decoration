@@ -437,7 +437,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 미리보기 모달 동작", "items": [
-          ["미리보기 모달 동작 버튼을 ", { "text": "Discord 아바타 갤러리", "href": "/discord_avatar" }, "와(과) ", { "text": "Discord 장식 갤러리", "href": "/discord_avatar_decoration" }, "에서 더 명확한 레이아웃으로 이동"],
+          ["미리보기 모달 동작 버튼을 ", { "text": "Discord 아바타 갤러리", "href": "/discord_avatar/" }, "와(과) ", { "text": "Discord 장식 갤러리", "href": "/discord_avatar_decoration/" }, "에서 더 명확한 레이아웃으로 이동"],
           "Discord 아바타 갤러리와 Discord 장식 갤러리 전반에 걸쳐 동작 버튼 너비를 w-72로 통일",
           "Discord 아바타 갤러리 미리보기에 '이 아바타 사용 → 장식 선택' 추가",
           "Discord 장식 갤러리 미리보기에 '이 장식 사용 → 아바타 선택' 추가",
@@ -449,7 +449,7 @@ export default {
           "'애니메이션 GIF 저장'이 이제 두 페이지 모두에서 지연 로드된 FFmpeg를 사용하여 미리보기 창 내에서 직접 생성",
           "Discord 아바타 갤러리와 Discord 장식 갤러리에 생성 진행 표시기 및 실패 피드백 추가",
           "GIF 생성은 Discord 아바타 갤러리와 Discord 장식 갤러리에서 현재 선택된 장식 오버레이를 따름",
-          ["'정지 이미지 추출' 워크플로와 ", { "text": "GIF 프레임 추출기", "href": "/gif-extractor" }, "로의 라우팅 통합"]
+          ["'정지 이미지 추출' 워크플로와 ", { "text": "GIF 프레임 추출기", "href": "/gif-extractor/" }, "로의 라우팅 통합"]
         ]},
         { "category": "🎨 오버레이 및 UX", "items": [
           "두 페이지 모두에서 그라데이션 + 약한 블러와 반짝이는 힌트 알약으로 호버 오버레이 강화",
@@ -499,9 +499,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ 기능 업데이트", "items": [
-          [{ "text": "Discord 아바타 갤러리 페이지", "href": "/discord_avatar" }, { "text": "는 즉시 업데이트되는 실시간 아바타 미리보기를 지원합니다" }],
-          [{ "text": "Discord 아바타 장식 갤러리 페이지", "href": "/discord_avatar_decoration" }, { "text": "는 장식 선택 시 실시간 미리보기를 지원합니다" }],
-          [{ "text": "GIF 추출기 페이지", "href": "/gif-extractor" }, { "text": "는 원클릭 '모든 프레임 다운로드(.zip)' 일괄 다운로드를 추가합니다" }]
+          [{ "text": "Discord 아바타 갤러리 페이지", "href": "/discord_avatar/" }, { "text": "는 즉시 업데이트되는 실시간 아바타 미리보기를 지원합니다" }],
+          [{ "text": "Discord 아바타 장식 갤러리 페이지", "href": "/discord_avatar_decoration/" }, { "text": "는 장식 선택 시 실시간 미리보기를 지원합니다" }],
+          [{ "text": "GIF 추출기 페이지", "href": "/gif-extractor/" }, { "text": "는 원클릭 '모든 프레임 다운로드(.zip)' 일괄 다운로드를 추가합니다" }]
         ]}
       ]
     },

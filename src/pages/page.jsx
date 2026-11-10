@@ -236,7 +236,7 @@ const ExtraLinks = () => {
       <p className="font-bold">{t("links.title")}</p>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-        href="/other-tools"
+        href="/other-tools/"
       >
         <span className="place-items-center w-6">
           <Icons.lootbox size="18px" />
@@ -249,7 +249,7 @@ const ExtraLinks = () => {
       </a>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-        href="/gif-extractor"
+        href="/gif-extractor/"
       >
         <span className="place-items-center w-6">
           <Icons.gif size="18px" />
@@ -262,7 +262,7 @@ const ExtraLinks = () => {
       </a>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-        href="/discord_avatar"
+        href="/discord_avatar/"
       >
         <span className="place-items-center w-6">
           <Icons.image size="18px" />
@@ -275,7 +275,7 @@ const ExtraLinks = () => {
       </a>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-        href="/discord_avatar_decoration"
+        href="/discord_avatar_decoration/"
       >
         <span className="place-items-center w-6">
           <Icons.star size="18px" />
@@ -773,10 +773,12 @@ const App = ({ ensureLoaded }) => {
                   {t("modal.saveGif")}
                 </NeutralButton>
                 <NeutralButton
-                  onClick={() => {
+                  href="/gif-extractor/"
+                  onClick={(e) => {
                     if (isServer) return;
+                    e.preventDefault();
                     storeData("image", finishedAv);
-                    router.route("/gif-extractor");
+                    router.route("/gif-extractor/");
                   }}
                   ariaLabel={t("modal.extractStill")}
                   disabled={false}

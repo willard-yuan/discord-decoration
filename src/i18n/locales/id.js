@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Aksi Modal Pratinjau", "items": [
-          ["Memindahkan tombol aksi modal pratinjau pada ", { "text": "Galeri Avatar Discord", "href": "/discord_avatar" }, " dan ", { "text": "Galeri Hiasan Discord", "href": "/discord_avatar_decoration" }, " untuk tata letak yang lebih jelas"],
+          ["Memindahkan tombol aksi modal pratinjau pada ", { "text": "Galeri Avatar Discord", "href": "/discord_avatar/" }, " dan ", { "text": "Galeri Hiasan Discord", "href": "/discord_avatar_decoration/" }, " untuk tata letak yang lebih jelas"],
           "Menyeragamkan lebar tombol aksi menjadi w-72 di kedua galeri",
           "Menambahkan 'Gunakan Avatar Ini → Pilih Hiasan' di pratinjau Galeri Avatar Discord",
           "Menambahkan 'Gunakan Hiasan Ini → Pilih Avatar' di pratinjau Galeri Hiasan Discord",
@@ -447,7 +447,7 @@ export default {
           "'Simpan GIF Animasi' sekarang dihasilkan langsung di dalam jendela pratinjau pada kedua halaman menggunakan FFmpeg yang dimuat malas",
           "Menambahkan indikator progres pembuatan dan umpan balik kegagalan di kedua galeri",
           "Pembuatan GIF menghormati overlay hiasan yang dipilih saat ini pada kedua galeri",
-          ["Mengintegrasikan alur kerja 'Ekstrak gambar diam' dan perutean ke ", { "text": "Ekstraktor Frame GIF", "href": "/gif-extractor" }]
+          ["Mengintegrasikan alur kerja 'Ekstrak gambar diam' dan perutean ke ", { "text": "Ekstraktor Frame GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Overlay & UX", "items": [
           "Meningkatkan overlay hover dengan gradient + blur ringan dan pil petunjuk berkilau pada kedua halaman",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Pembaruan Fitur", "items": [
-          [{ "text": "Halaman galeri avatar discord", "href": "/discord_avatar" }, { "text": " mendukung pratinjau avatar waktu nyata dengan pembaruan instan" }],
-          [{ "text": "Halaman galeri hiasan avatar discord", "href": "/discord_avatar_decoration" }, { "text": " mendukung pratinjau langsung saat memilih hiasan" }],
-          [{ "text": "Halaman ekstraktor gif", "href": "/gif-extractor" }, { "text": " menambahkan unduhan massal satu klik 'Unduh Semua Frame (.zip)'" }]
+          [{ "text": "Halaman galeri avatar discord", "href": "/discord_avatar/" }, { "text": " mendukung pratinjau avatar waktu nyata dengan pembaruan instan" }],
+          [{ "text": "Halaman galeri hiasan avatar discord", "href": "/discord_avatar_decoration/" }, { "text": " mendukung pratinjau langsung saat memilih hiasan" }],
+          [{ "text": "Halaman ekstraktor gif", "href": "/gif-extractor/" }, { "text": " menambahkan unduhan massal satu klik 'Unduh Semua Frame (.zip)'" }]
         ]}
       ]
     },

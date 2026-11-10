@@ -109,7 +109,7 @@ export default function HowToSplitGifIntoFramesArticle() {
                 Access the GIF Frame Extractor Tool
               </h3>
               <p className="text-text-secondary text-lg leading-relaxed mb-6">
-                Navigate to our <a href="/gif-extractor" className="text-primary hover:text-purple-400 transition-colors font-semibold">GIF Frame Extractor tool</a>. The tool is completely free and works directly in your browser - no downloads or registrations required.
+                Navigate to our <a href="/gif-extractor/" className="text-primary hover:text-purple-400 transition-colors font-semibold">GIF Frame Extractor tool</a>. The tool is completely free and works directly in your browser - no downloads or registrations required.
               </p>
               
               <div className="bg-surface-overlay/50 backdrop-blur-sm rounded-xl overflow-hidden border border-border-faint">
@@ -264,7 +264,7 @@ export default function HowToSplitGifIntoFramesArticle() {
               Try our free GIF frame extractor tool now and get individual frames from your animated GIFs in seconds!
             </p>
             <a 
-              href="/gif-extractor"
+              href="/gif-extractor/"
               className="inline-flex items-center bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-200 transform hover:scale-105"
             >
               Start Extracting Frames

@@ -438,7 +438,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Azioni del modal di anteprima", "items": [
-          ["Spostati i pulsanti di azione del modal di anteprima su ", { "text": "Galleria avatar Discord", "href": "/discord_avatar" }, " e ", { "text": "Galleria decorazioni Discord", "href": "/discord_avatar_decoration" }, " per un layout più chiaro"],
+          ["Spostati i pulsanti di azione del modal di anteprima su ", { "text": "Galleria avatar Discord", "href": "/discord_avatar/" }, " e ", { "text": "Galleria decorazioni Discord", "href": "/discord_avatar_decoration/" }, " per un layout più chiaro"],
           "Unificata la larghezza dei pulsanti di azione a w-72 nelle gallerie Avatar e Decorazioni Discord",
           "Aggiunto « Usa questo avatar → Scegli decorazione » nell'anteprima della Galleria avatar Discord",
           "Aggiunto « Usa questa decorazione → Scegli avatar » nell'anteprima della Galleria decorazioni Discord",
@@ -450,7 +450,7 @@ export default {
           "« Salva GIF animata » ora genera direttamente nella finestra di anteprima in entrambe le pagine usando FFmpeg caricato in lazy mode",
           "Aggiunti indicatore di avanzamento della generazione e feedback di errore nelle gallerie Avatar e Decorazioni Discord",
           "La generazione GIF rispetta la sovrapposizione della decorazione selezionata nelle gallerie Avatar e Decorazioni Discord",
-          ["Integrato il flusso di lavoro « Estrai immagine fissa » e il routing verso ", { "text": "Estrattore frame GIF", "href": "/gif-extractor" }]
+          ["Integrato il flusso di lavoro « Estrai immagine fissa » e il routing verso ", { "text": "Estrattore frame GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Sovrapposizione e UX", "items": [
           "Migliorata la sovrapposizione al passaggio del mouse con gradiente + leggero sfocato e pillola di suggerimento luminosa in entrambe le pagine",
@@ -500,9 +500,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Aggiornamenti funzionalità", "items": [
-          [{ "text": "La pagina della galleria avatar Discord", "href": "/discord_avatar" }, { "text": " ora supporta l'anteprima dell'avatar in tempo reale con aggiornamenti immediati" }],
-          [{ "text": "La pagina della galleria decorazioni per avatar Discord", "href": "/discord_avatar_decoration" }, { "text": " ora supporta l'anteprima dal vivo nella selezione delle decorazioni" }],
-          [{ "text": "La pagina dell'estrattore GIF", "href": "/gif-extractor" }, { "text": " aggiunge il download in blocco con un clic « Scarica tutti i frame (.zip) »" }]
+          [{ "text": "La pagina della galleria avatar Discord", "href": "/discord_avatar/" }, { "text": " ora supporta l'anteprima dell'avatar in tempo reale con aggiornamenti immediati" }],
+          [{ "text": "La pagina della galleria decorazioni per avatar Discord", "href": "/discord_avatar_decoration/" }, { "text": " ora supporta l'anteprima dal vivo nella selezione delle decorazioni" }],
+          [{ "text": "La pagina dell'estrattore GIF", "href": "/gif-extractor/" }, { "text": " aggiunge il download in blocco con un clic « Scarica tutti i frame (.zip) »" }]
         ]}
       ]
     },

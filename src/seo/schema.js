@@ -5,18 +5,67 @@ export const SITE_URL = 'https://discord-decoration.art';
 export const PROJECT_URL = 'https://github.com/willard-yuan/discord-decoration';
 
 export function canonicalUrl(pathname, origin = SITE_URL) {
-  const path = pathname.split(/[?#]/)[0].replace(/\/index\.html$/, '/').replace(/\/+$/, '') || '/';
-  return origin.replace(/\/+$/, '') + path;
+  const clean = pathname.split(/[?#]/)[0].replace(/\/index\.html$/, "/").replace(/\/+$/, "");
+  return origin.replace(/\/+$/, "") + (clean ? clean + "/" : "/");
+}
+
+// Section labels mirror the branches in components/Breadcrumb.jsx. The English
+// fallback keeps the schema valid for the few keys that only exist in en.js.
+const BREADCRUMB_SECTIONS = {
+  '/blog': ['breadcrumb.blog', 'Blog'],
+  '/discord_avatar_decoration': ['breadcrumb.avatarDecorations', 'Discord Avatar Decorations'],
+  '/discord_avatar': ['breadcrumb.avatarGallery', 'Discord Avatar Gallery'],
+  '/discord_front': ['breadcrumb.discordFonts', 'Discord Fonts Generator'],
+  '/other-tools': ['breadcrumb.otherTools', 'Other Tools'],
+  '/gif-extractor': ['breadcrumb.gifExtractor', 'GIF Frame Extractor'],
+  '/discord-colored-text': ['breadcrumb.coloredText', 'Discord Colored Text Generator'],
+  '/discord-ansi-color-codes': ['breadcrumb.ansiCodes', 'Discord ANSI Color Codes'],
+  '/discuss': ['breadcrumb.discussion', 'Community Discussion'],
+  '/faq': ['breadcrumb.faq', 'FAQ'],
+  '/how-to-use': ['breadcrumb.howToUse', 'How to Use'],
+  '/discord-profile-tips': ['breadcrumb.profileTips', 'Discord Profile Tips'],
+  '/terms-of-service': ['breadcrumb.tos', 'Terms of Service'],
+  '/privacy-policy': ['breadcrumb.privacy', 'Privacy Policy'],
+  '/changelog': ['breadcrumb.changelog', 'Changelog'],
+};
+
+function breadcrumbTrail(route, lang, seo, url, dict = {}) {
+  if (route === '/' || route === '/404') return null;
+  const isArticle = route.startsWith('/blog/');
+  const section = isArticle ? '/blog' : route;
+  const entry = BREADCRUMB_SECTIONS[section];
+  if (!entry) return null;
+
+  const origin = new URL(url).origin;
+  const localized = lang && lang !== 'en';
+  const homeUrl = localized ? origin + '/' + lang + '/' : origin + '/';
+  const label = (key, fallback) => dict[key] || fallback;
+
+  const crumbs = [{ name: label('breadcrumb.home', 'Home'), item: homeUrl }];
+  if (isArticle) {
+    crumbs.push({ name: label('breadcrumb.blog', 'Blog'), item: origin + '/blog/' });
+    crumbs.push({ name: seo.title });
+  } else {
+    crumbs.push({ name: label(entry[0], entry[1]) });
+  }
+
+  return {
+    '@type': 'BreadcrumbList', '@id': url + '#breadcrumb',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.name,
+      ...(c.item ? { item: c.item } : {}),
+    })),
+  };
 }
 
 // Use the published editorial organization. No individual authorship is inferred
 // from a GitHub account or invented to satisfy an audit's Person recommendation.
-export function buildSchemas(route, lang, seo, url, faqItems = []) {
+export function buildSchemas(route, lang, seo, url, faqItems = [], dict = {}) {
   const origin = new URL(url).origin;
   const organization = {
     '@type': 'Organization', '@id': origin + '/#organization',
     name: SITE_NAME, url: origin + '/', sameAs: [PROJECT_URL],
-    contactPoint: { '@type': 'ContactPoint', contactType: 'support', url: origin + '/contact-support' },
+    contactPoint: { '@type': 'ContactPoint', contactType: 'support', url: origin + '/contact-support/' },
   };
   const website = {
     '@type': 'WebSite', '@id': origin + '/#website', name: SITE_NAME,
@@ -29,6 +78,11 @@ export function buildSchemas(route, lang, seo, url, faqItems = []) {
     publisher: { '@id': organization['@id'] },
   };
   const graph = [organization, website, page];
+  const breadcrumb = breadcrumbTrail(route, lang, seo, url, dict);
+  if (breadcrumb) {
+    graph.push(breadcrumb);
+    page.breadcrumb = { '@id': breadcrumb['@id'] };
+  }
   if (['/blog', '/other-tools', '/discord_avatar', '/discord_avatar_decoration', '/changelog'].includes(route)) page['@type'] = 'CollectionPage';
   if (route === '/about-us') page.mainEntity = { '@id': organization['@id'] };
   if (ARTICLES[route]) {

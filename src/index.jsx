@@ -127,8 +127,10 @@ export function App() {
       // Already locale-prefixed? leave untouched.
       const m0 = raw.match(/^\/([a-z]{2}(-[A-Z]{2})?)(?=\/|$)/);
       if (m0 && LANG_SET.has(m0[1])) return;
-      // Only prefix routes that actually have a translated variant.
-      const clean = raw.split("?")[0].split("#")[0];
+      // Only prefix routes that actually have a translated variant. Links are
+      // served with a trailing slash (/faq/), while TRANSLATED_ROUTES holds the
+      // logical route (/faq), so normalise before the lookup.
+      const clean = raw.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
       if (!TRANSLATED.has(clean)) return;
       const cur = location.pathname.match(/^\/([a-z]{2}(-[A-Z]{2})?)(?=\/|$)/);
       const curLang = cur && LANG_SET.has(cur[1]) ? cur[1] : null;

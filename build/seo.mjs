@@ -136,9 +136,11 @@ function resolveSeo(route, lang) {
   return { title: dict["meta.title"] || DICTS[DEFAULT_LANG]["meta.title"], description: HOME_DESCRIPTIONS[lang] || HOME_DESCRIPTIONS[DEFAULT_LANG], lang };
 }
 
+// Cloudflare Pages serves prerendered pages as /<route>/ (it 308s the
+// slashless form). Outbound URLs must match that 200 form exactly.
 function langUrl(lang, route) {
-  if (lang === "en") return SITE_URL + (route === "/" ? "/" : route);
-  return SITE_URL + "/" + lang + (route === "/" ? "/" : route);
+  const suffix = route === "/" ? "/" : route + "/";
+  return SITE_URL + (lang === "en" ? suffix : "/" + lang + suffix);
 }
 
 function buildHreflang(route) {
@@ -150,7 +152,7 @@ function buildHreflang(route) {
 
 function buildJsonLd(route, lang, seo, canonicalUrl) {
   const dict = DICTS[lang] || DICTS[DEFAULT_LANG];
-  return [buildSchemas(route, lang, seo, canonicalUrl, dict[route === "/discord-colored-text" ? "coloredText.faq.items" : "faq.items"] || [])];
+  return [buildSchemas(route, lang, seo, canonicalUrl, dict[route === "/discord-colored-text" ? "coloredText.faq.items" : "faq.items"] || [], dict)];
 }
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -371,6 +373,10 @@ async function main() {
     ["/other-tools", "2026-10-26"], // 1.2.2 entry added to all 19 locales
   ]);
 
+  // Compare published locs without their trailing slash so a sitewide URL-form
+  // migration (slashless -> slash) does not reset every lastmod to `today`.
+  const normLoc = (u) => u.replace(/\/+$/, "") || "/";
+
   /** Read loc → lastmod out of an already-published sitemap in public/. */
   const readLastmodMap = (rel) => {
     const fp = path.join(ROOT, "public", rel);
@@ -379,7 +385,7 @@ async function main() {
     const map = new Map();
     const re = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
     let m;
-    while ((m = re.exec(xml))) map.set(m[1], m[2]);
+    while ((m = re.exec(xml))) map.set(normLoc(m[1]), m[2]);
     return map;
   };
 
@@ -404,7 +410,7 @@ async function main() {
     const meta = SITEMAP_META[route] || { changefreq: "monthly", priority: "0.5" };
     // New URLs (absent from the published sitemap) fall back to today.
     const lastmod =
-      FORCE_LASTMOD.get(route) || FORCE_LASTMOD.get(`${lang}:${route}`) || prevMap.get(loc) || today;
+      FORCE_LASTMOD.get(route) || FORCE_LASTMOD.get(`${lang}:${route}`) || prevMap.get(normLoc(loc)) || today;
     return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${meta.changefreq}</changefreq>\n    <priority>${meta.priority}</priority>\n${alts}\n${xd}\n  </url>`;
   }
 
@@ -445,7 +451,7 @@ async function main() {
   const indexEntries = LANGUAGES
     .map((l) => {
       const loc = `${SITE_URL}/sitemap-${l.code}.xml`;
-      const lastmod = langChanged[l.code] ? today : prevIndex.get(loc) || today;
+      const lastmod = langChanged[l.code] ? today : prevIndex.get(normLoc(loc)) || today;
       return `  <sitemap>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`;
     })
     .join("\n");

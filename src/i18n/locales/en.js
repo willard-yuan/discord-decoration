@@ -441,7 +441,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Preview Modal Actions", "items": [
-          ["Moved preview modal action buttons on ", { "text": "Discord Avatar Gallery", "href": "/discord_avatar" }, " and ", { "text": "Discord Decorations Gallery", "href": "/discord_avatar_decoration" }, " for clearer layout"],
+          ["Moved preview modal action buttons on ", { "text": "Discord Avatar Gallery", "href": "/discord_avatar/" }, " and ", { "text": "Discord Decorations Gallery", "href": "/discord_avatar_decoration/" }, " for clearer layout"],
           "Unified action button widths to w-72 across Discord Avatar Gallery and Discord Decorations Gallery",
           "Added 'Use This Avatar → Pick Decoration' in Discord Avatar Gallery preview",
           "Added 'Use This Decoration → Pick Avatar' in Discord Decorations Gallery preview",
@@ -453,7 +453,7 @@ export default {
           "'Save Animated GIF' now generates directly within the preview window on both pages using lazy‑loaded FFmpeg",
           "Added generation progress indicator and failure feedback on Discord Avatar Gallery and Discord Decorations Gallery",
           "GIF generation respects the currently selected decoration overlay on Discord Avatar Gallery and Discord Decorations Gallery",
-          ["Integrated 'Extract still image' workflow and routing to ", { "text": "GIF Frame Extractor", "href": "/gif-extractor" }]
+          ["Integrated 'Extract still image' workflow and routing to ", { "text": "GIF Frame Extractor", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Overlay & UX", "items": [
           "Enhanced hover overlay with gradient + light blur and shiny hint pill on both pages",
@@ -503,9 +503,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Feature Updates", "items": [
-          [{ "text": "The discord avatar gallery page", "href": "/discord_avatar" }, { "text": " supports real-time avatar preview with immediate updates" }],
-          [{ "text": "The discord avatar decorations gallery page", "href": "/discord_avatar_decoration" }, { "text": " supports live preview when selecting decorations" }],
-          [{ "text": "The gif-extractor page", "href": "/gif-extractor" }, { "text": " adds one-click 'Download All Frames (.zip)' bulk download" }]
+          [{ "text": "The discord avatar gallery page", "href": "/discord_avatar/" }, { "text": " supports real-time avatar preview with immediate updates" }],
+          [{ "text": "The discord avatar decorations gallery page", "href": "/discord_avatar_decoration/" }, { "text": " supports live preview when selecting decorations" }],
+          [{ "text": "The gif-extractor page", "href": "/gif-extractor/" }, { "text": " adds one-click 'Download All Frames (.zip)' bulk download" }]
         ]}
       ]
     },

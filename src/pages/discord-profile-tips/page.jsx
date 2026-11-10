@@ -312,13 +312,13 @@ export default function DiscordProfileTips() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="/discord_avatar" 
+                href="/discord_avatar/" 
                 className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 🎨 Start Creating
               </a>
               <a 
-                href="/how-to-use" 
+                href="/how-to-use/" 
                 className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 border border-white/20"
               >
                 📖 View Tutorial

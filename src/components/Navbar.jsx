@@ -34,13 +34,13 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-1 ml-8">
             {[
-              { key: 'nav.avatars', href: '/discord_avatar' },
-              { key: 'nav.decorations', href: '/discord_avatar_decoration' },
-              { key: 'nav.fonts', href: '/discord_front' },
-              { key: 'nav.faqs', href: '/faq' },
-              { key: 'nav.blog', href: '/blog' },
-              { key: 'nav.tools', href: '/other-tools' },
-              { key: 'nav.changelog', href: '/changelog' },
+              { key: 'nav.avatars', href: '/discord_avatar/' },
+              { key: 'nav.decorations', href: '/discord_avatar_decoration/' },
+              { key: 'nav.fonts', href: '/discord_front/' },
+              { key: 'nav.faqs', href: '/faq/' },
+              { key: 'nav.blog', href: '/blog/' },
+              { key: 'nav.tools', href: '/other-tools/' },
+              { key: 'nav.changelog', href: '/changelog/' },
             ].map((link) => (
               <a
                 key={link.key}
@@ -91,25 +91,25 @@ const Navbar = () => {
                 e.currentTarget.style.setProperty('--y', `50%`);
               }}
             >
-              <a href="/discord_avatar" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/discord_avatar/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.avatars")}
               </a>
-              <a href="/discord_avatar_decoration" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/discord_avatar_decoration/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.decorations")}
               </a>
-              <a href="/discord_front" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/discord_front/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.fonts")}
               </a>
-              <a href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/faq/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.faqs")}
               </a>
-              <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/blog/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.blog")}
               </a>
-              <a href="/other-tools" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/other-tools/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.tools")}
               </a>
-              <a href="/changelog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
+              <a href="/changelog/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-surface-higher transition-transform duration-200 hover:translate-x-1">
                 {t("nav.changelog")}
               </a>
             </div>

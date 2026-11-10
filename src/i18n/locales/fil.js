@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Preview Modal Actions", "items": [
-          ["Inilipat ang preview modal action buttons sa ", { "text": "Discord Avatar Gallery", "href": "/discord_avatar" }, " at ", { "text": "Discord Decorations Gallery", "href": "/discord_avatar_decoration" }, " para sa mas malinaw na layout"],
+          ["Inilipat ang preview modal action buttons sa ", { "text": "Discord Avatar Gallery", "href": "/discord_avatar/" }, " at ", { "text": "Discord Decorations Gallery", "href": "/discord_avatar_decoration/" }, " para sa mas malinaw na layout"],
           "Isinagana ang action button widths sa w-72 sa parehong Discord Avatar Gallery at Discord Decorations Gallery",
           "Nagdagdag ng 'Use This Avatar → Pick Decoration' sa Discord Avatar Gallery preview",
           "Nagdagdag ng 'Use This Decoration → Pick Avatar' sa Discord Decorations Gallery preview",
@@ -447,7 +447,7 @@ export default {
           "Ang 'Save Animated GIF' ay gumagawa na ngayon nang direkta sa loob ng preview window sa parehong pages gamit ang lazy-loaded FFmpeg",
           "Nagdagdag ng generation progress indicator at failure feedback sa Discord Avatar Gallery at Discord Decorations Gallery",
           "Ang GIF generation ay gumagalang sa currently selected decoration overlay sa Discord Avatar Gallery at Discord Decorations Gallery",
-          ["Isinalang ang 'Extract still image' workflow at routing sa ", { "text": "GIF Frame Extractor", "href": "/gif-extractor" }]
+          ["Isinalang ang 'Extract still image' workflow at routing sa ", { "text": "GIF Frame Extractor", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Overlay & UX", "items": [
           "Pinaganda ang hover overlay gamit ang gradient + light blur at shiny hint pill sa parehong pages",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Feature Updates", "items": [
-          [{ "text": "Ang discord avatar gallery page", "href": "/discord_avatar" }, { "text": " ay sumusuporta sa real-time avatar preview na may agarang updates" }],
-          [{ "text": "Ang discord avatar decorations gallery page", "href": "/discord_avatar_decoration" }, { "text": " ay sumusuporta sa live preview kapag pumipili ng decorations" }],
-          [{ "text": "Ang gif-extractor page", "href": "/gif-extractor" }, { "text": " ay nagdadagdag ng one-click 'Download All Frames (.zip)' bulk download" }]
+          [{ "text": "Ang discord avatar gallery page", "href": "/discord_avatar/" }, { "text": " ay sumusuporta sa real-time avatar preview na may agarang updates" }],
+          [{ "text": "Ang discord avatar decorations gallery page", "href": "/discord_avatar_decoration/" }, { "text": " ay sumusuporta sa live preview kapag pumipili ng decorations" }],
+          [{ "text": "Ang gif-extractor page", "href": "/gif-extractor/" }, { "text": " ay nagdadagdag ng one-click 'Download All Frames (.zip)' bulk download" }]
         ]}
       ]
     },

@@ -438,7 +438,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 プレビューモーダルの操作", "items": [
-          ["プレビューモーダルの操作ボタンを ", { "text": "Discordアバターギャラリー", "href": "/discord_avatar" }, " と ", { "text": "Discord装飾ギャラリー", "href": "/discord_avatar_decoration" }, " でより明確なレイアウトに移動"],
+          ["プレビューモーダルの操作ボタンを ", { "text": "Discordアバターギャラリー", "href": "/discord_avatar/" }, " と ", { "text": "Discord装飾ギャラリー", "href": "/discord_avatar_decoration/" }, " でより明確なレイアウトに移動"],
           "Discordアバターと装飾の両ギャラリーで操作ボタンの幅をw-72に統一",
           "Discordアバターギャラリーのプレビューに「このアバターを使う → 装飾を選ぶ」を追加",
           "Discord装飾ギャラリーのプレビューに「この装飾を使う → アバターを選ぶ」を追加",
@@ -450,7 +450,7 @@ export default {
           "「アニメGIFを保存」が両ページで遅延読み込みされたFFmpegを使ってプレビューウィンドウ内で直接生成するように",
           "Discordアバターと装飾の両ギャラリーに生成進捗インジケーターと失敗フィードバックを追加",
           "GIF生成はDiscordアバターと装飾の両ギャラリーで選択された装飾オーバーレイを尊重",
-          ["「静止画像を抽出」ワークフローと ", { "text": "GIFフレーム抽出ツール", "href": "/gif-extractor" }, " へのルーティングを統合"]
+          ["「静止画像を抽出」ワークフローと ", { "text": "GIFフレーム抽出ツール", "href": "/gif-extractor/" }, " へのルーティングを統合"]
         ]},
         { "category": "🎨 オーバーレイ＆UX", "items": [
           "両ページでグラデーション＋軽いぼかしと光るヒントピルでホバーオーバーレイを強化",
@@ -500,9 +500,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ 機能の更新", "items": [
-          [{ "text": "Discordアバターギャラリーページ", "href": "/discord_avatar" }, { "text": " は即時更新でリアルタイムのアバタープレビューをサポート" }],
-          [{ "text": "Discordアバター装飾ギャラリーページ", "href": "/discord_avatar_decoration" }, { "text": " は装飾選択時にライブプレビューをサポート" }],
-          [{ "text": "GIF抽出ページ", "href": "/gif-extractor" }, { "text": " にワンクリックの一括ダウンロード「すべてのフレームをダウンロード (.zip)」を追加" }]
+          [{ "text": "Discordアバターギャラリーページ", "href": "/discord_avatar/" }, { "text": " は即時更新でリアルタイムのアバタープレビューをサポート" }],
+          [{ "text": "Discordアバター装飾ギャラリーページ", "href": "/discord_avatar_decoration/" }, { "text": " は装飾選択時にライブプレビューをサポート" }],
+          [{ "text": "GIF抽出ページ", "href": "/gif-extractor/" }, { "text": " にワンクリックの一括ダウンロード「すべてのフレームをダウンロード (.zip)」を追加" }]
         ]}
       ]
     },

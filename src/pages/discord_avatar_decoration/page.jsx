@@ -602,10 +602,12 @@ const DiscordAvatarDecoration = () => {
           </div>
           <div className="flex flex-col items-center gap-3 mt-3 *:mt-0 w-full">
             <NeutralButton
-              onClick={() => {
+              href='/discord_avatar/'
+              onClick={(e) => {
+                e.preventDefault();
                 if (!previewDecorationUrl) return;
                 storeData('decoration', previewDecorationUrl);
-                router.route('/discord_avatar');
+                router.route('/discord_avatar/');
               }}
               ariaLabel={t('deco.useDeco')}
               disabled={false}
@@ -642,7 +644,11 @@ const DiscordAvatarDecoration = () => {
               {t('deco.saveGif')}
             </NeutralButton>
             <NeutralButton
-              onClick={async () => {
+              href='/gif-extractor/'
+              onClick={async (e) => {
+                // Keep an <a href> in the DOM for crawlers, but block the default
+                // navigation: the image has to finish generating first.
+                e.preventDefault();
                 try {
                   setGenerationFailed(false);
                   setIsGeneratingAv(true);
@@ -652,8 +658,8 @@ const DiscordAvatarDecoration = () => {
                     previewDecorationUrl ? `${baseImgUrl}${previewDecorationUrl}` : ''
                   );
                   storeData('image', res);
-                  router.route('/gif-extractor');
-                } catch (e) {
+                  router.route('/gif-extractor/');
+                } catch (e2) {
                   setGenerationFailed(true);
                 } finally {
                   setIsGeneratingAv(false);

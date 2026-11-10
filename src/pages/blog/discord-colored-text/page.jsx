@@ -116,7 +116,7 @@ export default function DiscordColoredTextBlog() {
               <li>
                 Open the{" "}
                 <a
-                  href="/discord-colored-text"
+                  href="/discord-colored-text/"
                   className="text-primary hover:underline"
                 >
                   Discord Colored Text Generator
@@ -141,7 +141,7 @@ export default function DiscordColoredTextBlog() {
                 much of Discord&apos;s 2000-character budget the codes are using.
               </p>
               <a
-                href="/discord-colored-text"
+                href="/discord-colored-text/"
                 className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all"
               >
                 Open the Colored Text Generator
@@ -187,7 +187,7 @@ export default function DiscordColoredTextBlog() {
               Each bracket above stands in for the invisible ESC character. The full table — including
               hex values, 24-bit truecolor and combination examples — lives on the{" "}
               <a
-                href="/discord-ansi-color-codes"
+                href="/discord-ansi-color-codes/"
                 className="text-primary hover:underline"
               >
                 Discord ANSI color codes reference
@@ -283,14 +283,14 @@ export default function DiscordColoredTextBlog() {
             </p>
             <ul className="list-disc ml-6 space-y-2 text-text-secondary text-lg leading-relaxed">
               <li>
-                <a href="/discord-colored-text" className="text-primary hover:underline">
+                <a href="/discord-colored-text/" className="text-primary hover:underline">
                   Discord Colored Text Generator
                 </a>{" "}
                 — build and copy a finished block in seconds.
               </li>
               <li>
                 <a
-                  href="/discord-ansi-color-codes"
+                  href="/discord-ansi-color-codes/"
                   className="text-primary hover:underline"
                 >
                   Discord ANSI Color Codes reference
@@ -298,7 +298,7 @@ export default function DiscordColoredTextBlog() {
                 — every code with copy-and-paste examples.
               </li>
               <li>
-                <a href="/discord_front" className="text-primary hover:underline">
+                <a href="/discord_front/" className="text-primary hover:underline">
                   Discord Font Generator
                 </a>{" "}
                 — Unicode lettering for when style matters more than colour.

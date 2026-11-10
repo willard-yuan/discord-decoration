@@ -90,7 +90,7 @@ export default function HowToUse() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-gray-300 text-lg mb-4">
-                  Start by navigating to our <a href="/discord_avatar" className="text-pink-400 hover:text-pink-300 underline">Discord Avatar</a> page. 
+                  Start by navigating to our <a href="/discord_avatar/" className="text-pink-400 hover:text-pink-300 underline">Discord Avatar</a> page. 
                   You can either:
                 </p>
                 <ul className="space-y-3 text-gray-300">
@@ -131,7 +131,7 @@ export default function HowToUse() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-gray-300 text-lg mb-4">
-                  Browse our extensive decoration library on the <a href="/discord_avatar_decoration" className="text-purple-400 hover:text-purple-300 underline">Avatar Decoration</a> page:
+                  Browse our extensive decoration library on the <a href="/discord_avatar_decoration/" className="text-purple-400 hover:text-purple-300 underline">Avatar Decoration</a> page:
                 </p>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
@@ -377,13 +377,13 @@ export default function HowToUse() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="/discord_avatar" 
+                href="/discord_avatar/" 
                 className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-105"
               >
                 Browse Avatars
               </a>
               <a 
-                href="/discord_avatar_decoration" 
+                href="/discord_avatar_decoration/" 
                 className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-blue-600 transition-all transform hover:scale-105"
               >
                 View Decorations

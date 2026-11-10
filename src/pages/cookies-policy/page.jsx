@@ -264,13 +264,13 @@ export default function CookiesPolicy() {
               
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
                 <a 
-                  href="/contact-support" 
+                  href="/contact-support/" 
                   className="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
                 >
                   Contact Support
                 </a>
                 <a 
-                  href="/privacy-policy" 
+                  href="/privacy-policy/" 
                   className="bg-surface-overlay/50 hover:bg-surface-overlay/70 text-text-primary px-6 py-3 rounded-xl font-semibold transition-all duration-300 border border-border-faint text-center"
                 >
                   View Privacy Policy

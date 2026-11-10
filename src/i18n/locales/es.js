@@ -438,7 +438,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Acciones del modal de vista previa", "items": [
-          ["Movidos los botones de acción del modal de vista previa en ", { "text": "Galería de avatares de Discord", "href": "/discord_avatar" }, " y ", { "text": "Galería de decoraciones de Discord", "href": "/discord_avatar_decoration" }, " para una disposición más clara"],
+          ["Movidos los botones de acción del modal de vista previa en ", { "text": "Galería de avatares de Discord", "href": "/discord_avatar/" }, " y ", { "text": "Galería de decoraciones de Discord", "href": "/discord_avatar_decoration/" }, " para una disposición más clara"],
           "Unificada la anchura de los botones de acción a w-72 en la Galería de avatares y la Galería de decoraciones de Discord",
           "Añadido « Usar este avatar → Elegir decoración » en la vista previa de la Galería de avatares de Discord",
           "Añadido « Usar esta decoración → Elegir avatar » en la vista previa de la Galería de decoraciones de Discord",
@@ -450,7 +450,7 @@ export default {
           "« Guardar GIF animado » ahora genera directamente dentro de la ventana de vista previa en ambas páginas usando FFmpeg cargado de forma diferida",
           "Añadido un indicador de progreso de generación y retroalimentación de fallo en las Galerías de avatares y decoraciones de Discord",
           "La generación de GIF respeta la superposición de decoración seleccionada en las Galerías de avatares y decoraciones de Discord",
-          ["Integrado el flujo de trabajo « Extraer imagen fija » y el enrutamiento hacia ", { "text": "Extractor de frames GIF", "href": "/gif-extractor" }]
+          ["Integrado el flujo de trabajo « Extraer imagen fija » y el enrutamiento hacia ", { "text": "Extractor de frames GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Superposición y UX", "items": [
           "Mejorada la superposición al pasar el cursor con degradado + ligero desenfoque y una píldora de sugerencia brillante en ambas páginas",
@@ -500,9 +500,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Actualizaciones de funciones", "items": [
-          [{ "text": "La página de la galería de avatares de Discord", "href": "/discord_avatar" }, { "text": " ahora admite vista previa de avatar en tiempo real con actualizaciones inmediatas" }],
-          [{ "text": "La página de la galería de decoraciones de avatares de Discord", "href": "/discord_avatar_decoration" }, { "text": " ahora admite vista previa en vivo al seleccionar decoraciones" }],
-          [{ "text": "La página del extractor GIF", "href": "/gif-extractor" }, { "text": " añade la descarga masiva con un clic « Descargar todos los frames (.zip) »" }]
+          [{ "text": "La página de la galería de avatares de Discord", "href": "/discord_avatar/" }, { "text": " ahora admite vista previa de avatar en tiempo real con actualizaciones inmediatas" }],
+          [{ "text": "La página de la galería de decoraciones de avatares de Discord", "href": "/discord_avatar_decoration/" }, { "text": " ahora admite vista previa en vivo al seleccionar decoraciones" }],
+          [{ "text": "La página del extractor GIF", "href": "/gif-extractor/" }, { "text": " añade la descarga masiva con un clic « Descargar todos los frames (.zip) »" }]
         ]}
       ]
     },

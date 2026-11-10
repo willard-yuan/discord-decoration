@@ -438,7 +438,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Aktionen im Vorschau-Modal", "items": [
-          ["Vorschau-Modal-Aktionsbuttons auf ", { "text": "Discord-Avatar-Galerie", "href": "/discord_avatar" }, " und ", { "text": "Discord-Dekorations-Galerie", "href": "/discord_avatar_decoration" }, " für klareres Layout verschoben"],
+          ["Vorschau-Modal-Aktionsbuttons auf ", { "text": "Discord-Avatar-Galerie", "href": "/discord_avatar/" }, " und ", { "text": "Discord-Dekorations-Galerie", "href": "/discord_avatar_decoration/" }, " für klareres Layout verschoben"],
           "Aktionsbutton-Breite auf w-72 in beiden Galerien vereinheitlicht",
           "„Diesen Avatar verwenden → Dekoration wählen“ in der Vorschau der Discord-Avatar-Galerie hinzugefügt",
           "„Diese Dekoration verwenden → Avatar wählen“ in der Vorschau der Discord-Dekorations-Galerie hinzugefügt",
@@ -450,7 +450,7 @@ export default {
           "„Animierte GIF speichern“ generiert jetzt direkt im Vorschaufenster beider Seiten mithilfe von Lazy-Loaded FFmpeg",
           "Fortschrittsanzeige und Fehlerrückmeldung in beiden Galerien hinzugefügt",
           "GIF-Generierung berücksichtigt die aktuell gewählte Dekorations-Überlagerung in beiden Galerien",
-          ["Workflow „Standbild extrahieren“ und Routing zu ", { "text": "GIF-Frame-Extraktor", "href": "/gif-extractor" }, " integriert"]
+          ["Workflow „Standbild extrahieren“ und Routing zu ", { "text": "GIF-Frame-Extraktor", "href": "/gif-extractor/" }, " integriert"]
         ]},
         { "category": "🎨 Überlagerung & UX", "items": [
           "Hover-Überlagerung mit Verlauf + leichter Unschärfe und glänzendem Hinweis-Pill auf beiden Seiten verbessert",
@@ -500,9 +500,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Funktions-Updates", "items": [
-          [{ "text": "Die Discord-Avatar-Galerie-Seite", "href": "/discord_avatar" }, { "text": " unterstützt jetzt Echtzeit-Avatar-Vorschau mit sofortigen Updates" }],
-          [{ "text": "Die Discord-Avatar-Dekorations-Galerie-Seite", "href": "/discord_avatar_decoration" }, { "text": " unterstützt Live-Vorschau bei Auswahl von Dekorationen" }],
-          [{ "text": "Die GIF-Extraktor-Seite", "href": "/gif-extractor" }, { "text": " fügt Ein-Klick-Bulk-Download „Alle Frames herunterladen (.zip)“ hinzu" }]
+          [{ "text": "Die Discord-Avatar-Galerie-Seite", "href": "/discord_avatar/" }, { "text": " unterstützt jetzt Echtzeit-Avatar-Vorschau mit sofortigen Updates" }],
+          [{ "text": "Die Discord-Avatar-Dekorations-Galerie-Seite", "href": "/discord_avatar_decoration/" }, { "text": " unterstützt Live-Vorschau bei Auswahl von Dekorationen" }],
+          [{ "text": "Die GIF-Extraktor-Seite", "href": "/gif-extractor/" }, { "text": " fügt Ein-Klick-Bulk-Download „Alle Frames herunterladen (.zip)“ hinzu" }]
         ]}
       ]
     },

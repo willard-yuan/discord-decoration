@@ -152,7 +152,7 @@ export default function DiscordAnsiColorCodes() {
             <p className="text-base text-text-secondary max-w-2xl mx-auto">
               Every colour and style code Discord understands, in one table. Copy a snippet here, or
               let the{" "}
-              <a href="/discord-colored-text" className="text-primary hover:underline font-medium">
+              <a href="/discord-colored-text/" className="text-primary hover:underline font-medium">
                 colored text generator
               </a>{" "}
               write the invisible escape characters for you.
@@ -349,19 +349,19 @@ export default function DiscordAnsiColorCodes() {
             <Section title="Related guides">
               <ul className="list-disc list-inside space-y-2">
                 <li>
-                  <a href="/discord-colored-text" className="text-primary hover:underline">
+                  <a href="/discord-colored-text/" className="text-primary hover:underline">
                     Discord Colored Text Generator
                   </a>{" "}
                   — pick colours visually and copy a finished block, no codes to memorise.
                 </li>
                 <li>
-                  <a href="/blog/discord-colored-text" className="text-primary hover:underline">
+                  <a href="/blog/discord-colored-text/" className="text-primary hover:underline">
                     How to Make Colored Text in Discord (Copy and Paste)
                   </a>{" "}
                   — the full walkthrough, including rainbow gradients and mobile.
                 </li>
                 <li>
-                  <a href="/discord_front" className="text-primary hover:underline">
+                  <a href="/discord_front/" className="text-primary hover:underline">
                     Discord Font Generator
                   </a>{" "}
                   — Unicode text styles for when you want fancy lettering instead of colour.

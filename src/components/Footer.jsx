@@ -10,25 +10,25 @@ const Footer = () => {
   // Store hrefs + translation keys; render via t() so the language switch is live.
   const footerSections = {
     "Discord Tools": [
-      { key: "footer.discordTools.avatarGallery", descKey: "footer.discordTools.avatarGalleryDesc", href: "/discord_avatar" },
-      { key: "footer.discordTools.decoGallery", descKey: "footer.discordTools.decoGalleryDesc", href: "/discord_avatar_decoration" },
-      { key: "footer.discordTools.fonts", descKey: "footer.discordTools.fontsDesc", href: "/discord_front" },
-      { key: "footer.discordTools.coloredText", descKey: "footer.discordTools.coloredTextDesc", href: "/discord-colored-text" },
-      { key: "footer.discordTools.ansiCodes", descKey: "footer.discordTools.ansiCodesDesc", href: "/discord-ansi-color-codes" },
+      { key: "footer.discordTools.avatarGallery", descKey: "footer.discordTools.avatarGalleryDesc", href: "/discord_avatar/" },
+      { key: "footer.discordTools.decoGallery", descKey: "footer.discordTools.decoGalleryDesc", href: "/discord_avatar_decoration/" },
+      { key: "footer.discordTools.fonts", descKey: "footer.discordTools.fontsDesc", href: "/discord_front/" },
+      { key: "footer.discordTools.coloredText", descKey: "footer.discordTools.coloredTextDesc", href: "/discord-colored-text/" },
+      { key: "footer.discordTools.ansiCodes", descKey: "footer.discordTools.ansiCodesDesc", href: "/discord-ansi-color-codes/" },
     ],
     Resources: [
-      { key: "footer.resources.faq", descKey: "footer.resources.faqDesc", href: "/faq" },
-      { key: "footer.resources.howToUse", descKey: "footer.resources.howToUseDesc", href: "/how-to-use" },
-      { key: "footer.resources.profileTips", descKey: "footer.resources.profileTipsDesc", href: "/discord-profile-tips" },
+      { key: "footer.resources.faq", descKey: "footer.resources.faqDesc", href: "/faq/" },
+      { key: "footer.resources.howToUse", descKey: "footer.resources.howToUseDesc", href: "/how-to-use/" },
+      { key: "footer.resources.profileTips", descKey: "footer.resources.profileTipsDesc", href: "/discord-profile-tips/" },
     ],
     Legal: [
-      { key: "footer.legal.tos", descKey: "footer.legal.tosDesc", href: "/terms-of-service" },
-      { key: "footer.legal.privacy", descKey: "footer.legal.privacyDesc", href: "/privacy-policy" },
-      { key: "footer.legal.cookies", descKey: "footer.legal.cookiesDesc", href: "/cookies-policy" },
+      { key: "footer.legal.tos", descKey: "footer.legal.tosDesc", href: "/terms-of-service/" },
+      { key: "footer.legal.privacy", descKey: "footer.legal.privacyDesc", href: "/privacy-policy/" },
+      { key: "footer.legal.cookies", descKey: "footer.legal.cookiesDesc", href: "/cookies-policy/" },
     ],
     "About Us": [
-      { key: "footer.about.about", descKey: "footer.about.aboutDesc", href: "/about-us" },
-      { key: "footer.about.contact", descKey: "footer.about.contactDesc", href: "/contact-support" },
+      { key: "footer.about.about", descKey: "footer.about.aboutDesc", href: "/about-us/" },
+      { key: "footer.about.contact", descKey: "footer.about.contactDesc", href: "/contact-support/" },
     ],
   };
 

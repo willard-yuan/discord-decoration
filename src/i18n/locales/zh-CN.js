@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 预览弹窗操作", "items": [
-          ["将 ", { "text": "Discord 头像库", "href": "/discord_avatar" }, " 和 ", { "text": "Discord 装饰库", "href": "/discord_avatar_decoration" }, " 的预览弹窗操作按钮移至更清晰的布局"],
+          ["将 ", { "text": "Discord 头像库", "href": "/discord_avatar/" }, " 和 ", { "text": "Discord 装饰库", "href": "/discord_avatar_decoration/" }, " 的预览弹窗操作按钮移至更清晰的布局"],
           "统一 Discord 头像库和 Discord 装饰库的操作按钮宽度为 w-72",
           "在 Discord 头像库预览中新增“用这个头像 → 挑选装饰”",
           "在 Discord 装饰库预览中新增“用这个装饰 → 挑选头像”",
@@ -447,7 +447,7 @@ export default {
           "“保存动态 GIF”现可在两个页面的预览窗口内使用懒加载的 FFmpeg 直接生成",
           "在 Discord 头像库和 Discord 装饰库新增生成进度指示和失败反馈",
           "GIF 生成会遵循 Discord 头像库和 Discord 装饰库当前选中的装饰叠加层",
-          ["集成了“提取静态图”工作流并路由至 ", { "text": "GIF 帧提取器", "href": "/gif-extractor" }]
+          ["集成了“提取静态图”工作流并路由至 ", { "text": "GIF 帧提取器", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 叠加层与体验", "items": [
           "通过渐变 + 轻微模糊和闪光提示胶囊，增强两个页面的悬停叠加层",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ 功能更新", "items": [
-          [{ "text": "Discord 头像库页面", "href": "/discord_avatar" }, { "text": " 支持实时头像预览，即时更新" }],
-          [{ "text": "Discord 头像装饰库页面", "href": "/discord_avatar_decoration" }, { "text": " 在选择装饰时支持实时预览" }],
-          [{ "text": "GIF 帧提取器页面", "href": "/gif-extractor" }, { "text": " 新增一键“下载全部帧（.zip）”批量下载" }]
+          [{ "text": "Discord 头像库页面", "href": "/discord_avatar/" }, { "text": " 支持实时头像预览，即时更新" }],
+          [{ "text": "Discord 头像装饰库页面", "href": "/discord_avatar_decoration/" }, { "text": " 在选择装饰时支持实时预览" }],
+          [{ "text": "GIF 帧提取器页面", "href": "/gif-extractor/" }, { "text": " 新增一键“下载全部帧（.zip）”批量下载" }]
         ]}
       ]
     },

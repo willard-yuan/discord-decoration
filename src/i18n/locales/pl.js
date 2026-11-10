@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Akcje w oknie podglądu", "items": [
-          ["Przeniesiono przyciski akcji okna podglądu na ", { "text": "Galerię awatarów Discord", "href": "/discord_avatar" }, " i ", { "text": "Galerię ozdób Discord", "href": "/discord_avatar_decoration" }, " dla jaśniejszego układu"],
+          ["Przeniesiono przyciski akcji okna podglądu na ", { "text": "Galerię awatarów Discord", "href": "/discord_avatar/" }, " i ", { "text": "Galerię ozdób Discord", "href": "/discord_avatar_decoration/" }, " dla jaśniejszego układu"],
           "Ujednolicono szerokość przycisków akcji do w-72 w obu galeriach",
           "Dodano „Użyj tego awatara → Wybierz ozdobę” w podglądzie Galerii awatarów Discord",
           "Dodano „Użyj tej ozdoby → Wybierz awatar” w podglądzie Galerii ozdób Discord",
@@ -447,7 +447,7 @@ export default {
           "„Zapisz animowany GIF” generuje teraz bezpośrednio w oknie podglądu obu stron przy użyciu leniwie ładowanego FFmpeg",
           "Dodano wskaźnik postępu generowania i informację o błędzie w obu galeriach",
           "Generowanie GIF uwzględnia wybraną ozdobę nakładki w obu galeriach",
-          ["Zintegrowano proces „Wyodrębnij nieruchomy obraz” z routingiem do ", { "text": "Ekstraktora klatek GIF", "href": "/gif-extractor" }]
+          ["Zintegrowano proces „Wyodrębnij nieruchomy obraz” z routingiem do ", { "text": "Ekstraktora klatek GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Nakładka i UX", "items": [
           "Ulepszono nakładkę po najechaniu dzięki gradientowi, lekkiemu rozmyciu i pigułce z podpowiedzią w obu galeriach",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Aktualizacje funkcji", "items": [
-          [{ "text": "Strona galerii awatarów Discord", "href": "/discord_avatar" }, { "text": " obsługuje podgląd awatara w czasie rzeczywistym z natychmiastową aktualizacją" }],
-          [{ "text": "Strona galerii ozdób awatara Discord", "href": "/discord_avatar_decoration" }, { "text": " obsługuje podgląd na żywo przy wyborze ozdób" }],
-          [{ "text": "Strona ekstraktora GIF", "href": "/gif-extractor" }, { "text": " dodaje jednym kliknięciem zbiorcze pobieranie „Pobierz wszystkie klatki (.zip)”" }]
+          [{ "text": "Strona galerii awatarów Discord", "href": "/discord_avatar/" }, { "text": " obsługuje podgląd awatara w czasie rzeczywistym z natychmiastową aktualizacją" }],
+          [{ "text": "Strona galerii ozdób awatara Discord", "href": "/discord_avatar_decoration/" }, { "text": " obsługuje podgląd na żywo przy wyborze ozdób" }],
+          [{ "text": "Strona ekstraktora GIF", "href": "/gif-extractor/" }, { "text": " dodaje jednym kliknięciem zbiorcze pobieranie „Pobierz wszystkie klatki (.zip)”" }]
         ]}
       ]
     },

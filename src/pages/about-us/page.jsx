@@ -49,7 +49,7 @@ export default function AboutUs() {
           </p>
           <p className="text-text-secondary mt-4">
             Review the <a className="text-primary underline" href="https://github.com/willard-yuan/discord-decoration">source repository and change history</a>
-            {' or '}<a className="text-primary underline" href="/contact-support">contact support</a> to report a bug or request a correction.
+            {' or '}<a className="text-primary underline" href="/contact-support/">contact support</a> to report a bug or request a correction.
           </p>
         </section>
 
@@ -213,7 +213,7 @@ export default function AboutUs() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="/contact-support" 
+                href="/contact-support/" 
                 className="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 Get in Touch

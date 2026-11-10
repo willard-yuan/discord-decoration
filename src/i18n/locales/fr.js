@@ -438,7 +438,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Actions de la fenêtre d'aperçu", "items": [
-          ["Déplacé les boutons d'action de la fenêtre d'aperçu sur ", { "text": "Galerie d'avatars Discord", "href": "/discord_avatar" }, " et ", { "text": "Galerie de décorations Discord", "href": "/discord_avatar_decoration" }, " pour une disposition plus claire"],
+          ["Déplacé les boutons d'action de la fenêtre d'aperçu sur ", { "text": "Galerie d'avatars Discord", "href": "/discord_avatar/" }, " et ", { "text": "Galerie de décorations Discord", "href": "/discord_avatar_decoration/" }, " pour une disposition plus claire"],
           "Unifié la largeur des boutons d'action à w-72 sur la Galerie d'avatars et la Galerie de décorations Discord",
           "Ajout de « Utiliser cet avatar → Choisir une décoration » dans l'aperçu de la Galerie d'avatars Discord",
           "Ajout de « Utiliser cette décoration → Choisir un avatar » dans l'aperçu de la Galerie de décorations Discord",
@@ -450,7 +450,7 @@ export default {
           "« Enregistrer le GIF animé » génère désormais directement dans la fenêtre d'aperçu sur les deux pages à l'aide de FFmpeg chargé en paresseux",
           "Ajout d'un indicateur de progression de génération et d'un retour en cas d'échec sur les Galeries d'avatars et de décorations Discord",
           "La génération de GIF respecte la superposition de décoration sélectionnée sur les Galeries d'avatars et de décorations Discord",
-          ["Intégration du flux de travail « Extraire une image fixe » et du routage vers ", { "text": "Extracteur de frames GIF", "href": "/gif-extractor" }]
+          ["Intégration du flux de travail « Extraire une image fixe » et du routage vers ", { "text": "Extracteur de frames GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Superposition et UX", "items": [
           "Amélioré la superposition au survol avec dégradé + léger flou et pastille d'indice brillante sur les deux pages",
@@ -500,9 +500,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Mises à jour de fonctionnalités", "items": [
-          [{ "text": "La page de la galerie d'avatars Discord", "href": "/discord_avatar" }, { "text": " prend désormais en charge l'aperçu d'avatar en temps réel avec mises à jour immédiates" }],
-          [{ "text": "La page de la galerie de décorations d'avatars Discord", "href": "/discord_avatar_decoration" }, { "text": " prend en charge l'aperçu en direct lors de la sélection de décorations" }],
-          [{ "text": "La page de l'extracteur GIF", "href": "/gif-extractor" }, { "text": " ajoute le téléchargement en masse en un clic « Télécharger toutes les frames (.zip) »" }]
+          [{ "text": "La page de la galerie d'avatars Discord", "href": "/discord_avatar/" }, { "text": " prend désormais en charge l'aperçu d'avatar en temps réel avec mises à jour immédiates" }],
+          [{ "text": "La page de la galerie de décorations d'avatars Discord", "href": "/discord_avatar_decoration/" }, { "text": " prend en charge l'aperçu en direct lors de la sélection de décorations" }],
+          [{ "text": "La page de l'extracteur GIF", "href": "/gif-extractor/" }, { "text": " ajoute le téléchargement en masse en un clic « Télécharger toutes les frames (.zip) »" }]
         ]}
       ]
     },

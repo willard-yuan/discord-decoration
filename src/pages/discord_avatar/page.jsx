@@ -528,10 +528,12 @@ const DiscordAvatar = () => {
           </div>
           <div className="flex flex-col items-center gap-3 mt-3 *:mt-0 w-full">
             <NeutralButton
-              onClick={() => {
+              href='/discord_avatar_decoration/'
+              onClick={(e) => {
+                e.preventDefault();
                 const url = previewAvatarUrl || '/avatars/in_rainbows.png';
                 storeData('avatar', url);
-                router.route('/discord_avatar_decoration');
+                router.route('/discord_avatar_decoration/');
               }}
               ariaLabel={t('avatar.useAvatar')}
               disabled={false}
@@ -569,11 +571,13 @@ const DiscordAvatar = () => {
               {t('avatar.saveGif')}
             </NeutralButton>
             <NeutralButton
-              onClick={() => {
+              href='/gif-extractor/'
+              onClick={(e) => {
+                e.preventDefault();
                 const avatarUrl = previewAvatarUrl || '/avatars/in_rainbows.png';
                 const decoUrl = previewDecorationUrl || '';
                 storeData('image', JSON.stringify({ avatar: avatarUrl, decoration: decoUrl }));
-                router.route('/gif-extractor');
+                router.route('/gif-extractor/');
               }}
               ariaLabel={t('avatar.extractStill')}
               disabled={false}

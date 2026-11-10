@@ -726,7 +726,7 @@ export default function DiscordColoredText() {
               <p className="text-sm">{t("coloredText.codes.note")}</p>
               <p>
                 <a
-                  href="/discord-ansi-color-codes"
+                  href="/discord-ansi-color-codes/"
                   className="text-primary hover:underline font-medium"
                 >
                   {t("coloredText.codes.more")} →

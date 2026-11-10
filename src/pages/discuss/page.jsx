@@ -6,22 +6,9 @@ import Footer from "@/components/Footer.jsx";
 export default function Discussion() {
   return (
     <>
-      {/* SEO Meta Tags */}
-      <title>Community Discussion - Discord Avatar Decorations</title>
-      <meta name="description" content="Join our community discussion about Discord avatar decorations, share your creations, get help, and connect with other Discord users." />
-      <meta name="keywords" content="Discord discussion, avatar decorations community, Discord help, Discord tips, community forum" />
-      
-      {/* Open Graph Meta Tags */}
-      <meta property="og:title" content="Community Discussion - Discord Avatar Decorations" />
-      <meta property="og:description" content="Join our community discussion about Discord avatar decorations, share your creations, get help, and connect with other Discord users." />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://discord-decoration.com/discuss" />
-      
-      {/* Twitter Meta Tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Community Discussion - Discord Avatar Decorations" />
-      <meta name="twitter:description" content="Join our community discussion about Discord avatar decorations, share your creations, get help, and connect with other Discord users." />
-
+      {/* SEO head tags (title, description, OG, Twitter) are injected by
+          build/seo.mjs. Rendering them here duplicates them into <body>, which
+          social scrapers may read and which can drift out of sync with <head>. */}
       <div className="min-h-screen bg-surface-overlay">
         <Navbar />
         

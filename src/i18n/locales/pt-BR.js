@@ -440,7 +440,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Ações do Modal de Pré-visualização", "items": [
-          ["Movemos os botões de ação do modal de pré-visualização em ", { "text": "Galeria de Avatares do Discord", "href": "/discord_avatar" }, " e ", { "text": "Galeria de Decorações do Discord", "href": "/discord_avatar_decoration" }, " para um layout mais claro"],
+          ["Movemos os botões de ação do modal de pré-visualização em ", { "text": "Galeria de Avatares do Discord", "href": "/discord_avatar/" }, " e ", { "text": "Galeria de Decorações do Discord", "href": "/discord_avatar_decoration/" }, " para um layout mais claro"],
           "Unificamos a largura dos botões de ação para w-72 nas Galerias de Avatar e de Decorações do Discord",
           "Adicionamos 'Usar este Avatar → Escolher Decoração' na pré-visualização da Galeria de Avatares do Discord",
           "Adicionamos 'Usar esta Decoração → Escolher Avatar' na pré-visualização da Galeria de Decorações do Discord",
@@ -452,7 +452,7 @@ export default {
           "'Salvar GIF Animado' agora gera diretamente dentro da janela de pré-visualização em ambas as páginas usando FFmpeg carregado sob demanda",
           "Adicionamos indicador de progresso de geração e feedback de falha nas Galerias de Avatar e de Decorações do Discord",
           "A geração de GIF respeita a sobreposição de decoração selecionada no momento nas Galerias de Avatar e de Decorações do Discord",
-          ["Integrado o fluxo de trabalho 'Extrair imagem estática' e o roteamento para ", { "text": "Extrator de Frames de GIF", "href": "/gif-extractor" }]
+          ["Integrado o fluxo de trabalho 'Extrair imagem estática' e o roteamento para ", { "text": "Extrator de Frames de GIF", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 Overlay e UX", "items": [
           "Aprimoramos o overlay de hover com gradiente + leve desfoque e o pill de dica brilhante em ambas as páginas",
@@ -502,9 +502,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Atualizações de Recursos", "items": [
-          [{ "text": "A página da galeria de avatares do Discord", "href": "/discord_avatar" }, { "text": " agora suporta pré-visualização de avatar em tempo real com atualizações imediatas" }],
-          [{ "text": "A página da galeria de decorações de avatar do Discord", "href": "/discord_avatar_decoration" }, { "text": " agora suporta pré-visualização ao vivo ao selecionar decorações" }],
-          [{ "text": "A página do extrator de GIF", "href": "/gif-extractor" }, { "text": " adiciona o download em massa com um clique 'Baixar Todos os Frames (.zip)'" }]
+          [{ "text": "A página da galeria de avatares do Discord", "href": "/discord_avatar/" }, { "text": " agora suporta pré-visualização de avatar em tempo real com atualizações imediatas" }],
+          [{ "text": "A página da galeria de decorações de avatar do Discord", "href": "/discord_avatar_decoration/" }, { "text": " agora suporta pré-visualização ao vivo ao selecionar decorações" }],
+          [{ "text": "A página do extrator de GIF", "href": "/gif-extractor/" }, { "text": " adiciona o download em massa com um clique 'Baixar Todos os Frames (.zip)'" }]
         ]}
       ]
     },

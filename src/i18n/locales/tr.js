@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 Önizleme Modu Eylemleri", "items": [
-          ["Discord Avatar Galerisi", { "text": "Discord Avatar Galerisi", "href": "/discord_avatar" }, " ve ", { "text": "Discord Dekorasyonları Galerisi", "href": "/discord_avatar_decoration" }, " sayfalarındaki önizleme modu eylem düğmeleri daha net bir düzen için taşındı"],
+          ["Discord Avatar Galerisi", { "text": "Discord Avatar Galerisi", "href": "/discord_avatar/" }, " ve ", { "text": "Discord Dekorasyonları Galerisi", "href": "/discord_avatar_decoration/" }, " sayfalarındaki önizleme modu eylem düğmeleri daha net bir düzen için taşındı"],
           "Discord Avatar Galerisi ve Discord Dekorasyonları Galerisi'nde eylem düğmesi genişlikleri w-72 olarak birleştirildi",
           "Discord Avatar Galerisi önizlemesine 'Bu Avatarı Kullan → Dekorasyon Seç' eklendi",
           "Discord Dekorasyonları Galerisi önizlemesine 'Bu Dekorasyonu Kullan → Avatar Seç' eklendi",
@@ -447,7 +447,7 @@ export default {
           "'Hareketli GIF Kaydet' artık her iki sayfada da tembel yüklenen FFmpeg kullanılarak önizleme penceresi içinde doğrudan oluşturuluyor",
           "Discord Avatar Galerisi ve Discord Dekorasyonları Galerisi'ne oluşturma ilerleme göstergesi ve hata geri bildirimi eklendi",
           "GIF oluşturma, Discord Avatar Galerisi ve Discord Dekorasyonları Galerisi'nde seçili dekorasyon katmanını dikkate alıyor",
-          ["'Sabit resim çıkar' iş akışı ve ", { "text": "GIF Kare Çıkarıcı", "href": "/gif-extractor" }, " yönlendirmesi entegre edildi"]
+          ["'Sabit resim çıkar' iş akışı ve ", { "text": "GIF Kare Çıkarıcı", "href": "/gif-extractor/" }, " yönlendirmesi entegre edildi"]
         ]},
         { "category": "🎨 Katman ve UX", "items": [
           "Her iki sayfada da gradyan + hafif bulanıklık ve parlak ipucu hapı ile hover katmanı geliştirildi",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ Özellik Güncellemeleri", "items": [
-          [{ "text": "discord avatar galeri sayfası", "href": "/discord_avatar" }, { "text": " seçildiğinde anında güncellenen gerçek zamanlı avatar önizlemesini destekler" }],
-          [{ "text": "discord avatar dekorasyonları galeri sayfası", "href": "/discord_avatar_decoration" }, { "text": " dekorasyon seçilirken canlı önizlemeyi destekler" }],
-          [{ "text": "gif-extractor sayfası", "href": "/gif-extractor" }, { "text": " tek tıkla 'Tüm Kareleri İndir (.zip)' toplu indirme ekler" }]
+          [{ "text": "discord avatar galeri sayfası", "href": "/discord_avatar/" }, { "text": " seçildiğinde anında güncellenen gerçek zamanlı avatar önizlemesini destekler" }],
+          [{ "text": "discord avatar dekorasyonları galeri sayfası", "href": "/discord_avatar_decoration/" }, { "text": " dekorasyon seçilirken canlı önizlemeyi destekler" }],
+          [{ "text": "gif-extractor sayfası", "href": "/gif-extractor/" }, { "text": " tek tıkla 'Tüm Kareleri İndir (.zip)' toplu indirme ekler" }]
         ]}
       ]
     },

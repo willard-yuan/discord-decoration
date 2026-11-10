@@ -435,7 +435,7 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "🎯 預覽彈窗操作", "items": [
-          ["將 ", { "text": "Discord 頭像庫", "href": "/discord_avatar" }, " 和 ", { "text": "Discord 裝飾庫", "href": "/discord_avatar_decoration" }, " 的預覽彈窗操作按鈕移至更清晰的佈局"],
+          ["將 ", { "text": "Discord 頭像庫", "href": "/discord_avatar/" }, " 和 ", { "text": "Discord 裝飾庫", "href": "/discord_avatar_decoration/" }, " 的預覽彈窗操作按鈕移至更清晰的佈局"],
           "統一 Discord 頭像庫和 Discord 裝飾庫的操作按鈕寬度為 w-72",
           "在 Discord 頭像庫預覽中新增「用這個頭像 → 挑選裝飾」",
           "在 Discord 裝飾庫預覽中新增「用這個裝飾 → 挑選頭像」",
@@ -447,7 +447,7 @@ export default {
           "「儲存動態 GIF」現可在兩個頁面的預覽視窗內使用懶加載的 FFmpeg 直接產生",
           "在 Discord 頭像庫和 Discord 裝飾庫新增產生進度指示和失敗回饋",
           "GIF 產生會遵循 Discord 頭像庫和 Discord 裝飾庫目前選中的裝飾疊加層",
-          ["整合了「擷取靜態圖」工作流並路由至 ", { "text": "GIF 影格擷取器", "href": "/gif-extractor" }]
+          ["整合了「擷取靜態圖」工作流並路由至 ", { "text": "GIF 影格擷取器", "href": "/gif-extractor/" }]
         ]},
         { "category": "🎨 疊加層與體驗", "items": [
           "透過漸變 + 輕微模糊和閃光提示膠囊，增強兩個頁面的懸停疊加層",
@@ -497,9 +497,9 @@ export default {
       "type": "minor",
       "changes": [
         { "category": "✨ 功能更新", "items": [
-          [{ "text": "Discord 頭像庫頁面", "href": "/discord_avatar" }, { "text": " 支援即時頭像預覽，立即更新" }],
-          [{ "text": "Discord 頭像裝飾庫頁面", "href": "/discord_avatar_decoration" }, { "text": " 在選擇裝飾時支援即時預覽" }],
-          [{ "text": "GIF 影格擷取器頁面", "href": "/gif-extractor" }, { "text": " 新增一鍵「下載全部影格（.zip）」批量下載" }]
+          [{ "text": "Discord 頭像庫頁面", "href": "/discord_avatar/" }, { "text": " 支援即時頭像預覽，立即更新" }],
+          [{ "text": "Discord 頭像裝飾庫頁面", "href": "/discord_avatar_decoration/" }, { "text": " 在選擇裝飾時支援即時預覽" }],
+          [{ "text": "GIF 影格擷取器頁面", "href": "/gif-extractor/" }, { "text": " 新增一鍵「下載全部影格（.zip）」批量下載" }]
         ]}
       ]
     },

@@ -6,31 +6,31 @@ import Footer from '@/components/Footer.jsx';
 const tools = [
   {
     name: 'Discord Fonts Generator - 500+ Stylish Text Styles for Discord',
-    href: '/discord_front',
+    href: '/discord_front/',
     emoji: '🔤',
     description: 'Generate stylish Discord fonts and text styles from 500+ unique font styles. Convert your text to fancy fonts for Discord messages, usernames, and profiles.',
   },
   {
     name: 'Discord Colored Text Generator - Color Your Messages with ANSI',
-    href: '/discord-colored-text',
+    href: '/discord-colored-text/',
     emoji: '🌈',
     description: 'Create colored Discord text with ANSI escape codes. Pick colors, bold and underline, preview it live and copy a ready-to-paste ansi code block.',
   },
   {
     name: 'Discord ANSI Color Codes - Full Reference Table',
-    href: '/discord-ansi-color-codes',
+    href: '/discord-ansi-color-codes/',
     emoji: '🎨',
     description: 'Every ANSI color code Discord understands in one table: 8 text and background colors, bold, italic, underline, strikethrough, 24-bit truecolor and copy-and-paste examples.',
   },
   {
     name: 'How to Make Colored Text in Discord (Copy and Paste)',
-    href: '/blog/discord-colored-text',
+    href: '/blog/discord-colored-text/',
     emoji: '📖',
     description: 'Step-by-step guide to colored Discord text with ANSI escape codes - desktop, web and mobile, rainbow gradients, background highlights and troubleshooting.',
   },
   {
     name: 'GIF Frame Extractor - Extract Frames from Animated GIFs',
-    href: '/gif-extractor',
+    href: '/gif-extractor/',
     emoji: '🖼️',
     description: 'Free online GIF frame extractor tool. Extract individual frames from animated GIFs quickly and easily. Perfect for creating Discord avatars, profile pictures, and image editing projects.',
   },
@@ -107,14 +107,18 @@ export default function OtherTools() {
 
                 <a
                   href={tool.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={tool.href.startsWith('/') ? undefined : '_blank'}
+                  rel={tool.href.startsWith('/') ? undefined : 'noopener noreferrer'}
                   className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-purple-500 text-white rounded-lg font-semibold hover:from-primary/80 hover:to-purple-500/80 transition-all duration-300 transform group-hover:scale-[1.03]"
                   aria-label={`View ${tool.name}`}
                 >
                   View Tool
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    {tool.href.startsWith('/') ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6 6 6-6 6" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    )}
                   </svg>
                 </a>
               </div>

@@ -58,7 +58,7 @@ export default function ContactSupport() {
                   Check our frequently asked questions for quick answers to common issues.
                 </p>
                 <a
-                  href="/faq"
+                  href="/faq/"
                   className="inline-flex items-center text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
                   Visit FAQ
@@ -75,7 +75,7 @@ export default function ContactSupport() {
                   Learn how to use our Discord decoration tools with step-by-step guides.
                 </p>
                 <a
-                  href="/how-to-use"
+                  href="/how-to-use/"
                   className="inline-flex items-center text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
                   View Guides
@@ -108,7 +108,7 @@ export default function ContactSupport() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
-                    href="/discuss"
+                    href="/discuss/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center"
