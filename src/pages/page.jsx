@@ -288,21 +288,6 @@ const ExtraLinks = () => {
       </a>
       <a
         className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
-        href="https://emojitoimage.com/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <span className="place-items-center w-6">
-          <Icons.emojitoimage size="18px" />
-        </span>
-        {t("links.emojiToImage")}
-        <span className="grow" />
-        <span className="rotate-45">
-          <Icons.up size="16px" />
-        </span>
-      </a>
-      <a
-        className="flex justify-start items-center gap-2 mt-3 p-2 button-outline"
         href="https://emojiface.us/"
         target="_blank"
         rel="noreferrer"
