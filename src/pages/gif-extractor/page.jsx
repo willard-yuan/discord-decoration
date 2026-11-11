@@ -22,6 +22,53 @@ import { clearData, getData, storeData } from "@/utils/dataHandler.js";
 
 const isServer = typeof window === "undefined";
 
+// Internal discovery links. Track A renders only after a successful extraction
+// (JS-only, so crawlers never see it). Track B lives outside the conditional
+// render so it is present in the prerendered HTML with descriptive anchors.
+const NEXT_STEPS = [
+  {
+    key: "discord_avatar",
+    href: "/discord_avatar/",
+    emoji: "🖼️",
+    title: "Discord avatar",
+    description: "Turn a frame into your profile picture",
+    anchor: "Turn a frame into a Discord avatar",
+  },
+  {
+    key: "avatar_decoration",
+    href: "/discord_avatar_decoration/",
+    emoji: "✨",
+    title: "Avatar decoration",
+    description: "Animate your new avatar",
+    anchor: "Make an animated avatar decoration",
+  },
+  {
+    key: "gif_guide",
+    href: "/blog/how-to-split-gif-into-frames/",
+    emoji: "📖",
+    title: "GIF split guide",
+    description: "Step-by-step walkthrough",
+    anchor: "How to split a GIF into frames (guide)",
+  },
+];
+
+// Fonts are semantically further from "extract frames", so this one gets an
+// explicit context bridge instead of being listed as a fourth equal card.
+const PROFILE_STEP = {
+  key: "discord_front",
+  href: "/discord_front/",
+  anchor: "Style your username with 500+ Discord fonts",
+  cardAnchor: "Style your Discord username with 500+ fancy fonts",
+};
+
+// Umami Cloud already stores event data, so no backend or database is needed.
+// Removing the eventProps(...) spread disables tracking without touching links.
+const eventProps = (key, track) => ({
+  "data-umami-event": "next-steps-click",
+  "data-umami-event-target": key,
+  "data-umami-event-track": track,
+});
+
 export default function GifExtractor() {
   useEffect(() => {
     
@@ -354,6 +401,38 @@ export default function GifExtractor() {
                           {zipping ? "Preparing ZIP…" : "Download All Frames (.zip)"}
                         </button>
                       </div>
+
+                      {/* Track A: post-success next steps. Only rendered after an
+                          extraction, so these bring clicks but no crawlable links. */}
+                      <div className="mt-10 pt-8 border-t border-border-faint">
+                        <h3 className="text-center text-lg font-semibold text-text-primary mb-5">
+                          What's next with your frames
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          {NEXT_STEPS.map((item) => (
+                            <a
+                              key={item.key}
+                              href={item.href}
+                              {...eventProps(item.key, "A")}
+                              className="group flex items-start gap-3 rounded-xl bg-surface-high/60 p-4 border border-border-faint hover:border-primary/50 transition-colors"
+                            >
+                              <span className="text-2xl leading-none" aria-hidden="true">{item.emoji}</span>
+                              <span className="min-w-0">
+                                <span className="block text-sm font-semibold text-text-primary group-hover:text-primary">{item.title}</span>
+                                <span className="block text-xs text-text-secondary mt-1">{item.description}</span>
+                              </span>
+                            </a>
+                          ))}
+                        </div>
+                        <a
+                          href={PROFILE_STEP.href}
+                          {...eventProps(PROFILE_STEP.key, "A")}
+                          className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-xl bg-surface-high/40 border border-border-faint hover:border-primary/50 px-4 py-3 text-sm text-center transition-colors"
+                        >
+                          <span className="text-text-secondary">Also styling your profile?</span>
+                          <span className="font-semibold text-primary">{PROFILE_STEP.cardAnchor} →</span>
+                        </a>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -413,6 +492,27 @@ export default function GifExtractor() {
         </main>
       )}
       
+      {/* Track B: always rendered, outside the loaded/frames conditionals, so
+          these descriptive anchors exist in the prerendered HTML crawlers read. */}
+      <section className="container-responsive py-12" aria-labelledby="related-tools-heading">
+        <h2 id="related-tools-heading" className="text-xl font-semibold text-text-primary mb-4">
+          Related tools &amp; guides
+        </h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+          {[...NEXT_STEPS, PROFILE_STEP].map((item) => (
+            <li key={item.key}>
+              <a
+                href={item.href}
+                {...eventProps(item.key, "B")}
+                className="text-sm text-text-secondary hover:text-primary transition-colors"
+              >
+                {item.anchor}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <Footer />
     </div>
   );
