@@ -39,13 +39,7 @@ const tools = [
     href: 'https://emojiface.us',
     icon: '/emojiface-192x192.png',
     description: 'Best Free Tool to Hide Your Face with Emoji, Blur or Pixelation for Privacy, and All You Need is One Click',
-  },
-  {
-    name: 'YTPlaylistLength - Best Youtube Playlist Length Calculator',
-    href: 'https://ytplaylistlength.pro',
-    emoji: '⏱️',
-    description: 'Calculate the total length of any YouTube playlists quickly! Paste playlist URL to get instant result on how long it takes to watch all the videos in one go.',
-  },
+  }
 ];
 
 export default function OtherTools() {
