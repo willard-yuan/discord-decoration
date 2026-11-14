@@ -52,6 +52,10 @@
     <!-- AdSense inserts #google_vignette into the URL for interstitial ads. Without
          excluding the hash Umami records it as a separate "page" (1.5k/90d of noise). -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="4fc2bd04-31b4-4ad6-b4e7-9200d4ea6caa" data-exclude-hash="true"></script>
+    <!-- Facet (self-hosted). Dual-write migration period: keep Umami above until
+         dashboards are reconciled. This script assigns window.umami = { track },
+         so use window.facet.track() for any new manual events. -->
+    <script defer src="https://uv.yongyuan.name/script.js" data-site-id="3c0d36d4-0490-490a-8bb9-42ea2de940b5"></script>
 
     <!-- SEO Meta Tags -->
     <meta name="keywords" content="discord decorations, discord avatar decorations, free discord decorations, custom discord decorations." />
